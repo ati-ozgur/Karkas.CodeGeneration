@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Runtime.Remoting;
 using System.Data.Common;
 using System.Data.SQLite;
+using Karkas.CodeGeneration.Sqlite;
 
 namespace Karkas.MyGenerationConsoleTest
 {
@@ -30,7 +31,13 @@ namespace Karkas.MyGenerationConsoleTest
             //OracleTest();
             //SqlServerTest();
             //SqliteTest();
+            SqliteTest();
 
+            //simpleSqliteConnectionTest();
+        }
+
+        private static void simpleSqliteConnectionTest()
+        {
             try
             {
 
@@ -65,7 +72,7 @@ namespace Karkas.MyGenerationConsoleTest
                 connection.ConnectionString = _SqliteExampleConntectionString;
                 connection.Open();
                 connection.Close();
-                ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
+                ConnectionSingleton.Instance.ConnectionString = _SqliteExampleConntectionString;
                 ConnectionSingleton.Instance.ProviderName = "System.Data.SQLiteClient";
                 template = new AdoTemplate();
                 template.Connection = connection;
@@ -73,7 +80,7 @@ namespace Karkas.MyGenerationConsoleTest
             IDatabaseHelper helper = new SqliteHelper();
 
 
-            helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample", null);
+            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Moviews", "", "main", "Karkas.SqliteExample", "D:\\projects\\Examples\\karkas\\Karkas.SqliteExample", null);
 
 
             helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true, null);
