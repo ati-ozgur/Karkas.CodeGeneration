@@ -80,10 +80,10 @@ namespace Karkas.MyGenerationConsoleTest
             IDatabaseHelper helper = new SqliteHelper();
 
 
-            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Moviews", "", "main", "Karkas.SqliteExample", "D:\\projects\\Examples\\karkas\\Karkas.SqliteExample", null);
+            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Movies", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
 
 
-            helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true, null);
+            helper.CodeGenerateAllTables(template, _SqliteExampleConntectionString, "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", true, true, null);
         }
 
         private static void OracleTest()
