@@ -14,6 +14,7 @@ using Karkas.CodeGeneration.Oracle;
 using System.Reflection;
 using System.Runtime.Remoting;
 using System.Data.Common;
+using System.Data.SQLite;
 
 namespace Karkas.MyGenerationConsoleTest
 {
@@ -26,6 +27,54 @@ namespace Karkas.MyGenerationConsoleTest
         {
             //OracleTest();
             //SqlServerTest();
+            //SqliteTest();
+
+            try
+            {
+
+                SQLiteConnection conn;
+
+                conn = new SQLiteConnection("Data Source=P:\\denemeler\\sqliteDeneme\\testdb.db");
+
+                conn.Open();
+                conn.Close();
+            }
+            catch (SQLiteException ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+
+        }
+
+        private static void SqliteTest()
+        {
+            DbConnection connection = null;
+            AdoTemplate template = new AdoTemplate();
+            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
+
+            if (objReflection != null && objReflection is ObjectHandle)
+            {
+                ObjectHandle handle = (ObjectHandle)objReflection;
+
+                Object objConnection = handle.Unwrap();
+                connection = (DbConnection)objConnection;
+                connection.ConnectionString = _OracleExampleConnectionString;
+                connection.Open();
+                connection.Close();
+                ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
+                ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
+                template = new AdoTemplate();
+                template.Connection = connection;
+            }
+            IDatabaseHelper helper = new OracleHelper();
+
+
+            helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample", null);
+
+
+            helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true, null);
         }
 
         private static void OracleTest()
