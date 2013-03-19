@@ -34,7 +34,7 @@ namespace Karkas.MyGenerationConsoleTest
 
                 SQLiteConnection conn;
 
-                conn = new SQLiteConnection("Data Source=P:\\denemeler\\sqliteDeneme\\testdb.db");
+                conn = new SQLiteConnection("Data Source=testdb.db");
 
                 conn.Open();
                 conn.Close();
