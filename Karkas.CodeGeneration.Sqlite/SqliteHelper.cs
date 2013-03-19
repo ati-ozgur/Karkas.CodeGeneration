@@ -11,7 +11,7 @@ namespace Karkas.CodeGeneration.Sqlite
     {
         public string getDatabaseName(AdoTemplate template)
         {
-            throw new NotImplementedException();
+            return template.Connection.Database;
         }
 
         public string getDefaultSchema(AdoTemplate template)
