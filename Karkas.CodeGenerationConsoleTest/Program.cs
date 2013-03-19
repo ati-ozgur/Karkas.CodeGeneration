@@ -24,32 +24,38 @@ namespace Karkas.MyGenerationConsoleTest
         
         public static void Main(string[] args)
         {
+            //OracleTest();
+            //SqlServerTest();
+        }
+
+        private static void OracleTest()
+        {
             DbConnection connection = null;
             AdoTemplate template = new AdoTemplate();
-                                Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
-                    Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
+            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
 
-                    if (objReflection != null && objReflection is ObjectHandle)
-                    {
-                        ObjectHandle handle = (ObjectHandle)objReflection;
+            if (objReflection != null && objReflection is ObjectHandle)
+            {
+                ObjectHandle handle = (ObjectHandle)objReflection;
 
-                        Object objConnection = handle.Unwrap();
-                        connection = (DbConnection)objConnection;
-                        connection.ConnectionString = _OracleExampleConnectionString;
-                        connection.Open();
-                        connection.Close();
-                        ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
-                        ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
-                        template = new AdoTemplate();
-                        template.Connection = connection;
-                    }
+                Object objConnection = handle.Unwrap();
+                connection = (DbConnection)objConnection;
+                connection.ConnectionString = _OracleExampleConnectionString;
+                connection.Open();
+                connection.Close();
+                ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
+                ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
+                template = new AdoTemplate();
+                template.Connection = connection;
+            }
             IDatabaseHelper helper = new OracleHelper();
 
 
-            helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample",null);
+            helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample", null);
 
 
-            helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true,null);
+            helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true, null);
         }
 
         private static void SqlServerTest()
