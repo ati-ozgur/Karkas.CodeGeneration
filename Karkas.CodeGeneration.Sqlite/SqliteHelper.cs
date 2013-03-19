@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.Core.DataUtil;
+using Karkas.CodeGenerationHelper.Generators;
+using Karkas.CodeGeneration.Sqlite.Implementations;
+using Karkas.CodeGeneration.Sqlite.Generators;
 
 namespace Karkas.CodeGeneration.Sqlite
 {
@@ -36,12 +39,23 @@ namespace Karkas.CodeGeneration.Sqlite
 
         public void CodeGenerateOneTable(AdoTemplate template, string pConnectionString, string pTableName, string pSchemaName, string pDatabaseName, string pProjectNamespace, string pProjectFolder, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            throw new NotImplementedException();
+            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
+            DalGenerator dalGen = this.DalGenerator;
+            BsGenerator bsGen = new BsGenerator(this);
+            IOutput output = new SqliteOutput();
+            DatabaseSqlite database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+
+            ITable table = database.getTable(pTableName, pSchemaName);
+
+
+            typeGen.Render(output, table, listDatabaseAbbreviations);
+            dalGen.Render(output, table, listDatabaseAbbreviations);
+            bsGen.Render(output, table, listDatabaseAbbreviations);
         }
 
-        public CodeGenerationHelper.Generators.DalGenerator DalGenerator
+        public DalGenerator DalGenerator
         {
-            get { throw new NotImplementedException(); }
+            get { return new SqliteDalGenerator(this); }
         }
     }
 }
