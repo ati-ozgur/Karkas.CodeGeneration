@@ -472,15 +472,19 @@ namespace Karkas.CodeGenerationHelper
 
         public string getClassNameForTypeLibrary(string tableName, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            foreach (DatabaseAbbreviations abbr in listDatabaseAbbreviations)
+            if (listDatabaseAbbreviations != null)
             {
-                if (tableName.Contains(abbr.Abbravetion)
-                    && abbr.useAsModuleName == "N"
-                    )
+                foreach (DatabaseAbbreviations abbr in listDatabaseAbbreviations)
                 {
-                    tableName = tableName.Replace(abbr.Abbravetion, abbr.FullNameReplacement);
+                    if (tableName.Contains(abbr.Abbravetion)
+                        && abbr.useAsModuleName == "N"
+                        )
+                    {
+                        tableName = tableName.Replace(abbr.Abbravetion, abbr.FullNameReplacement);
+                    }
                 }
             }
+
 
             return GetPascalCase(tableName);
         }
