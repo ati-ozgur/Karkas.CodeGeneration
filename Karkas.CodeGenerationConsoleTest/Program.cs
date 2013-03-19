@@ -22,7 +22,9 @@ namespace Karkas.MyGenerationConsoleTest
     {
         public const string _SqlServerExampleConnectionString = "Data Source=localhost;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
-        
+        public const string _SqliteExampleConntectionString = "Data Source=testdb.db";
+
+
         public static void Main(string[] args)
         {
             //OracleTest();
@@ -34,7 +36,7 @@ namespace Karkas.MyGenerationConsoleTest
 
                 SQLiteConnection conn;
 
-                conn = new SQLiteConnection("Data Source=testdb.db");
+                conn = new SQLiteConnection(_SqliteExampleConntectionString);
 
                 conn.Open();
                 conn.Close();
@@ -51,8 +53,8 @@ namespace Karkas.MyGenerationConsoleTest
         {
             DbConnection connection = null;
             AdoTemplate template = new AdoTemplate();
-            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
-            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
+            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.SQLite");
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.SQLite.SQLiteConnection");
 
             if (objReflection != null && objReflection is ObjectHandle)
             {
@@ -60,15 +62,15 @@ namespace Karkas.MyGenerationConsoleTest
 
                 Object objConnection = handle.Unwrap();
                 connection = (DbConnection)objConnection;
-                connection.ConnectionString = _OracleExampleConnectionString;
+                connection.ConnectionString = _SqliteExampleConntectionString;
                 connection.Open();
                 connection.Close();
                 ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
-                ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
+                ConnectionSingleton.Instance.ProviderName = "System.Data.SQLiteClient";
                 template = new AdoTemplate();
                 template.Connection = connection;
             }
-            IDatabaseHelper helper = new OracleHelper();
+            IDatabaseHelper helper = new SqliteHelper();
 
 
             helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample", null);
