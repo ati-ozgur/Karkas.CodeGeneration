@@ -10,13 +10,18 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
     class ColumnSqlite : IColumn
     {
-        public ColumnSqlite(AdoTemplate pTemplate, TableSqlite pTable, string pName)
+
+
+        public ColumnSqlite(AdoTemplate template, TableSqlite tableSqlite, string columnName, string columnType, bool columnNotNull, string columnDefaultValue, bool columnPK)
         {
-
-            template = pTemplate;
-            table = pTable;
-            name = pName;
-
+            // TODO: Complete member initialization
+            this.template = template;
+            this.table = tableSqlite;
+            this.name = columnName;
+            this.dataTypeInDatabase = columnType;
+            this.isNullable = columnNotNull;
+            this.defaultValue = columnDefaultValue;
+            this.isInPrimaryKey = columnPK;
         }
 
         private AdoTemplate template;
@@ -39,20 +44,13 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return name; }
         }
 
-        private bool? isInPrimaryKey;
 
 
         public bool IsInPrimaryKey
         {
             get
             {
-                if (!isInPrimaryKey.HasValue)
-                {
-                    throw new NotImplementedException();
-
-                }
-                return isInPrimaryKey.Value;
-
+                return isInPrimaryKey;
             }
         }
 
@@ -63,6 +61,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             {
                 if (!isInForeignKey.HasValue)
                 {
+                    return false;
                     throw new NotImplementedException();
 
                 }
@@ -91,21 +90,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
 
 
-        private DataRow columnValuesInDatabase = null;
 
-
-        private DataRow ColumnValuesInDatabase
-        {
-            get
-            {
-                if (columnValuesInDatabase == null)
-                {
-                    throw new NotImplementedException();
-
-                }
-                return columnValuesInDatabase;
-            }
-        }
 
 
         public string LanguageType
@@ -115,7 +100,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 if (languageType == null)
                 {
 
-                    dataTypeInDatabase = ColumnValuesInDatabase["DATA_TYPE"].ToString();
                     languageType = sqlTypeToDotnetCSharpType(dataTypeInDatabase);
                 }
                 return languageType;
@@ -127,15 +111,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return table; }
         }
 
-        private bool? isComputed = null;
+        private bool? isComputed = false;
         public bool IsComputed
         {
             get 
             {
-                if (!isComputed.HasValue)
-                {
-                    throw new NotImplementedException();
-                }
                 return isComputed.Value; 
             }
         }
@@ -162,25 +142,13 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
 
         private int? characterMaxLenth = null;
+        private string defaultValue;
+        private bool isInPrimaryKey;
         public int CharacterMaxLength
         {
             get 
-            { 
-                if (!characterMaxLenth.HasValue)
-                {
-                    if (ColumnValuesInDatabase["DATA_LENGTH"] == DBNull.Value)
-                    {
-                        characterMaxLenth = 0;
-                    }
-                    else
-                    {
-                        characterMaxLenth = Convert.ToInt32(ColumnValuesInDatabase["DATA_LENGTH"]);
-                    }
-
-                    
-                }
-
-                return characterMaxLenth.Value; 
+            {
+                return 0;
             }
         }
 
@@ -203,7 +171,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             get 
             {
-                throw new NotImplementedException();
+                // Sql lite string types all without length
+                return true;
 
             }
         }

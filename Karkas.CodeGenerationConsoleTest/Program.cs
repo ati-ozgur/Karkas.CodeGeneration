@@ -73,7 +73,7 @@ namespace Karkas.MyGenerationConsoleTest
                 connection.Open();
                 connection.Close();
                 ConnectionSingleton.Instance.ConnectionString = _SqliteExampleConntectionString;
-                ConnectionSingleton.Instance.ProviderName = "System.Data.SQLiteClient";
+                ConnectionSingleton.Instance.ProviderName = "System.Data.SQLite";
                 template = new AdoTemplate();
                 template.Connection = connection;
             }

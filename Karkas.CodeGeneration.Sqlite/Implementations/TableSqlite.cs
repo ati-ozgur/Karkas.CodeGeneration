@@ -38,7 +38,15 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             {
                 if (!primaryKeyColumnCount.HasValue)
                 {
-                    throw new NotImplementedException();
+                    primaryKeyColumnCount = 0;
+                    foreach (IColumn column in columns)
+                    {
+                        if (column.IsInPrimaryKey)
+                        {
+                            primaryKeyColumnCount++;
+                        }
+
+                    }
 
                 }
                 return (int) primaryKeyColumnCount.Value;
@@ -60,6 +68,9 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
 
 
+        private const String COLUMN_SQL = "Pragma table_info({0});";
+
+
 
         public List<IColumn> Columns
         {
@@ -67,7 +78,25 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             {
                 if (columns == null)
                 {
-                    throw new NotImplementedException();
+                    columns = new List<IColumn>();
+                    string columnSql = string.Format(COLUMN_SQL, tableName);
+
+                    DataTable dtColumns = template.DataTableOlustur(columnSql);
+
+                    IColumn column;
+                    foreach (DataRow rowColumn in dtColumns.Rows)
+                    {
+                        // cid|name|type|notnull|dflt_value|pk
+                        String columnName = rowColumn["name"].ToString();
+                        String columnType = rowColumn["type"].ToString();
+                        bool columnNotNull = Convert.ToInt32(rowColumn["notnull"]) > 0 ;
+                        String columnDefaultValue = rowColumn["dflt_value"].ToString();
+                        bool columnPK = Convert.ToInt32(rowColumn["pk"]) > 0;
+
+                        column = new ColumnSqlite(template, this, columnName, columnType, columnNotNull, columnDefaultValue, columnPK);
+                        columns.Add(column);
+                    }
+
                 }
                 return columns;
             }
