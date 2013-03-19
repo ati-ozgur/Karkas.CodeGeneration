@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.WinAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.Oracle", "Karkas.CodeGeneration.Oracle\Karkas.CodeGeneration.Oracle.csproj", "{45EFD516-6B11-4392-B72A-09FDEEE12769}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.Sqlite", "Karkas.CodeGeneration.Sqlite\Karkas.CodeGeneration.Sqlite.csproj", "{74F72B57-BC21-49E0-86EE-6FA9797F98FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,16 @@ Global
 		{45EFD516-6B11-4392-B72A-09FDEEE12769}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{45EFD516-6B11-4392-B72A-09FDEEE12769}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{45EFD516-6B11-4392-B72A-09FDEEE12769}.Release|x86.ActiveCfg = Release|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
