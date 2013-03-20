@@ -47,6 +47,11 @@ namespace Karkas.CodeGeneration.Sqlite
 
         public void CodeGenerateOneTable(AdoTemplate template, string pConnectionString, string pTableName, string pSchemaName, string pDatabaseName, string pProjectNamespace, string pProjectFolder, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
+            if (pTableName.StartsWith("sqlite_"))
+            {
+                return;
+            }
+
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
