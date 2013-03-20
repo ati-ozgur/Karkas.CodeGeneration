@@ -83,5 +83,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             return new TableSqlite(this, template, pTableName, pSchemaName);
         }
+
+        public override string ToString()
+        {
+            return string.Format("SqliteDatabase : {0}, ConnectionString: {1}", Name, connectionString);
+        }
     }
 }

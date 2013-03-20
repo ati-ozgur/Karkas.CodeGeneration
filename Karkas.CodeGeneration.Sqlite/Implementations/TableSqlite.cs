@@ -135,5 +135,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             get { return schemaName; }
         }
+
+        public override string ToString()
+        {
+            return "SqliteTable: " + Name;
+        }
+
     }
 }
