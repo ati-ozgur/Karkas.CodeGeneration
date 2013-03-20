@@ -7,6 +7,7 @@ using Karkas.Core.DataUtil;
 using Karkas.CodeGenerationHelper.Generators;
 using Karkas.CodeGeneration.Sqlite.Implementations;
 using Karkas.CodeGeneration.Sqlite.Generators;
+using System.Data;
 
 namespace Karkas.CodeGeneration.Sqlite
 {
@@ -22,19 +23,26 @@ namespace Karkas.CodeGeneration.Sqlite
             throw new NotImplementedException();
         }
 
-        public System.Data.DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
+        public DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
         {
             throw new NotImplementedException();
         }
 
-        public System.Data.DataTable getSchemaList(AdoTemplate template)
+        public DataTable getSchemaList(AdoTemplate template)
         {
             throw new NotImplementedException();
         }
 
         public void CodeGenerateAllTables(AdoTemplate template, string pConnectionString, string pDatabaseName, string pProjectNamespace, string pProjectFolder, bool dboSemaTablolariniAtla, bool sysTablolariniAtla, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            throw new NotImplementedException();
+            DatabaseSqlite database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+
+            foreach (ITable table in database.Tables)
+            {
+                CodeGenerateOneTable(template, pConnectionString, table.Name, table.Schema, pDatabaseName, pProjectNamespace, pProjectFolder, listDatabaseAbbreviations);
+            }
+
+
         }
 
         public void CodeGenerateOneTable(AdoTemplate template, string pConnectionString, string pTableName, string pSchemaName, string pDatabaseName, string pProjectNamespace, string pProjectFolder, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)

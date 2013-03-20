@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.Core.DataUtil;
+using System.Data;
 
 namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
@@ -50,9 +51,31 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return _projectFolder; }
         }
 
+        private const string TABLE_LIST_SQL = @"SELECT name FROM sqlite_master
+                                                WHERE type='table'
+                                                ORDER BY name;";
+
+
+        List<ITable> _tableList = null;
+
         public List<ITable> Tables
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                if (_tableList == null)
+                {
+                    DataTable dtTables = template.DataTableOlustur(TABLE_LIST_SQL);
+                    _tableList = new List<ITable>();
+                    foreach (DataRow rowTable in dtTables.Rows)
+                    {
+                        String tableName = rowTable["name"].ToString();
+                        TableSqlite table = new TableSqlite(this, template, tableName, this.Name);
+                        _tableList.Add(table);
+                    }
+                }
+                return _tableList;
+                
+            }
         }
 
 
