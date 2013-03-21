@@ -33,7 +33,7 @@ namespace Karkas.CodeGeneration.Sqlite.Generators
 
         protected override string getAutoIncrementKeySql()
         {
-            throw new NotImplementedException();
+            return ";select last_insert_rowid();";
         }
     }
 }
