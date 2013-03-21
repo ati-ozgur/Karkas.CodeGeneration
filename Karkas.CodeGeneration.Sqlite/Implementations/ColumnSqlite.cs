@@ -12,7 +12,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
     {
 
 
-        public ColumnSqlite(AdoTemplate template, TableSqlite tableSqlite, string columnName, string columnType, bool columnNotNull, string columnDefaultValue, bool columnPK)
+        public ColumnSqlite(AdoTemplate template, TableSqlite tableSqlite, string columnName, string columnType, bool columnNotNull, string columnDefaultValue, bool columnPK,bool isColumnAutoIncrement)
         {
             // TODO: Complete member initialization
             this.template = template;
@@ -22,6 +22,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             this.isNullable = columnNotNull;
             this.defaultValue = columnDefaultValue;
             this.isInPrimaryKey = columnPK;
+            this.isAutoKey = isColumnAutoIncrement;
         }
 
         private AdoTemplate template;
@@ -29,13 +30,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         private TableSqlite table;
         private string name;
 
+        private bool isAutoKey;
 
         public bool IsAutoKey
         {
             get 
             {
                 // TODO Bunua daha sonra yap
-                return false;
+                return isAutoKey;
             }
         }
 
@@ -126,8 +128,20 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get
             {
                 string lowerDataTypeInDatabase = dataTypeInDatabase.ToLowerInvariant();
-                return "DbType.String";
+                if (lowerDataTypeInDatabase == "integer")
+                {
+                    return "DbType.Int32";
+                }
+                if (lowerDataTypeInDatabase == "real")
+                {
+                    return "double";
+                }
 
+                if (lowerDataTypeInDatabase.Equals("blob"))
+                {
+                    return "DbType.String";
+                }
+                return "DbType.String";
             }
         
         }
@@ -179,7 +193,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public bool isNumericType
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                return !isStringType;
+            }
         }
 
         // Helper functions
@@ -228,6 +245,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 return "DbType.String";
             }
 
+            if (dataTypeInDatabase.Equals("integer"))
+            {
+                return "int";
+            }
 
             if (dataTypeInDatabase.Equals("real"))
             {

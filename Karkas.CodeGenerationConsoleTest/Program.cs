@@ -80,7 +80,7 @@ namespace Karkas.MyGenerationConsoleTest
             IDatabaseHelper helper = new SqliteHelper();
 
 
-            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Movies", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
+            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
 
 
             helper.CodeGenerateAllTables(template, _SqliteExampleConntectionString, "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", true, true, null);
