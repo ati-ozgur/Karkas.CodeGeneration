@@ -130,7 +130,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 string lowerDataTypeInDatabase = dataTypeInDatabase.ToLowerInvariant();
                 if (lowerDataTypeInDatabase == "integer")
                 {
-                    return "DbType.Int32";
+                    return "DbType.Int64";
                 }
                 if (lowerDataTypeInDatabase == "real")
                 {
@@ -221,7 +221,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
             if (pSqlTypeName.Equals("integer"))
             {
-                return "int";
+                return "long";
             }
             if (pSqlTypeName.Equals("real"))
             {
