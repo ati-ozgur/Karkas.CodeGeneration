@@ -362,7 +362,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        private void InsertStringYaz(IOutput output, IContainer container, ref bool identityVarmi)
+        protected void InsertStringYaz(IOutput output, IContainer container, ref bool identityVarmi)
         {
             string cumle = "";
 
@@ -412,7 +412,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 cumle += ")";
                 if (identityVarmi)
                 {
-                    cumle += ";SELECT scope_identity();";
+                    cumle = cumle +  getAutoIncrementKeySql();
                 }
                 output.autoTabLn(cumle + "\";");
             }
@@ -424,6 +424,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
         }
 
+
+        protected abstract String getAutoIncrementKeySql();
 
         private void listeTanimla(IOutput output)
         {

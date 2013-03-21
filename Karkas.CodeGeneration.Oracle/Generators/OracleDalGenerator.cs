@@ -32,5 +32,10 @@ namespace Karkas.CodeGeneration.Oracle.Generators
             }
         }
 
+        protected override string getAutoIncrementKeySql()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

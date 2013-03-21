@@ -31,6 +31,9 @@ namespace Karkas.CodeGeneration.Sqlite.Generators
             }
         }
 
-
+        protected override string getAutoIncrementKeySql()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
