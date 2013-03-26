@@ -23,7 +23,7 @@ namespace Karkas.MyGenerationConsoleTest
     {
         public const string _SqlServerExampleConnectionString = "Data Source=localhost;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
-        public const string _SqliteExampleConntectionString = "Data Source=testdb.db";
+        public const string _SqliteExampleConnectionString = "Data Source=testdb.db";
 
 
         public static void Main(string[] args)
@@ -43,7 +43,7 @@ namespace Karkas.MyGenerationConsoleTest
 
                 SQLiteConnection conn;
 
-                conn = new SQLiteConnection(_SqliteExampleConntectionString);
+                conn = new SQLiteConnection(_SqliteExampleConnectionString);
 
                 conn.Open();
                 conn.Close();
@@ -69,10 +69,10 @@ namespace Karkas.MyGenerationConsoleTest
 
                 Object objConnection = handle.Unwrap();
                 connection = (DbConnection)objConnection;
-                connection.ConnectionString = _SqliteExampleConntectionString;
+                connection.ConnectionString = _SqliteExampleConnectionString;
                 connection.Open();
                 connection.Close();
-                ConnectionSingleton.Instance.ConnectionString = _SqliteExampleConntectionString;
+                ConnectionSingleton.Instance.ConnectionString = _SqliteExampleConnectionString;
                 ConnectionSingleton.Instance.ProviderName = "System.Data.SQLite";
                 template = new AdoTemplate();
                 template.Connection = connection;
@@ -80,10 +80,10 @@ namespace Karkas.MyGenerationConsoleTest
             IDatabaseHelper helper = new SqliteHelper();
 
 
-            helper.CodeGenerateOneTable(template, _SqliteExampleConntectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
+            helper.CodeGenerateOneTable(template, _SqliteExampleConnectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
 
 
-            helper.CodeGenerateAllTables(template, _SqliteExampleConntectionString, "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", true, true, null);
+            helper.CodeGenerateAllTables(template, _SqliteExampleConnectionString, "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", true, true, null);
         }
 
         private static void OracleTest()
