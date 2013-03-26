@@ -40,6 +40,19 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void setLastAccessedConnection()
         {
+            DatabaseEntry entry = DatabaseService.getLastAccessedDatabaseEntry();
+
+
+
+
+
+            if (entry != null)
+            {
+                databaseEntryToForm(entry);
+
+
+            }
+
 
         }
 

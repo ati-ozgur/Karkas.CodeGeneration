@@ -44,5 +44,13 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
             return list;
         }
 
+        public override string ToString()
+        {
+            String str = string.Format("{0}\t{1}\t{2}\t{3}", ConnectionName, ConnectionDatabaseType, CodeGenerationNamespace, ConnectionString);
+            return str;
+
+        }
+
+
     }
 }
