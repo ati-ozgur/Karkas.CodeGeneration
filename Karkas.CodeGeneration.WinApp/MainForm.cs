@@ -9,14 +9,13 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Karkas.Core.DataUtil;
 using Karkas.CodeGeneration.SqlServer;
-using Volante;
-using Karkas.CodeGeneration.WinApp.ConfigurationInformation;
 using System.Reflection;
 using System.Data.Common;
 using System.Runtime.Remoting;
 using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.Oracle;
 using Karkas.CodeGenerationHelper.Interfaces;
+using Karkas.CodeGeneration.WinApp.PersistenceService;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -40,17 +39,6 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void setLastAccessedConnection()
         {
-            DatabaseRoot.openDatabase();
-
-            DatabaseEntry entry = DatabaseRoot.getLastAccessedDatabaseEntry();
-
-            
-
-            if (entry != null)
-            {
-                databaseEntryToForm(entry);
-
-            }
 
         }
 
@@ -223,7 +211,6 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
-            DatabaseRoot.removeFromIndexes(currentDatabaseEntry);
 
             currentDatabaseEntry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
@@ -233,7 +220,8 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry.LastWriteTimeUtc = DateTime.UtcNow;
             currentDatabaseEntry.LastAccessTimeUtc = DateTime.UtcNow;
 
-            DatabaseRoot.addToIndexesAndCommit(currentDatabaseEntry);
+            DatabaseService.Ekle(currentDatabaseEntry);
+
 
         }
 
@@ -280,8 +268,9 @@ namespace Karkas.CodeGeneration.WinApp
             if (frm.SelectedDatabaseEntry != null)
             {
                 frm.SelectedDatabaseEntry.LastAccessTimeUtc = DateTime.UtcNow;
-                frm.SelectedDatabaseEntry.Modify();
-                DatabaseRoot.Commit();
+
+                DatabaseService.Guncelle(frm.SelectedDatabaseEntry);
+
                 databaseEntryToForm(frm.SelectedDatabaseEntry);
             }
         }

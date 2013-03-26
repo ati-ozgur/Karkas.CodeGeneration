@@ -81,14 +81,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Volante">
-      <HintPath>..\..\ThirdParty\Volante.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationInformation\DatabaseEntry.cs" />
-    <Compile Include="ConfigurationInformation\DatabaseRoot.cs" />
-    <Compile Include="ConfigurationInformation\DatabaseType.cs" />
+    <Compile Include="PersistenceService\DatabaseEntry.cs" />
+    <Compile Include="PersistenceService\DatabaseType.cs" />
     <Compile Include="FormConnectionList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +103,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersistenceService\DatabaseService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormConnectionList.resx">
@@ -119,6 +116,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="connectionsDb.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Karkas.CodeGeneration.Oracle\Karkas.CodeGeneration.Oracle.csproj">
@@ -155,6 +153,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="createDatabase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

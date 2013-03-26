@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Karkas.CodeGeneration.WinApp.ConfigurationInformation;
+using Karkas.CodeGeneration.WinApp.PersistenceService;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -24,7 +24,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void bindListBox()
         {
-            var list = DatabaseRoot.getAllDatabaseEntriesSortedByName();
+            var list = DatabaseService.getAllDatabaseEntriesSortedByName();
 
             listBoxConnectionList.DataSource = list;
         }
@@ -39,7 +39,7 @@ namespace Karkas.CodeGeneration.WinApp
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             SelectedDatabaseEntry = (DatabaseEntry)listBoxConnectionList.SelectedItem;
-            DatabaseRoot.removeFromIndexesAndCommit(SelectedDatabaseEntry);
+            DatabaseService.deleteDatabase(SelectedDatabaseEntry);
             bindListBox();
 
         }

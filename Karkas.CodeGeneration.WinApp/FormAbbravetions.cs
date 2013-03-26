@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Karkas.CodeGeneration.WinApp.ConfigurationInformation;
 using System.Collections;
 using Karkas.CodeGenerationHelper;
+using Karkas.CodeGeneration.WinApp.PersistenceService;
 
 namespace Karkas.CodeGeneration.WinApp
 {
