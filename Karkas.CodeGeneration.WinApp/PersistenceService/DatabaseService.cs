@@ -52,5 +52,18 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
         {
             dal.Guncelle(databaseEntry);
         }
+
+        internal static void EkleVeyaGuncelle(DatabaseEntry databaseEntry)
+        {
+            DatabaseEntry de = dal.SorgulaConnectionNameIle(databaseEntry.ConnectionName);
+            if (de != null)
+            {
+                Guncelle(databaseEntry);
+            }
+            else
+            {
+                Ekle(databaseEntry);
+            }
+        }
     }
 }

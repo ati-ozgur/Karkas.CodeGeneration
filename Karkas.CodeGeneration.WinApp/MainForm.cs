@@ -230,11 +230,13 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
             currentDatabaseEntry.CodeGenerationNamespace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
-            currentDatabaseEntry.ConnectionDatabaseType = (long) comboBoxDatabaseType.SelectedValue;
+            currentDatabaseEntry.ConnectionDatabaseType = Convert.ToInt64(comboBoxDatabaseType.SelectedValue);
             currentDatabaseEntry.LastWriteTime = DateTime.UtcNow.ToShortDateString();
             currentDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
 
-            DatabaseService.Ekle(currentDatabaseEntry);
+
+
+            DatabaseService.EkleVeyaGuncelle(currentDatabaseEntry);
 
 
         }
