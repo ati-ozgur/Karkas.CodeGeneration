@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.Oracl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.Sqlite", "Karkas.CodeGeneration.Sqlite\Karkas.CodeGeneration.Sqlite.csproj", "{74F72B57-BC21-49E0-86EE-6FA9797F98FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karkas.CodeGeneration.SqliteSupport", "Karkas.CodeGeneration.SqliteSupport\Karkas.CodeGeneration.SqliteSupport.csproj", "{38E106E6-7286-4D48-8C79-37C85295CED9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{74F72B57-BC21-49E0-86EE-6FA9797F98FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{38E106E6-7286-4D48-8C79-37C85295CED9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
