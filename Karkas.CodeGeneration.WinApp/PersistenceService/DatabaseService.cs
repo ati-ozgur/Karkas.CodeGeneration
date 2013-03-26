@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
+using Karkas.CodeGeneration.SqliteSupport.Dal.Main;
 
 namespace Karkas.CodeGeneration.WinApp.PersistenceService
 {
     public class DatabaseService
     {
+        static DatabaseEntryDal dal = new DatabaseEntryDal();
         public static List<DatabaseEntry> getAllDatabaseEntriesSortedByName()
         {
-            return null;
+            return dal.SorgulaHepsiniGetirSirali(DatabaseEntry.PropertyIsimleri.ConnectionName);
         }
 
         public static DatabaseEntry getLastAccessedDatabaseEntry()
         {
-            return null;
+            List<DatabaseEntry> liste= dal.SorgulaHepsiniGetirSirali(DatabaseEntry.PropertyIsimleri.LastAccessTime,"DESC");
+            return liste[0];
         }
 
         private static DatabaseEntry getExampleDatabaseEntry()
@@ -22,31 +26,31 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
             DatabaseEntry de = new DatabaseEntry();
             de.CodeGenerationDirectory = "D:\\projects\\karkas\\Karkas.Ornek";
             de.CodeGenerationNamespace = "Karkas.Ornek";
-            de.ConnectionDatabaseType = DatabaseType.SqlServer;
+            de.ConnectionDatabaseType = (long)DatabaseType.SqlServer;
             de.ConnectionName = "KARKAS_ORNEK";
             de.ConnectionString = "Integrated Security = SSPI; Persist Security Info=False;Initial Catalog=KARKAS_ORNEK;Data Source=localhost";
-            de.CreationTimeUtc = DateTime.UtcNow;
-            de.LastWriteTimeUtc = DateTime.UtcNow;
-            de.LastAccessTimeUtc = DateTime.UtcNow;
+            de.CreationTime = DateTime.UtcNow.ToShortDateString();
+            de.LastWriteTime = DateTime.UtcNow.ToShortDateString();
+            de.LastAccessTime = DateTime.UtcNow.ToShortDateString();
             return de;
         }
 
 
 
 
-        internal static void deleteDatabase(DatabaseEntry SelectedDatabaseEntry)
+        internal static void deleteDatabase(DatabaseEntry databaseEntry)
         {
-            throw new NotImplementedException();
+            dal.Sil(databaseEntry);
         }
 
-        internal static void Ekle(DatabaseEntry currentDatabaseEntry)
+        internal static void Ekle(DatabaseEntry databaseEntry)
         {
-            throw new NotImplementedException();
+            dal.Ekle(databaseEntry);
         }
 
         internal static void Guncelle(DatabaseEntry databaseEntry)
         {
-            throw new NotImplementedException();
+            dal.Guncelle(databaseEntry);
         }
     }
 }

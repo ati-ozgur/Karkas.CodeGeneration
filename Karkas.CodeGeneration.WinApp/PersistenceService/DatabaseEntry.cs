@@ -40,35 +40,6 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
         }
 
 
-        public void AddAbbreviations(DatabaseAbbreviations abbr)
-        {
-            AbbrevationsAsString += abbr.ToString();
-        }
-
-        public List<DatabaseAbbreviations> getAbbreviationsDataSource()
-        {
-
-            List<DatabaseAbbreviations> list = new List<DatabaseAbbreviations>();
-            if (string.IsNullOrEmpty(AbbrevationsAsString))
-            {
-                return list;
-            }
-            String[] abbrStringList = AbbrevationsAsString.Split('\n');
-            foreach (string item in abbrStringList)
-            {
-                if (string.IsNullOrEmpty(item))
-                {
-                    continue;
-                }
-                String[] abbrArrr = item.Split('-');
-                DatabaseAbbreviations abbr = new DatabaseAbbreviations();
-                abbr.Abbravetion = abbrArrr[0];
-                abbr.FullNameReplacement = abbrArrr[1];
-                list.Add(abbr);
-
-            }
-            return list;
-        }
 
 
     }

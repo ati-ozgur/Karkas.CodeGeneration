@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.CodeGeneration.WinApp
 {

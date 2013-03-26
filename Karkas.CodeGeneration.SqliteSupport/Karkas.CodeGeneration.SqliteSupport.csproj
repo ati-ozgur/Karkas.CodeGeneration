@@ -31,7 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Karkas.Core.DataUtil">
+      <HintPath>..\..\ThirdParty\Karkas.Core.DataUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="Karkas.Core.Onaylama">
+      <HintPath>..\..\ThirdParty\Karkas.Core.Onaylama.dll</HintPath>
+    </Reference>
+    <Reference Include="Karkas.Core.Utility">
+      <HintPath>..\..\ThirdParty\Karkas.Core.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\Karkas.CodeGeneration.SqliteSupport.Dal\Main\DatabaseEntryDal.cs" />
+    <Compile Include="Dal\Karkas.CodeGeneration.SqliteSupport.Dal\Main\DatabaseEntryDal.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeLibrary\Karkas.CodeGeneration.SqliteSupport.TypeLibrary\Main\DatabaseEntry.cs" />
+    <Compile Include="TypeLibrary\Karkas.CodeGeneration.SqliteSupport.TypeLibrary\Main\DatabaseEntry.generated.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Karkas.CodeGenerationHelper\Karkas.CodeGenerationHelper.2010.csproj">
+      <Project>{100A5B2E-8244-4331-A069-AC9FA98954A7}</Project>
+      <Name>Karkas.CodeGenerationHelper.2010</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

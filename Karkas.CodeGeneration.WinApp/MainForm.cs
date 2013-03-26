@@ -16,6 +16,7 @@ using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.Oracle;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -203,7 +204,7 @@ namespace Karkas.CodeGeneration.WinApp
             , textBoxCodeGenerationDizini.Text
             ,checkBoxDboSemasiniAtla.Checked
             ,checkBoxSysTablolariniAtla.Checked
-            ,currentDatabaseEntry.getAbbreviationsDataSource()
+            ,null
             );
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
@@ -216,9 +217,9 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
             currentDatabaseEntry.CodeGenerationNamespace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
-            currentDatabaseEntry.ConnectionDatabaseType = (DatabaseType) comboBoxDatabaseType.SelectedValue;
-            currentDatabaseEntry.LastWriteTimeUtc = DateTime.UtcNow;
-            currentDatabaseEntry.LastAccessTimeUtc = DateTime.UtcNow;
+            currentDatabaseEntry.ConnectionDatabaseType = (long) comboBoxDatabaseType.SelectedValue;
+            currentDatabaseEntry.LastWriteTime = DateTime.UtcNow.ToShortDateString();
+            currentDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
 
             DatabaseService.Ekle(currentDatabaseEntry);
 
@@ -267,7 +268,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             if (frm.SelectedDatabaseEntry != null)
             {
-                frm.SelectedDatabaseEntry.LastAccessTimeUtc = DateTime.UtcNow;
+                frm.SelectedDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
 
                 DatabaseService.Guncelle(frm.SelectedDatabaseEntry);
 

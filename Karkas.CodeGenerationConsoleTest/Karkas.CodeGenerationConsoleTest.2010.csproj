@@ -79,6 +79,10 @@
       <Project>{45EFD516-6B11-4392-B72A-09FDEEE12769}</Project>
       <Name>Karkas.CodeGeneration.Oracle</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Karkas.CodeGeneration.SqliteSupport\Karkas.CodeGeneration.SqliteSupport.csproj">
+      <Project>{38E106E6-7286-4D48-8C79-37C85295CED9}</Project>
+      <Name>Karkas.CodeGeneration.SqliteSupport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Karkas.CodeGeneration.Sqlite\Karkas.CodeGeneration.Sqlite.csproj">
       <Project>{74F72B57-BC21-49E0-86EE-6FA9797F98FF}</Project>
       <Name>Karkas.CodeGeneration.Sqlite</Name>

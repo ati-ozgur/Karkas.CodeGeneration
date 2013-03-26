@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -22,7 +23,7 @@ namespace Karkas.CodeGeneration.WinApp
             this.DatabaseEntry = pDatabaseEntry;
             InitializeComponent();
 
-            this.listBoxKisaltmalar.DataSource = this.DatabaseEntry.getAbbreviationsDataSource();
+            this.listBoxKisaltmalar.DataSource = null;// this.DatabaseEntry.getAbbreviationsDataSource();
         }
 
 
@@ -36,10 +37,12 @@ namespace Karkas.CodeGeneration.WinApp
 
 
 
-            this.DatabaseEntry.AddAbbreviations(abbr);
 
 
-            this.listBoxKisaltmalar.DataSource = this.DatabaseEntry.getAbbreviationsDataSource();
+            //this.DatabaseEntry.AddAbbreviations(abbr);
+
+
+            this.listBoxKisaltmalar.DataSource = null;
             
         }
     }

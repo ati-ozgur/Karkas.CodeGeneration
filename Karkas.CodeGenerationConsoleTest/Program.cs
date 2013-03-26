@@ -23,7 +23,7 @@ namespace Karkas.MyGenerationConsoleTest
     {
         public const string _SqlServerExampleConnectionString = "Data Source=localhost;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
-        public const string _SqliteExampleConnectionString = "Data Source=testdb.db";
+        public const string _SqliteExampleConnectionString = @"Data Source=P:\karkasGit\svn\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.db";
 
 
         public static void Main(string[] args)
@@ -80,10 +80,10 @@ namespace Karkas.MyGenerationConsoleTest
             IDatabaseHelper helper = new SqliteHelper();
 
 
-            helper.CodeGenerateOneTable(template, _SqliteExampleConnectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
+            //helper.CodeGenerateOneTable(template, _SqliteExampleConnectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
 
 
-            helper.CodeGenerateAllTables(template, _SqliteExampleConnectionString, "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", true, true, null);
+            helper.CodeGenerateAllTables(template, _SqliteExampleConnectionString, "main", "Karkas.CodeGeneration.SqliteSupport", "P:\\Denemeler\\karkas\\Karkas.CodeGeneration.SqliteSupport", true, true, null);
         }
 
         private static void OracleTest()
