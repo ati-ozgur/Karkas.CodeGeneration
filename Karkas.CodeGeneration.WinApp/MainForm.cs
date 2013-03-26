@@ -98,6 +98,7 @@ namespace Karkas.CodeGeneration.WinApp
                     ConnectionSingleton.Instance.ConnectionString = connectionString;
                     template = new AdoTemplate();
                     template.Connection = connection;
+                    ConnectionSingleton.Instance.ProviderName = "System.Data.SqlClient";
 
                     labelConnectionStatus.Text = "Bağlantı Başarılı";
                     databaseHelper = new SqlServerHelper();
@@ -186,8 +187,11 @@ namespace Karkas.CodeGeneration.WinApp
         private void comboBoxSchemaListDoldur( )
         {
             DataTable dtSchemaList = databaseHelper.getSchemaList(template);
-            comboBoxSchemaList.DataSource = dtSchemaList;
-            comboBoxSchemaList.Text = databaseHelper.getDefaultSchema(template);
+            if (dtSchemaList.Rows.Count > 0)
+            {
+                comboBoxSchemaList.DataSource = dtSchemaList;
+                comboBoxSchemaList.Text = databaseHelper.getDefaultSchema(template);
+            }
         }
 
         private void comboBoxSchemaList_SelectedValueChanged(object sender, EventArgs e)
