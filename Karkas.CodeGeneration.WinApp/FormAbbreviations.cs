@@ -12,12 +12,12 @@ using Karkas.CodeGeneration.WinApp.PersistenceService;
 
 namespace Karkas.CodeGeneration.WinApp
 {
-    public partial class FormAbbravetions : Form
+    public partial class FormAbbreviations : Form
     {
 
 
 
-        public FormAbbravetions(DatabaseEntry pDatabaseEntry)
+        public FormAbbreviations(DatabaseEntry pDatabaseEntry)
         {
             this.DatabaseEntry = pDatabaseEntry;
             InitializeComponent();

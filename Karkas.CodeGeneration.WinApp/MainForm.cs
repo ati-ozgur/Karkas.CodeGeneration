@@ -277,7 +277,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonKisaltmalar_Click(object sender, EventArgs e)
         {
-            Form frm = new FormAbbravetions(currentDatabaseEntry);
+            Form frm = new FormAbbreviations(currentDatabaseEntry);
             frm.ShowDialog();
         }
 
