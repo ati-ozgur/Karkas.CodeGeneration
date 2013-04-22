@@ -229,6 +229,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
+            currentDatabaseEntry = new DatabaseEntry();
 
             currentDatabaseEntry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
