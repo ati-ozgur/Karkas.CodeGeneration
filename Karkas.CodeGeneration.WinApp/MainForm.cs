@@ -17,6 +17,7 @@ using Karkas.CodeGeneration.Oracle;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -26,7 +27,7 @@ namespace Karkas.CodeGeneration.WinApp
         {
             InitializeComponent();
 
-            comboBoxDatabaseType.DataSource = Enum.GetValues(typeof(DatabaseType));
+            comboBoxDatabaseType.DataSource = DatabaseType.DatabaseTypeList;
 
             panelListeDisable();
 
@@ -89,7 +90,7 @@ namespace Karkas.CodeGeneration.WinApp
                 {
                     connection.Close();
                 }
-                DatabaseType type = (DatabaseType)comboBoxDatabaseType.SelectedItem;
+                String type = comboBoxDatabaseType.SelectedItem.ToString();
                 if (type == null || type == DatabaseType.SqlServer)
                 {
                     connection = new SqlConnection(connectionString);
@@ -235,7 +236,7 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
             currentDatabaseEntry.CodeGenerationNamespace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
-            currentDatabaseEntry.ConnectionDatabaseType = Convert.ToInt64(comboBoxDatabaseType.SelectedValue);
+            currentDatabaseEntry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
             currentDatabaseEntry.LastWriteTime = DateTime.UtcNow.ToShortDateString();
             currentDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
 

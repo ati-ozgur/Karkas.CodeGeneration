@@ -17,7 +17,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	public partial class 	DatabaseEntry: BaseTypeLibrary
 	{
 		private string connectionName;
-		private Nullable<long> connectionDatabaseType;
+        private String connectionDatabaseType;
 		private string abbrevationsAsString;
 		private string connectionString;
 		private string codeGenerationDirectory;
@@ -46,7 +46,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public Nullable<long> ConnectionDatabaseType
+		public String ConnectionDatabaseType
 		{
 			[DebuggerStepThrough]
 			get
@@ -209,15 +209,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 			[DebuggerStepThrough]
 			set
 			{
-				try
-				{
-					long _a = Convert.ToInt64(value);
-				ConnectionDatabaseType = _a;
-				}
-				catch(Exception)
-				{
-					this.Onaylayici.OnaylayiciListesi.Add(new DaimaBasarisiz(this,"ConnectionDatabaseType",string.Format(CEVIRI_YAZISI,"ConnectionDatabaseType","long")));
-				}
+				ConnectionDatabaseType = value;
 			}
 		}
 

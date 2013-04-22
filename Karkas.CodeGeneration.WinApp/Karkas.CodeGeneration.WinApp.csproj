@@ -95,7 +95,6 @@
     <Compile Include="FormAbbreviations.Designer.cs">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersistenceService\DatabaseType.cs" />
     <Compile Include="FormConnectionList.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -117,7 +117,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		row.ConnectionName = dr.GetString(0);
 		if (!dr.IsDBNull(1))
 		{
-			row.ConnectionDatabaseType = dr.GetInt64(1);
+			row.ConnectionDatabaseType = dr.GetString(1);
 		}
 		if (!dr.IsDBNull(2))
 		{
