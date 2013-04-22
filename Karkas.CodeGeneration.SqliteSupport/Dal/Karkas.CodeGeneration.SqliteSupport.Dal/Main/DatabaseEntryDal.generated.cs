@@ -115,14 +115,38 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	protected override void ProcessRow(IDataReader dr, DatabaseEntry row)
 	{
 		row.ConnectionName = dr.GetString(0);
-		row.ConnectionDatabaseType = dr.GetInt64(1);
-		row.AbbrevationsAsString = dr.GetString(2);
-		row.ConnectionString = dr.GetString(3);
-		row.CodeGenerationDirectory = dr.GetString(4);
-		row.CodeGenerationNamespace = dr.GetString(5);
-		row.CreationTime = dr.GetString(6);
-		row.LastAccessTime = dr.GetString(7);
-		row.LastWriteTime = dr.GetString(8);
+		if (!dr.IsDBNull(1))
+		{
+			row.ConnectionDatabaseType = dr.GetInt64(1);
+		}
+		if (!dr.IsDBNull(2))
+		{
+			row.AbbrevationsAsString = dr.GetString(2);
+		}
+		if (!dr.IsDBNull(3))
+		{
+			row.ConnectionString = dr.GetString(3);
+		}
+		if (!dr.IsDBNull(4))
+		{
+			row.CodeGenerationDirectory = dr.GetString(4);
+		}
+		if (!dr.IsDBNull(5))
+		{
+			row.CodeGenerationNamespace = dr.GetString(5);
+		}
+		if (!dr.IsDBNull(6))
+		{
+			row.CreationTime = dr.GetString(6);
+		}
+		if (!dr.IsDBNull(7))
+		{
+			row.LastAccessTime = dr.GetString(7);
+		}
+		if (!dr.IsDBNull(8))
+		{
+			row.LastWriteTime = dr.GetString(8);
+		}
 	}
 	protected override void InsertCommandParametersAdd(DbCommand cmd, DatabaseEntry row)
 	{

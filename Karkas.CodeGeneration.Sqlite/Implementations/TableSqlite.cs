@@ -90,9 +90,9 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                         String columnName = rowColumn["name"].ToString();
                         String columnType = rowColumn["type"].ToString();
                         bool isColumnInteger = columnType == "integer";
-                        bool isColumnNotNull = Convert.ToInt32(rowColumn["notnull"]) > 0 ;
-                        String columnDefaultValue = rowColumn["dflt_value"].ToString();
                         bool isColumnPK = Convert.ToInt32(rowColumn["pk"]) > 0;
+                        bool isColumnNotNull = isColumnPK || Convert.ToInt32(rowColumn["notnull"]) != 0;
+                        String columnDefaultValue = rowColumn["dflt_value"].ToString();
 
                         // http://www.sqlite.org/faq.html#q1
                         // Short answer: A column declared INTEGER PRIMARY KEY will autoincrement.

@@ -19,7 +19,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             this.table = tableSqlite;
             this.name = columnName;
             this.dataTypeInDatabase = columnType;
-            this.isNullable = columnNotNull;
+            this.isNullable = !columnNotNull;
             this.defaultValue = columnDefaultValue;
             this.isInPrimaryKey = columnPK;
             this.isAutoKey = isColumnAutoIncrement;
@@ -64,8 +64,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 if (!isInForeignKey.HasValue)
                 {
                     return false;
-                    throw new NotImplementedException();
-
                 }
                 return isInForeignKey.Value;
 
@@ -79,7 +77,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             {
                 if (!isNullable.HasValue)
                 {
-                    throw new NotImplementedException();
+                    return false;
 
                 }
                 return isNullable.Value;
