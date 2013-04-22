@@ -17,7 +17,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	public partial class 	DatabaseEntry: BaseTypeLibrary
 	{
 		private string connectionName;
-        private String connectionDatabaseType;
+		private string connectionDatabaseType;
 		private string abbrevationsAsString;
 		private string connectionString;
 		private string codeGenerationDirectory;
@@ -46,7 +46,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public String ConnectionDatabaseType
+		public string ConnectionDatabaseType
 		{
 			[DebuggerStepThrough]
 			get
@@ -197,22 +197,6 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 			}
 		}
 
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		[XmlIgnore, SoapIgnore]
-		public string ConnectionDatabaseTypeAsString
-		{
-			[DebuggerStepThrough]
-			get
-			{
-				 return connectionDatabaseType != null ? connectionDatabaseType.ToString() : ""; 
-			}
-			[DebuggerStepThrough]
-			set
-			{
-				ConnectionDatabaseType = value;
-			}
-		}
-
 	public class PropertyIsimleri
 	{
 		public const string ConnectionName = "ConnectionName";
@@ -243,7 +227,11 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 
 	protected override void OnaylamaListesiniOlusturCodeGeneration()
 	{
-	}
+		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionDatabaseType"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionString"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationDirectory"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationNamespace"));	}
 	public static class EtiketIsimleri
 	{
 		const string namespaceVeClass = "Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main";
