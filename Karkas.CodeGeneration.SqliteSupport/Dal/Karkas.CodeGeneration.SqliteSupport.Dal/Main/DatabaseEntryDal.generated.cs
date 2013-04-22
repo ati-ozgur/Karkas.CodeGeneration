@@ -115,26 +115,14 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	protected override void ProcessRow(IDataReader dr, DatabaseEntry row)
 	{
 		row.ConnectionName = dr.GetString(0);
-		if (!dr.IsDBNull(1))
-		{
-			row.ConnectionDatabaseType = dr.GetString(1);
-		}
+		row.ConnectionDatabaseType = dr.GetString(1);
 		if (!dr.IsDBNull(2))
 		{
 			row.AbbrevationsAsString = dr.GetString(2);
 		}
-		if (!dr.IsDBNull(3))
-		{
-			row.ConnectionString = dr.GetString(3);
-		}
-		if (!dr.IsDBNull(4))
-		{
-			row.CodeGenerationDirectory = dr.GetString(4);
-		}
-		if (!dr.IsDBNull(5))
-		{
-			row.CodeGenerationNamespace = dr.GetString(5);
-		}
+		row.ConnectionString = dr.GetString(3);
+		row.CodeGenerationDirectory = dr.GetString(4);
+		row.CodeGenerationNamespace = dr.GetString(5);
 		if (!dr.IsDBNull(6))
 		{
 			row.CreationTime = dr.GetString(6);
@@ -152,7 +140,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		ParameterBuilder builder = new ParameterBuilder(cmd);
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
-		builder.parameterEkle("@ConnectionDatabaseType",DbType.Int64, row.ConnectionDatabaseType);
+		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
@@ -165,7 +153,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		ParameterBuilder builder = new ParameterBuilder(cmd);
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
-		builder.parameterEkle("@ConnectionDatabaseType",DbType.Int64, row.ConnectionDatabaseType);
+		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
