@@ -10,9 +10,13 @@ using Karkas.Core.Onaylama;
 using Karkas.Core.Onaylama.ForPonos;
 
 namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
+{
+    public partial class DatabaseEntry
+    {
+        public override string ToString()
+        {
+            return this.ConnectionName + "," + this.CodeGenerationNamespace;
+        }
 
-{
-public partial class DatabaseEntry
-{
-}
+    }
 }
