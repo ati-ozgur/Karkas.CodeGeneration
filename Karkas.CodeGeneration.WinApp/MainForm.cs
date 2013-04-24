@@ -32,7 +32,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             panelListeDisable();
 
-            setLastAccessedConnection();
+            getLastAccessedConnectionToTextbox();
             
 
 
@@ -40,22 +40,14 @@ namespace Karkas.CodeGeneration.WinApp
 
         private DatabaseEntry currentDatabaseEntry = null;
 
-        private void setLastAccessedConnection()
+        private void getLastAccessedConnectionToTextbox()
         {
             DatabaseEntry entry = DatabaseService.getLastAccessedDatabaseEntry();
-
-
-
-
 
             if (entry != null)
             {
                 databaseEntryToForm(entry);
-
-
             }
-
-
         }
 
         private void databaseEntryToForm(DatabaseEntry entry)
