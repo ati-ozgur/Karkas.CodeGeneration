@@ -29,10 +29,9 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
             de.CodeGenerationNamespace = "Karkas.Ornek";
             de.ConnectionDatabaseType = DatabaseType.SqlServer;
             de.ConnectionName = "KARKAS_ORNEK";
+            
             de.ConnectionString = "Integrated Security = SSPI; Persist Security Info=False;Initial Catalog=KARKAS_ORNEK;Data Source=localhost";
-            de.CreationTime = DateTime.UtcNow.ToShortDateString();
-            de.LastWriteTime = DateTime.UtcNow.ToShortDateString();
-            de.LastAccessTime = DateTime.UtcNow.ToShortDateString();
+            de.setTimeValues();
             return de;
         }
 

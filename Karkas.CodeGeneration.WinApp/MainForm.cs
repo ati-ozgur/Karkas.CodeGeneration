@@ -266,8 +266,7 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry.CodeGenerationNamespace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
             currentDatabaseEntry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
-            currentDatabaseEntry.LastWriteTime = DateTime.UtcNow.ToShortDateString();
-            currentDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
+            currentDatabaseEntry.setTimeValues();
 
 
 
