@@ -98,7 +98,7 @@ namespace Karkas.CodeGeneration.WinApp
                     connection.Close();
                     template = new AdoTemplate();
                     template.Connection = connection;
-                    ConnectionSingleton.Instance.ProviderName = "System.Data.SqlClient";
+                    template.DbProviderName = "System.Data.SqlClient";
 
                     labelConnectionStatus.Text = "Bağlantı Başarılı";
                     databaseHelper = new SqlServerHelper();
@@ -121,6 +121,7 @@ namespace Karkas.CodeGeneration.WinApp
                         connection.Close();
                         template = new AdoTemplate();
                         template.Connection = connection;
+                        template.DbProviderName = "System.Data.OracleClient";
                         databaseHelper = new OracleHelper();
 
 
