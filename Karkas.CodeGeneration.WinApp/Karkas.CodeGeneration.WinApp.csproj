@@ -132,6 +132,10 @@
       <Project>{38E106E6-7286-4D48-8C79-37C85295CED9}</Project>
       <Name>Karkas.CodeGeneration.SqliteSupport</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Karkas.CodeGeneration.Sqlite\Karkas.CodeGeneration.Sqlite.csproj">
+      <Project>{74F72B57-BC21-49E0-86EE-6FA9797F98FF}</Project>
+      <Name>Karkas.CodeGeneration.Sqlite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Karkas.CodeGeneration.SqlServer\Karkas.CodeGeneration.SqlServer.csproj">
       <Project>{09F0420B-5193-4808-83D6-9550E0C214A6}</Project>
       <Name>Karkas.CodeGeneration.SqlServer</Name>

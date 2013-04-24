@@ -51,7 +51,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return _projectFolder; }
         }
 
-        private const string TABLE_LIST_SQL = @"SELECT name FROM sqlite_master
+        private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
+                                                name AS TABLE_NAME,
+                                                name AS FULL_TABLE_NAME 
+                                                FROM sqlite_master
                                                 WHERE type='table'
                                                 ORDER BY name;";
 
@@ -64,11 +67,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             {
                 if (_tableList == null)
                 {
-                    DataTable dtTables = template.DataTableOlustur(TABLE_LIST_SQL);
+                    DataTable dtTables = getTableList();
                     _tableList = new List<ITable>();
                     foreach (DataRow rowTable in dtTables.Rows)
                     {
-                        String tableName = rowTable["name"].ToString();
+                        String tableName = rowTable["TABLE_NAME"].ToString();
                         TableSqlite table = new TableSqlite(this, template, tableName, this.Name);
                         _tableList.Add(table);
                     }
@@ -76,6 +79,12 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 return _tableList;
                 
             }
+        }
+
+        public DataTable getTableList()
+        {
+            DataTable dtTables = template.DataTableOlustur(TABLE_LIST_SQL);
+            return dtTables;
         }
 
 

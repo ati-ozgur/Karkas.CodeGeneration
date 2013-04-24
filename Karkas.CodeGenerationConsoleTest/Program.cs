@@ -77,7 +77,7 @@ namespace Karkas.MyGenerationConsoleTest
                 template = new AdoTemplate();
                 template.Connection = connection;
             }
-            IDatabaseHelper helper = new SqliteHelper();
+            IDatabaseHelper helper = new SqliteHelper(template,connection.ConnectionString,connection.Database);
 
 
             //helper.CodeGenerateOneTable(template, _SqliteExampleConnectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);

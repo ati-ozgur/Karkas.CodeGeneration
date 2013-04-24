@@ -18,6 +18,7 @@ using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
+using Karkas.CodeGeneration.Sqlite;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -100,6 +101,11 @@ namespace Karkas.CodeGeneration.WinApp
                     testOracle(connectionString);
 
                 }
+                else if (type == DatabaseType.Sqlite)
+                {
+                    testSqlite(connectionString);
+
+                }
 
                 labelConnectionStatus.Text = "Bağlantı Başarılı";
                 BilgileriDoldur();
@@ -140,6 +146,30 @@ namespace Karkas.CodeGeneration.WinApp
 
             }
         }
+
+        private void testSqlite(string connectionString)
+        {
+            Assembly assembly = Assembly.LoadWithPartialName("System.Data.SQLite");
+            Object objReflection = Activator.CreateInstance(assembly.FullName, "System.Data.SQLite.SQLiteConnection");
+
+            if (objReflection != null && objReflection is ObjectHandle)
+            {
+                ObjectHandle handle = (ObjectHandle)objReflection;
+
+                Object objConnection = handle.Unwrap();
+                connection = (DbConnection)objConnection;
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                connection.Close();
+                template = new AdoTemplate();
+                template.Connection = connection;
+                template.DbProviderName = "System.Data.SQLite";
+                databaseHelper = new SqliteHelper(template, connection.ConnectionString, connection.Database);
+
+
+            }
+        }
+
 
         private void testSqlServer(string connectionString)
         {

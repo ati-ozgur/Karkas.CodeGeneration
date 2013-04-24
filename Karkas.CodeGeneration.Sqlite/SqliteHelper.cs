@@ -13,6 +13,20 @@ namespace Karkas.CodeGeneration.Sqlite
 {
     public class SqliteHelper : IDatabaseHelper
     {
+
+        AdoTemplate template;
+        string connectionString;
+        string databaseName;
+        DatabaseSqlite database;
+
+        public SqliteHelper(AdoTemplate template, string pConnectionString, string pDatabaseName)
+        {
+            this.template = template;
+            this.connectionString = pConnectionString;
+            this.databaseName = pDatabaseName;
+            this.database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, "", "");
+        }
+
         public string getDatabaseName(AdoTemplate template)
         {
             return template.Connection.Database;
@@ -20,17 +34,17 @@ namespace Karkas.CodeGeneration.Sqlite
 
         public string getDefaultSchema(AdoTemplate template)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
         {
-            throw new NotImplementedException();
+            return database.getTableList();
         }
 
         public DataTable getSchemaList(AdoTemplate template)
         {
-            throw new NotImplementedException();
+            return new DataTable();
         }
 
         public void CodeGenerateAllTables(AdoTemplate template, string pConnectionString, string pDatabaseName, string pProjectNamespace, string pProjectFolder, bool dboSemaTablolariniAtla, bool sysTablolariniAtla, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
