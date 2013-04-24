@@ -96,7 +96,6 @@ namespace Karkas.CodeGeneration.WinApp
                     connection = new SqlConnection(connectionString);
                     connection.Open();
                     connection.Close();
-                    ConnectionSingleton.Instance.ConnectionString = connectionString;
                     template = new AdoTemplate();
                     template.Connection = connection;
                     ConnectionSingleton.Instance.ProviderName = "System.Data.SqlClient";
@@ -120,8 +119,6 @@ namespace Karkas.CodeGeneration.WinApp
                         connection.ConnectionString = connectionString;
                         connection.Open();
                         connection.Close();
-                        ConnectionSingleton.Instance.ConnectionString = connectionString;
-                        ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
                         template = new AdoTemplate();
                         template.Connection = connection;
                         databaseHelper = new OracleHelper();
