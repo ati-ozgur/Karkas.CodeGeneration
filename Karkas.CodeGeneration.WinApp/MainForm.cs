@@ -251,6 +251,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             DatabaseService.EkleVeyaGuncelle(currentDatabaseEntry);
 
+            MessageBox.Show("Değerler Kaydedildi;");
 
         }
 
