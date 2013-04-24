@@ -270,7 +270,7 @@
             // 
             // buttonGecerliDegerleriKaydet
             // 
-            this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(556, 209);
+            this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(716, 155);
             this.buttonGecerliDegerleriKaydet.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGecerliDegerleriKaydet.Name = "buttonGecerliDegerleriKaydet";
             this.buttonGecerliDegerleriKaydet.Size = new System.Drawing.Size(146, 55);
@@ -288,7 +288,7 @@
             // 
             // buttonOtherConnections
             // 
-            this.buttonOtherConnections.Location = new System.Drawing.Point(556, 107);
+            this.buttonOtherConnections.Location = new System.Drawing.Point(716, 26);
             this.buttonOtherConnections.Name = "buttonOtherConnections";
             this.buttonOtherConnections.Size = new System.Drawing.Size(146, 23);
             this.buttonOtherConnections.TabIndex = 15;
@@ -315,7 +315,7 @@
             // 
             // buttonKisaltmalar
             // 
-            this.buttonKisaltmalar.Location = new System.Drawing.Point(556, 155);
+            this.buttonKisaltmalar.Location = new System.Drawing.Point(716, 101);
             this.buttonKisaltmalar.Name = "buttonKisaltmalar";
             this.buttonKisaltmalar.Size = new System.Drawing.Size(146, 23);
             this.buttonKisaltmalar.TabIndex = 18;
@@ -325,9 +325,9 @@
             // 
             // buttonNewConnection
             // 
-            this.buttonNewConnection.Location = new System.Drawing.Point(732, 26);
+            this.buttonNewConnection.Location = new System.Drawing.Point(716, 56);
             this.buttonNewConnection.Name = "buttonNewConnection";
-            this.buttonNewConnection.Size = new System.Drawing.Size(97, 23);
+            this.buttonNewConnection.Size = new System.Drawing.Size(146, 23);
             this.buttonNewConnection.TabIndex = 19;
             this.buttonNewConnection.Text = "Yeni Bağlantı";
             this.buttonNewConnection.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 679);
+            this.ClientSize = new System.Drawing.Size(884, 679);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
             this.Controls.Add(this.label2);
