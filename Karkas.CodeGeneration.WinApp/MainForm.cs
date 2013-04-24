@@ -93,43 +93,17 @@ namespace Karkas.CodeGeneration.WinApp
                 String type = comboBoxDatabaseType.SelectedItem.ToString();
                 if (type == null || type == DatabaseType.SqlServer)
                 {
-                    connection = new SqlConnection(connectionString);
-                    connection.Open();
-                    connection.Close();
-                    template = new AdoTemplate();
-                    template.Connection = connection;
-                    template.DbProviderName = "System.Data.SqlClient";
-
-                    labelConnectionStatus.Text = "Bağlantı Başarılı";
-                    databaseHelper = new SqlServerHelper();
-
-                    BilgileriDoldur();
+                    testSqlServer(connectionString);
                 }
                 else if (type == DatabaseType.Oracle)
                 {
-                    Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
-                    Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
-
-                    if (objReflection != null && objReflection is ObjectHandle)
-                    {
-                        ObjectHandle handle = (ObjectHandle)objReflection;
-
-                        Object objConnection = handle.Unwrap();
-                        connection = (DbConnection)objConnection;
-                        connection.ConnectionString = connectionString;
-                        connection.Open();
-                        connection.Close();
-                        template = new AdoTemplate();
-                        template.Connection = connection;
-                        template.DbProviderName = "System.Data.OracleClient";
-                        databaseHelper = new OracleHelper();
-
-
-                        labelConnectionStatus.Text = "Bağlantı Başarılı";
-                        BilgileriDoldur();
-                    }
+                    testOracle(connectionString);
 
                 }
+
+                labelConnectionStatus.Text = "Bağlantı Başarılı";
+                BilgileriDoldur();
+
 
                 panelListe.Enabled = true;
 
@@ -142,6 +116,41 @@ namespace Karkas.CodeGeneration.WinApp
                 labelConnectionStatus.Text = "!!!!Bağlantı BAŞARISIZ!!!!";
             }
 
+        }
+
+        private void testOracle(string connectionString)
+        {
+            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
+
+            if (objReflection != null && objReflection is ObjectHandle)
+            {
+                ObjectHandle handle = (ObjectHandle)objReflection;
+
+                Object objConnection = handle.Unwrap();
+                connection = (DbConnection)objConnection;
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                connection.Close();
+                template = new AdoTemplate();
+                template.Connection = connection;
+                template.DbProviderName = "System.Data.OracleClient";
+                databaseHelper = new OracleHelper();
+
+
+            }
+        }
+
+        private void testSqlServer(string connectionString)
+        {
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            connection.Close();
+            template = new AdoTemplate();
+            template.Connection = connection;
+            template.DbProviderName = "System.Data.SqlClient";
+
+            databaseHelper = new SqlServerHelper();
         }
 
 
