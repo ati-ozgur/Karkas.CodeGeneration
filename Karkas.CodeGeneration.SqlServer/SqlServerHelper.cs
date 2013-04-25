@@ -61,6 +61,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             , string pProjectFolder
             ,bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
+            ,bool semaIsminiSorgulardaKullan
             ,List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -82,9 +83,9 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
                 {
                     continue;
                 }
-                typeGen.Render(output, table, listDatabaseAbbreviations);
-                dalGen.Render(output, table, listDatabaseAbbreviations);
-                bsGen.Render(output, table, listDatabaseAbbreviations);
+                typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+                dalGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+                bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
             }
         }
 
@@ -95,6 +96,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
+            , bool semaIsminiSorgulardaKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -106,9 +108,9 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             ITable table = database.getTable(pTableName, pSchemaName);
 
-            typeGen.Render(output, table, listDatabaseAbbreviations);
-            dalGen.Render(output, table, listDatabaseAbbreviations);
-            bsGen.Render(output, table, listDatabaseAbbreviations);
+            typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+            dalGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
 
 

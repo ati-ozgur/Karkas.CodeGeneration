@@ -33,6 +33,7 @@
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
+            this.checkBoxUseSchemaName = new System.Windows.Forms.CheckBox();
             this.checkBoxSysTablolariniAtla = new System.Windows.Forms.CheckBox();
             this.checkBoxDboSemasiniAtla = new System.Windows.Forms.CheckBox();
             this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
@@ -99,6 +100,7 @@
             // 
             // panelListe
             // 
+            this.panelListe.Controls.Add(this.checkBoxUseSchemaName);
             this.panelListe.Controls.Add(this.checkBoxSysTablolariniAtla);
             this.panelListe.Controls.Add(this.checkBoxDboSemasiniAtla);
             this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
@@ -113,12 +115,25 @@
             this.panelListe.Size = new System.Drawing.Size(693, 346);
             this.panelListe.TabIndex = 5;
             // 
+            // checkBoxUseSchemaName
+            // 
+            this.checkBoxUseSchemaName.AutoSize = true;
+            this.checkBoxUseSchemaName.Checked = true;
+            this.checkBoxUseSchemaName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseSchemaName.Location = new System.Drawing.Point(560, 55);
+            this.checkBoxUseSchemaName.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseSchemaName.Name = "checkBoxUseSchemaName";
+            this.checkBoxUseSchemaName.Size = new System.Drawing.Size(110, 30);
+            this.checkBoxUseSchemaName.TabIndex = 8;
+            this.checkBoxUseSchemaName.Text = "Sorgularda Şema \r\nİsmini Kullan";
+            this.checkBoxUseSchemaName.UseVisualStyleBackColor = true;
+            // 
             // checkBoxSysTablolariniAtla
             // 
             this.checkBoxSysTablolariniAtla.AutoSize = true;
             this.checkBoxSysTablolariniAtla.Checked = true;
             this.checkBoxSysTablolariniAtla.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSysTablolariniAtla.Location = new System.Drawing.Point(560, 114);
+            this.checkBoxSysTablolariniAtla.Location = new System.Drawing.Point(560, 147);
             this.checkBoxSysTablolariniAtla.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxSysTablolariniAtla.Name = "checkBoxSysTablolariniAtla";
             this.checkBoxSysTablolariniAtla.Size = new System.Drawing.Size(113, 17);
@@ -131,7 +146,7 @@
             this.checkBoxDboSemasiniAtla.AutoSize = true;
             this.checkBoxDboSemasiniAtla.Checked = true;
             this.checkBoxDboSemasiniAtla.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDboSemasiniAtla.Location = new System.Drawing.Point(560, 83);
+            this.checkBoxDboSemasiniAtla.Location = new System.Drawing.Point(560, 116);
             this.checkBoxDboSemasiniAtla.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDboSemasiniAtla.Name = "checkBoxDboSemasiniAtla";
             this.checkBoxDboSemasiniAtla.Size = new System.Drawing.Size(108, 17);
@@ -152,7 +167,7 @@
             // 
             // buttonTumTablolariUret
             // 
-            this.buttonTumTablolariUret.Location = new System.Drawing.Point(560, 153);
+            this.buttonTumTablolariUret.Location = new System.Drawing.Point(560, 186);
             this.buttonTumTablolariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTumTablolariUret.Name = "buttonTumTablolariUret";
             this.buttonTumTablolariUret.Size = new System.Drawing.Size(121, 23);
@@ -396,6 +411,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
+        private System.Windows.Forms.CheckBox checkBoxUseSchemaName;
     }
 }
 

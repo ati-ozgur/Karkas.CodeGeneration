@@ -64,6 +64,7 @@ ORDER BY FULL_TABLE_NAME
             , string pProjectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
+            , bool semaIsminiSorgulardaKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -81,6 +82,7 @@ ORDER BY FULL_TABLE_NAME
                 string schemaName = row["TABLE_SCHEMA"].ToString();
                 CodeGenerateOneTable(template, pConnectionString, tableName, schemaName, pDatabaseName, pProjectNamespace
                     , pProjectFolder
+                    , semaIsminiSorgulardaKullan
                     , listDatabaseAbbreviations
                     );
             }
@@ -111,6 +113,7 @@ ORDER BY FULL_TABLE_NAME
             , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
+            , bool semaIsminiSorgulardaKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -123,9 +126,9 @@ ORDER BY FULL_TABLE_NAME
             ITable table = database.getTable(pTableName, pSchemaName);
 
 
-            typeGen.Render(output, table, listDatabaseAbbreviations);
-            dalGen.Render(output, table, listDatabaseAbbreviations);
-            bsGen.Render(output, table, listDatabaseAbbreviations);
+            typeGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            dalGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
 
 

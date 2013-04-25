@@ -36,7 +36,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        public string Render(IOutput output, IContainer container, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public string Render(IOutput output, IContainer container,bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             output.tabLevel = 0;
             IDatabase database = container.Database;

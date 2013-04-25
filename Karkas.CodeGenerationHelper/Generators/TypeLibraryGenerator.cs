@@ -18,7 +18,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
         Utils utils = null;
 
-        public void Render(IOutput output, IContainer table, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void Render(IOutput output, IContainer table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
 
             IDatabase database = table.Database;

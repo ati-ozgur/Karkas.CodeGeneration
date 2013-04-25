@@ -39,15 +39,15 @@ namespace Karkas.CodeGenerationHelper
             gen.Render(output, table, connectionString);
         }
 
-        public void RenderTypeLibraryCode(IOutput output, ITable table, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderTypeLibraryCode(IOutput output, ITable table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             TypeLibraryGenerator gen = new TypeLibraryGenerator(helper);
-            gen.Render(output, table, listDatabaseAbbreviations);
+            gen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
-        public void RenderTypeLibraryCode(IOutput output, IView view, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderTypeLibraryCode(IOutput output, IView view, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             TypeLibraryGenerator gen = new TypeLibraryGenerator(helper);
-            gen.Render(output, view, listDatabaseAbbreviations);
+            gen.Render(output, view, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
         public void RenderStoredProcedureCode(IOutput output, IProcedure proc)
         {
@@ -55,27 +55,27 @@ namespace Karkas.CodeGenerationHelper
             gen.Render(output, proc);
         }
 
-        public string RenderDalCode(IOutput output, ITable table,List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public string RenderDalCode(IOutput output, ITable table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DalGenerator gen = helper.DalGenerator;
-            return gen.Render(output, table, listDatabaseAbbreviations);
+            return gen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
-        public void RenderDalCode(IOutput output, IView view,List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderDalCode(IOutput output, IView view, bool semaIsminiSorgulardaKullan,  List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DalGenerator gen = helper.DalGenerator;
-            gen.Render(output, view, listDatabaseAbbreviations);
+            gen.Render(output, view, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
         }
 
 
-        public void RenderBsCode(IOutput output, ITable table, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderBsCode(IOutput output, ITable table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             BsGenerator gen = new BsGenerator(helper);
-            gen.Render(output, table, listDatabaseAbbreviations);
+            gen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
         }
-        public void RenderBsCode(IOutput output, IView view, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderBsCode(IOutput output, IView view,bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             BsGenerator gen = new BsGenerator(helper);
-            gen.Render(output, view, listDatabaseAbbreviations);
+            gen.Render(output, view, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
         }
         public void RenderBsWrapperCode(IOutput output, ITable table)
         {

@@ -47,19 +47,35 @@ namespace Karkas.CodeGeneration.Sqlite
             return new DataTable();
         }
 
-        public void CodeGenerateAllTables(AdoTemplate template, string pConnectionString, string pDatabaseName, string pProjectNamespace, string pProjectFolder, bool dboSemaTablolariniAtla, bool sysTablolariniAtla, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void CodeGenerateAllTables(AdoTemplate template
+            , string pConnectionString
+            , string pDatabaseName
+            , string pProjectNamespace
+            , string pProjectFolder
+            , bool dboSemaTablolariniAtla
+            , bool sysTablolariniAtla
+            , bool semaIsminiSorgulardaKullan
+            , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DatabaseSqlite database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
 
             foreach (ITable table in database.Tables)
             {
-                CodeGenerateOneTable(template, pConnectionString, table.Name, table.Schema, pDatabaseName, pProjectNamespace, pProjectFolder, listDatabaseAbbreviations);
+                CodeGenerateOneTable(template, pConnectionString, table.Name, table.Schema, pDatabaseName, pProjectNamespace, pProjectFolder, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
             }
 
 
         }
 
-        public void CodeGenerateOneTable(AdoTemplate template, string pConnectionString, string pTableName, string pSchemaName, string pDatabaseName, string pProjectNamespace, string pProjectFolder, List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void CodeGenerateOneTable(AdoTemplate template
+            , string pConnectionString
+            , string pTableName
+            , string pSchemaName
+            , string pDatabaseName
+            , string pProjectNamespace
+            , string pProjectFolder
+            , bool semaIsminiSorgulardaKullan
+            , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             if (pTableName.StartsWith("sqlite_"))
             {
@@ -75,9 +91,9 @@ namespace Karkas.CodeGeneration.Sqlite
             ITable table = database.getTable(pTableName, pSchemaName);
 
 
-            typeGen.Render(output, table, listDatabaseAbbreviations);
-            dalGen.Render(output, table, listDatabaseAbbreviations);
-            bsGen.Render(output, table, listDatabaseAbbreviations);
+            typeGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            dalGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            bsGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
 
         public DalGenerator DalGenerator
