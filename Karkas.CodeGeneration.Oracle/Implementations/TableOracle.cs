@@ -87,7 +87,7 @@ OWNER = :schemaName
             {
                 if (columns == null)
                 {
-                    ParameterBuilder builder = new ParameterBuilder();
+                    ParameterBuilder builder =  new ParameterBuilder(template.DbProviderName);
                     builder.parameterEkle("tableName",DbType.String,Name);
                     builder.parameterEkle("schemaName",DbType.String,Schema);
 

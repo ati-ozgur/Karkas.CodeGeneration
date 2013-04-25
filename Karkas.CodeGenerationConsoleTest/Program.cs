@@ -35,7 +35,7 @@ namespace Karkas.MyGenerationConsoleTest
 
 
 
-            //OracleTest();
+            OracleTest();
             //SqlServerTest();
             //SqliteTest();
             //SqliteTest();
@@ -109,10 +109,9 @@ namespace Karkas.MyGenerationConsoleTest
                 connection.ConnectionString = _OracleExampleConnectionString;
                 connection.Open();
                 connection.Close();
-                ConnectionSingleton.Instance.ConnectionString = _OracleExampleConnectionString;
-                ConnectionSingleton.Instance.ProviderName = "System.Data.OracleClient";
                 template = new AdoTemplate();
                 template.Connection = connection;
+                template.DbProviderName = "System.Data.OracleClient";
             }
             IDatabaseHelper helper = new OracleHelper();
 
