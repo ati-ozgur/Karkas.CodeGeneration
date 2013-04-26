@@ -21,7 +21,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Database smoDatabase;
         internal string connectionString;
 
-        string _projectFolder;
+        string projectFolder;
 
         public DatabaseSqlServer(
             AdoTemplate template
@@ -42,7 +42,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
             smoDatabase = smoServer.Databases[pDatabaseName];
             this.projectNameSpace = pProjectNameSpace;
-            _projectFolder = pProjectFolder;
+            projectFolder = pProjectFolder;
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
@@ -97,14 +97,24 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             {
                 return projectNameSpace;
             }
+            set 
+            { 
+                projectNameSpace = value; 
+            }
+
         }
 
         public string ProjectFolder
         {
             get
             {
-                return _projectFolder;
+                return projectFolder;
             }
+            set
+            {
+                projectFolder = value;
+            }
+
         }
 
 
@@ -207,6 +217,11 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
                 }
                 return databaseNamePhysical;
             }
+            set
+            {
+                databaseNamePhysical = value;
+            }
+
         }
 
         public DataTable getTableListFromSchema(string schemaName)

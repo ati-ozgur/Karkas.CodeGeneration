@@ -111,11 +111,19 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         public string ProjectNameSpace
         {
             get { return projectNameSpace; }
+            set {  projectNameSpace = value; }
         }
 
         public string ProjectFolder
         {
-            get { return projectFolder; }
+            get 
+            { 
+                return projectFolder; 
+            }
+            set 
+            { 
+                 projectFolder = value; 
+            }
         }
 
         public List<ITable> Tables
@@ -167,6 +175,10 @@ ORDER BY FULL_TABLE_NAME
                     databaseNamePhysical = (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
                 }
                 return databaseNamePhysical;
+            }
+            set
+            {
+                databaseNamePhysical = value;
             }
         }
 

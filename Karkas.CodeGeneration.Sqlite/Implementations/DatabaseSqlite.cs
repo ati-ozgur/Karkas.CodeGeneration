@@ -33,8 +33,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
             connectionString = pConnectionString;
 
-            _projectNameSpace = pProjectNameSpace;
-            _projectFolder = pProjectFolder;
+            projectNameSpace = pProjectNameSpace;
+            projectFolder = pProjectFolder;
             _DatabaseName = pDatabaseName;
 
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
@@ -88,9 +88,9 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
 
         AdoTemplate template;
-        string _projectNameSpace;
+        string projectNameSpace;
         string connectionString;
-        string _projectFolder;
+        string projectFolder;
         string _DatabaseName;
 
 
@@ -108,12 +108,15 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public string ProjectNameSpace
         {
-            get { return _projectNameSpace; }
+            get { return projectNameSpace; }
+            set { projectNameSpace = value; }
+
         }
 
         public string ProjectFolder
         {
-            get { return _projectFolder; }
+            get { return projectFolder; }
+            set { projectFolder = value; }
         }
 
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
@@ -192,6 +195,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 }
                 return databaseNamePhysical;
             }
+            set
+            {
+                databaseNamePhysical = value;
+            }
+
         }
 
 
