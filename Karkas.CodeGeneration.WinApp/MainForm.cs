@@ -240,7 +240,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void databaseNameLabelDoldur()
         {
-            labelDatabaseNameSonuc.Text = databaseHelper.getDatabaseName();
+            labelDatabaseNameSonuc.Text = databaseHelper.getDatabaseNamePhysical();
         }
 
 

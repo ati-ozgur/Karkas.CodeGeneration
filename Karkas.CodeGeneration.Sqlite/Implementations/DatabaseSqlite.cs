@@ -171,7 +171,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         }
         string databaseName;
 
-        public string DatabaseName
+        public string DatabaseNameLogical
         {
             get { return databaseName; }
             set { databaseName = value; }
@@ -179,7 +179,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         DatabaseSqlite database;
 
 
-        public string getDatabaseName()
+        public string getDatabaseNamePhysical()
         {
             return template.Connection.Database;
         }

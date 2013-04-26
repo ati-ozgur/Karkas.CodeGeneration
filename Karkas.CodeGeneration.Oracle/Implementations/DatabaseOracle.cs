@@ -131,7 +131,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         string databaseName;
 
-        public string DatabaseName
+        public string DatabaseNameLogical
         {
             get { return databaseName; }
             set { databaseName = value; }
@@ -156,7 +156,7 @@ WHERE
 ORDER BY FULL_TABLE_NAME
 ";
 
-        public string getDatabaseName()
+        public string getDatabaseNamePhysical()
         {
             return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
 

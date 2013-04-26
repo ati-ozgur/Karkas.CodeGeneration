@@ -117,7 +117,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
         string databaseName;
 
-        public string DatabaseName
+        public string DatabaseNameLogical
         {
             get { return databaseName; }
             set { databaseName = value; }
@@ -195,7 +195,7 @@ ORDER BY FULL_TABLE_NAME
 SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 ";
 
-        public string getDatabaseName()
+        public string getDatabaseNamePhysical()
         {
             return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
         }
