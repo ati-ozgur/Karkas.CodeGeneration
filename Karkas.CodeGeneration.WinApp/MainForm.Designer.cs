@@ -33,7 +33,6 @@
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
-            this.checkBoxUseSchemaNameInSql = new System.Windows.Forms.CheckBox();
             this.checkBoxSysTablolariniAtla = new System.Windows.Forms.CheckBox();
             this.checkBoxDboSemasiniAtla = new System.Windows.Forms.CheckBox();
             this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
@@ -42,15 +41,16 @@
             this.labelTabloListesi = new System.Windows.Forms.Label();
             this.labelSchemaList = new System.Windows.Forms.Label();
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
+            this.checkBoxUseSchemaNameInSql = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCodeGenerationDizini = new System.Windows.Forms.TextBox();
             this.buttonFolderDialog = new System.Windows.Forms.Button();
             this.labelProjectNamespace = new System.Windows.Forms.Label();
             this.textBoxProjectNamespace = new System.Windows.Forms.TextBox();
-            this.labelDatabaseName = new System.Windows.Forms.Label();
+            this.labelConnectionName = new System.Windows.Forms.Label();
             this.labelDatabaseNameSonuc = new System.Windows.Forms.Label();
             this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
-            this.textBoxDatabaseName = new System.Windows.Forms.TextBox();
+            this.textBoxConnectionName = new System.Windows.Forms.TextBox();
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.comboBoxDatabaseType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             // labelConnectionString
             // 
             this.labelConnectionString.AutoSize = true;
-            this.labelConnectionString.Location = new System.Drawing.Point(16, 28);
+            this.labelConnectionString.Location = new System.Drawing.Point(11, 66);
             this.labelConnectionString.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConnectionString.Name = "labelConnectionString";
             this.labelConnectionString.Size = new System.Drawing.Size(91, 13);
@@ -72,7 +72,7 @@
             // 
             // textBoxConnectionString
             // 
-            this.textBoxConnectionString.Location = new System.Drawing.Point(154, 28);
+            this.textBoxConnectionString.Location = new System.Drawing.Point(149, 66);
             this.textBoxConnectionString.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxConnectionString.Name = "textBoxConnectionString";
             this.textBoxConnectionString.Size = new System.Drawing.Size(469, 20);
@@ -80,7 +80,7 @@
             // 
             // buttonTestConnectionString
             // 
-            this.buttonTestConnectionString.Location = new System.Drawing.Point(634, 26);
+            this.buttonTestConnectionString.Location = new System.Drawing.Point(629, 64);
             this.buttonTestConnectionString.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTestConnectionString.Name = "buttonTestConnectionString";
             this.buttonTestConnectionString.Size = new System.Drawing.Size(77, 20);
@@ -92,7 +92,7 @@
             // labelConnectionStatus
             // 
             this.labelConnectionStatus.AutoSize = true;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(16, 209);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(11, 247);
             this.labelConnectionStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
             this.labelConnectionStatus.Size = new System.Drawing.Size(102, 13);
@@ -114,19 +114,6 @@
             this.panelListe.Name = "panelListe";
             this.panelListe.Size = new System.Drawing.Size(693, 346);
             this.panelListe.TabIndex = 5;
-            // 
-            // checkBoxUseSchemaNameInSql
-            // 
-            this.checkBoxUseSchemaNameInSql.AutoSize = true;
-            this.checkBoxUseSchemaNameInSql.Checked = true;
-            this.checkBoxUseSchemaNameInSql.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseSchemaNameInSql.Location = new System.Drawing.Point(309, 111);
-            this.checkBoxUseSchemaNameInSql.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseSchemaNameInSql.Name = "checkBoxUseSchemaNameInSql";
-            this.checkBoxUseSchemaNameInSql.Size = new System.Drawing.Size(110, 30);
-            this.checkBoxUseSchemaNameInSql.TabIndex = 8;
-            this.checkBoxUseSchemaNameInSql.Text = "Sorgularda Şema \r\nİsmini Kullan";
-            this.checkBoxUseSchemaNameInSql.UseVisualStyleBackColor = true;
             // 
             // checkBoxSysTablolariniAtla
             // 
@@ -217,10 +204,23 @@
             this.comboBoxSchemaList.Size = new System.Drawing.Size(182, 21);
             this.comboBoxSchemaList.TabIndex = 0;
             // 
+            // checkBoxUseSchemaNameInSql
+            // 
+            this.checkBoxUseSchemaNameInSql.AutoSize = true;
+            this.checkBoxUseSchemaNameInSql.Checked = true;
+            this.checkBoxUseSchemaNameInSql.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseSchemaNameInSql.Location = new System.Drawing.Point(304, 149);
+            this.checkBoxUseSchemaNameInSql.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseSchemaNameInSql.Name = "checkBoxUseSchemaNameInSql";
+            this.checkBoxUseSchemaNameInSql.Size = new System.Drawing.Size(110, 30);
+            this.checkBoxUseSchemaNameInSql.TabIndex = 8;
+            this.checkBoxUseSchemaNameInSql.Text = "Sorgularda Şema \r\nİsmini Kullan";
+            this.checkBoxUseSchemaNameInSql.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 56);
+            this.label1.Location = new System.Drawing.Point(11, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
@@ -229,7 +229,7 @@
             // 
             // textBoxCodeGenerationDizini
             // 
-            this.textBoxCodeGenerationDizini.Location = new System.Drawing.Point(154, 56);
+            this.textBoxCodeGenerationDizini.Location = new System.Drawing.Point(149, 94);
             this.textBoxCodeGenerationDizini.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCodeGenerationDizini.Name = "textBoxCodeGenerationDizini";
             this.textBoxCodeGenerationDizini.Size = new System.Drawing.Size(468, 20);
@@ -237,7 +237,7 @@
             // 
             // buttonFolderDialog
             // 
-            this.buttonFolderDialog.Location = new System.Drawing.Point(634, 52);
+            this.buttonFolderDialog.Location = new System.Drawing.Point(629, 90);
             this.buttonFolderDialog.Margin = new System.Windows.Forms.Padding(2);
             this.buttonFolderDialog.Name = "buttonFolderDialog";
             this.buttonFolderDialog.Size = new System.Drawing.Size(38, 24);
@@ -249,7 +249,7 @@
             // labelProjectNamespace
             // 
             this.labelProjectNamespace.AutoSize = true;
-            this.labelProjectNamespace.Location = new System.Drawing.Point(16, 84);
+            this.labelProjectNamespace.Location = new System.Drawing.Point(11, 122);
             this.labelProjectNamespace.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProjectNamespace.Name = "labelProjectNamespace";
             this.labelProjectNamespace.Size = new System.Drawing.Size(100, 13);
@@ -258,26 +258,26 @@
             // 
             // textBoxProjectNamespace
             // 
-            this.textBoxProjectNamespace.Location = new System.Drawing.Point(154, 84);
+            this.textBoxProjectNamespace.Location = new System.Drawing.Point(149, 122);
             this.textBoxProjectNamespace.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxProjectNamespace.Name = "textBoxProjectNamespace";
             this.textBoxProjectNamespace.Size = new System.Drawing.Size(466, 20);
             this.textBoxProjectNamespace.TabIndex = 10;
             // 
-            // labelDatabaseName
+            // labelConnectionName
             // 
-            this.labelDatabaseName.AutoSize = true;
-            this.labelDatabaseName.Location = new System.Drawing.Point(16, 111);
-            this.labelDatabaseName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDatabaseName.Name = "labelDatabaseName";
-            this.labelDatabaseName.Size = new System.Drawing.Size(103, 13);
-            this.labelDatabaseName.TabIndex = 11;
-            this.labelDatabaseName.Text = "labelDatabaseName";
+            this.labelConnectionName.AutoSize = true;
+            this.labelConnectionName.Location = new System.Drawing.Point(11, 9);
+            this.labelConnectionName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelConnectionName.Name = "labelConnectionName";
+            this.labelConnectionName.Size = new System.Drawing.Size(92, 13);
+            this.labelConnectionName.TabIndex = 11;
+            this.labelConnectionName.Text = "Connection Name";
             // 
             // labelDatabaseNameSonuc
             // 
             this.labelDatabaseNameSonuc.AutoSize = true;
-            this.labelDatabaseNameSonuc.Location = new System.Drawing.Point(154, 111);
+            this.labelDatabaseNameSonuc.Location = new System.Drawing.Point(149, 149);
             this.labelDatabaseNameSonuc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDatabaseNameSonuc.Name = "labelDatabaseNameSonuc";
             this.labelDatabaseNameSonuc.Size = new System.Drawing.Size(0, 13);
@@ -294,12 +294,12 @@
             this.buttonGecerliDegerleriKaydet.UseVisualStyleBackColor = true;
             this.buttonGecerliDegerleriKaydet.Click += new System.EventHandler(this.buttonGecerliDegerleriKaydet_Click);
             // 
-            // textBoxDatabaseName
+            // textBoxConnectionName
             // 
-            this.textBoxDatabaseName.Location = new System.Drawing.Point(154, 111);
-            this.textBoxDatabaseName.Name = "textBoxDatabaseName";
-            this.textBoxDatabaseName.Size = new System.Drawing.Size(127, 20);
-            this.textBoxDatabaseName.TabIndex = 14;
+            this.textBoxConnectionName.Location = new System.Drawing.Point(149, 9);
+            this.textBoxConnectionName.Name = "textBoxConnectionName";
+            this.textBoxConnectionName.Size = new System.Drawing.Size(127, 20);
+            this.textBoxConnectionName.TabIndex = 14;
             // 
             // buttonOtherConnections
             // 
@@ -314,7 +314,7 @@
             // comboBoxDatabaseType
             // 
             this.comboBoxDatabaseType.FormattingEnabled = true;
-            this.comboBoxDatabaseType.Location = new System.Drawing.Point(154, 150);
+            this.comboBoxDatabaseType.Location = new System.Drawing.Point(149, 188);
             this.comboBoxDatabaseType.Name = "comboBoxDatabaseType";
             this.comboBoxDatabaseType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDatabaseType.TabIndex = 16;
@@ -322,7 +322,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 155);
+            this.label2.Location = new System.Drawing.Point(11, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 17;
@@ -353,7 +353,7 @@
             this.checkBoxDizinlerseSemaIsmi.AutoSize = true;
             this.checkBoxDizinlerseSemaIsmi.Checked = true;
             this.checkBoxDizinlerseSemaIsmi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDizinlerseSemaIsmi.Location = new System.Drawing.Point(309, 150);
+            this.checkBoxDizinlerseSemaIsmi.Location = new System.Drawing.Point(304, 188);
             this.checkBoxDizinlerseSemaIsmi.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDizinlerseSemaIsmi.Name = "checkBoxDizinlerseSemaIsmi";
             this.checkBoxDizinlerseSemaIsmi.Size = new System.Drawing.Size(105, 30);
@@ -373,10 +373,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxDatabaseType);
             this.Controls.Add(this.buttonOtherConnections);
-            this.Controls.Add(this.textBoxDatabaseName);
+            this.Controls.Add(this.textBoxConnectionName);
             this.Controls.Add(this.buttonGecerliDegerleriKaydet);
             this.Controls.Add(this.labelDatabaseNameSonuc);
-            this.Controls.Add(this.labelDatabaseName);
+            this.Controls.Add(this.labelConnectionName);
             this.Controls.Add(this.textBoxProjectNamespace);
             this.Controls.Add(this.labelProjectNamespace);
             this.Controls.Add(this.buttonFolderDialog);
@@ -415,12 +415,12 @@
         private System.Windows.Forms.Button buttonTumTablolariUret;
         private System.Windows.Forms.Label labelProjectNamespace;
         private System.Windows.Forms.TextBox textBoxProjectNamespace;
-        private System.Windows.Forms.Label labelDatabaseName;
+        private System.Windows.Forms.Label labelConnectionName;
         private System.Windows.Forms.Label labelDatabaseNameSonuc;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
         private System.Windows.Forms.CheckBox checkBoxSysTablolariniAtla;
         private System.Windows.Forms.CheckBox checkBoxDboSemasiniAtla;
-        private System.Windows.Forms.TextBox textBoxDatabaseName;
+        private System.Windows.Forms.TextBox textBoxConnectionName;
         private System.Windows.Forms.Button buttonOtherConnections;
         private System.Windows.Forms.ComboBox comboBoxDatabaseType;
         private System.Windows.Forms.Label label2;

@@ -53,6 +53,20 @@ namespace Karkas.CodeGeneration.WinApp
             }
         }
 
+        private DatabaseEntry FormToDatabaseEntry( )
+        {
+            DatabaseEntry entry = new DatabaseEntry();
+
+            entry.ConnectionName = textBoxConnectionName.Text;
+            entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedItem.ToString();
+
+            entry.ConnectionString = textBoxConnectionString.Text;
+            entry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
+            entry.ProjectNameSpace = textBoxProjectNamespace.Text;
+            return entry;
+        }
+
+
         private void databaseEntryToForm(DatabaseEntry entry)
         {
             currentDatabaseEntry = entry;
@@ -69,7 +83,7 @@ namespace Karkas.CodeGeneration.WinApp
             {
                 textBoxProjectNamespace.Text = entry.ProjectNameSpace;
             }
-            textBoxDatabaseName.Text = entry.ConnectionName;
+            textBoxConnectionName.Text = entry.ConnectionName;
             comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
         }
 
@@ -91,11 +105,11 @@ namespace Karkas.CodeGeneration.WinApp
                 String type = comboBoxDatabaseType.SelectedItem.ToString();
                 if (type == null || type == DatabaseType.SqlServer)
                 {
-                    testSqlServer(connectionString,textBoxDatabaseName.Text);
+                    testSqlServer(connectionString,textBoxConnectionName.Text);
                 }
                 else if (type == DatabaseType.Oracle)
                 {
-                    testOracle(connectionString,textBoxDatabaseName.Text);
+                    testOracle(connectionString,textBoxConnectionName.Text);
 
                 }
                 else if (type == DatabaseType.Sqlite)
@@ -290,7 +304,7 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry = new DatabaseEntry();
 
             currentDatabaseEntry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
-            currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
+            currentDatabaseEntry.ConnectionName = textBoxConnectionName.Text;
             currentDatabaseEntry.ProjectNameSpace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
             currentDatabaseEntry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
@@ -357,7 +371,7 @@ namespace Karkas.CodeGeneration.WinApp
         {
             currentDatabaseEntry = new DatabaseEntry();
             textBoxCodeGenerationDizini.Text = "";
-            textBoxDatabaseName.Text = "";
+            textBoxConnectionName.Text = "";
             textBoxProjectNamespace.Text = "";
             textBoxConnectionString.Text = "";
 
