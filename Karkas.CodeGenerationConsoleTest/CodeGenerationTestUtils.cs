@@ -45,9 +45,6 @@ namespace Karkas.CodeGeneration.Helper
             helper.CodeGenerateAllTables(
                  dboSemaTablolariniAtla
                 , sysTablolariniAtla
-                , semaIsminiSorgulardaKullan
-                , semaIsminiDizinlerdeKullan
-                , listDatabaseAbbreviations
 
                 );
         }
@@ -78,13 +75,13 @@ namespace Karkas.CodeGeneration.Helper
             switch (databaseType)
             {
                 case DatabaseType.SqlServer:
-                    helper = new DatabaseSqlServer(template,null, databaseName, null, null);
+                    helper = new DatabaseSqlServer(template,null, databaseName, null, null,false,false,null);
                     break;
                 case DatabaseType.Oracle:
-                    helper = new DatabaseOracle( template,null, databaseName,null,null);
+                    helper = new DatabaseOracle(template, null, databaseName, null, null, false, false, null);
                     break;
                 case DatabaseType.Sqlite:
-                    helper = new DatabaseSqlite( template, null, databaseName,null,null);
+                    helper = new DatabaseSqlite(template, null, databaseName, null, null, false, false, null);
                     break;
             }
             return helper;

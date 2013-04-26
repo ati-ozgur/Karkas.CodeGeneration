@@ -7,6 +7,7 @@ using Karkas.Core.DataUtil;
 using System.Data;
 using Karkas.CodeGenerationHelper.Generators;
 using Karkas.CodeGeneration.Sqlite.Generators;
+using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
@@ -20,7 +21,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             , string pDatabaseName
             , string pProjectNameSpace
             , string pProjectFolder
-            
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations
+
             )
         {
             template = pTemplate;
@@ -31,7 +35,36 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             _projectFolder = pProjectFolder;
             _DatabaseName = pDatabaseName;
 
+            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
+            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
+            this.listDatabaseAbbreviations = listDatabaseAbbreviations;
+
         }
+
+
+        bool semaIsminiSorgulardaKullan;
+
+        public bool SemaIsminiSorgulardaKullan
+        {
+            get { return semaIsminiSorgulardaKullan; }
+            set { semaIsminiSorgulardaKullan = value; }
+        }
+        bool semaIsminiDizinlerdeKullan;
+
+        public bool SemaIsminiDizinlerdeKullan
+        {
+            get { return semaIsminiDizinlerdeKullan; }
+            set { semaIsminiDizinlerdeKullan = value; }
+        }
+        List<DatabaseAbbreviations> listDatabaseAbbreviations;
+
+        public List<DatabaseAbbreviations> ListDatabaseAbbreviations
+        {
+            get { return listDatabaseAbbreviations; }
+            set { listDatabaseAbbreviations = value; }
+        }
+
+
         AdoTemplate template;
         string _projectNameSpace;
         string connectionString;
@@ -147,9 +180,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         public void CodeGenerateAllTables(
              bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
+            )
         {
 
             foreach (ITable table in this.Tables)
@@ -157,9 +188,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 CodeGenerateOneTable(
                      table.Name
                     , table.Schema
-                    , semaIsminiSorgulardaKullan
-                    , semaIsminiDizinlerdeKullan
-                    , listDatabaseAbbreviations);
+                    );
             }
 
 
@@ -168,9 +197,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
+            )
         {
             if (pTableName.StartsWith("sqlite_"))
             {

@@ -23,7 +23,17 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         string _projectFolder;
 
-        public DatabaseSqlServer(AdoTemplate template, String pConnectionString,string pDatabaseName,string pProjectNameSpace,string pProjectFolder)
+        public DatabaseSqlServer(
+            AdoTemplate template
+            , String pConnectionString
+            ,string pDatabaseName
+            ,string pProjectNameSpace
+            ,string pProjectFolder
+            ,bool semaIsminiSorgulardaKullan
+            ,bool semaIsminiDizinlerdeKullan
+            ,List<DatabaseAbbreviations> listDatabaseAbbreviations
+            
+            )
         {
             this.template = template;
             connectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
@@ -31,10 +41,34 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             smoDatabase = smoServer.Databases[pDatabaseName];
             this.projectNameSpace = pProjectNameSpace;
             _projectFolder = pProjectFolder;
+            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
+            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
+            this.listDatabaseAbbreviations = listDatabaseAbbreviations;
 
         }
 
 
+        bool semaIsminiSorgulardaKullan;
+
+        public bool SemaIsminiSorgulardaKullan
+        {
+            get { return semaIsminiSorgulardaKullan; }
+            set { semaIsminiSorgulardaKullan = value; }
+        }
+        bool semaIsminiDizinlerdeKullan;
+
+        public bool SemaIsminiDizinlerdeKullan
+        {
+            get { return semaIsminiDizinlerdeKullan; }
+            set { semaIsminiDizinlerdeKullan = value; }
+        }
+        List<DatabaseAbbreviations> listDatabaseAbbreviations;
+
+        public List<DatabaseAbbreviations> ListDatabaseAbbreviations
+        {
+            get { return listDatabaseAbbreviations; }
+            set { listDatabaseAbbreviations = value; }
+        }
 
         private string projectNameSpace;
 
@@ -166,9 +200,6 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
         public void CodeGenerateAllTables(
             bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
-            ,bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
@@ -197,9 +228,6 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);

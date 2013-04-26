@@ -19,7 +19,12 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             ,String pConnectionString
             , string pDatabaseName
             , string pProjectNameSpace
-            , string pProjectFolder)
+            , string pProjectFolder
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations
+
+            )
         {
             template = pTemplate;
 
@@ -29,7 +34,36 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             projectFolder = pProjectFolder;
             _DatabaseName = pDatabaseName;
 
+            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
+            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
+            this.listDatabaseAbbreviations = listDatabaseAbbreviations;
+
         }
+
+
+        bool semaIsminiSorgulardaKullan;
+
+        public bool SemaIsminiSorgulardaKullan
+        {
+            get { return semaIsminiSorgulardaKullan; }
+            set { semaIsminiSorgulardaKullan = value; }
+        }
+        bool semaIsminiDizinlerdeKullan;
+
+        public bool SemaIsminiDizinlerdeKullan
+        {
+            get { return semaIsminiDizinlerdeKullan; }
+            set { semaIsminiDizinlerdeKullan = value; }
+        }
+        List<DatabaseAbbreviations> listDatabaseAbbreviations;
+
+        public List<DatabaseAbbreviations> ListDatabaseAbbreviations
+        {
+            get { return listDatabaseAbbreviations; }
+            set { listDatabaseAbbreviations = value; }
+        }
+
+
         AdoTemplate template;
 
         public AdoTemplate Template
@@ -131,9 +165,6 @@ ORDER BY FULL_TABLE_NAME
         public void CodeGenerateAllTables(
              bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
            
@@ -151,9 +182,6 @@ ORDER BY FULL_TABLE_NAME
                 CodeGenerateOneTable(  
                     tableName, 
                     schemaName
-                    , semaIsminiSorgulardaKullan
-                    , semaIsminiDizinlerKullan
-                    , listDatabaseAbbreviations
                     );
             }
 
@@ -179,9 +207,6 @@ ORDER BY FULL_TABLE_NAME
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);

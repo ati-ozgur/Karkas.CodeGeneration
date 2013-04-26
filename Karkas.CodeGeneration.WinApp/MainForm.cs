@@ -138,8 +138,16 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
-                databaseHelper = new DatabaseOracle(template,connectionString, databaseName,textBoxProjectNamespace.Text,textBoxCodeGenerationDizini.Text);
-
+                databaseHelper = new DatabaseOracle(
+                    template,connectionString
+                    , databaseName
+                    ,textBoxProjectNamespace.Text
+                    ,textBoxCodeGenerationDizini.Text
+                    , checkBoxUseSchemaNameInSql.Checked
+                    , checkBoxDizinlerseSemaIsmi.Checked
+                    , null
+                    );
+                    
 
             }
         }
@@ -161,7 +169,16 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
-                databaseHelper = new DatabaseSqlite(template, connectionString, "main", textBoxProjectNamespace.Text, textBoxCodeGenerationDizini.Text);
+                databaseHelper = new DatabaseSqlite(
+                    template
+                    , connectionString
+                    , "main"
+                    , textBoxProjectNamespace.Text
+                    , textBoxCodeGenerationDizini.Text
+                    , checkBoxUseSchemaNameInSql.Checked
+                    ,checkBoxDizinlerseSemaIsmi.Checked
+                    , null
+                    );
                     
 
 
@@ -178,7 +195,15 @@ namespace Karkas.CodeGeneration.WinApp
             template.Connection = connection;
             template.DbProviderName = "System.Data.SqlClient";
 
-            databaseHelper = new DatabaseSqlServer(template, connectionString, databaseName, textBoxProjectNamespace.Text, textBoxCodeGenerationDizini.Text);
+            databaseHelper = new DatabaseSqlServer(template
+                , connectionString
+                , databaseName
+                , textBoxProjectNamespace.Text
+                , textBoxCodeGenerationDizini.Text
+                , checkBoxUseSchemaNameInSql.Checked
+                , checkBoxDizinlerseSemaIsmi.Checked
+                , null
+                );
             
         }
 
@@ -255,9 +280,6 @@ namespace Karkas.CodeGeneration.WinApp
             databaseHelper.CodeGenerateAllTables( 
             checkBoxDboSemasiniAtla.Checked
             ,checkBoxSysTablolariniAtla.Checked
-            , checkBoxUseSchemaNameInSql.Checked
-            , checkBoxDizinlerseSemaIsmi.Checked
-            , null
             );
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
@@ -305,9 +327,6 @@ namespace Karkas.CodeGeneration.WinApp
                 databaseHelper.CodeGenerateOneTable(
                      tableName
                     , tableSchema
-                    , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxDizinlerseSemaIsmi.Checked
-                    , getSampleAbbreviations()
                     );
 
             }

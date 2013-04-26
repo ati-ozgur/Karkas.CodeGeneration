@@ -49,23 +49,36 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         void CodeGenerateAllTables(
              bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             );
 
         void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , bool semaIsminiSorgulardaKullan
-            , bool semaIsminiDizinlerdeKullan
-            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             );
 
 
         DalGenerator DalGenerator
         {
             get;
+        }
+
+
+        bool SemaIsminiSorgulardaKullan
+        {
+            get;
+            set;
+        }
+
+        bool SemaIsminiDizinlerdeKullan
+        {
+            get;
+            set;
+        }
+
+        List<DatabaseAbbreviations> ListDatabaseAbbreviations
+        {
+            get;
+            set;
         }
 
     }
