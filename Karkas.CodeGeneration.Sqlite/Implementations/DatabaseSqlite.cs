@@ -139,6 +139,22 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             set { codeGenerationDirectory = value; }
         }
 
+        bool viewCodeGenerateEtsinMi;
+
+        public bool ViewCodeGenerateEtsinMi
+        {
+            get { return viewCodeGenerateEtsinMi; }
+            set { viewCodeGenerateEtsinMi = value; }
+        }
+        bool storedProcedureCodeGenerateEtsinMi;
+
+        public bool StoredProcedureCodeGenerateEtsinMi
+        {
+            get { return storedProcedureCodeGenerateEtsinMi; }
+            set { storedProcedureCodeGenerateEtsinMi = value; }
+        }
+
+
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
                                                 name AS TABLE_NAME,
                                                 name AS FULL_TABLE_NAME 

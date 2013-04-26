@@ -140,6 +140,22 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         }
 
+        bool viewCodeGenerateEtsinMi;
+
+        public bool ViewCodeGenerateEtsinMi
+        {
+            get { return viewCodeGenerateEtsinMi; }
+            set { viewCodeGenerateEtsinMi = value; }
+        }
+        bool storedProcedureCodeGenerateEtsinMi;
+
+        public bool StoredProcedureCodeGenerateEtsinMi
+        {
+            get { return storedProcedureCodeGenerateEtsinMi; }
+            set { storedProcedureCodeGenerateEtsinMi = value; }
+        }
+
+
 
         AdoTemplate template;
 
