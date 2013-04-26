@@ -37,7 +37,11 @@ namespace Karkas.CodeGenerationHelper.Generators
         Utils utils = null;
 
 
-        public void Render(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void Render(IOutput output
+            , IContainer container
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
            
             output.tabLevel = 0;

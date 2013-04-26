@@ -155,7 +155,7 @@ ORDER BY FULL_TABLE_NAME
 
             typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
-            bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            bsGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
         }
 
 

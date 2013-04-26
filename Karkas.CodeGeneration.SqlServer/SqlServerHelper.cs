@@ -112,7 +112,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
                 }
                 typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
                 dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-                bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+                bsGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
             }
         }
 
@@ -138,7 +138,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
             dalGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-            bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            bsGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
         }
 
 
