@@ -36,11 +36,7 @@ namespace Karkas.CodeGeneration.Helper
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
-            AdoTemplate template = null;
-            DbConnection connection = TestAndGetConnection(assemblyName, connectionClassName, connectionString);
-            template = new AdoTemplate();
-            template.Connection = connection;
-            template.DbProviderName = assemblyName;
+            AdoTemplate template = getTemplate(assemblyName, connectionClassName, connectionString);
             IDatabase helper = getDatabaseHelper(dbDatabaseType, 
                 template, connectionString
                 ,databaseName
@@ -55,10 +51,21 @@ namespace Karkas.CodeGeneration.Helper
             helper.CodeGenerateAllTables();
         }
 
+        public static AdoTemplate getTemplate(String assemblyName, String connectionClassName, String connectionString)
+        {
+            AdoTemplate template = null;
+            DbConnection connection = TestAndGetConnection(assemblyName, connectionClassName, connectionString);
+            template = new AdoTemplate();
+            template.Connection = connection;
+            template.DbProviderName = assemblyName;
+            return template;
+        }
+
         public static DbConnection TestAndGetConnection(String assemblyName, String connectionClassName, String connectionString)
         {
             DbConnection connection = null;
             Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
+            
             Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
 
             if (objReflection != null && objReflection is ObjectHandle)
