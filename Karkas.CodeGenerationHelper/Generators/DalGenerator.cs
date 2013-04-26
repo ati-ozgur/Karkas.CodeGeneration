@@ -346,13 +346,13 @@ namespace Karkas.CodeGenerationHelper.Generators
                 {
                     if (updateWhereSatirindaOlmaliMi(column))
                     {
-                        pkcumlesi += " " + column.Name + " = " + parameterSymbol + column.Name + " AND";
+                        pkcumlesi += " " + column.Name + " = " + parameterSymbol + column.Name + Environment.NewLine + " AND"  ;
                     }
                     if (!columnParametreOlmaliMi(column))
                     {
                         if (!updateWhereSatirindaOlmaliMi(column))
                         {
-                            cumle += column.Name + " = " + parameterSymbol + column.Name + ",";
+                            cumle += column.Name + " = " + parameterSymbol + column.Name +  Environment.NewLine + "," ;
                         }
                     }
                 }
@@ -558,7 +558,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.write(classNameTypeLibrary);
             output.writeLine(" row)");
             BaslangicSusluParentezVeTabArtir(output);
-            output.autoTabLn("ParameterBuilder builder = new ParameterBuilder(cmd);");
+            output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
+            output.autoTabLn("builder.Command = cmd;");
 
             foreach (IColumn column in container.Columns)
             {
@@ -630,7 +631,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTab(classNameTypeLibrary);
             output.autoTabLn(" row)");
             BaslangicSusluParentezVeTabArtir(output);
-            output.autoTabLn("ParameterBuilder builder = new ParameterBuilder(cmd);");
+            output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
+            output.autoTabLn("builder.Command = cmd;");
 
             foreach (IColumn column in container.Columns)
             {
@@ -649,7 +651,9 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTab(classNameTypeLibrary);
             output.autoTabLn(" row)");
             BaslangicSusluParentezVeTabArtir(output);
-            output.autoTabLn("ParameterBuilder builder = new ParameterBuilder(cmd);");
+            output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
+            output.autoTabLn("builder.Command = cmd;");
+
             foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey || !columnParametreOlmaliMi(column))

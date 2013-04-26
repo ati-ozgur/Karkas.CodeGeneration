@@ -12,7 +12,12 @@ using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.CodeGeneration.SqliteSupport.Dal.Main
 {
-public partial class DatabaseEntryDal
-{
-}
+    public partial class DatabaseEntryDal
+    {
+
+        public override string DbProviderName
+        {
+            get { return "System.Data.SQLite"; }
+        }
+    }
 }

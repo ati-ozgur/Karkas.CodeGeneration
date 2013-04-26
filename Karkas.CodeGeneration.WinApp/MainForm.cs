@@ -59,6 +59,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             entry.ConnectionName = textBoxConnectionName.Text;
             entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
+            entry.ConnectionDbProviderName = textBoxDbProviderName.Text;
 
             entry.ConnectionString = textBoxConnectionString.Text;
 
@@ -100,6 +101,9 @@ namespace Karkas.CodeGeneration.WinApp
             currentDatabaseEntry = entry;
             textBoxConnectionName.Text = entry.ConnectionName;
             comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
+
+            textBoxDbProviderName.Text = entry.ConnectionDbProviderName;
+
 
             if (!string.IsNullOrWhiteSpace(entry.ConnectionString))
             {

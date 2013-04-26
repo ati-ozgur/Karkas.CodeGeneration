@@ -172,6 +172,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	protected override void InsertCommandParametersAdd(DbCommand cmd, DatabaseEntry row)
 	{
 		ParameterBuilder builder = Template.getParameterBuilder();
+		builder.Command = cmd;
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@ConnectionDbProviderName",DbType.String, row.ConnectionDbProviderName);
@@ -194,6 +195,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	protected override void UpdateCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
 		ParameterBuilder builder = Template.getParameterBuilder();
+		builder.Command = cmd;
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@ConnectionDbProviderName",DbType.String, row.ConnectionDbProviderName);
@@ -216,6 +218,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	protected override void DeleteCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
 		ParameterBuilder builder = Template.getParameterBuilder();
+		builder.Command = cmd;
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 	}
 }
