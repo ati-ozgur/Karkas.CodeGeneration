@@ -231,7 +231,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return databaseName; }
             set { databaseName = value; }
         }
-        DatabaseSqlite database;
 
 
 
@@ -262,7 +261,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public DataTable getTableListFromSchema( string schemaName)
         {
-            return database.getTableList();
+            return getTableList();
         }
 
         public DataTable getSchemaList()
