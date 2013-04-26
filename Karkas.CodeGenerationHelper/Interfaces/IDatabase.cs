@@ -34,19 +34,19 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
 
 
-        string getDatabaseName(AdoTemplate template);
+        string getDatabaseName();
 
         //string DatabaseNameLogical
         //{
         //    get;
         //}
 
-        string getDefaultSchema(AdoTemplate template);
+        string getDefaultSchema();
 
-        DataTable getTableListFromSchema(AdoTemplate template, string schemaName);
-        DataTable getSchemaList(AdoTemplate template);
+        DataTable getTableListFromSchema(string schemaName);
+        DataTable getSchemaList();
 
-        void CodeGenerateAllTables(AdoTemplate template, string pConnectionString
+        void CodeGenerateAllTables( string pConnectionString
             , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
@@ -57,8 +57,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             );
 
-        void CodeGenerateOneTable(AdoTemplate template
-            , string pConnectionString
+        void CodeGenerateOneTable(
+             string pConnectionString
             , string pTableName
             , string pSchemaName
             , string pDatabaseName

@@ -42,7 +42,7 @@ namespace Karkas.CodeGeneration.Helper
             template.Connection = connection;
             template.DbProviderName = assemblyName;
             IDatabase helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
-            helper.CodeGenerateAllTables(template,
+            helper.CodeGenerateAllTables(
                 connectionString
                 , pDatabaseName
                 , pProjectNamespace

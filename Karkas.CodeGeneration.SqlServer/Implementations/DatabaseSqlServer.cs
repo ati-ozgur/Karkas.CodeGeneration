@@ -139,12 +139,12 @@ ORDER BY FULL_TABLE_NAME
 SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 ";
 
-        public string getDatabaseName(AdoTemplate template)
+        public string getDatabaseName()
         {
             return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
         }
 
-        public DataTable getTableListFromSchema(AdoTemplate template,string schemaName)
+        public DataTable getTableListFromSchema(string schemaName)
         {
             ParameterBuilder builder = new ParameterBuilder();
             builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
@@ -152,7 +152,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             return dtTableList;
         }
 
-        public DataTable getSchemaList(AdoTemplate template)
+        public DataTable getSchemaList()
         {
             return template.DataTableOlustur(SQL__FOR_SCHEMA_LIST);
         }
@@ -160,7 +160,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
 
 
-        public void CodeGenerateAllTables(AdoTemplate template,string pConnectionString, string pDatabaseName, string pProjectNamespace
+        public void CodeGenerateAllTables(string pConnectionString, string pDatabaseName, string pProjectNamespace
             , string pProjectFolder
             ,bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
@@ -193,8 +193,8 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             }
         }
 
-        public void CodeGenerateOneTable(AdoTemplate template
-            , string pConnectionString
+        public void CodeGenerateOneTable(
+             string pConnectionString
             , string pTableName
             , string pSchemaName
             , string pDatabaseName
@@ -229,7 +229,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
         }
 
 
-        public string getDefaultSchema(AdoTemplate template)
+        public string getDefaultSchema()
         {
             return "dbo";
         }

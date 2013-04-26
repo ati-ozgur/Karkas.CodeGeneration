@@ -99,7 +99,7 @@ WHERE
 ORDER BY FULL_TABLE_NAME
 ";
 
-        public string getDatabaseName(AdoTemplate template)
+        public string getDatabaseName()
         {
             return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
 
@@ -107,7 +107,7 @@ ORDER BY FULL_TABLE_NAME
 
 
 
-        public DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
+        public DataTable getTableListFromSchema( string schemaName)
         {
             ParameterBuilder builder = template.getParameterBuilder();
             builder.parameterEkle(":TABLE_SCHEMA", DbType.String, schemaName);
@@ -116,7 +116,7 @@ ORDER BY FULL_TABLE_NAME
         }
 
 
-        public DataTable getSchemaList(AdoTemplate template)
+        public DataTable getSchemaList()
         {
             return template.DataTableOlustur(SQL_FOR_SCHEMA_LIST);
         }
@@ -125,8 +125,7 @@ ORDER BY FULL_TABLE_NAME
 
 
         public void CodeGenerateAllTables(
-            AdoTemplate template
-            , string pConnectionString
+             string pConnectionString
             , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
@@ -149,7 +148,7 @@ ORDER BY FULL_TABLE_NAME
             {
                 string tableName = row["TABLE_NAME"].ToString();
                 string schemaName = row["TABLE_SCHEMA"].ToString();
-                CodeGenerateOneTable(template, pConnectionString, tableName, schemaName, pDatabaseName, pProjectNamespace
+                CodeGenerateOneTable( pConnectionString, tableName, schemaName, pDatabaseName, pProjectNamespace
                     , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerKullan
@@ -176,8 +175,8 @@ ORDER BY FULL_TABLE_NAME
             return userName;
         }
 
-        public void CodeGenerateOneTable(AdoTemplate template
-            , string pConnectionString
+        public void CodeGenerateOneTable(
+             string pConnectionString
             , string pTableName
             , string pSchemaName
             , string pDatabaseName
@@ -192,9 +191,8 @@ ORDER BY FULL_TABLE_NAME
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new OracleOutput();
-            DatabaseOracle database = new DatabaseOracle(template,pConnectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
 
-            ITable table = database.getTable(pTableName, pSchemaName);
+            ITable table = this.getTable(pTableName, pSchemaName);
 
 
             typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
@@ -209,7 +207,7 @@ ORDER BY FULL_TABLE_NAME
         }
 
 
-        public string getDefaultSchema(AdoTemplate template)
+        public string getDefaultSchema()
         {
             string connectionString = template.Connection.ConnectionString;
             return getUserNameFromConnection(connectionString);

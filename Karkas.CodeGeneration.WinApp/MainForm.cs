@@ -209,13 +209,13 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void databaseNameLabelDoldur()
         {
-            labelDatabaseNameSonuc.Text = databaseHelper.getDatabaseName(template);
+            labelDatabaseNameSonuc.Text = databaseHelper.getDatabaseName();
         }
 
 
         private void listBoxTableListDoldur()
         {
-            DataTable dtTableList = databaseHelper.getTableListFromSchema(template, comboBoxSchemaList.Text);
+            DataTable dtTableList = databaseHelper.getTableListFromSchema( comboBoxSchemaList.Text);
             listBoxTableListesi.DataSource = dtTableList;
         }
 
@@ -223,11 +223,11 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void comboBoxSchemaListDoldur( )
         {
-            DataTable dtSchemaList = databaseHelper.getSchemaList(template);
+            DataTable dtSchemaList = databaseHelper.getSchemaList();
             if (dtSchemaList.Rows.Count > 0)
             {
                 comboBoxSchemaList.DataSource = dtSchemaList;
-                comboBoxSchemaList.Text = databaseHelper.getDefaultSchema(template);
+                comboBoxSchemaList.Text = databaseHelper.getDefaultSchema();
             }
         }
 
@@ -252,7 +252,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            databaseHelper.CodeGenerateAllTables(template, textBoxConnectionString.Text
+            databaseHelper.CodeGenerateAllTables( textBoxConnectionString.Text
                 , labelDatabaseNameSonuc.Text
                 , textBoxProjectNamespace.Text
             , textBoxCodeGenerationDizini.Text
@@ -305,7 +305,7 @@ namespace Karkas.CodeGeneration.WinApp
                 DataRowView view = (DataRowView)item;
                 string tableSchema = view["TABLE_SCHEMA"].ToString();
                 string tableName = view["TABLE_NAME"].ToString();
-                databaseHelper.CodeGenerateOneTable(template,textBoxConnectionString.Text
+                databaseHelper.CodeGenerateOneTable(textBoxConnectionString.Text
                     , tableName
                     , tableSchema
                     , labelDatabaseNameSonuc.Text

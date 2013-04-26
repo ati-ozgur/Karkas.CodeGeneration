@@ -124,28 +124,28 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         DatabaseSqlite database;
 
 
-        public string getDatabaseName(AdoTemplate template)
+        public string getDatabaseName()
         {
             return template.Connection.Database;
         }
 
-        public string getDefaultSchema(AdoTemplate template)
+        public string getDefaultSchema()
         {
             return "";
         }
 
-        public DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
+        public DataTable getTableListFromSchema( string schemaName)
         {
             return database.getTableList();
         }
 
-        public DataTable getSchemaList(AdoTemplate template)
+        public DataTable getSchemaList()
         {
             return new DataTable();
         }
 
-        public void CodeGenerateAllTables(AdoTemplate template
-            , string pConnectionString
+        public void CodeGenerateAllTables(
+             string pConnectionString
             , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
@@ -160,8 +160,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             foreach (ITable table in database.Tables)
             {
                 CodeGenerateOneTable(
-                    template
-                    , pConnectionString
+                     pConnectionString
                     , table.Name
                     , table.Schema
                     , pDatabaseName
@@ -175,8 +174,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         }
 
-        public void CodeGenerateOneTable(AdoTemplate template
-            , string pConnectionString
+        public void CodeGenerateOneTable(
+             string pConnectionString
             , string pTableName
             , string pSchemaName
             , string pDatabaseName
