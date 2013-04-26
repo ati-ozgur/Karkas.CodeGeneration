@@ -20,6 +20,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         string memberVariableName = "";
         string propertyVariableName = "";
         string pkAdi = "";
+        string pkAdiPascalCase = "";
         string pkType = "";
 
 
@@ -65,6 +66,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             pkType = utils.PrimaryKeyTipiniBul(container);
             pkAdi = utils.PrimaryKeyAdiniBul(container);
+            pkAdiPascalCase = utils.GetPascalCase(pkAdi);
 
 
             usingNamespaceleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceBsWithSchema, baseNameSpaceDalWithSchema);
@@ -78,7 +80,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             {
                 SilKomutuYazPkIle(output, container);
 
-                sorgulaPkAdiIleYaz(output, container,classNameTypeLibrary, pkType, pkAdi);
+                sorgulaPkAdiIleYaz(output, container, classNameTypeLibrary, pkType, pkAdiPascalCase);
             }
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);

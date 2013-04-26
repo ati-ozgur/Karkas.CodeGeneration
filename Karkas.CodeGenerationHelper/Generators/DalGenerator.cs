@@ -21,6 +21,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         string baseNameSpace = "";
         string baseNameSpaceTypeLibrary = "";
         string pkAdi = "";
+        string pkAdiPascalCase = "";
         string pkType = "";
         string identityColumnAdi = "";
         bool identityVarmi = false;
@@ -48,6 +49,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             baseNameSpaceTypeLibrary = baseNameSpace + ".TypeLibrary";
 
             pkAdi = utils.PrimaryKeyAdiniBul(container);
+            pkAdiPascalCase = utils.GetPascalCase(pkAdi);
             identityColumnAdi = utils.IdentityColumnAdiniBul(container);
             
             if (container is ITable && (!((ITable) container).HasPrimaryKey ))
@@ -96,7 +98,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             InsertStringYaz(output, container, semaIsminiSorgulardaKullan, ref identityVarmi);
 
 
-            SorgulaPkIleGetirYaz(output, classNameTypeLibrary, pkAdi, pkType);
+            SorgulaPkIleGetirYaz(output, classNameTypeLibrary, pkAdiPascalCase, pkType);
 
             IdentityVarMiYaz(output, identityVarmi);
 
