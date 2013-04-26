@@ -36,7 +36,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		get 
 		{
-			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,SemaIsminiSorgulardaKullan,SemaIsminiDizinlerdeKullan,SysTablolariniAtla,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
+			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
 		}
 	}
 	protected override string DeleteString
@@ -52,7 +52,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		{
 			return @"UPDATE DatabaseEntry
 			 SET 
-			ConnectionDatabaseType = @ConnectionDatabaseType,ConnectionString = @ConnectionString,DatabaseNamePhysical = @DatabaseNamePhysical,DatabaseNameLogical = @DatabaseNameLogical,ProjectNameSpace = @ProjectNameSpace,CodeGenerationDirectory = @CodeGenerationDirectory,ViewCodeGenerateEtsinMi = @ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi = @StoredProcedureCodeGenerateEtsinMi,SemaIsminiSorgulardaKullan = @SemaIsminiSorgulardaKullan,SemaIsminiDizinlerdeKullan = @SemaIsminiDizinlerdeKullan,SysTablolariniAtla = @SysTablolariniAtla,IgnoredSchemaList = @IgnoredSchemaList,AbbrevationsAsString = @AbbrevationsAsString,CreationTime = @CreationTime,LastAccessTime = @LastAccessTime,LastWriteTime = @LastWriteTime			
+			ConnectionDatabaseType = @ConnectionDatabaseType,ConnectionString = @ConnectionString,DatabaseNamePhysical = @DatabaseNamePhysical,DatabaseNameLogical = @DatabaseNameLogical,ProjectNameSpace = @ProjectNameSpace,CodeGenerationDirectory = @CodeGenerationDirectory,ViewCodeGenerateEtsinMi = @ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi = @StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries = @UseSchemaNameInSqlQueries,UseSchemaNameInFolders = @UseSchemaNameInFolders,IgnoreSystemTables = @IgnoreSystemTables,IgnoredSchemaList = @IgnoredSchemaList,AbbrevationsAsString = @AbbrevationsAsString,CreationTime = @CreationTime,LastAccessTime = @LastAccessTime,LastWriteTime = @LastWriteTime			
 			WHERE 
 			 ConnectionName = @ConnectionName ";
 		}
@@ -62,9 +62,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		get 
 		{
 			return @"INSERT INTO DatabaseEntry 
-			 (ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,SemaIsminiSorgulardaKullan,SemaIsminiDizinlerdeKullan,SysTablolariniAtla,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
+			 (ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
 			 VALUES 
-						(@ConnectionName,@ConnectionDatabaseType,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerateEtsinMi,@StoredProcedureCodeGenerateEtsinMi,@SemaIsminiSorgulardaKullan,@SemaIsminiDizinlerdeKullan,@SysTablolariniAtla,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
+						(@ConnectionName,@ConnectionDatabaseType,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerateEtsinMi,@StoredProcedureCodeGenerateEtsinMi,@UseSchemaNameInSqlQueries,@UseSchemaNameInFolders,@IgnoreSystemTables,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
 		}
 	}
 	public DatabaseEntry SorgulaConnectionNameIle(string p1)
@@ -129,9 +129,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		row.CodeGenerationDirectory = dr.GetString(6);
 		row.ViewCodeGenerateEtsinMi = dr.GetString(7);
 		row.StoredProcedureCodeGenerateEtsinMi = dr.GetString(8);
-		row.SemaIsminiSorgulardaKullan = dr.GetString(9);
-		row.SemaIsminiDizinlerdeKullan = dr.GetString(10);
-		row.SysTablolariniAtla = dr.GetString(11);
+		row.UseSchemaNameInSqlQueries = dr.GetString(9);
+		row.UseSchemaNameInFolders = dr.GetString(10);
+		row.IgnoreSystemTables = dr.GetString(11);
 		row.IgnoredSchemaList = dr.GetString(12);
 		if (!dr.IsDBNull(13))
 		{
@@ -162,9 +162,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
 		builder.parameterEkle("@ViewCodeGenerateEtsinMi",DbType.String, row.ViewCodeGenerateEtsinMi);
 		builder.parameterEkle("@StoredProcedureCodeGenerateEtsinMi",DbType.String, row.StoredProcedureCodeGenerateEtsinMi);
-		builder.parameterEkle("@SemaIsminiSorgulardaKullan",DbType.String, row.SemaIsminiSorgulardaKullan);
-		builder.parameterEkle("@SemaIsminiDizinlerdeKullan",DbType.String, row.SemaIsminiDizinlerdeKullan);
-		builder.parameterEkle("@SysTablolariniAtla",DbType.String, row.SysTablolariniAtla);
+		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
+		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
+		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
 		builder.parameterEkle("@IgnoredSchemaList",DbType.String, row.IgnoredSchemaList);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@CreationTime",DbType.String, row.CreationTime);
@@ -183,9 +183,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
 		builder.parameterEkle("@ViewCodeGenerateEtsinMi",DbType.String, row.ViewCodeGenerateEtsinMi);
 		builder.parameterEkle("@StoredProcedureCodeGenerateEtsinMi",DbType.String, row.StoredProcedureCodeGenerateEtsinMi);
-		builder.parameterEkle("@SemaIsminiSorgulardaKullan",DbType.String, row.SemaIsminiSorgulardaKullan);
-		builder.parameterEkle("@SemaIsminiDizinlerdeKullan",DbType.String, row.SemaIsminiDizinlerdeKullan);
-		builder.parameterEkle("@SysTablolariniAtla",DbType.String, row.SysTablolariniAtla);
+		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
+		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
+		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
 		builder.parameterEkle("@IgnoredSchemaList",DbType.String, row.IgnoredSchemaList);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@CreationTime",DbType.String, row.CreationTime);

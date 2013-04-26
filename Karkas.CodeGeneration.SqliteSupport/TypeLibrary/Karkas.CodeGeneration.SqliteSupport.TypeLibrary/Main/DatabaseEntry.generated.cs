@@ -25,9 +25,9 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		private string codeGenerationDirectory;
 		private string viewCodeGenerateEtsinMi;
 		private string storedProcedureCodeGenerateEtsinMi;
-		private string semaIsminiSorgulardaKullan;
-		private string semaIsminiDizinlerdeKullan;
-		private string sysTablolariniAtla;
+		private string useSchemaNameInSqlQueries;
+		private string useSchemaNameInFolders;
+		private string ignoreSystemTables;
 		private string ignoredSchemaList;
 		private string abbrevationsAsString;
 		private string creationTime;
@@ -206,59 +206,59 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string SemaIsminiSorgulardaKullan
+		public string UseSchemaNameInSqlQueries
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return semaIsminiSorgulardaKullan;
+				return useSchemaNameInSqlQueries;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (semaIsminiSorgulardaKullan!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (useSchemaNameInSqlQueries!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				semaIsminiSorgulardaKullan = value;
+				useSchemaNameInSqlQueries = value;
 			}
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string SemaIsminiDizinlerdeKullan
+		public string UseSchemaNameInFolders
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return semaIsminiDizinlerdeKullan;
+				return useSchemaNameInFolders;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (semaIsminiDizinlerdeKullan!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (useSchemaNameInFolders!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				semaIsminiDizinlerdeKullan = value;
+				useSchemaNameInFolders = value;
 			}
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string SysTablolariniAtla
+		public string IgnoreSystemTables
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return sysTablolariniAtla;
+				return ignoreSystemTables;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (sysTablolariniAtla!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (ignoreSystemTables!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				sysTablolariniAtla = value;
+				ignoreSystemTables = value;
 			}
 		}
 
@@ -368,9 +368,9 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		public const string CodeGenerationDirectory = "CodeGenerationDirectory";
 		public const string ViewCodeGenerateEtsinMi = "ViewCodeGenerateEtsinMi";
 		public const string StoredProcedureCodeGenerateEtsinMi = "StoredProcedureCodeGenerateEtsinMi";
-		public const string SemaIsminiSorgulardaKullan = "SemaIsminiSorgulardaKullan";
-		public const string SemaIsminiDizinlerdeKullan = "SemaIsminiDizinlerdeKullan";
-		public const string SysTablolariniAtla = "SysTablolariniAtla";
+		public const string UseSchemaNameInSqlQueries = "UseSchemaNameInSqlQueries";
+		public const string UseSchemaNameInFolders = "UseSchemaNameInFolders";
+		public const string IgnoreSystemTables = "IgnoreSystemTables";
 		public const string IgnoredSchemaList = "IgnoredSchemaList";
 		public const string AbbrevationsAsString = "AbbrevationsAsString";
 		public const string CreationTime = "CreationTime";
@@ -389,9 +389,9 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 			obj.codeGenerationDirectory = codeGenerationDirectory;
 			obj.viewCodeGenerateEtsinMi = viewCodeGenerateEtsinMi;
 			obj.storedProcedureCodeGenerateEtsinMi = storedProcedureCodeGenerateEtsinMi;
-			obj.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
-			obj.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
-			obj.sysTablolariniAtla = sysTablolariniAtla;
+			obj.useSchemaNameInSqlQueries = useSchemaNameInSqlQueries;
+			obj.useSchemaNameInFolders = useSchemaNameInFolders;
+			obj.ignoreSystemTables = ignoreSystemTables;
 			obj.ignoredSchemaList = ignoredSchemaList;
 			obj.abbrevationsAsString = abbrevationsAsString;
 			obj.creationTime = creationTime;
@@ -410,9 +410,9 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationDirectory"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ViewCodeGenerateEtsinMi"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "StoredProcedureCodeGenerateEtsinMi"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SemaIsminiSorgulardaKullan"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SemaIsminiDizinlerdeKullan"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SysTablolariniAtla"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "UseSchemaNameInSqlQueries"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "UseSchemaNameInFolders"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "IgnoreSystemTables"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "IgnoredSchemaList"));	}
 	public static class EtiketIsimleri
 	{
@@ -552,48 +552,48 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				}
 			}
 		}
-		public static string SemaIsminiSorgulardaKullan
+		public static string UseSchemaNameInSqlQueries
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SemaIsminiSorgulardaKullan"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".UseSchemaNameInSqlQueries"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "SemaIsminiSorgulardaKullan";
+					return "UseSchemaNameInSqlQueries";
 				}
 			}
 		}
-		public static string SemaIsminiDizinlerdeKullan
+		public static string UseSchemaNameInFolders
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SemaIsminiDizinlerdeKullan"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".UseSchemaNameInFolders"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "SemaIsminiDizinlerdeKullan";
+					return "UseSchemaNameInFolders";
 				}
 			}
 		}
-		public static string SysTablolariniAtla
+		public static string IgnoreSystemTables
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SysTablolariniAtla"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".IgnoreSystemTables"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "SysTablolariniAtla";
+					return "IgnoreSystemTables";
 				}
 			}
 		}
