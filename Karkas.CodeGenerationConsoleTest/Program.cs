@@ -59,7 +59,8 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     , 
                     true,
                     true, 
-                    true, 
+                    true,
+                    true,
                     null
                     );
         }
@@ -79,6 +80,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     , true
                     , true
                     , false
+                    , false
                     , null);
 
             }
@@ -97,6 +99,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                 , true
                 , true
                 ,true
+                , true
                 ,null);
 
         }

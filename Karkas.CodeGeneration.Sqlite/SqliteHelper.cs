@@ -67,13 +67,24 @@ namespace Karkas.CodeGeneration.Sqlite
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DatabaseSqlite database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
 
             foreach (ITable table in database.Tables)
             {
-                CodeGenerateOneTable(template, pConnectionString, table.Name, table.Schema, pDatabaseName, pProjectNamespace, pProjectFolder, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+                CodeGenerateOneTable(
+                    template
+                    , pConnectionString
+                    , table.Name
+                    , table.Schema
+                    , pDatabaseName
+                    , pProjectNamespace
+                    , pProjectFolder
+                    , semaIsminiSorgulardaKullan
+                    , semaIsminiDizinlerdeKullan
+                    , listDatabaseAbbreviations);
             }
 
 
@@ -87,6 +98,7 @@ namespace Karkas.CodeGeneration.Sqlite
             , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             if (pTableName.StartsWith("sqlite_"))
@@ -104,7 +116,7 @@ namespace Karkas.CodeGeneration.Sqlite
 
 
             typeGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
-            dalGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            dalGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             bsGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
 

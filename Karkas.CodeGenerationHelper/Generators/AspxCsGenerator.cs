@@ -55,7 +55,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.decreaseTab();
             output.autoTabLn("}");
 
-            string savePath = Path.Combine(utils.FileUtilsHelper.ProjeDizininiAl(database), "WebApp\\" + utils.GetPascalCase(table.Schema) + "\\" + formName + ".aspx.cs");
+            string savePath = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database), "WebApp\\" + utils.GetPascalCase(table.Schema) + "\\" + formName + ".aspx.cs");
             output.save(savePath, true);
             output.clear();
 

@@ -33,7 +33,7 @@
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
-            this.checkBoxUseSchemaName = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseSchemaNameInSql = new System.Windows.Forms.CheckBox();
             this.checkBoxSysTablolariniAtla = new System.Windows.Forms.CheckBox();
             this.checkBoxDboSemasiniAtla = new System.Windows.Forms.CheckBox();
             this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
@@ -100,7 +100,7 @@
             // 
             // panelListe
             // 
-            this.panelListe.Controls.Add(this.checkBoxUseSchemaName);
+            this.panelListe.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.panelListe.Controls.Add(this.checkBoxSysTablolariniAtla);
             this.panelListe.Controls.Add(this.checkBoxDboSemasiniAtla);
             this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
@@ -117,16 +117,16 @@
             // 
             // checkBoxUseSchemaName
             // 
-            this.checkBoxUseSchemaName.AutoSize = true;
-            this.checkBoxUseSchemaName.Checked = true;
-            this.checkBoxUseSchemaName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseSchemaName.Location = new System.Drawing.Point(560, 55);
-            this.checkBoxUseSchemaName.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseSchemaName.Name = "checkBoxUseSchemaName";
-            this.checkBoxUseSchemaName.Size = new System.Drawing.Size(110, 30);
-            this.checkBoxUseSchemaName.TabIndex = 8;
-            this.checkBoxUseSchemaName.Text = "Sorgularda Şema \r\nİsmini Kullan";
-            this.checkBoxUseSchemaName.UseVisualStyleBackColor = true;
+            this.checkBoxUseSchemaNameInSql.AutoSize = true;
+            this.checkBoxUseSchemaNameInSql.Checked = true;
+            this.checkBoxUseSchemaNameInSql.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseSchemaNameInSql.Location = new System.Drawing.Point(560, 55);
+            this.checkBoxUseSchemaNameInSql.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseSchemaNameInSql.Name = "checkBoxUseSchemaName";
+            this.checkBoxUseSchemaNameInSql.Size = new System.Drawing.Size(110, 30);
+            this.checkBoxUseSchemaNameInSql.TabIndex = 8;
+            this.checkBoxUseSchemaNameInSql.Text = "Sorgularda Şema \r\nİsmini Kullan";
+            this.checkBoxUseSchemaNameInSql.UseVisualStyleBackColor = true;
             // 
             // checkBoxSysTablolariniAtla
             // 
@@ -411,7 +411,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
-        private System.Windows.Forms.CheckBox checkBoxUseSchemaName;
+        private System.Windows.Forms.CheckBox checkBoxUseSchemaNameInSql;
     }
 }
 

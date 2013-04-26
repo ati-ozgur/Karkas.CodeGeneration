@@ -36,7 +36,11 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        public string Render(IOutput output, IContainer container,bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public string Render(IOutput output
+            , IContainer container
+            ,bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             output.tabLevel = 0;
             IDatabase database = container.Database;
@@ -68,8 +72,8 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             listeType = "List<" + classNameTypeLibrary + ">";
 
-            string outputFullFileNameGenerated = Path.Combine(utils.FileUtilsHelper.ProjeDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.generated.cs");
-            string outputFullFileName = Path.Combine(utils.FileUtilsHelper.ProjeDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.cs");
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForDalGenerated(database,schemaName,semaIsminiDizinlerdeKullan);
+            string outputFullFileName = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.cs");
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 
@@ -129,6 +133,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
         }
+
 
         private void PrimaryKeyYaz(IOutput output, IContainer container)
         {

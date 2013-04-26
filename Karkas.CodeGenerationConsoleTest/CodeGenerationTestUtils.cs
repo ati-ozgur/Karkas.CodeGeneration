@@ -29,6 +29,7 @@ namespace Karkas.CodeGeneration.Helper
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -46,6 +47,7 @@ namespace Karkas.CodeGeneration.Helper
                 , dboSemaTablolariniAtla
                 , sysTablolariniAtla
                 , semaIsminiSorgulardaKullan
+                , semaIsminiDizinlerdeKullan
                 , listDatabaseAbbreviations
 
                 );

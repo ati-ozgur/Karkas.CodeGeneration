@@ -88,7 +88,8 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             ,bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
             ,bool semaIsminiSorgulardaKullan
-            ,List<DatabaseAbbreviations> listDatabaseAbbreviations
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
@@ -110,7 +111,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
                     continue;
                 }
                 typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
-                dalGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+                dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
                 bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
             }
         }
@@ -123,6 +124,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
@@ -135,7 +137,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             ITable table = database.getTable(pTableName, pSchemaName);
 
             typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
-            dalGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            dalGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
 

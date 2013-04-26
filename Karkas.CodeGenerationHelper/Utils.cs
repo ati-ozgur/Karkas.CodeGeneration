@@ -55,15 +55,30 @@ namespace Karkas.CodeGenerationHelper
             gen.Render(output, proc);
         }
 
-        public string RenderDalCode(IOutput output, ITable table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public string RenderDalCode(IOutput output
+            , ITable table
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DalGenerator gen = helper.DalGenerator;
-            return gen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            return gen.Render(output
+                , table
+                ,semaIsminiSorgulardaKullan
+                , semaIsminiDizinlerdeKullan
+            , listDatabaseAbbreviations);
         }
-        public void RenderDalCode(IOutput output, IView view, bool semaIsminiSorgulardaKullan,  List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderDalCode(IOutput output
+            , IView view
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            ,  List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             DalGenerator gen = helper.DalGenerator;
-            gen.Render(output, view, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+            gen.Render(output
+                , view
+                , semaIsminiSorgulardaKullan
+                , semaIsminiSorgulardaKullan
+                , listDatabaseAbbreviations);
         }
 
 

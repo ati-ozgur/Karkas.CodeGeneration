@@ -44,6 +44,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations            
             );
 
@@ -55,6 +56,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations  
             );
 

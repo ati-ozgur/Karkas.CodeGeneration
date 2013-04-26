@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
+using System.IO;
 
 namespace Karkas.CodeGenerationHelper
 {
@@ -19,10 +20,27 @@ namespace Karkas.CodeGenerationHelper
 
         public class FileUtils
         {
-            public string ProjeDizininiAl(IDatabase database)
+            public string ProjeAnaDizininiAl(IDatabase database)
             {
                 return database.projectFolder;
             }
+
+            public string getBaseNameForDalGenerated(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, database.projectNameSpace + "Dal.generated.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" , database.projectNameSpace + "Dal.generated.cs");
+                }
+            }
+
+
+
+
+
         }
 	}
 }
