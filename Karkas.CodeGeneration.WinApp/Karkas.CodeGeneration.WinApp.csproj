@@ -174,7 +174,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="connectionsDb.sql" />
-    <Content Include="createDatabase.sql" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
