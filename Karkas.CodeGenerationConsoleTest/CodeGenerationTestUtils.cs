@@ -33,7 +33,7 @@ namespace Karkas.CodeGeneration.Helper
             )
         {
             DbConnection connection = null;
-            AdoTemplate template = new AdoTemplate();
+            AdoTemplate template = null;
             Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
             Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
 

@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using Karkas.CodeGenerationHelper;
 
-namespace Karkas.MyGenerationTest
+namespace Karkas.CodeGeneration.ConsoleTest
 {
     [TestFixture]
     public class TurkishHelperTest

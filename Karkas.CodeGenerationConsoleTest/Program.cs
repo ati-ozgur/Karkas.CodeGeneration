@@ -4,7 +4,6 @@ using System.Text;
 using Karkas.CodeGenerationHelper;
 using Karkas.CodeGenerationHelper.Generators;
 using System.Configuration;
-using Karkas.MyGenerationTest;
 using Karkas.Core.DataUtil;
 using Karkas.CodeGenerationHelper.SmoHelpers;
 using Karkas.CodeGeneration.SqlServer;
@@ -18,7 +17,7 @@ using System.Data.SQLite;
 using Karkas.CodeGeneration.Sqlite;
 using Karkas.CodeGeneration.Helper;
 
-namespace Karkas.MyGenerationConsoleTest
+namespace Karkas.CodeGeneration.ConsoleTest
 {
     public class Program
     {
