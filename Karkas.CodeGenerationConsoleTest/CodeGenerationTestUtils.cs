@@ -32,8 +32,8 @@ namespace Karkas.CodeGeneration.Helper
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             )
         {
-            DbConnection connection = null;
             AdoTemplate template = null;
+            DbConnection connection = null;
             Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
             Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
 
@@ -46,10 +46,10 @@ namespace Karkas.CodeGeneration.Helper
                 connection.ConnectionString = connectionString;
                 connection.Open();
                 connection.Close();
-                template = new AdoTemplate();
-                template.Connection = connection;
-                template.DbProviderName = assemblyName;
             }
+            template = new AdoTemplate();
+            template.Connection = connection;
+            template.DbProviderName = assemblyName;
             IDatabaseHelper helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
             helper.CodeGenerateAllTables(template,
                 connectionString
