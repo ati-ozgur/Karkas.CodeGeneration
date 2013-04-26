@@ -145,8 +145,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         }
 
         public void CodeGenerateAllTables(
-             string pDatabaseName
-            , string pProjectNamespace
+             string pProjectNamespace
             , string pProjectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
@@ -154,14 +153,13 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
 
             foreach (ITable table in database.Tables)
             {
                 CodeGenerateOneTable(
                      table.Name
                     , table.Schema
-                    , pDatabaseName
                     , pProjectNamespace
                     , pProjectFolder
                     , semaIsminiSorgulardaKullan
@@ -175,7 +173,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
@@ -191,7 +188,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqliteOutput();
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
 
             ITable table = database.getTable(pTableName, pSchemaName);
 

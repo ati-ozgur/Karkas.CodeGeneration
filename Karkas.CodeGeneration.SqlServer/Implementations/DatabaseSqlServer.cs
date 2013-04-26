@@ -161,8 +161,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
 
         public void CodeGenerateAllTables(
-             string pDatabaseName
-            , string pProjectNamespace
+             string pProjectNamespace
             , string pProjectFolder
             ,bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
@@ -175,7 +174,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqlServerOutput();
-            DatabaseSqlServer database = new DatabaseSqlServer(template,connectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlServer database = new DatabaseSqlServer(template,connectionString, databaseName, pProjectNamespace, pProjectFolder);
 
             List<ITable> tableListesi = database.Tables;
 
@@ -198,7 +197,6 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
@@ -210,7 +208,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqlServerOutput();
-            DatabaseSqlServer database = new DatabaseSqlServer(template, connectionString, pDatabaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlServer database = new DatabaseSqlServer(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
 
             ITable table = database.getTable(pTableName, pSchemaName);
 
