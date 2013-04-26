@@ -86,11 +86,11 @@ namespace Karkas.CodeGeneration.WinApp
                 String type = comboBoxDatabaseType.SelectedItem.ToString();
                 if (type == null || type == DatabaseType.SqlServer)
                 {
-                    testSqlServer(connectionString);
+                    testSqlServer(connectionString,textBoxDatabaseName.Text);
                 }
                 else if (type == DatabaseType.Oracle)
                 {
-                    testOracle(connectionString);
+                    testOracle(connectionString,textBoxDatabaseName.Text);
 
                 }
                 else if (type == DatabaseType.Sqlite)
@@ -116,7 +116,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         }
 
-        private void testOracle(string connectionString)
+        private void testOracle(string connectionString,string databaseName)
         {
             Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
             Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
@@ -133,7 +133,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
-                databaseHelper = new OracleHelper();
+                databaseHelper = new OracleHelper(template, databaseName);
 
 
             }
@@ -156,14 +156,14 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
-                databaseHelper = new SqliteHelper(template, connection.ConnectionString, connection.Database);
+                databaseHelper = new SqliteHelper(template,  connection.Database);
 
 
             }
         }
 
 
-        private void testSqlServer(string connectionString)
+        private void testSqlServer(string connectionString,string databaseName)
         {
             connection = new SqlConnection(connectionString);
             connection.Open();
@@ -172,7 +172,7 @@ namespace Karkas.CodeGeneration.WinApp
             template.Connection = connection;
             template.DbProviderName = "System.Data.SqlClient";
 
-            databaseHelper = new SqlServerHelper();
+            databaseHelper = new SqlServerHelper(template, databaseName);
         }
 
 

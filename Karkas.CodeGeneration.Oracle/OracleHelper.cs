@@ -15,6 +15,30 @@ namespace Karkas.CodeGeneration.Oracle
     public class OracleHelper : IDatabaseHelper
     {
 
+        AdoTemplate template;
+
+        public AdoTemplate Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
+        string connectionString;
+        string databaseName;
+
+        public string DatabaseName
+        {
+            get { return databaseName; }
+            set { databaseName = value; }
+        }
+
+        public OracleHelper(AdoTemplate template,string databaseName)
+        {
+            this.template = template;
+            this.connectionString = template.Connection.ConnectionString;
+            this.databaseName = databaseName;
+
+        }
+
 
 
         private const string SQL_FOR_DATABASE_NAME = "select sys_context('userenv','db_name') from dual";

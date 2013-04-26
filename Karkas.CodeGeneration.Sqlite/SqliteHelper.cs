@@ -15,16 +15,28 @@ namespace Karkas.CodeGeneration.Sqlite
     {
 
         AdoTemplate template;
+
+        public AdoTemplate Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
         string connectionString;
         string databaseName;
+
+        public string DatabaseName
+        {
+            get { return databaseName; }
+            set { databaseName = value; }
+        }
         DatabaseSqlite database;
 
-        public SqliteHelper(AdoTemplate template, string pConnectionString, string pDatabaseName)
+        public SqliteHelper(AdoTemplate template, string pDatabaseName)
         {
             this.template = template;
-            this.connectionString = pConnectionString;
+            this.connectionString = template.Connection.ConnectionString;
             this.databaseName = pDatabaseName;
-            this.database = new DatabaseSqlite(template, pConnectionString, pDatabaseName, "", "");
+            this.database = new DatabaseSqlite(template, this.connectionString, pDatabaseName, "", "");
         }
 
         public string getDatabaseName(AdoTemplate template)

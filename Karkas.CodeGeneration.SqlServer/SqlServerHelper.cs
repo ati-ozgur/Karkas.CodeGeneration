@@ -15,6 +15,32 @@ namespace Karkas.CodeGeneration.SqlServer
     public class SqlServerHelper : IDatabaseHelper
     {
 
+        AdoTemplate template;
+
+        public AdoTemplate Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
+        string connectionString;
+        string databaseName;
+
+        public string DatabaseName
+        {
+            get { return databaseName; }
+            set { databaseName = value; }
+        }
+
+        public SqlServerHelper(AdoTemplate template,string databaseName)
+        {
+            this.template = template;
+            this.connectionString = template.Connection.ConnectionString;
+            this.databaseName = databaseName;
+
+        }
+
+
+
         private const string SQL__FOR_SCHEMA_LIST = @"
 SELECT '__TUM_SCHEMALAR__' AS TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES
 UNION

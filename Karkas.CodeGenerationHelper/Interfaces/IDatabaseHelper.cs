@@ -10,6 +10,21 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 {
     public interface IDatabaseHelper
     {
+
+
+        AdoTemplate Template
+        {
+            get;
+            set;
+        }
+        
+        string DatabaseName
+        {
+            get; 
+            set;
+        }
+
+
         string getDatabaseName(AdoTemplate template);
 
         //string DatabaseNameLogical

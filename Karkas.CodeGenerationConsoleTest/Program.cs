@@ -16,12 +16,13 @@ using System.Runtime.Remoting;
 using System.Data.Common;
 using System.Data.SQLite;
 using Karkas.CodeGeneration.Sqlite;
+using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 
 namespace Karkas.MyGenerationConsoleTest
 {
     public class Program
     {
-        public const string _SqlServerExampleConnectionString = "Data Source=localhost;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
+        public const string _SqlServerExampleConnectionString = @"Data Source=localhost\SQLSERVER2012;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
         public const string _SqliteExampleConnectionString = @"Data Source=P:\karkasGit\svn\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.sqlite";
 
@@ -35,8 +36,8 @@ namespace Karkas.MyGenerationConsoleTest
 
 
 
-            //OracleTest();
-            //SqlServerTest();
+            OracleTest();
+            SqlServerTest();
             SqliteTest();
             //simpleSqliteConnectionTest();
         }
@@ -63,6 +64,8 @@ namespace Karkas.MyGenerationConsoleTest
 
         private static void databaseGenerationTestGenerateAllTables(
             String assemblyName
+            , String dbProviderName
+            , String dbDatabaseType
             ,String connectionClassName
             ,String connectionString
             , string pDatabaseName
@@ -92,9 +95,9 @@ namespace Karkas.MyGenerationConsoleTest
                 template.Connection = connection;
                 template.DbProviderName = assemblyName;
             }
-            IDatabaseHelper helper = new SqliteHelper(template, connection.ConnectionString, connection.Database);
-            helper.CodeGenerateAllTables(template, 
-                _SqliteExampleConnectionString
+            IDatabaseHelper helper = getDatabaseHelper( dbDatabaseType,template, pDatabaseName);
+            helper.CodeGenerateAllTables(template,
+                connectionString
                 ,  pDatabaseName
                 ,  pProjectNamespace
                 ,  pProjectFolder
@@ -107,11 +110,32 @@ namespace Karkas.MyGenerationConsoleTest
         }
 
 
+        public static IDatabaseHelper getDatabaseHelper(String databaseType,AdoTemplate template,String databaseName)
+        {
+            IDatabaseHelper helper = null;
+            switch(databaseType)
+            {
+                case DatabaseType.SqlServer:
+                    helper = new SqlServerHelper(template,databaseName);
+                    break;
+                case DatabaseType.Oracle:
+                    helper = new OracleHelper(template,databaseName);
+                    break;
+                case DatabaseType.Sqlite:
+                    helper = new SqliteHelper(template, databaseName);
+                    break;
+            }
+            return helper;
+        }
+
+
 
         private static void SqliteTest()
         {
             databaseGenerationTestGenerateAllTables(
                     "System.Data.SQLite"
+                    , "System.Data.SQLite"
+                    , DatabaseType.Sqlite
                     ,"System.Data.SQLite.SQLiteConnection"
                     ,_SqliteExampleConnectionString
                     , "main",
@@ -127,41 +151,39 @@ namespace Karkas.MyGenerationConsoleTest
 
         private static void OracleTest()
         {
-            DbConnection connection = null;
-            AdoTemplate template = new AdoTemplate();
-            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.OracleClient");
-            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.OracleClient.OracleConnection");
 
-            if (objReflection != null && objReflection is ObjectHandle)
-            {
-                ObjectHandle handle = (ObjectHandle)objReflection;
+            databaseGenerationTestGenerateAllTables(
+                    "System.Data.OracleClient"
+                    , "System.Data.OracleClient"
+                    , DatabaseType.Oracle
+                    , "System.Data.OracleClient.OracleConnection"
+                    , _OracleExampleConnectionString
+                    ,"ORACLEDEVDAYS"
+                    , "Karkas.OracleExample"
+                    , "P:\\Denemeler\\karkas\\Examples\\Karkas.OracleExample"
+                    , true
+                    , true
+                    , true
+                    , null);
 
-                Object objConnection = handle.Unwrap();
-                connection = (DbConnection)objConnection;
-                connection.ConnectionString = _OracleExampleConnectionString;
-                connection.Open();
-                connection.Close();
-                template = new AdoTemplate();
-                template.Connection = connection;
-                template.DbProviderName = "System.Data.OracleClient";
             }
-            IDatabaseHelper helper = new OracleHelper();
-
-
-            helper.CodeGenerateOneTable(template, _OracleExampleConnectionString, "JOB_HISTORY", "HR", "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\Examples\\karkas\\Karkas.OracleExample",true, null);
-
-
-            helper.CodeGenerateAllTables(template, _OracleExampleConnectionString, "ORACLEDEVDAYS", "Karkas.OracleExample", "D:\\projects\\karkas\\Examples\\Karkas.OracleExample", true, true, true, null);
-        }
 
         private static void SqlServerTest()
         {
-            ConnectionSingleton.Instance.ConnectionString = _SqlServerExampleConnectionString;
+            databaseGenerationTestGenerateAllTables(
+                "System.Data"
+                , "System.Data.SqlClient"
+                , DatabaseType.SqlServer
+                , "System.Data.SqlClient.SqlConnection"
+                , _SqlServerExampleConnectionString
+                , "KARKAS_ORNEK"
+                , "Karkas.Ornek"
+                , "P:\\Denemeler\\karkas\\Examples\\Karkas.Ornek"
+                , true
+                , true
+                ,true
+                ,null);
 
-            IDatabaseHelper helper = new SqlServerHelper();
-
-            helper.CodeGenerateAllTables(null, _SqlServerExampleConnectionString, "KARKAS_ORNEK", "Karkas.Ornek", "D:\\projects\\karkasTrunk\\Karkas.Ornek", true, true,true,null);
-            helper.CodeGenerateOneTable(null, _SqlServerExampleConnectionString, "ORNEK_TABLO", "ORNEKLER", "KARKAS_ORNEK", "Karkas.Ornek", "D:\\projects\\karkasTrunk\\Karkas.Ornek",true,null);
         }
 
 
