@@ -108,16 +108,27 @@ namespace Karkas.CodeGenerationHelper
             BsGenerator gen = new BsGenerator(helper);
             gen.Render(output, view, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
         }
-        public void RenderBsWrapperCode(IOutput output, ITable table)
+
+        public void RenderBsWrapperCode(IOutput output
+        , IView view
+        , bool semaIsminiSorgulardaKullan
+        , bool semaIsminiDizinlerdeKullan
+        , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             BsWrapperGenerator gen = new BsWrapperGenerator(helper);
-            gen.Render(output, table);
+            gen.Render(output, view, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
         }
-        public void RenderBsWrapperCode(IOutput output, IView view)
+
+        public void RenderBsWrapperCode(IOutput output
+        , ITable view
+        , bool semaIsminiSorgulardaKullan
+        , bool semaIsminiDizinlerdeKullan
+        , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             BsWrapperGenerator gen = new BsWrapperGenerator(helper);
-            gen.Render(output, view);
+            gen.Render(output, view, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
         }
+
 
 
 

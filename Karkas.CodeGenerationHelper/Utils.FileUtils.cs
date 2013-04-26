@@ -60,6 +60,30 @@ namespace Karkas.CodeGenerationHelper
             }
 
 
+            public string getBaseNameForBsWrapperGenerated(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, database.projectNameSpace + "BsWrapper.generated.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", database.projectNameSpace + "BsWrapper.generated.cs");
+                }
+            }
+            public string getBaseNameForBsWrapper(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, database.projectNameSpace + "BsWrapper.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", database.projectNameSpace + "BsWrapper.cs");
+                }
+            }
+
+
             public string getBaseNameForDalGenerated(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)

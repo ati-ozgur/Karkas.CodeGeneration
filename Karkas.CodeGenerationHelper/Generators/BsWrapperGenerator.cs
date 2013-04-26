@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using Karkas.CodeGenerationHelper.Interfaces;
+using System.Collections.Generic;
 
 namespace Karkas.CodeGenerationHelper.Generators
 {
@@ -35,7 +36,12 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
         Utils utils = null;
 
-        public void Render(IOutput output, IContainer container)
+                    public void Render(IOutput output
+            , IContainer container
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations)
+
         {
             
             output.tabLevel = 0;
@@ -88,8 +94,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
-            string outputFullFileNameGenerated = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + baseNameSpace + ".BsWrapper\\" + schemaName, classNameTypeLibrary + "BsWrapper.generated.cs");
-            string outputFullFileName = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + baseNameSpace + ".BsWrapper\\" + schemaName, classNameTypeLibrary + "BsWrapper.cs");
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForBsWrapperGenerated(database, schemaName, semaIsminiDizinlerdeKullan);
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForBsWrapper(database, schemaName, semaIsminiDizinlerdeKullan); 
             output.saveEncoding(outputFullFileNameGenerated, "o", "utf8");
             output.clear();
 
