@@ -55,7 +55,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         string dbProviderName;
 
-        public string DbProviderName
+        public string ConnectionDbProviderName
         {
             get { return dbProviderName; }
             set { dbProviderName = value; }

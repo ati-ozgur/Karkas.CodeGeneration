@@ -62,7 +62,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         string dbProviderName;
 
-        public string DbProviderName
+        public string ConnectionDbProviderName
         {
             get { return dbProviderName; }
             set { dbProviderName = value; }

@@ -71,7 +71,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         string dbProviderName;
 
-        public string DbProviderName
+        public string ConnectionDbProviderName
         {
             get { return dbProviderName; }
             set { dbProviderName = value; }
