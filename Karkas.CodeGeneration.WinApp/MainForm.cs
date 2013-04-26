@@ -254,7 +254,7 @@ namespace Karkas.CodeGeneration.WinApp
             ,checkBoxDboSemasiniAtla.Checked
             ,checkBoxSysTablolariniAtla.Checked
             , checkBoxUseSchemaNameInSql.Checked
-            , checkBoxUseSchemaNameInSql.Checked
+            , checkBoxDizinlerseSemaIsmi.Checked
             , null
             );
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
@@ -307,7 +307,7 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxProjectNamespace.Text
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxUseSchemaNameInSql.Checked
+                    , checkBoxDizinlerseSemaIsmi.Checked
                     , getSampleAbbreviations()
                     );
 

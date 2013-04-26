@@ -56,6 +56,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
+            this.checkBoxDizinlerseSemaIsmi = new System.Windows.Forms.CheckBox();
             this.panelListe.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +101,6 @@
             // 
             // panelListe
             // 
-            this.panelListe.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.panelListe.Controls.Add(this.checkBoxSysTablolariniAtla);
             this.panelListe.Controls.Add(this.checkBoxDboSemasiniAtla);
             this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
@@ -115,14 +115,14 @@
             this.panelListe.Size = new System.Drawing.Size(693, 346);
             this.panelListe.TabIndex = 5;
             // 
-            // checkBoxUseSchemaName
+            // checkBoxUseSchemaNameInSql
             // 
             this.checkBoxUseSchemaNameInSql.AutoSize = true;
             this.checkBoxUseSchemaNameInSql.Checked = true;
             this.checkBoxUseSchemaNameInSql.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseSchemaNameInSql.Location = new System.Drawing.Point(560, 55);
+            this.checkBoxUseSchemaNameInSql.Location = new System.Drawing.Point(309, 111);
             this.checkBoxUseSchemaNameInSql.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseSchemaNameInSql.Name = "checkBoxUseSchemaName";
+            this.checkBoxUseSchemaNameInSql.Name = "checkBoxUseSchemaNameInSql";
             this.checkBoxUseSchemaNameInSql.Size = new System.Drawing.Size(110, 30);
             this.checkBoxUseSchemaNameInSql.TabIndex = 8;
             this.checkBoxUseSchemaNameInSql.Text = "Sorgularda Şema \r\nİsmini Kullan";
@@ -348,11 +348,26 @@
             this.buttonNewConnection.UseVisualStyleBackColor = true;
             this.buttonNewConnection.Click += new System.EventHandler(this.buttonNewConnection_Click);
             // 
+            // checkBoxDizinlerseSemaIsmi
+            // 
+            this.checkBoxDizinlerseSemaIsmi.AutoSize = true;
+            this.checkBoxDizinlerseSemaIsmi.Checked = true;
+            this.checkBoxDizinlerseSemaIsmi.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDizinlerseSemaIsmi.Location = new System.Drawing.Point(309, 150);
+            this.checkBoxDizinlerseSemaIsmi.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxDizinlerseSemaIsmi.Name = "checkBoxDizinlerseSemaIsmi";
+            this.checkBoxDizinlerseSemaIsmi.Size = new System.Drawing.Size(105, 30);
+            this.checkBoxDizinlerseSemaIsmi.TabIndex = 20;
+            this.checkBoxDizinlerseSemaIsmi.Text = "Dizinlerde Şema \r\nİsmini Kullan";
+            this.checkBoxDizinlerseSemaIsmi.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 679);
+            this.Controls.Add(this.checkBoxDizinlerseSemaIsmi);
+            this.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
             this.Controls.Add(this.label2);
@@ -412,6 +427,7 @@
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
         private System.Windows.Forms.CheckBox checkBoxUseSchemaNameInSql;
+        private System.Windows.Forms.CheckBox checkBoxDizinlerseSemaIsmi;
     }
 }
 
