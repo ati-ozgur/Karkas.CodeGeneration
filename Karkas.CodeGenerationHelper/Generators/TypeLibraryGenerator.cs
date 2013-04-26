@@ -97,6 +97,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("using Karkas.Core.TypeLibrary;");
             output.autoTabLn("using Karkas.Core.Onaylama;");
             output.autoTabLn("using Karkas.Core.Onaylama.ForPonos;");
+            output.autoTabLn("using System.ComponentModel.DataAnnotations;");
             output.autoTabLn("");
             output.autoTab("namespace ");
             output.autoTabLn(classNameSpace);
@@ -239,6 +240,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 string propertyVariableName = utils.getPropertyVariableName(column);
                 output.autoTabLn("[DebuggerBrowsable(DebuggerBrowsableState.Never)]");
                 output.autoTabLn("[XmlIgnore, SoapIgnore]");
+                output.autoTabLn("[ScaffoldColumn(false)]");
                 output.autoTabLn(string.Format("public string {0}AsString", propertyVariableName));
                 output.autoTabLn("{");
                 output.increaseTab();
