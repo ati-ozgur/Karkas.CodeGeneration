@@ -42,7 +42,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
             database.ConnectionName = this.ConnectionName;
             database.ConnectionString = this.ConnectionString;
             database.DatabaseNameLogical = this.databaseNameLogical;
-            database.DatabaseNamePhysical = this.DatabaseNameLogical;
+            database.DatabaseNamePhysical = this.DatabaseNamePhysical;
             database.ConnectionDbProviderName = this.ConnectionDbProviderName;
             database.IgnoredSchemaList = this.IgnoredSchemaList;
             database.IgnoreSystemTables = Convert.ToBoolean(this.IgnoreSystemTables);
