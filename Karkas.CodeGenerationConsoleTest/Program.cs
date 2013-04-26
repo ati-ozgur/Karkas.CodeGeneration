@@ -48,7 +48,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
 
         private static void SqliteTest()
         {
-            CodeGenerationTestUtils.databaseGenerationTestGenerateAllTables(
+            CodeGenerationTestUtils.DatabaseGenerationTestGenerateAllTables(
                     "System.Data.SQLite"
                     , "System.Data.SQLite"
                     , DatabaseType.Sqlite
@@ -68,7 +68,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
         private static void OracleTest()
         {
 
-            CodeGenerationTestUtils.databaseGenerationTestGenerateAllTables(
+            CodeGenerationTestUtils.DatabaseGenerationTestGenerateAllTables(
                     "System.Data.OracleClient"
                     , "System.Data.OracleClient"
                     , DatabaseType.Oracle
@@ -86,7 +86,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
 
         private static void SqlServerTest()
         {
-            CodeGenerationTestUtils.databaseGenerationTestGenerateAllTables(
+            CodeGenerationTestUtils.DatabaseGenerationTestGenerateAllTables(
                 "System.Data"
                 , "System.Data.SqlClient"
                 , DatabaseType.SqlServer

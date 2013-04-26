@@ -17,7 +17,7 @@ namespace Karkas.CodeGeneration.Helper
     public class CodeGenerationTestUtils
     {
 
-        public static void databaseGenerationTestGenerateAllTables(
+        public static void DatabaseGenerationTestGenerateAllTables(
             String assemblyName
             , String dbProviderName
             , String dbDatabaseType
