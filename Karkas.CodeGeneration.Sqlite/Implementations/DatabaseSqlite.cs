@@ -13,8 +13,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
     public class DatabaseSqlite : IDatabase
     {
-        
 
+        public DatabaseSqlite(AdoTemplate template)
+        {
+            this.template = template;
+        }
 
         public DatabaseSqlite(AdoTemplate template
             , String connectionString

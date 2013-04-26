@@ -214,17 +214,8 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
-                databaseHelper = new DatabaseOracle(
-                    template,connectionString
-                    , databaseName
-                    ,textBoxProjectNamespace.Text
-                    ,textBoxCodeGenerationDizini.Text
-                    , "System.Data.OracleClient"
-                    , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxUseSchemaNameInFolders.Checked
-                    , checkBoxIgnoreSystemTables.Checked
-                    , null
-                    );
+                databaseHelper = new DatabaseOracle( template);
+                currentDatabaseEntry.setIDatabaseValues(databaseHelper);
                     
 
             }
@@ -247,18 +238,9 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
-                databaseHelper = new DatabaseSqlite(
-                    template
-                    , connectionString
-                    , "main"
-                    , textBoxProjectNamespace.Text
-                    , textBoxCodeGenerationDizini.Text
-                    , "System.Data.SQLite"
-                    , checkBoxUseSchemaNameInSql.Checked
-                    ,checkBoxUseSchemaNameInFolders.Checked
-                    , checkBoxIgnoreSystemTables.Checked
-                    , null
-                    );
+                databaseHelper = new DatabaseSqlite( template);
+                currentDatabaseEntry.setIDatabaseValues(databaseHelper);
+
                     
 
 
@@ -275,18 +257,9 @@ namespace Karkas.CodeGeneration.WinApp
             template.Connection = connection;
             template.DbProviderName = "System.Data.SqlClient";
 
-            databaseHelper = new DatabaseSqlServer(template
-                    , connectionString
-                    , databaseName
-                    , textBoxProjectNamespace.Text
-                    , textBoxCodeGenerationDizini.Text
-                    , "System.Data.SqlClient"
-                    , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxUseSchemaNameInFolders.Checked
-                    , checkBoxIgnoreSystemTables.Checked
-                    , null
-                    );
-            
+            databaseHelper = new DatabaseSqlServer( template);
+            currentDatabaseEntry.setIDatabaseValues(databaseHelper);
+
         }
 
 

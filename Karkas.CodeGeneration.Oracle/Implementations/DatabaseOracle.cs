@@ -14,9 +14,14 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
     public class DatabaseOracle : IDatabase
     {
 
+        public DatabaseOracle(AdoTemplate template)
+        {
+            this.template = template;
+        }
 
-        public DatabaseOracle(AdoTemplate pTemplate
-            ,String pConnectionString
+
+        public DatabaseOracle(AdoTemplate template
+            ,string connectionString
             , string pDatabaseName
             , string pProjectNameSpace
             , string pProjectFolder
@@ -28,9 +33,9 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
             )
         {
-            this.template = pTemplate;
+            this.template = template;
 
-            this.connectionString = pConnectionString;
+            this.connectionString = connectionString;
 
             this.projectNameSpace = pProjectNameSpace;
             this.codeGenerationDirectory = pProjectFolder;

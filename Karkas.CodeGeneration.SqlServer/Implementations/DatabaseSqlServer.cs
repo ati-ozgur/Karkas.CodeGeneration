@@ -21,6 +21,10 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Database smoDatabase;
 
         string codeGenerationDirectory;
+        public DatabaseSqlServer(AdoTemplate template)
+        {
+            this.template = template;
+        }
 
         public DatabaseSqlServer(
             AdoTemplate template
