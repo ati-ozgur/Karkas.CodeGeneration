@@ -65,9 +65,9 @@ namespace Karkas.CodeGeneration.WinApp
             {
                 textBoxCodeGenerationDizini.Text = entry.CodeGenerationDirectory;
             }
-            if (!string.IsNullOrWhiteSpace(entry.CodeGenerationNamespace))
+            if (!string.IsNullOrWhiteSpace(entry.ProjectNameSpace))
             {
-                textBoxProjectNamespace.Text = entry.CodeGenerationNamespace;
+                textBoxProjectNamespace.Text = entry.ProjectNameSpace;
             }
             textBoxDatabaseName.Text = entry.ConnectionName;
             comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
@@ -291,7 +291,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             currentDatabaseEntry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
             currentDatabaseEntry.ConnectionName = textBoxDatabaseName.Text;
-            currentDatabaseEntry.CodeGenerationNamespace = textBoxProjectNamespace.Text;
+            currentDatabaseEntry.ProjectNameSpace = textBoxProjectNamespace.Text;
             currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
             currentDatabaseEntry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
             currentDatabaseEntry.setTimeValues();
@@ -342,9 +342,6 @@ namespace Karkas.CodeGeneration.WinApp
 
             if (frm.SelectedDatabaseEntry != null)
             {
-                frm.SelectedDatabaseEntry.LastAccessTime = DateTime.UtcNow.ToShortDateString();
-
-                DatabaseService.Guncelle(frm.SelectedDatabaseEntry);
 
                 databaseEntryToForm(frm.SelectedDatabaseEntry);
             }

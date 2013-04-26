@@ -23,15 +23,15 @@ namespace Karkas.CodeGeneration.ConsoleTest
     {
         public const string _SqlServerExampleConnectionString = @"Data Source=localhost\SQLSERVER2012;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
-        public const string _SqliteExampleConnectionString = @"Data Source=P:\karkasGit\svn\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.sqlite";
+        public const string _SqliteExampleConnectionString = @"Data Source=P:\github\karkas\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.sqlite";
 
 
         public static void Main(string[] args)
         {
 
-            OracleTest();
+            //OracleTest();
             SqliteTest();
-            SqlServerTest();
+            //SqlServerTest();
         }
 
 
@@ -49,12 +49,12 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     ,_SqliteExampleConnectionString
                     , "main",
                     "Karkas.CodeGeneration.SqliteSupport"
-                    , @"P:\denemeler\karkas\Examples\Karkas.CodeGeneration.SqliteSupport"
+                    , @"P:\denemeler\karkas\ornekler\Karkas.Ornek.SqliteOrnek"
                     , 
                     true,
                     true, 
-                    true,
-                    true,
+                    false,
+                    false,
                     null
                     );
         }
@@ -70,7 +70,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     , _OracleExampleConnectionString
                     ,"ORACLEDEVDAYS"
                     , "Karkas.OracleExample"
-                    , @"P:\Denemeler\karkas\Examples\Karkas.OracleExample"
+                    , @"P:\denemeler\karkas\ornekler\Karkas.Ornek.OracleOrnek"
                     , true
                     , true
                     , false
@@ -89,7 +89,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                 , _SqlServerExampleConnectionString
                 , "KARKAS_ORNEK"
                 , "Karkas.Ornek"
-                , "P:\\Denemeler\\karkas\\Examples\\Karkas.Ornek"
+                , @"P:\denemeler\karkas\ornekler\Karkas.Ornek.SqlServerOrnek"
                 , true
                 , true
                 ,true

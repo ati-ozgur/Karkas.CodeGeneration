@@ -18,10 +18,18 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	{
 		private string connectionName;
 		private string connectionDatabaseType;
-		private string abbrevationsAsString;
 		private string connectionString;
+		private string databaseNamePhysical;
+		private string databaseNameLogical;
+		private string projectNameSpace;
 		private string codeGenerationDirectory;
-		private string codeGenerationNamespace;
+		private string viewCodeGenerateEtsinMi;
+		private string storedProcedureCodeGenerateEtsinMi;
+		private string semaIsminiSorgulardaKullan;
+		private string semaIsminiDizinlerdeKullan;
+		private string sysTablolariniAtla;
+		private string ignoredSchemaList;
+		private string abbrevationsAsString;
 		private string creationTime;
 		private string lastAccessTime;
 		private string lastWriteTime;
@@ -65,25 +73,6 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string AbbrevationsAsString
-		{
-			[DebuggerStepThrough]
-			get
-			{
-				return abbrevationsAsString;
-			}
-			[DebuggerStepThrough]
-			set
-			{
-				if ((this.RowState == DataRowState.Unchanged) && (abbrevationsAsString!= value))
-				{
-					this.RowState = DataRowState.Modified;
-				}
-				abbrevationsAsString = value;
-			}
-		}
-
-		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public string ConnectionString
 		{
 			[DebuggerStepThrough]
@@ -99,6 +88,63 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 					this.RowState = DataRowState.Modified;
 				}
 				connectionString = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string DatabaseNamePhysical
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return databaseNamePhysical;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (databaseNamePhysical!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				databaseNamePhysical = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string DatabaseNameLogical
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return databaseNameLogical;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (databaseNameLogical!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				databaseNameLogical = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string ProjectNameSpace
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return projectNameSpace;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (projectNameSpace!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				projectNameSpace = value;
 			}
 		}
 
@@ -122,21 +168,135 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string CodeGenerationNamespace
+		public string ViewCodeGenerateEtsinMi
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return codeGenerationNamespace;
+				return viewCodeGenerateEtsinMi;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (codeGenerationNamespace!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (viewCodeGenerateEtsinMi!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				codeGenerationNamespace = value;
+				viewCodeGenerateEtsinMi = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string StoredProcedureCodeGenerateEtsinMi
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return storedProcedureCodeGenerateEtsinMi;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (storedProcedureCodeGenerateEtsinMi!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				storedProcedureCodeGenerateEtsinMi = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string SemaIsminiSorgulardaKullan
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return semaIsminiSorgulardaKullan;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (semaIsminiSorgulardaKullan!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				semaIsminiSorgulardaKullan = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string SemaIsminiDizinlerdeKullan
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return semaIsminiDizinlerdeKullan;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (semaIsminiDizinlerdeKullan!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				semaIsminiDizinlerdeKullan = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string SysTablolariniAtla
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return sysTablolariniAtla;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (sysTablolariniAtla!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				sysTablolariniAtla = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string IgnoredSchemaList
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return ignoredSchemaList;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (ignoredSchemaList!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				ignoredSchemaList = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string AbbrevationsAsString
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return abbrevationsAsString;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (abbrevationsAsString!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				abbrevationsAsString = value;
 			}
 		}
 
@@ -201,10 +361,18 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	{
 		public const string ConnectionName = "ConnectionName";
 		public const string ConnectionDatabaseType = "ConnectionDatabaseType";
-		public const string AbbrevationsAsString = "AbbrevationsAsString";
 		public const string ConnectionString = "ConnectionString";
+		public const string DatabaseNamePhysical = "DatabaseNamePhysical";
+		public const string DatabaseNameLogical = "DatabaseNameLogical";
+		public const string ProjectNameSpace = "ProjectNameSpace";
 		public const string CodeGenerationDirectory = "CodeGenerationDirectory";
-		public const string CodeGenerationNamespace = "CodeGenerationNamespace";
+		public const string ViewCodeGenerateEtsinMi = "ViewCodeGenerateEtsinMi";
+		public const string StoredProcedureCodeGenerateEtsinMi = "StoredProcedureCodeGenerateEtsinMi";
+		public const string SemaIsminiSorgulardaKullan = "SemaIsminiSorgulardaKullan";
+		public const string SemaIsminiDizinlerdeKullan = "SemaIsminiDizinlerdeKullan";
+		public const string SysTablolariniAtla = "SysTablolariniAtla";
+		public const string IgnoredSchemaList = "IgnoredSchemaList";
+		public const string AbbrevationsAsString = "AbbrevationsAsString";
 		public const string CreationTime = "CreationTime";
 		public const string LastAccessTime = "LastAccessTime";
 		public const string LastWriteTime = "LastWriteTime";
@@ -214,10 +382,18 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 			DatabaseEntry obj = new DatabaseEntry();
 			obj.connectionName = connectionName;
 			obj.connectionDatabaseType = connectionDatabaseType;
-			obj.abbrevationsAsString = abbrevationsAsString;
 			obj.connectionString = connectionString;
+			obj.databaseNamePhysical = databaseNamePhysical;
+			obj.databaseNameLogical = databaseNameLogical;
+			obj.projectNameSpace = projectNameSpace;
 			obj.codeGenerationDirectory = codeGenerationDirectory;
-			obj.codeGenerationNamespace = codeGenerationNamespace;
+			obj.viewCodeGenerateEtsinMi = viewCodeGenerateEtsinMi;
+			obj.storedProcedureCodeGenerateEtsinMi = storedProcedureCodeGenerateEtsinMi;
+			obj.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
+			obj.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
+			obj.sysTablolariniAtla = sysTablolariniAtla;
+			obj.ignoredSchemaList = ignoredSchemaList;
+			obj.abbrevationsAsString = abbrevationsAsString;
 			obj.creationTime = creationTime;
 			obj.lastAccessTime = lastAccessTime;
 			obj.lastWriteTime = lastWriteTime;
@@ -230,8 +406,14 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionDatabaseType"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionString"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ProjectNameSpace"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationDirectory"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationNamespace"));	}
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ViewCodeGenerateEtsinMi"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "StoredProcedureCodeGenerateEtsinMi"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SemaIsminiSorgulardaKullan"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SemaIsminiDizinlerdeKullan"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "SysTablolariniAtla"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "IgnoredSchemaList"));	}
 	public static class EtiketIsimleri
 	{
 		const string namespaceVeClass = "Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main";
@@ -265,21 +447,6 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				}
 			}
 		}
-		public static string AbbrevationsAsString
-		{
-			get
-			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".AbbrevationsAsString"];
-				if (s != null)
-				{
-					return s;
-				}
-				else
-				{
-					return "AbbrevationsAsString";
-				}
-			}
-		}
 		public static string ConnectionString
 		{
 			get
@@ -292,6 +459,51 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				else
 				{
 					return "ConnectionString";
+				}
+			}
+		}
+		public static string DatabaseNamePhysical
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".DatabaseNamePhysical"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "DatabaseNamePhysical";
+				}
+			}
+		}
+		public static string DatabaseNameLogical
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".DatabaseNameLogical"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "DatabaseNameLogical";
+				}
+			}
+		}
+		public static string ProjectNameSpace
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".ProjectNameSpace"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "ProjectNameSpace";
 				}
 			}
 		}
@@ -310,18 +522,108 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				}
 			}
 		}
-		public static string CodeGenerationNamespace
+		public static string ViewCodeGenerateEtsinMi
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".CodeGenerationNamespace"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".ViewCodeGenerateEtsinMi"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "CodeGenerationNamespace";
+					return "ViewCodeGenerateEtsinMi";
+				}
+			}
+		}
+		public static string StoredProcedureCodeGenerateEtsinMi
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".StoredProcedureCodeGenerateEtsinMi"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "StoredProcedureCodeGenerateEtsinMi";
+				}
+			}
+		}
+		public static string SemaIsminiSorgulardaKullan
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SemaIsminiSorgulardaKullan"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "SemaIsminiSorgulardaKullan";
+				}
+			}
+		}
+		public static string SemaIsminiDizinlerdeKullan
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SemaIsminiDizinlerdeKullan"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "SemaIsminiDizinlerdeKullan";
+				}
+			}
+		}
+		public static string SysTablolariniAtla
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".SysTablolariniAtla"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "SysTablolariniAtla";
+				}
+			}
+		}
+		public static string IgnoredSchemaList
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".IgnoredSchemaList"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "IgnoredSchemaList";
+				}
+			}
+		}
+		public static string AbbrevationsAsString
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".AbbrevationsAsString"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "AbbrevationsAsString";
 				}
 			}
 		}

@@ -21,7 +21,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 
         public override string ToString()
         {
-            return this.ConnectionName + "," + this.CodeGenerationNamespace;
+            return this.ConnectionName + "," + this.ProjectNameSpace;
         }
 
 

@@ -26,7 +26,7 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
         {
             DatabaseEntry de = new DatabaseEntry();
             de.CodeGenerationDirectory = "P:\\karkas\\Karkas.Ornek";
-            de.CodeGenerationNamespace = "Karkas.Ornek";
+            de.ProjectNameSpace = "Karkas.Ornek";
             de.ConnectionDatabaseType = DatabaseType.SqlServer;
             de.ConnectionName = "KARKAS_ORNEK";
             
