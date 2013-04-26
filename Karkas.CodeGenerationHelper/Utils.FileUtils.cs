@@ -25,6 +25,18 @@ namespace Karkas.CodeGenerationHelper
                 return database.projectFolder;
             }
 
+            public string getCreateRelationScriptsFullName(ITable table)
+            {
+                return Path.Combine(ProjeAnaDizininiAl(table.Database) + "\\Database\\CreateRelationScripts\\" + table.Schema, table.Schema + "_" + table.Name + ".Relations.sql");
+            }
+
+            public  string getCreateScriptsFullName(ITable table)
+            {
+                return Path.Combine(ProjeAnaDizininiAl(table.Database) + "\\Database\\CreateScripts\\" + table.Schema, table.Schema + "_" + table.Name + ".CreateTable.sql");
+            }
+
+
+
             public string getBaseNameForDalGenerated(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
