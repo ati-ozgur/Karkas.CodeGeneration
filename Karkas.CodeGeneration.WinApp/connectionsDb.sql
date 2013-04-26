@@ -9,9 +9,9 @@ ConnectionName TEXT primary key
 ,CodeGenerationDirectory TEXT NOT NULL
 ,ViewCodeGenerateEtsinMi TEXT NOT NULL
 ,StoredProcedureCodeGenerateEtsinMi TEXT NOT NULL
-,SemaIsminiSorgulardaKullan TEXT NOT NULL
-,SemaIsminiDizinlerdeKullan TEXT NOT NULL
-,SysTablolariniAtla TEXT NOT NULL
+,UseSchemaNameInSqlQueries TEXT NOT NULL
+,UseSchemaNameInFolders TEXT NOT NULL
+,IgnoreSystemTables TEXT NOT NULL
 ,IgnoredSchemaList TEXT NOT NULL
 ,AbbrevationsAsString TEXT
 ,CreationTime TEXT
