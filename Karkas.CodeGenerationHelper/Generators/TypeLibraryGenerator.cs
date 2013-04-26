@@ -293,7 +293,6 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("return obj;");
             output.decreaseTab();
             output.autoTabLn("}");
-            output.decreaseTab();
             output.autoTabLn("");
 
         }
