@@ -8,67 +8,11 @@ using Karkas.CodeGenerationHelper.Generators;
 
 namespace Karkas.CodeGenerationHelper.Interfaces
 {
-    public interface IDatabase
+    public interface IDatabase : ICodeGenerationPersistanceValues
     {
-        string Name { get; set; }
-        string ProjectNameSpace { get; }
-        string ProjectFolder { get; }
-
-
-        string DatabaseNamePhysical
-        {
-            get;
-        }
-
-        string DatabaseNameLogical
-        {
-            get;
-            set;
-        }
-
-        string getDefaultSchema();
-
-        //string DatabaseNameLogical
-        //{
-        //    get;
-        //}
-
-        bool SemaIsminiSorgulardaKullan
-        {
-            get;
-            set;
-        }
-
-        bool SemaIsminiDizinlerdeKullan
-        {
-            get;
-            set;
-        }
-
-        List<DatabaseAbbreviations> ListDatabaseAbbreviations
-        {
-            get;
-            set;
-        }
-
-        bool DboSemaTablolariniAtla
-        {
-            get;
-            set;
-        }
-        bool SysTablolariniAtla
-        {
-            get;
-            set;
-        }
-
-
-
-
-        
         DataTable getSchemaList();
 
-
+        string getDefaultSchema();
 
         AdoTemplate Template
         {
@@ -77,32 +21,19 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         }
 
         List<ITable> Tables { get; }
+        DataTable getTableListFromSchema(string schemaName);
 
         ITable getTable(string pTableName, string pSchemaName);
 
-
-
-
-
-
-        DataTable getTableListFromSchema(string schemaName);
-
         void CodeGenerateAllTables();
-
         void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
             );
 
-
         DalGenerator DalGenerator
         {
             get;
         }
-
-
-
-
-
     }
 }
