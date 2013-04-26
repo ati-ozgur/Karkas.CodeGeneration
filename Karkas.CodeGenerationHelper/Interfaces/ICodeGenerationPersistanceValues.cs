@@ -15,8 +15,6 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         string DatabaseNameLogical { get; set; }
         string ProjectNameSpace { get; set; }
         string CodeGenerationDirectory { get; set; }
-        string IgnoredSchemaList { get; set; }
-        string DatabaseAbbreviations { get; set; }
 
         bool ViewCodeGenerate { get; set; }
         bool StoredProcedureCodeGenerate { get; set; }
@@ -25,6 +23,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         bool IgnoreSystemTables { get; set; }
 
 
+        string IgnoredSchemaList { get; set; }
+        string DatabaseAbbreviations { get; set; }
 
     }
 }
