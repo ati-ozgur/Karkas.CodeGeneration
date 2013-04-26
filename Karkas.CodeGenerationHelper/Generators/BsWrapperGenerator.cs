@@ -29,7 +29,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         string pkAdi = "";
         string pkType = "";
 
-        public BsWrapperGenerator(IDatabaseHelper databaseHelper)
+        public BsWrapperGenerator(IDatabase databaseHelper)
         {
 
             utils = new Utils(databaseHelper);

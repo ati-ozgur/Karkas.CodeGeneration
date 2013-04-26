@@ -27,7 +27,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         string listeType = "";
         string identityType = "";
 
-        public DalGenerator(IDatabaseHelper databaseHelper)
+        public DalGenerator(IDatabase databaseHelper)
         {
             utils = new Utils(databaseHelper);
 

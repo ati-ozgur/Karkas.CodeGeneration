@@ -9,7 +9,7 @@ namespace Karkas.CodeGeneration.Sqlite.Generators
 {
     public class SqliteDalGenerator : DalGenerator
     {
-        public SqliteDalGenerator(IDatabaseHelper databaseHelper)
+        public SqliteDalGenerator(IDatabase databaseHelper)
             : base(databaseHelper)
         {
         }

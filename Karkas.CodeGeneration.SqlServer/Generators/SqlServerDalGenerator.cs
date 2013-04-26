@@ -9,7 +9,7 @@ namespace Karkas.CodeGeneration.SqlServer.Generators
 {
     public class SqlServerDalGenerator : DalGenerator
     {
-        public SqlServerDalGenerator(IDatabaseHelper databaseHelper)
+        public SqlServerDalGenerator(IDatabase databaseHelper)
             : base(databaseHelper)
         {
         }

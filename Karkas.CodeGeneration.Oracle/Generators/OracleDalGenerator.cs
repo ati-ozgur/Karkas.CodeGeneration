@@ -11,7 +11,7 @@ namespace Karkas.CodeGeneration.Oracle.Generators
     {
 
 
-       public OracleDalGenerator(IDatabaseHelper databaseHelper): base(databaseHelper)
+       public OracleDalGenerator(IDatabase databaseHelper): base(databaseHelper)
         {
         }
 

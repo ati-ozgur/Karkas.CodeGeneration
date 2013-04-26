@@ -29,7 +29,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         string baseNameSpaceDal = "";
         string baseNameSpaceBs = "";
 
-        public BsGenerator(IDatabaseHelper databaseHelper)
+        public BsGenerator(IDatabase databaseHelper)
         {
             utils = new Utils(databaseHelper);
 

@@ -11,7 +11,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 {
     public class TypeLibraryGenerator : BaseGenerator
     {
-        public TypeLibraryGenerator(IDatabaseHelper databaseHelper)
+        public TypeLibraryGenerator(IDatabase databaseHelper)
         {
             utils = new Utils(databaseHelper);
 

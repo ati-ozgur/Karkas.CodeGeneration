@@ -11,6 +11,9 @@ using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.SqlServer;
 using Karkas.CodeGeneration.Oracle;
 using Karkas.CodeGeneration.Sqlite;
+using Karkas.CodeGeneration.SqlServer.Implementations;
+using Karkas.CodeGeneration.Oracle.Implementations;
+using Karkas.CodeGeneration.Sqlite.Implementations;
 
 namespace Karkas.CodeGeneration.Helper
 {
@@ -38,7 +41,7 @@ namespace Karkas.CodeGeneration.Helper
             template = new AdoTemplate();
             template.Connection = connection;
             template.DbProviderName = assemblyName;
-            IDatabaseHelper helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
+            IDatabase helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
             helper.CodeGenerateAllTables(template,
                 connectionString
                 , pDatabaseName
@@ -73,19 +76,19 @@ namespace Karkas.CodeGeneration.Helper
         }
 
 
-        public static IDatabaseHelper getDatabaseHelper(String databaseType, AdoTemplate template, String databaseName)
+        public static IDatabase getDatabaseHelper(String databaseType, AdoTemplate template, String databaseName)
         {
-            IDatabaseHelper helper = null;
+            IDatabase helper = null;
             switch (databaseType)
             {
                 case DatabaseType.SqlServer:
-                    helper = new SqlServerHelper(template, databaseName);
+                    helper = new DatabaseSqlServer(template,null, databaseName, null, null);
                     break;
                 case DatabaseType.Oracle:
-                    helper = new OracleHelper(template, databaseName);
+                    helper = new DatabaseOracle( template,null, databaseName,null,null);
                     break;
                 case DatabaseType.Sqlite:
-                    helper = new SqliteHelper(template, databaseName);
+                    helper = new DatabaseSqlite( template, null, databaseName,null,null);
                     break;
             }
             return helper;

@@ -16,13 +16,13 @@ namespace Karkas.CodeGenerationHelper
     public partial class Utils
     {
 
-        public Utils(IDatabaseHelper pHelper)
+        public Utils(IDatabase pHelper)
         {
             helper = pHelper;
         }
 
 
-        private IDatabaseHelper helper;
+        private IDatabase helper;
 
         #region Generator Helper Fonksiyonlari
 

@@ -10,7 +10,7 @@ namespace Karkas.CodeGenerationHelper
     public class EnumHelper
     {
         TurkishHelper tHelper = new TurkishHelper();
-        public EnumHelper(IDatabaseHelper databaseHelper)
+        public EnumHelper(IDatabase databaseHelper)
         {
 
             utils = new Utils(databaseHelper);

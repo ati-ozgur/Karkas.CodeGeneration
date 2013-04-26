@@ -12,7 +12,7 @@ namespace Karkas.CodeGenerationHelper.Generators
     {
         InsertScriptHelper insertHelper = new InsertScriptHelper();
 
-        public InsertScriptsGenerator(IDatabaseHelper databaseHelper)
+        public InsertScriptsGenerator(IDatabase databaseHelper)
         {
 
             utils = new Utils(databaseHelper);

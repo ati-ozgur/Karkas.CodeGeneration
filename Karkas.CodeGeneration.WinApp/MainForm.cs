@@ -19,6 +19,9 @@ using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGeneration.Sqlite;
 using Karkas.CodeGeneration.Helper;
+using Karkas.CodeGeneration.Oracle.Implementations;
+using Karkas.CodeGeneration.Sqlite.Implementations;
+using Karkas.CodeGeneration.SqlServer.Implementations;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -135,7 +138,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
-                databaseHelper = new OracleHelper(template, databaseName);
+                databaseHelper = new DatabaseOracle(template,connectionString, databaseName,textBoxProjectNamespace.Text,textBoxCodeGenerationDizini.Text);
 
 
             }
@@ -158,7 +161,8 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
-                databaseHelper = new SqliteHelper(template,  connection.Database);
+                databaseHelper = new DatabaseSqlite(template, connectionString, "main", textBoxProjectNamespace.Text, textBoxCodeGenerationDizini.Text);
+                    
 
 
             }
@@ -174,7 +178,8 @@ namespace Karkas.CodeGeneration.WinApp
             template.Connection = connection;
             template.DbProviderName = "System.Data.SqlClient";
 
-            databaseHelper = new SqlServerHelper(template, databaseName);
+            databaseHelper = new DatabaseSqlServer(template, connectionString, databaseName, textBoxProjectNamespace.Text, textBoxCodeGenerationDizini.Text);
+            
         }
 
 
@@ -191,7 +196,7 @@ namespace Karkas.CodeGeneration.WinApp
 
 
 
-        private IDatabaseHelper databaseHelper;
+        private IDatabase databaseHelper;
 
 
         private void BilgileriDoldur( )

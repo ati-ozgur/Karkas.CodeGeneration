@@ -64,7 +64,6 @@
     <Compile Include="Implementations\DatabaseSqlServer.cs" />
     <Compile Include="Implementations\EnumHelper.cs" />
     <Compile Include="Implementations\TableSqlServer.cs" />
-    <Compile Include="SqlServerHelper.cs" />
     <Compile Include="SqlServerOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -38,7 +38,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         bool sorguSonucSetiTekElemanli = false;
         string sorguSonucuTekElemanTipi = "";
 
-        public SpGenerator(IDatabaseHelper databaseHelper)
+        public SpGenerator(IDatabase databaseHelper)
         {
 
             utils = new Utils(databaseHelper);

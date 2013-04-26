@@ -51,7 +51,6 @@
     <Compile Include="Implementations\DatabaseSqlite.cs" />
     <Compile Include="Implementations\TableSqlite.cs" />
     <Compile Include="SqliteOutput.cs" />
-    <Compile Include="SqliteHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
