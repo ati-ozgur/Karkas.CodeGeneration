@@ -23,7 +23,7 @@ namespace Karkas.MyGenerationConsoleTest
     {
         public const string _SqlServerExampleConnectionString = "Data Source=localhost;Initial Catalog=KARKAS_ORNEK;Integrated Security=True";
         public const string _OracleExampleConnectionString = "Data Source=ORACLEDEVDAYS;Persist Security Info=True;User ID=hr;Password=hr;Unicode=True";
-        public const string _SqliteExampleConnectionString = @"Data Source=P:\karkasGit\svn\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.db";
+        public const string _SqliteExampleConnectionString = @"Data Source=P:\karkasGit\svn\codeGeneration\Karkas.CodeGeneration.WinApp\connectionsDb.sqlite";
 
 
         public static void Main(string[] args)
@@ -61,12 +61,23 @@ namespace Karkas.MyGenerationConsoleTest
 
         }
 
-        private static void SqliteTest()
+        private static void databaseGenerationTestGenerateAllTables(
+            String assemblyName
+            ,String connectionClassName
+            ,String connectionString
+            , string pDatabaseName
+            , string pProjectNamespace
+            , string pProjectFolder
+            , bool dboSemaTablolariniAtla
+            , bool sysTablolariniAtla
+            , bool semaIsminiSorgulardaKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations
+            )
         {
             DbConnection connection = null;
             AdoTemplate template = new AdoTemplate();
-            Assembly oracleAssembly = Assembly.LoadWithPartialName("System.Data.SQLite");
-            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, "System.Data.SQLite.SQLiteConnection");
+            Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
 
             if (objReflection != null && objReflection is ObjectHandle)
             {
@@ -74,20 +85,44 @@ namespace Karkas.MyGenerationConsoleTest
 
                 Object objConnection = handle.Unwrap();
                 connection = (DbConnection)objConnection;
-                connection.ConnectionString = _SqliteExampleConnectionString;
+                connection.ConnectionString = connectionString;
                 connection.Open();
                 connection.Close();
                 template = new AdoTemplate();
                 template.Connection = connection;
-                template.DbProviderName = "System.Data.SQLite";
+                template.DbProviderName = assemblyName;
             }
-            IDatabaseHelper helper = new SqliteHelper(template,connection.ConnectionString,connection.Database);
+            IDatabaseHelper helper = new SqliteHelper(template, connection.ConnectionString, connection.Database);
+            helper.CodeGenerateAllTables(template, 
+                _SqliteExampleConnectionString
+                ,  pDatabaseName
+                ,  pProjectNamespace
+                ,  pProjectFolder
+                ,  dboSemaTablolariniAtla
+                ,  sysTablolariniAtla
+                ,  semaIsminiSorgulardaKullan
+                ,  listDatabaseAbbreviations
+                
+                );
+        }
 
 
-            //helper.CodeGenerateOneTable(template, _SqliteExampleConnectionString, "Actors", "main", "main", "Karkas.SqliteExample", "P:\\Denemeler\\karkas\\Karkas.SqliteExample", null);
 
-
-            helper.CodeGenerateAllTables(template, _SqliteExampleConnectionString, "main", "Karkas.CodeGeneration.SqliteSupport", "P:\\Denemeler\\karkas\\Karkas.CodeGeneration.SqliteSupport", true, true,true, null);
+        private static void SqliteTest()
+        {
+            databaseGenerationTestGenerateAllTables(
+                    "System.Data.SQLite"
+                    ,"System.Data.SQLite.SQLiteConnection"
+                    ,_SqliteExampleConnectionString
+                    , "main",
+                    "Karkas.CodeGeneration.SqliteSupport"
+                    , "P:\\Denemeler\\karkas\\Karkas.CodeGeneration.SqliteSupport"
+                    , 
+                    true,
+                    true, 
+                    true, 
+                    null
+                    );
         }
 
         private static void OracleTest()
