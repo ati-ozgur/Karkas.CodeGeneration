@@ -72,8 +72,8 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             listeType = "List<" + classNameTypeLibrary + ">";
 
-            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForDalGenerated(database,schemaName,semaIsminiDizinlerdeKullan);
-            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForDal(database, schemaName, semaIsminiDizinlerdeKullan);
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForDalGenerated(database, schemaName, classNameTypeLibrary,semaIsminiDizinlerdeKullan);
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForDal(database, schemaName, classNameTypeLibrary,semaIsminiDizinlerdeKullan);
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 

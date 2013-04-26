@@ -25,76 +25,76 @@ namespace Karkas.CodeGenerationHelper
                 return database.projectFolder;
             }
 
-            public string getBaseNameForBsWrapperGenerated(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            public string getBaseNameForBsWrapperGenerated(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, database.projectNameSpace + "BsWrapper.generated.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, className + "BsWrapper.generated.cs");
                 }
                 else
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", database.projectNameSpace + "BsWrapper.generated.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", className + "BsWrapper.generated.cs");
                 }
             }
-            public string getBaseNameForBsWrapper(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            public string getBaseNameForBsWrapper(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, database.projectNameSpace + "BsWrapper.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\" + schemaName, className + "BsWrapper.cs");
                 }
                 else
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", database.projectNameSpace + "BsWrapper.cs");
-                }
-            }
-
-            public string getBaseNameForBsGenerated(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
-            {
-                if (semaIsminiDizinlerdeKullan)
-                {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, database.projectNameSpace + "Bs.generated.cs");
-                }
-                else
-                {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", database.projectNameSpace + "Bs.generated.cs");
-                }
-            }
-            public string getBaseNameForBs(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
-            {
-                if (semaIsminiDizinlerdeKullan)
-                {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, database.projectNameSpace + "Bs.cs");
-                }
-                else
-                {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", database.projectNameSpace + "Bs.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\BsWrapper\\" + database.projectNameSpace + ".BsWrapper\\", className + "BsWrapper.cs");
                 }
             }
 
-
-
-
-
-            public string getBaseNameForDalGenerated(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
+            public string getBaseNameForBsGenerated(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, database.projectNameSpace + "Dal.generated.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, className + "Bs.generated.cs");
                 }
                 else
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" , database.projectNameSpace + "Dal.generated.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", className + "Bs.generated.cs");
                 }
             }
-            public string getBaseNameForDal(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
+            public string getBaseNameForBs(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, database.projectNameSpace + "Dal.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, className + "Bs.cs");
                 }
                 else
                 {
-                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" , database.projectNameSpace + "Dal.cs");
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", className + "Bs.cs");
+                }
+            }
+
+
+
+
+
+            public string getBaseNameForDalGenerated(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, className + "Dal.generated.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\", className + "Dal.generated.cs");
+                }
+            }
+            public string getBaseNameForDal(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, className + "Dal.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\", className + "Dal.cs");
                 }
             }
 

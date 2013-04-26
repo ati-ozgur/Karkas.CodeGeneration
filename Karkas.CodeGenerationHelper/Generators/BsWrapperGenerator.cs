@@ -94,8 +94,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
-            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForBsWrapperGenerated(database, schemaName, semaIsminiDizinlerdeKullan);
-            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForBsWrapper(database, schemaName, semaIsminiDizinlerdeKullan); 
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForBsWrapperGenerated(database, schemaName, classNameTypeLibrary,semaIsminiDizinlerdeKullan);
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForBsWrapper(database, schemaName, classNameTypeLibrary,semaIsminiDizinlerdeKullan); 
             output.saveEncoding(outputFullFileNameGenerated, "o", "utf8");
             output.clear();
 
