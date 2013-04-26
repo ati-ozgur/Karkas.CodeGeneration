@@ -282,12 +282,13 @@ ORDER BY FULL_TABLE_NAME
         private string getUserNameFromConnection(string pConnectionString)
         {
             string userName = null;
-            string[] list = pConnectionString.Split(';');
+            string[] list = pConnectionString.ToUpperInvariant().Split(';');
             foreach (string item in list)
             {
-                if (item.Contains("User ID"))
+
+                if (item.Contains("USER ID"))
                 {
-                    userName = item.Replace("User ID", "");
+                    userName = item.Replace("USER ID", "");
                     userName = userName.Replace("=", "");
                     userName = userName.Trim();
                     break;
@@ -320,11 +321,14 @@ ORDER BY FULL_TABLE_NAME
             get { return new OracleDalGenerator(this); }
         }
 
-
+        string defaultSchema;
         public string getDefaultSchema()
         {
-            string connectionString = template.Connection.ConnectionString;
-            return getUserNameFromConnection(connectionString);
+            if (string.IsNullOrEmpty(defaultSchema))
+            {
+                defaultSchema = getUserNameFromConnection(ConnectionString);
+            }
+            return defaultSchema;
 
         }
 
