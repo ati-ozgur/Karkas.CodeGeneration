@@ -35,11 +35,9 @@ namespace Karkas.MyGenerationConsoleTest
 
 
 
-            OracleTest();
+            //OracleTest();
             //SqlServerTest();
-            //SqliteTest();
-            //SqliteTest();
-
+            SqliteTest();
             //simpleSqliteConnectionTest();
         }
 
@@ -79,10 +77,9 @@ namespace Karkas.MyGenerationConsoleTest
                 connection.ConnectionString = _SqliteExampleConnectionString;
                 connection.Open();
                 connection.Close();
-                ConnectionSingleton.Instance.ConnectionString = _SqliteExampleConnectionString;
-                ConnectionSingleton.Instance.ProviderName = "System.Data.SQLite";
                 template = new AdoTemplate();
                 template.Connection = connection;
+                template.DbProviderName = "System.Data.SQLite";
             }
             IDatabaseHelper helper = new SqliteHelper(template,connection.ConnectionString,connection.Database);
 
