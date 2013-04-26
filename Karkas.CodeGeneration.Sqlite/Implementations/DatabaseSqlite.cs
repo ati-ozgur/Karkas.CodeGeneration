@@ -145,21 +145,18 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         }
 
         public void CodeGenerateAllTables(
-             string pProjectFolder
-            , bool dboSemaTablolariniAtla
+             bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, ProjectNameSpace, pProjectFolder);
 
-            foreach (ITable table in database.Tables)
+            foreach (ITable table in this.Tables)
             {
                 CodeGenerateOneTable(
                      table.Name
                     , table.Schema
-                    , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerdeKullan
                     , listDatabaseAbbreviations);
@@ -171,7 +168,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
@@ -185,9 +181,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqliteOutput();
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, ProjectNameSpace, pProjectFolder);
 
-            ITable table = database.getTable(pTableName, pSchemaName);
+            ITable table = getTable(pTableName, pSchemaName);
 
 
             typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);

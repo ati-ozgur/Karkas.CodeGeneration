@@ -47,8 +47,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         DataTable getSchemaList();
 
         void CodeGenerateAllTables(
-             string pProjectFolder
-            , bool dboSemaTablolariniAtla
+             bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
@@ -58,7 +57,6 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations

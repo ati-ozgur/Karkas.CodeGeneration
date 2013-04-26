@@ -129,8 +129,7 @@ ORDER BY FULL_TABLE_NAME
 
 
         public void CodeGenerateAllTables(
-             string pProjectFolder
-            , bool dboSemaTablolariniAtla
+             bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerKullan
@@ -152,7 +151,6 @@ ORDER BY FULL_TABLE_NAME
                 CodeGenerateOneTable(  
                     tableName, 
                     schemaName
-                    , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerKullan
                     , listDatabaseAbbreviations
@@ -181,7 +179,6 @@ ORDER BY FULL_TABLE_NAME
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , List<DatabaseAbbreviations> listDatabaseAbbreviations

@@ -253,8 +253,7 @@ namespace Karkas.CodeGeneration.WinApp
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
             databaseHelper.CodeGenerateAllTables( 
-             textBoxCodeGenerationDizini.Text
-            ,checkBoxDboSemasiniAtla.Checked
+            checkBoxDboSemasiniAtla.Checked
             ,checkBoxSysTablolariniAtla.Checked
             , checkBoxUseSchemaNameInSql.Checked
             , checkBoxDizinlerseSemaIsmi.Checked
@@ -306,7 +305,6 @@ namespace Karkas.CodeGeneration.WinApp
                 databaseHelper.CodeGenerateOneTable(
                      tableName
                     , tableSchema
-                    , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxDizinlerseSemaIsmi.Checked
                     , getSampleAbbreviations()
