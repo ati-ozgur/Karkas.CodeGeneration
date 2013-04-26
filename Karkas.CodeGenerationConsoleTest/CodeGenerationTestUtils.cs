@@ -26,9 +26,9 @@ namespace Karkas.CodeGeneration.Helper
             , String dbDatabaseType
             , String connectionClassName
             , String connectionString
-            , string pDatabaseName
-            , string pProjectNamespace
-            , string pProjectFolder
+            , string databaseName
+            , string projectNamespace
+            , string projectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
@@ -41,7 +41,7 @@ namespace Karkas.CodeGeneration.Helper
             template = new AdoTemplate();
             template.Connection = connection;
             template.DbProviderName = assemblyName;
-            IDatabase helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
+            IDatabase helper = getDatabaseHelper(dbDatabaseType, template, connectionString,databaseName,projectNamespace,projectFolder,semaIsminiDizinlerdeKullan,semaIsminiSorgulardaKullan);
             helper.CodeGenerateAllTables(
                  dboSemaTablolariniAtla
                 , sysTablolariniAtla
@@ -69,19 +69,27 @@ namespace Karkas.CodeGeneration.Helper
         }
 
 
-        public static IDatabase getDatabaseHelper(String databaseType, AdoTemplate template, String databaseName)
+        public static IDatabase getDatabaseHelper(String databaseType
+            , AdoTemplate template
+            ,string connectionString
+            , String databaseName
+            ,string projectNamespace
+            , string projectFolder
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            )
         {
             IDatabase helper = null;
             switch (databaseType)
             {
                 case DatabaseType.SqlServer:
-                    helper = new DatabaseSqlServer(template,null, databaseName, null, null,false,false,null);
+                    helper = new DatabaseSqlServer(template, connectionString, databaseName, projectNamespace, projectFolder, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, null);
                     break;
                 case DatabaseType.Oracle:
-                    helper = new DatabaseOracle(template, null, databaseName, null, null, false, false, null);
+                    helper = new DatabaseOracle(template, connectionString, databaseName, projectNamespace,projectFolder,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, null);
                     break;
                 case DatabaseType.Sqlite:
-                    helper = new DatabaseSqlite(template, null, databaseName, null, null, false, false, null);
+                    helper = new DatabaseSqlite(template, connectionString, databaseName, projectNamespace, projectFolder, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, null);
                     break;
             }
             return helper;
