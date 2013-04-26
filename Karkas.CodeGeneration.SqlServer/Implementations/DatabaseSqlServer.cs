@@ -104,6 +104,21 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         }
 
+        string connectionDatabaseType;
+
+        public string ConnectionDatabaseType
+        {
+            get
+            {
+                return connectionDatabaseType;
+            }
+            set
+            {
+                connectionDatabaseType = value;
+            }
+        }
+
+
         public string CodeGenerationDirectory
         {
             get

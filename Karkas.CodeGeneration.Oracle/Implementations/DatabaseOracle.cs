@@ -95,16 +95,30 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         string codeGenerationDirectory;
         string logicalDatabaseName;
 
+        string connectionName;
 
         public string ConnectionName
         {
             get
             {
-                return logicalDatabaseName;
+                return connectionName;
             }
             set
             {
-                logicalDatabaseName = value;
+                connectionName = value;
+            }
+        }
+        string connectionDatabaseType;
+
+        public string ConnectionDatabaseType
+        {
+            get
+            {
+                return connectionDatabaseType;
+            }
+            set
+            {
+                connectionDatabaseType = value;
             }
         }
 

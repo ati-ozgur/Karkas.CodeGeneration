@@ -61,7 +61,19 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             set { sysTablolariniAtla = value; }
         }
 
+        string connectionDatabaseType;
 
+        public string ConnectionDatabaseType
+        {
+            get
+            {
+                return connectionDatabaseType;
+            }
+            set
+            {
+                connectionDatabaseType = value;
+            }
+        }
 
 
         bool semaIsminiSorgulardaKullan;

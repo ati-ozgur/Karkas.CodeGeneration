@@ -8,7 +8,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
     public interface ICodeGenerationPersistanceValues
     {
         string ConnectionName { get; set; }
-        //string ConnectionDatabaseType { get; set; }
+        string ConnectionDatabaseType { get; set; }
         
         //string ConnectionString { get; set; }
         string DatabaseNamePhysical { get; set; }
