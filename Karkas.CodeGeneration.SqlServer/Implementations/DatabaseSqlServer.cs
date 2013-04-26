@@ -195,9 +195,18 @@ ORDER BY FULL_TABLE_NAME
 SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 ";
 
-        public string getDatabaseNamePhysical()
+        private string databaseNamePhysical;
+
+        public string DatabaseNamePhysical
         {
-            return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
+            get
+            {
+                if (String.IsNullOrEmpty(databaseNamePhysical))
+                {
+                    databaseNamePhysical = (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
+                }
+                return databaseNamePhysical;
+            }
         }
 
         public DataTable getTableListFromSchema(string schemaName)

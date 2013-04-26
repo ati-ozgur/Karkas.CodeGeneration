@@ -14,7 +14,11 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         string ProjectNameSpace { get; }
         string ProjectFolder { get; }
 
-        string getDatabaseNamePhysical();
+
+        string DatabaseNamePhysical
+        {
+            get;
+        }
 
         string DatabaseNameLogical
         {

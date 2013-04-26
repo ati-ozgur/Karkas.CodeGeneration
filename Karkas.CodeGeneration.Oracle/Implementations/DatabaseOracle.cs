@@ -156,10 +156,18 @@ WHERE
 ORDER BY FULL_TABLE_NAME
 ";
 
-        public string getDatabaseNamePhysical()
-        {
-            return (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
+        private string databaseNamePhysical;
 
+        public string DatabaseNamePhysical
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(databaseNamePhysical))
+                {
+                    databaseNamePhysical = (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
+                }
+                return databaseNamePhysical;
+            }
         }
 
 

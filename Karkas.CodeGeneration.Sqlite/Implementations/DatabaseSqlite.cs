@@ -179,10 +179,21 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         DatabaseSqlite database;
 
 
-        public string getDatabaseNamePhysical()
+
+        private string databaseNamePhysical;
+
+        public string DatabaseNamePhysical
         {
-            return template.Connection.Database;
+            get
+            {
+                if (String.IsNullOrEmpty(databaseNamePhysical))
+                {
+                    databaseNamePhysical = template.Connection.Database; ;
+                }
+                return databaseNamePhysical;
+            }
         }
+
 
         public string getDefaultSchema()
         {
