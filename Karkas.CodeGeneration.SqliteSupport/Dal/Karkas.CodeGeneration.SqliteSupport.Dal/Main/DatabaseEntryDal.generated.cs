@@ -138,8 +138,8 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	}
 	protected override void InsertCommandParametersAdd(DbCommand cmd, DatabaseEntry row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
-		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
+        ParameterBuilder builder = Template.getParameterBuilder();
+        builder.parameterEkle("@ConnectionName", DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
@@ -151,8 +151,8 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	}
 	protected override void UpdateCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
-		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
+        ParameterBuilder builder = Template.getParameterBuilder();
+        builder.parameterEkle("@ConnectionName", DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
 		builder.parameterEkle("@AbbrevationsAsString",DbType.String, row.AbbrevationsAsString);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
@@ -164,8 +164,8 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	}
 	protected override void DeleteCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
-		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
+        ParameterBuilder builder = Template.getParameterBuilder();
+        builder.parameterEkle("@ConnectionName", DbType.String, row.ConnectionName);
 	}
 }
 }

@@ -49,7 +49,7 @@ AND cons.owner = cols.owner
             {
                 if (!primaryKeyColumnCount.HasValue)
                 {
-                    ParameterBuilder builder = new ParameterBuilder();
+                    ParameterBuilder builder = template.getParameterBuilder();
                     builder.parameterEkle("tableName", DbType.String, Name);
                     builder.parameterEkle("schemaName", DbType.String, Schema);
                     Object objSonuc = template.TekDegerGetir(SQL_PRIMARY_KEY, builder.GetParameterArray());
@@ -87,8 +87,8 @@ OWNER = :schemaName
             {
                 if (columns == null)
                 {
-                    ParameterBuilder builder =  new ParameterBuilder(template.DbProviderName);
-                    builder.parameterEkle("tableName",DbType.String,Name);
+                    ParameterBuilder builder = template.getParameterBuilder();
+                    builder.parameterEkle("tableName", DbType.String, Name);
                     builder.parameterEkle("schemaName",DbType.String,Schema);
 
                     DataTable dtColumnList = template.DataTableOlustur(SQL_FOR_COLUMN_LIST, builder.GetParameterArray());

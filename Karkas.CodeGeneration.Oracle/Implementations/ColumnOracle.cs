@@ -62,7 +62,7 @@ AND cons.owner = cols.owner
             {
                 if (!isInPrimaryKey.HasValue)
                 {
-                    ParameterBuilder builder = new ParameterBuilder();
+                    ParameterBuilder builder = template.getParameterBuilder();
                     builder.parameterEkle("tableName", DbType.String, Table.Name);
                     builder.parameterEkle("schemaName", DbType.String, Table.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);
@@ -103,7 +103,7 @@ ON
             {
                 if (!isInForeignKey.HasValue)
                 {
-                    ParameterBuilder builder = new ParameterBuilder();
+                    ParameterBuilder builder = template.getParameterBuilder();
                     builder.parameterEkle("tableName", DbType.String, Table.Name);
                     builder.parameterEkle("schemaName", DbType.String, Table.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);
@@ -173,7 +173,7 @@ AND
             {
                 if (columnValuesInDatabase == null)
                 {
-                    ParameterBuilder builder = new ParameterBuilder();
+                    ParameterBuilder builder = template.getParameterBuilder();
                     builder.parameterEkle("tableName", DbType.String, Table.Name);
                     builder.parameterEkle("schemaName", DbType.String, Table.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);

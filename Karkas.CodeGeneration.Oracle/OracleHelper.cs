@@ -41,7 +41,7 @@ ORDER BY FULL_TABLE_NAME
 
         public DataTable getTableListFromSchema(AdoTemplate template, string schemaName)
         {
-            ParameterBuilder builder =  new ParameterBuilder(template.DbProviderName);
+            ParameterBuilder builder = template.getParameterBuilder();
             builder.parameterEkle(":TABLE_SCHEMA", DbType.String, schemaName);
             DataTable dtTableList = template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
             return dtTableList;
@@ -72,7 +72,7 @@ ORDER BY FULL_TABLE_NAME
             
             string userName = getUserNameFromConnection(pConnectionString);
 
-            ParameterBuilder builder = new ParameterBuilder();
+            ParameterBuilder builder = template.getParameterBuilder();
             builder.parameterEkle("TABLE_SCHEMA", DbType.String, userName);
 
             DataTable dtTables = template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
