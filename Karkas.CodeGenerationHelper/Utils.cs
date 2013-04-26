@@ -39,15 +39,23 @@ namespace Karkas.CodeGenerationHelper
             gen.Render(output, table, connectionString);
         }
 
-        public void RenderTypeLibraryCode(IOutput output, ITable table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderTypeLibraryCode(IOutput output
+            , ITable table
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             TypeLibraryGenerator gen = new TypeLibraryGenerator(helper);
-            gen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            gen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
         }
-        public void RenderTypeLibraryCode(IOutput output, IView view, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void RenderTypeLibraryCode(IOutput output
+            , IView view
+            , bool semaIsminiSorgulardaKullan
+            , bool semaIsminiDizinlerdeKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
             TypeLibraryGenerator gen = new TypeLibraryGenerator(helper);
-            gen.Render(output, view, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            gen.Render(output, view, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
         }
         public void RenderStoredProcedureCode(IOutput output, IProcedure proc)
         {

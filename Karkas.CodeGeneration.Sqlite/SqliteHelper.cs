@@ -115,7 +115,7 @@ namespace Karkas.CodeGeneration.Sqlite
             ITable table = database.getTable(pTableName, pSchemaName);
 
 
-            typeGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
+            typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             dalGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             bsGen.Render(output, table,semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }

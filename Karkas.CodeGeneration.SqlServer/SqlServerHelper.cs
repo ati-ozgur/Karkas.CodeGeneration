@@ -110,7 +110,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
                 {
                     continue;
                 }
-                typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+                typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
                 dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
                 bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
             }
@@ -136,7 +136,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             ITable table = database.getTable(pTableName, pSchemaName);
 
-            typeGen.Render(output, table, semaIsminiSorgulardaKullan,listDatabaseAbbreviations);
+            typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
             dalGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
             bsGen.Render(output, table, semaIsminiSorgulardaKullan, listDatabaseAbbreviations);
         }
