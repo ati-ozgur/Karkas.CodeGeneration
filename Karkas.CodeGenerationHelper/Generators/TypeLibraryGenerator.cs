@@ -58,7 +58,6 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.writeLine("");
 
             OnaylamaKoduYaz(output, container);
-            EtiketIsimleriYaz(output, container, classNameSpace);
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
