@@ -16,6 +16,12 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         string getDatabaseName();
 
+        string DatabaseName
+        {
+            get;
+            set;
+        }
+
         string getDefaultSchema();
 
         //string DatabaseNameLogical
@@ -54,11 +60,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
 
 
-        string DatabaseName
-        {
-            get;
-            set;
-        }
+
         
         DataTable getSchemaList();
 
