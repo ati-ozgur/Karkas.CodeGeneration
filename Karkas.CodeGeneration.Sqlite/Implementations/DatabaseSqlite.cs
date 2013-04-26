@@ -101,9 +101,17 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         AdoTemplate template;
         string projectNameSpace;
-        string connectionString;
         string codeGenerationDirectory;
         string _DatabaseName;
+
+
+        string connectionString;
+
+        public string ConnectionString
+        {
+            get { return connectionString; }
+            set { connectionString = value; }
+        }
 
 
         public string ConnectionName

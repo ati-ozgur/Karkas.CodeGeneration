@@ -92,6 +92,13 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         }
         string projectNameSpace;
         string connectionString;
+
+        public string ConnectionString
+        {
+            get { return connectionString; }
+            set { connectionString = value; }
+        }
+
         string codeGenerationDirectory;
         string logicalDatabaseName;
 

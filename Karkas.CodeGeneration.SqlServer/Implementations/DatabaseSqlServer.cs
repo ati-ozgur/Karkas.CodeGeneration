@@ -19,7 +19,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
     {
         internal Server smoServer;
         internal Database smoDatabase;
-        internal string connectionString;
 
         string codeGenerationDirectory;
 
@@ -50,6 +49,15 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             this.sysTablolariniAtla = sysTablolariniAtla;
 
         }
+
+        string connectionString;
+
+        public string ConnectionString
+        {
+            get { return connectionString; }
+            set { connectionString = value; }
+        }
+
 
         bool dboSemaTablolariniAtla;
 

@@ -10,7 +10,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         string ConnectionName { get; set; }
         string ConnectionDatabaseType { get; set; }
         
-        //string ConnectionString { get; set; }
+        string ConnectionString { get; set; }
         string DatabaseNamePhysical { get; set; }
         string DatabaseNameLogical { get; set; }
         string ProjectNameSpace { get; set; }
