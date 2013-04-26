@@ -36,9 +36,8 @@ namespace Karkas.CodeGeneration.ConsoleTest
 
 
             OracleTest();
-            SqliteTest();
-            SqlServerTest();
-            //simpleSqliteConnectionTest();
+            //SqliteTest();
+            //SqlServerTest();
         }
 
 
@@ -76,10 +75,10 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     , _OracleExampleConnectionString
                     ,"ORACLEDEVDAYS"
                     , "Karkas.OracleExample"
-                    , "P:\\Denemeler\\karkas\\Examples\\Karkas.OracleExample"
+                    , @"P:\Denemeler\karkas\Examples\Karkas.OracleExample"
                     , true
                     , true
-                    , true
+                    , false
                     , null);
 
             }

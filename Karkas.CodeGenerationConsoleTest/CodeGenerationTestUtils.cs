@@ -51,7 +51,7 @@ namespace Karkas.CodeGeneration.Helper
                 );
         }
 
-        private static DbConnection TestAndGetConnection(String assemblyName, String connectionClassName, String connectionString)
+        public static DbConnection TestAndGetConnection(String assemblyName, String connectionClassName, String connectionString)
         {
             DbConnection connection = null;
             Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);

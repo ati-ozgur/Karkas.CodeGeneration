@@ -18,6 +18,7 @@ using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGeneration.Sqlite;
+using Karkas.CodeGeneration.Helper;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -75,6 +76,8 @@ namespace Karkas.CodeGeneration.WinApp
         private void buttonTestConnectionString_Click(object sender, EventArgs e)
         {
             string connectionString = textBoxConnectionString.Text;
+
+
 
             try
             {
