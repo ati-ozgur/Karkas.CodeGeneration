@@ -34,8 +34,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             string className = utils.getClassNameForTypeLibrary(container.Name,listDatabaseAbbreviations);
             string schemaName = utils.GetPascalCase(container.Schema);
             string classNameSpace = baseNameSpaceTypeLibrary + "." + schemaName;
-            string outputFullFileName = Path.Combine(database.projectFolder + "\\TypeLibrary\\" + baseNameSpaceTypeLibrary + "\\" + schemaName, className + ".cs");
-            string outputFullFileNameGenerated = Path.Combine(database.projectFolder + "\\TypeLibrary\\" + baseNameSpaceTypeLibrary + "\\" + schemaName, className + ".generated.cs");
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForTypeLibrary(database, schemaName, className,semaIsminiDizinlerdeKullan); 
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForTypeLibraryGenerated(database, schemaName,className, semaIsminiDizinlerdeKullan);
             //output.setPreserveSource(outputFullFileNameGenerated, "//::", ":://");
 
 
