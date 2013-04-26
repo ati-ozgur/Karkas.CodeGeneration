@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGeneration.SqliteSupport.Dal.Main;
-using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
+using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.WinApp.PersistenceService
 {
@@ -25,7 +25,7 @@ namespace Karkas.CodeGeneration.WinApp.PersistenceService
         private static DatabaseEntry getExampleDatabaseEntry()
         {
             DatabaseEntry de = new DatabaseEntry();
-            de.CodeGenerationDirectory = "D:\\projects\\karkas\\Karkas.Ornek";
+            de.CodeGenerationDirectory = "P:\\karkas\\Karkas.Ornek";
             de.CodeGenerationNamespace = "Karkas.Ornek";
             de.ConnectionDatabaseType = DatabaseType.SqlServer;
             de.ConnectionName = "KARKAS_ORNEK";

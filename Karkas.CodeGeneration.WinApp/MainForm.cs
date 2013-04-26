@@ -17,7 +17,6 @@ using Karkas.CodeGeneration.Oracle;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
-using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGeneration.Sqlite;
 
 namespace Karkas.CodeGeneration.WinApp

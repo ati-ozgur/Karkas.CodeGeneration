@@ -55,7 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeLibrary\Karkas.CodeGeneration.SqliteSupport.TypeLibrary\Main\DatabaseEntry.cs" />
     <Compile Include="TypeLibrary\Karkas.CodeGeneration.SqliteSupport.TypeLibrary\Main\DatabaseEntry.generated.cs" />
-    <Compile Include="TypeLibrary\Karkas.CodeGeneration.SqliteSupport.TypeLibrary\Main\DatabaseType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Karkas.CodeGenerationHelper\Karkas.CodeGenerationHelper.2010.csproj">

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BaseOutput.cs" />
     <Compile Include="DatabaseAbbreviations.cs" />
+    <Compile Include="DatabaseType.cs" />
     <Compile Include="Interfaces\IColumn.cs" />
     <Compile Include="Interfaces\IDatabase.cs" />
     <Compile Include="Interfaces\IDatabaseHelper.cs" />
