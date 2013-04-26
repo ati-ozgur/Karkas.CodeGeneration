@@ -48,8 +48,25 @@ namespace Karkas.CodeGenerationHelper
                     return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" , database.projectNameSpace + "Dal.generated.cs");
                 }
             }
+            public string getBaseNameForDal(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" + schemaName, database.projectNameSpace + "Dal.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.projectNameSpace + ".Dal\\" , database.projectNameSpace + "Dal.cs");
+                }
+            }
 
 
+
+
+            public string getInsertScriptsFullFileName(ITable table)
+            {
+                return Path.Combine(ProjeAnaDizininiAl(table.Database) + "\\Database\\InsertScripts\\" + table.Schema, table.Schema + "_" + table.Name + ".Inserts.sql");
+            }
 
 
 

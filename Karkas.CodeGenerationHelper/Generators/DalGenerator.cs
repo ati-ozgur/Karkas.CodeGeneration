@@ -73,7 +73,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             listeType = "List<" + classNameTypeLibrary + ">";
 
             string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForDalGenerated(database,schemaName,semaIsminiDizinlerdeKullan);
-            string outputFullFileName = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.cs");
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForDal(database, schemaName, semaIsminiDizinlerdeKullan);
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 

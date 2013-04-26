@@ -22,9 +22,10 @@ namespace Karkas.CodeGenerationHelper.Generators
         public void Render(IOutput output, ITable table, string connectionString)
         {
             output.writeLine(insertHelper.GetRowsToBeInserted(table.Database.Name, table.Schema, table.Name, connectionString));
-            output.save(Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(table.Database) + "\\Database\\InsertScripts\\" + table.Schema, table.Schema + "_" + table.Name + ".Inserts.sql"), false);
+            output.save(utils.FileUtilsHelper.getInsertScriptsFullFileName(table), false);
             output.clear();
 
         }
+
     }
 }
