@@ -33,20 +33,7 @@ namespace Karkas.CodeGeneration.Helper
             )
         {
             AdoTemplate template = null;
-            DbConnection connection = null;
-            Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
-            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
-
-            if (objReflection != null && objReflection is ObjectHandle)
-            {
-                ObjectHandle handle = (ObjectHandle)objReflection;
-
-                Object objConnection = handle.Unwrap();
-                connection = (DbConnection)objConnection;
-                connection.ConnectionString = connectionString;
-                connection.Open();
-                connection.Close();
-            }
+            DbConnection connection = TestAndGetConnection(assemblyName, connectionClassName, connectionString);
             template = new AdoTemplate();
             template.Connection = connection;
             template.DbProviderName = assemblyName;
@@ -62,6 +49,25 @@ namespace Karkas.CodeGeneration.Helper
                 , listDatabaseAbbreviations
 
                 );
+        }
+
+        private static DbConnection TestAndGetConnection(String assemblyName, String connectionClassName, String connectionString)
+        {
+            DbConnection connection = null;
+            Assembly oracleAssembly = Assembly.LoadWithPartialName(assemblyName);
+            Object objReflection = Activator.CreateInstance(oracleAssembly.FullName, connectionClassName);
+
+            if (objReflection != null && objReflection is ObjectHandle)
+            {
+                ObjectHandle handle = (ObjectHandle)objReflection;
+
+                Object objConnection = handle.Unwrap();
+                connection = (DbConnection)objConnection;
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                connection.Close();
+            }
+            return connection;
         }
 
 
