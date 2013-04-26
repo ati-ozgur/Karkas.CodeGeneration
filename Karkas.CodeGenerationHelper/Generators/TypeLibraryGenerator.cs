@@ -18,17 +18,17 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
         Utils utils = null;
 
-        public void Render(IOutput output, IContainer table, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
+        public void Render(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, List<DatabaseAbbreviations> listDatabaseAbbreviations)
         {
 
-            IDatabase database = table.Database;
+            IDatabase database = container.Database;
             output.tabLevel = 0;
 
             string baseNameSpace = database.projectNameSpace;
             string baseNameSpaceTypeLibrary = baseNameSpace + ".TypeLibrary";
 
-            string className = utils.getClassNameForTypeLibrary(table.Name,listDatabaseAbbreviations);
-            string schemaName = utils.GetPascalCase(table.Schema);
+            string className = utils.getClassNameForTypeLibrary(container.Name,listDatabaseAbbreviations);
+            string schemaName = utils.GetPascalCase(container.Schema);
             string classNameSpace = baseNameSpaceTypeLibrary + "." + schemaName;
             string outputFullFileName = Path.Combine(database.projectFolder + "\\TypeLibrary\\" + baseNameSpaceTypeLibrary + "\\" + schemaName, className + ".cs");
             string outputFullFileNameGenerated = Path.Combine(database.projectFolder + "\\TypeLibrary\\" + baseNameSpaceTypeLibrary + "\\" + schemaName, className + ".generated.cs");
@@ -37,24 +37,24 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             usingNamespaceleriYaz(output, classNameSpace);
 
-            ClassIsmiYaz(output, className, table);
+            ClassIsmiYaz(output, className, container);
 
             output.autoTabLn("{");
 
-            MemberVariablesYaz(output, table);
+            MemberVariablesYaz(output, container);
 
-            PropertiesYaz(output, table);
+            PropertiesYaz(output, container);
 
-            PropertiesAsStringYaz(output, table);
+            PropertiesAsStringYaz(output, container);
 
-            PropertyIsimleriYaz(output, table, className);
-            ShallowCopyYaz(output, table, className);
+            PropertyIsimleriYaz(output, container, className);
+            ShallowCopyYaz(output, container, className);
 
 
             output.writeLine("");
 
-            OnaylamaKoduYaz(output, table);
-            EtiketIsimleriYaz(output, table, classNameSpace);
+            OnaylamaKoduYaz(output, container);
+            EtiketIsimleriYaz(output, container, classNameSpace);
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
@@ -101,11 +101,11 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
         }
 
-        private void ClassIsmiYaz(IOutput output, string className, IContainer table)
+        private void ClassIsmiYaz(IOutput output, string className, IContainer container)
         {
             output.increaseTab();
             output.autoTabLn("[Serializable]");
-            DebuggerDisplayYaz(output, table);
+            DebuggerDisplayYaz(output, container);
             output.autoTab("public partial class ");
             output.autoTab(className + ": BaseTypeLibrary");
             output.writeLine("");
@@ -113,10 +113,10 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         }
 
-        private void DebuggerDisplayYaz(IOutput output, IContainer table)
+        private void DebuggerDisplayYaz(IOutput output, IContainer container)
         {
             string yazi = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey || column.IsAutoKey || column.IsInForeignKey)
                 {
@@ -154,11 +154,11 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        private void OnaylamaKoduYaz(IOutput output, IContainer table)
+        private void OnaylamaKoduYaz(IOutput output, IContainer container)
         {
             output.autoTabLn("protected override void OnaylamaListesiniOlusturCodeGeneration()");
             BaslangicSusluParentezVeTabArtir(output);
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if ((!column.IsNullable) && (!column.IsInPrimaryKey))
                 {
@@ -172,12 +172,12 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
         }
 
-        private void PropertyIsimleriYaz(IOutput output, IContainer table, string className)
+        private void PropertyIsimleriYaz(IOutput output, IContainer container, string className)
         {
             output.autoTabLn("public class PropertyIsimleri");
             BaslangicSusluParentezVeTabArtir(output);
             string propertyName = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 propertyName = utils.getPropertyVariableName(column);
                 string yazi = string.Format("public const string {0} = \"{1}\";", propertyName, column.Name);
@@ -187,10 +187,10 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         }
 
-        private void PropertiesYaz(IOutput output, IContainer table)
+        private void PropertiesYaz(IOutput output, IContainer container)
         {
             output.increaseTab();
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 string memberVariableName = utils.GetCamelCase(column.Name);
                 string propertyVariableName = utils.getPropertyVariableName(column);
@@ -222,10 +222,10 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.decreaseTab();
         }
 
-        private void PropertiesAsStringYaz(IOutput output, IContainer table)
+        private void PropertiesAsStringYaz(IOutput output, IContainer container)
         {
             output.increaseTab();
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 string tipi = utils.GetLanguageType(column);
                 if (tipi == "string")
@@ -276,14 +276,14 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        private void ShallowCopyYaz(IOutput output, IContainer table, string pTypeName)
+        private void ShallowCopyYaz(IOutput output, IContainer container, string pTypeName)
         {
             output.increaseTab();
             output.autoTabLn(string.Format("public {0} ShallowCopy()", pTypeName));
             output.autoTabLn("{");
             output.increaseTab();
             output.autoTabLn(string.Format("{0} obj = new {0}();", pTypeName));
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 output.autoTabLn(string.Format("obj.{0} = {0};", utils.GetCamelCase(column.Name)));
             }
@@ -296,10 +296,10 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
 
 
-        private void MemberVariablesYaz(IOutput output, IContainer table)
+        private void MemberVariablesYaz(IOutput output, IContainer container)
         {
             output.increaseTab();
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 output.autoTabLn(String.Format("private {0} {1};", utils.GetLanguageType(column), utils.GetCamelCase(column.Name)));
             }

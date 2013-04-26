@@ -97,13 +97,13 @@ namespace Karkas.CodeGenerationHelper.Generators
             }
         }
 
-        private void OverrideDatabaseNameYaz(IOutput output, IContainer table)
+        private void OverrideDatabaseNameYaz(IOutput output, IContainer container)
         {
             output.autoTabLn("public override string DatabaseName");
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("get");
             BaslangicSusluParentezVeTabArtir(output);
-            output.autoTabLn(string.Format("return \"{0}\";", table.Database.Name));
+            output.autoTabLn(string.Format("return \"{0}\";", container.Database.Name));
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
         }

@@ -126,10 +126,10 @@ namespace Karkas.CodeGenerationHelper
         #endregion
 
 
-        public string IdentityColumnAdiniBul(IContainer table)
+        public string IdentityColumnAdiniBul(IContainer container)
         {
             string adi = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsAutoKey)
                 {
@@ -139,10 +139,10 @@ namespace Karkas.CodeGenerationHelper
             return adi;
         }
 
-        public string PrimaryKeyAdiniBul(IContainer table)
+        public string PrimaryKeyAdiniBul(IContainer container)
         {
             string adi = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey)
                 {
@@ -151,10 +151,10 @@ namespace Karkas.CodeGenerationHelper
             }
             return adi;
         }
-        public IColumn PrimaryKeyColumnTekIseBul(IContainer table)
+        public IColumn PrimaryKeyColumnTekIseBul(IContainer container)
         {
             IColumn pkColon = null;
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey)
                 {
@@ -164,10 +164,10 @@ namespace Karkas.CodeGenerationHelper
             return pkColon;
         }
 
-        public List<IColumn> PrimaryKeyColumnlariniBul(IContainer table)
+        public List<IColumn> PrimaryKeyColumnlariniBul(IContainer container)
         {
             List<IColumn> pkColonListesi = new List<IColumn>();
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey)
                 {
@@ -177,10 +177,10 @@ namespace Karkas.CodeGenerationHelper
             return pkColonListesi;
         }
 
-        public string PrimaryKeyTipiniBul(IContainer table)
+        public string PrimaryKeyTipiniBul(IContainer container)
         {
             string tip = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsInPrimaryKey)
                 {
@@ -189,10 +189,10 @@ namespace Karkas.CodeGenerationHelper
             }
             return tip;
         }
-        public string IdentityTipiniBul(IContainer table)
+        public string IdentityTipiniBul(IContainer container)
         {
             string tip = "";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsAutoKey)
                 {
@@ -201,10 +201,10 @@ namespace Karkas.CodeGenerationHelper
             }
             return tip;
         }
-        public bool IdentityVarMi(IContainer table)
+        public bool IdentityVarMi(IContainer container)
         {
             bool sonuc = false;
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsAutoKey)
                 {
@@ -214,10 +214,10 @@ namespace Karkas.CodeGenerationHelper
             return sonuc;
         }
 
-        public string IdentityVarMiAsString(IContainer table)
+        public string IdentityVarMiAsString(IContainer container)
         {
             string sonuc = "false";
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if (column.IsAutoKey)
                 {
@@ -567,10 +567,10 @@ namespace Karkas.CodeGenerationHelper
 
 
 
-        public bool PkGuidMi(IContainer table)
+        public bool PkGuidMi(IContainer container)
         {
             bool sonuc = false;
-            foreach (IColumn column in table.Columns)
+            foreach (IColumn column in container.Columns)
             {
                 if ((column.IsInPrimaryKey) && (column.LanguageType == "Guid"))
                 {
