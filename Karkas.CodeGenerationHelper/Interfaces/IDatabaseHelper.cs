@@ -22,12 +22,14 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         DataTable getTableListFromSchema(AdoTemplate template, string schemaName);
         DataTable getSchemaList(AdoTemplate template);
 
-        void CodeGenerateAllTables(AdoTemplate template,string pConnectionString, string pDatabaseName, string pProjectNamespace
-    , string pProjectFolder
-    , bool dboSemaTablolariniAtla
-    , bool sysTablolariniAtla
-    , bool semaIsminiSorgulardaKullan
-    , List<DatabaseAbbreviations> listDatabaseAbbreviations            
+        void CodeGenerateAllTables(AdoTemplate template,string pConnectionString
+            , string pDatabaseName
+            , string pProjectNamespace
+            , string pProjectFolder
+            , bool dboSemaTablolariniAtla
+            , bool sysTablolariniAtla
+            , bool semaIsminiSorgulardaKullan
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations            
             );
 
         void CodeGenerateOneTable(AdoTemplate template
