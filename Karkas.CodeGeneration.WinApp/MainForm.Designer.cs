@@ -41,18 +41,17 @@
             this.labelSchemaList = new System.Windows.Forms.Label();
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
             this.checkBoxIgnoreSystemTables = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCodeGenerationFolder = new System.Windows.Forms.Label();
             this.textBoxCodeGenerationDizini = new System.Windows.Forms.TextBox();
             this.buttonFolderDialog = new System.Windows.Forms.Button();
             this.labelProjectNamespace = new System.Windows.Forms.Label();
             this.textBoxProjectNamespace = new System.Windows.Forms.TextBox();
             this.labelConnectionName = new System.Windows.Forms.Label();
-            this.labelDatabaseNameSonuc = new System.Windows.Forms.Label();
             this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
             this.textBoxConnectionName = new System.Windows.Forms.TextBox();
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.comboBoxDatabaseType = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelDatabaseType = new System.Windows.Forms.Label();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
             this.checkBoxUseSchemaNameInFolders = new System.Windows.Forms.CheckBox();
@@ -215,15 +214,15 @@
             this.checkBoxIgnoreSystemTables.Text = "sys Tablolarını Atla";
             this.checkBoxIgnoreSystemTables.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelCodeGenerationFolder
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 204);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Code Generation Dizini";
+            this.labelCodeGenerationFolder.AutoSize = true;
+            this.labelCodeGenerationFolder.Location = new System.Drawing.Point(11, 204);
+            this.labelCodeGenerationFolder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCodeGenerationFolder.Name = "labelCodeGenerationFolder";
+            this.labelCodeGenerationFolder.Size = new System.Drawing.Size(115, 13);
+            this.labelCodeGenerationFolder.TabIndex = 6;
+            this.labelCodeGenerationFolder.Text = "Code Generation Dizini";
             // 
             // textBoxCodeGenerationDizini
             // 
@@ -272,15 +271,6 @@
             this.labelConnectionName.TabIndex = 11;
             this.labelConnectionName.Text = "Connection Name";
             // 
-            // labelDatabaseNameSonuc
-            // 
-            this.labelDatabaseNameSonuc.AutoSize = true;
-            this.labelDatabaseNameSonuc.Location = new System.Drawing.Point(148, 229);
-            this.labelDatabaseNameSonuc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDatabaseNameSonuc.Name = "labelDatabaseNameSonuc";
-            this.labelDatabaseNameSonuc.Size = new System.Drawing.Size(0, 13);
-            this.labelDatabaseNameSonuc.TabIndex = 12;
-            // 
             // buttonGecerliDegerleriKaydet
             // 
             this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(778, 141);
@@ -317,14 +307,14 @@
             this.comboBoxDatabaseType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDatabaseType.TabIndex = 16;
             // 
-            // label2
+            // labelDatabaseType
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Veritabanı Tipi";
+            this.labelDatabaseType.AutoSize = true;
+            this.labelDatabaseType.Location = new System.Drawing.Point(10, 42);
+            this.labelDatabaseType.Name = "labelDatabaseType";
+            this.labelDatabaseType.Size = new System.Drawing.Size(74, 13);
+            this.labelDatabaseType.TabIndex = 17;
+            this.labelDatabaseType.Text = "Veritabanı Tipi";
             // 
             // buttonKisaltmalar
             // 
@@ -507,18 +497,17 @@
             this.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelDatabaseType);
             this.Controls.Add(this.comboBoxDatabaseType);
             this.Controls.Add(this.buttonOtherConnections);
             this.Controls.Add(this.textBoxConnectionName);
             this.Controls.Add(this.buttonGecerliDegerleriKaydet);
-            this.Controls.Add(this.labelDatabaseNameSonuc);
             this.Controls.Add(this.labelConnectionName);
             this.Controls.Add(this.textBoxProjectNamespace);
             this.Controls.Add(this.labelProjectNamespace);
             this.Controls.Add(this.buttonFolderDialog);
             this.Controls.Add(this.textBoxCodeGenerationDizini);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelCodeGenerationFolder);
             this.Controls.Add(this.panelListe);
             this.Controls.Add(this.labelConnectionStatus);
             this.Controls.Add(this.buttonTestConnectionString);
@@ -545,7 +534,7 @@
         private System.Windows.Forms.ComboBox comboBoxSchemaList;
         private System.Windows.Forms.Label labelTabloListesi;
         private System.Windows.Forms.ListBox listBoxTableListesi;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCodeGenerationFolder;
         private System.Windows.Forms.TextBox textBoxCodeGenerationDizini;
         private System.Windows.Forms.Button buttonFolderDialog;
         private System.Windows.Forms.Button buttonSeciliTablolariUret;
@@ -553,14 +542,13 @@
         private System.Windows.Forms.Label labelProjectNamespace;
         private System.Windows.Forms.TextBox textBoxProjectNamespace;
         private System.Windows.Forms.Label labelConnectionName;
-        private System.Windows.Forms.Label labelDatabaseNameSonuc;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
         private System.Windows.Forms.CheckBox checkBoxIgnoreSystemTables;
         private System.Windows.Forms.CheckBox checkBoxDboSemasiniAtla;
         private System.Windows.Forms.TextBox textBoxConnectionName;
         private System.Windows.Forms.Button buttonOtherConnections;
         private System.Windows.Forms.ComboBox comboBoxDatabaseType;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelDatabaseType;
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
         private System.Windows.Forms.CheckBox checkBoxUseSchemaNameInFolders;

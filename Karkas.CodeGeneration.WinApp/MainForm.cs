@@ -156,7 +156,7 @@ namespace Karkas.CodeGeneration.WinApp
         {
             string connectionString = textBoxConnectionString.Text;
 
-
+            comboBoxSchemaList.Text = "";
 
             try
             {
@@ -316,7 +316,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void databaseNameLabelDoldur()
         {
-            labelDatabaseNameSonuc.Text = databaseHelper.DatabaseNamePhysical;
+            textBoxDatabaseNamePhysical.Text = databaseHelper.DatabaseNamePhysical;
         }
 
 
