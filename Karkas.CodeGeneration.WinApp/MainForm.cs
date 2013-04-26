@@ -252,9 +252,9 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            databaseHelper.CodeGenerateAllTables( textBoxConnectionString.Text
-                , labelDatabaseNameSonuc.Text
-                , textBoxProjectNamespace.Text
+            databaseHelper.CodeGenerateAllTables( 
+            labelDatabaseNameSonuc.Text
+            , textBoxProjectNamespace.Text
             , textBoxCodeGenerationDizini.Text
             ,checkBoxDboSemasiniAtla.Checked
             ,checkBoxSysTablolariniAtla.Checked
@@ -305,8 +305,8 @@ namespace Karkas.CodeGeneration.WinApp
                 DataRowView view = (DataRowView)item;
                 string tableSchema = view["TABLE_SCHEMA"].ToString();
                 string tableName = view["TABLE_NAME"].ToString();
-                databaseHelper.CodeGenerateOneTable(textBoxConnectionString.Text
-                    , tableName
+                databaseHelper.CodeGenerateOneTable(
+                     tableName
                     , tableSchema
                     , labelDatabaseNameSonuc.Text
                     , textBoxProjectNamespace.Text

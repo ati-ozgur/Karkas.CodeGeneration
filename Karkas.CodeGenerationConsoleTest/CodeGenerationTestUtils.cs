@@ -43,8 +43,8 @@ namespace Karkas.CodeGeneration.Helper
             template.DbProviderName = assemblyName;
             IDatabase helper = getDatabaseHelper(dbDatabaseType, template, pDatabaseName);
             helper.CodeGenerateAllTables(
-                connectionString
-                , pDatabaseName
+                
+                 pDatabaseName
                 , pProjectNamespace
                 , pProjectFolder
                 , dboSemaTablolariniAtla

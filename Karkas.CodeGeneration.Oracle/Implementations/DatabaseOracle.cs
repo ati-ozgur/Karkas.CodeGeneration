@@ -125,8 +125,7 @@ ORDER BY FULL_TABLE_NAME
 
 
         public void CodeGenerateAllTables(
-             string pConnectionString
-            , string pDatabaseName
+             string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
             , bool dboSemaTablolariniAtla
@@ -138,7 +137,7 @@ ORDER BY FULL_TABLE_NAME
         {
            
             
-            string userName = getUserNameFromConnection(pConnectionString);
+            string userName = getUserNameFromConnection(connectionString);
 
             ParameterBuilder builder = template.getParameterBuilder();
             builder.parameterEkle("TABLE_SCHEMA", DbType.String, userName);
@@ -148,7 +147,7 @@ ORDER BY FULL_TABLE_NAME
             {
                 string tableName = row["TABLE_NAME"].ToString();
                 string schemaName = row["TABLE_SCHEMA"].ToString();
-                CodeGenerateOneTable( pConnectionString, tableName, schemaName, pDatabaseName, pProjectNamespace
+                CodeGenerateOneTable(  tableName, schemaName, pDatabaseName, pProjectNamespace
                     , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerKullan
@@ -176,8 +175,7 @@ ORDER BY FULL_TABLE_NAME
         }
 
         public void CodeGenerateOneTable(
-             string pConnectionString
-            , string pTableName
+             string pTableName
             , string pSchemaName
             , string pDatabaseName
             , string pProjectNamespace

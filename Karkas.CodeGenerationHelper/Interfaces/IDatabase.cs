@@ -46,8 +46,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         DataTable getTableListFromSchema(string schemaName);
         DataTable getSchemaList();
 
-        void CodeGenerateAllTables( string pConnectionString
-            , string pDatabaseName
+        void CodeGenerateAllTables(
+             string pDatabaseName
             , string pProjectNamespace
             , string pProjectFolder
             , bool dboSemaTablolariniAtla
@@ -58,8 +58,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             );
 
         void CodeGenerateOneTable(
-             string pConnectionString
-            , string pTableName
+             string pTableName
             , string pSchemaName
             , string pDatabaseName
             , string pProjectNamespace
