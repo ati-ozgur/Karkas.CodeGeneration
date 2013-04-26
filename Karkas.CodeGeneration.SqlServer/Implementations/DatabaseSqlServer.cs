@@ -28,7 +28,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             , String pConnectionString
             ,string pDatabaseName
             ,string pProjectNameSpace
-            ,string pProjectFolder
+            ,string codeGenerationDirectory
             ,bool semaIsminiSorgulardaKullan
             ,bool semaIsminiDizinlerdeKullan
             , bool dboSemaTablolariniAtla
@@ -38,11 +38,11 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             )
         {
             this.template = template;
-            connectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
-            smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
-            smoDatabase = smoServer.Databases[pDatabaseName];
+            this.connectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
+            this.smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
+            this.smoDatabase = smoServer.Databases[pDatabaseName];
             this.projectNameSpace = pProjectNameSpace;
-            codeGenerationDirectory = pProjectFolder;
+            this.codeGenerationDirectory = codeGenerationDirectory;
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
