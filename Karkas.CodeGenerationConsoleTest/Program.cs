@@ -49,7 +49,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     ,_SqliteExampleConnectionString
                     , "main",
                     "Karkas.CodeGeneration.SqliteSupport"
-                    , "P:\\Denemeler\\karkas\\Karkas.CodeGeneration.SqliteSupport"
+                    , @"P:\denemeler\karkas\Examples\Karkas.CodeGeneration.SqliteSupport"
                     , 
                     true,
                     true, 
