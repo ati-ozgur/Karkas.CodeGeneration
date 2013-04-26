@@ -33,7 +33,7 @@
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
-            this.checkBoxSysTablolariniAtla = new System.Windows.Forms.CheckBox();
+            this.checkBoxIgnoreSystemTables = new System.Windows.Forms.CheckBox();
             this.checkBoxDboSemasiniAtla = new System.Windows.Forms.CheckBox();
             this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
             this.buttonTumTablolariUret = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
-            this.checkBoxDizinlerseSemaIsmi = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseSchemaNameInFolders = new System.Windows.Forms.CheckBox();
             this.textBoxDatabaseNameLogical = new System.Windows.Forms.TextBox();
             this.labelDatabaseNameLogical = new System.Windows.Forms.Label();
             this.textBoxDatabaseNamePhysical = new System.Windows.Forms.TextBox();
@@ -63,6 +63,10 @@
             this.checkBoxUseSchemaNameInSql = new System.Windows.Forms.CheckBox();
             this.checkBoxViewCodeGenerate = new System.Windows.Forms.CheckBox();
             this.checkBoxStoredProcedureCodeGenerate = new System.Windows.Forms.CheckBox();
+            this.textBoxIgnoredSchemaList = new System.Windows.Forms.TextBox();
+            this.labelIgnoredSchemaList = new System.Windows.Forms.Label();
+            this.textBoxAbbrevationsAsString = new System.Windows.Forms.TextBox();
+            this.labelAbbrevationsAsString = new System.Windows.Forms.Label();
             this.panelListe.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +90,7 @@
             // 
             // buttonTestConnectionString
             // 
-            this.buttonTestConnectionString.Location = new System.Drawing.Point(716, 224);
+            this.buttonTestConnectionString.Location = new System.Drawing.Point(778, 210);
             this.buttonTestConnectionString.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTestConnectionString.Name = "buttonTestConnectionString";
             this.buttonTestConnectionString.Size = new System.Drawing.Size(107, 58);
@@ -98,7 +102,7 @@
             // labelConnectionStatus
             // 
             this.labelConnectionStatus.AutoSize = true;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(11, 247);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(12, 334);
             this.labelConnectionStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
             this.labelConnectionStatus.Size = new System.Drawing.Size(102, 13);
@@ -107,7 +111,6 @@
             // 
             // panelListe
             // 
-            this.panelListe.Controls.Add(this.checkBoxSysTablolariniAtla);
             this.panelListe.Controls.Add(this.checkBoxDboSemasiniAtla);
             this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
             this.panelListe.Controls.Add(this.buttonTumTablolariUret);
@@ -115,7 +118,7 @@
             this.panelListe.Controls.Add(this.labelTabloListesi);
             this.panelListe.Controls.Add(this.labelSchemaList);
             this.panelListe.Controls.Add(this.comboBoxSchemaList);
-            this.panelListe.Location = new System.Drawing.Point(9, 288);
+            this.panelListe.Location = new System.Drawing.Point(11, 373);
             this.panelListe.Margin = new System.Windows.Forms.Padding(2);
             this.panelListe.Name = "panelListe";
             this.panelListe.Size = new System.Drawing.Size(693, 346);
@@ -123,16 +126,16 @@
             // 
             // checkBoxSysTablolariniAtla
             // 
-            this.checkBoxSysTablolariniAtla.AutoSize = true;
-            this.checkBoxSysTablolariniAtla.Checked = true;
-            this.checkBoxSysTablolariniAtla.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSysTablolariniAtla.Location = new System.Drawing.Point(560, 147);
-            this.checkBoxSysTablolariniAtla.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxSysTablolariniAtla.Name = "checkBoxSysTablolariniAtla";
-            this.checkBoxSysTablolariniAtla.Size = new System.Drawing.Size(113, 17);
-            this.checkBoxSysTablolariniAtla.TabIndex = 7;
-            this.checkBoxSysTablolariniAtla.Text = "sys Tablolarını Atla";
-            this.checkBoxSysTablolariniAtla.UseVisualStyleBackColor = true;
+            this.checkBoxIgnoreSystemTables.AutoSize = true;
+            this.checkBoxIgnoreSystemTables.Checked = true;
+            this.checkBoxIgnoreSystemTables.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIgnoreSystemTables.Location = new System.Drawing.Point(485, 155);
+            this.checkBoxIgnoreSystemTables.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxIgnoreSystemTables.Name = "checkBoxSysTablolariniAtla";
+            this.checkBoxIgnoreSystemTables.Size = new System.Drawing.Size(113, 17);
+            this.checkBoxIgnoreSystemTables.TabIndex = 7;
+            this.checkBoxIgnoreSystemTables.Text = "sys Tablolarını Atla";
+            this.checkBoxIgnoreSystemTables.UseVisualStyleBackColor = true;
             // 
             // checkBoxDboSemasiniAtla
             // 
@@ -278,7 +281,7 @@
             // 
             // buttonGecerliDegerleriKaydet
             // 
-            this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(716, 155);
+            this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(778, 141);
             this.buttonGecerliDegerleriKaydet.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGecerliDegerleriKaydet.Name = "buttonGecerliDegerleriKaydet";
             this.buttonGecerliDegerleriKaydet.Size = new System.Drawing.Size(146, 55);
@@ -296,7 +299,7 @@
             // 
             // buttonOtherConnections
             // 
-            this.buttonOtherConnections.Location = new System.Drawing.Point(716, 26);
+            this.buttonOtherConnections.Location = new System.Drawing.Point(778, 12);
             this.buttonOtherConnections.Name = "buttonOtherConnections";
             this.buttonOtherConnections.Size = new System.Drawing.Size(146, 23);
             this.buttonOtherConnections.TabIndex = 15;
@@ -323,7 +326,7 @@
             // 
             // buttonKisaltmalar
             // 
-            this.buttonKisaltmalar.Location = new System.Drawing.Point(716, 101);
+            this.buttonKisaltmalar.Location = new System.Drawing.Point(778, 87);
             this.buttonKisaltmalar.Name = "buttonKisaltmalar";
             this.buttonKisaltmalar.Size = new System.Drawing.Size(146, 23);
             this.buttonKisaltmalar.TabIndex = 18;
@@ -333,7 +336,7 @@
             // 
             // buttonNewConnection
             // 
-            this.buttonNewConnection.Location = new System.Drawing.Point(716, 56);
+            this.buttonNewConnection.Location = new System.Drawing.Point(778, 42);
             this.buttonNewConnection.Name = "buttonNewConnection";
             this.buttonNewConnection.Size = new System.Drawing.Size(146, 23);
             this.buttonNewConnection.TabIndex = 19;
@@ -343,16 +346,16 @@
             // 
             // checkBoxDizinlerseSemaIsmi
             // 
-            this.checkBoxDizinlerseSemaIsmi.AutoSize = true;
-            this.checkBoxDizinlerseSemaIsmi.Checked = true;
-            this.checkBoxDizinlerseSemaIsmi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDizinlerseSemaIsmi.Location = new System.Drawing.Point(356, 183);
-            this.checkBoxDizinlerseSemaIsmi.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxDizinlerseSemaIsmi.Name = "checkBoxDizinlerseSemaIsmi";
-            this.checkBoxDizinlerseSemaIsmi.Size = new System.Drawing.Size(105, 30);
-            this.checkBoxDizinlerseSemaIsmi.TabIndex = 20;
-            this.checkBoxDizinlerseSemaIsmi.Text = "Dizinlerde Şema \r\nİsmini Kullan";
-            this.checkBoxDizinlerseSemaIsmi.UseVisualStyleBackColor = true;
+            this.checkBoxUseSchemaNameInFolders.AutoSize = true;
+            this.checkBoxUseSchemaNameInFolders.Checked = true;
+            this.checkBoxUseSchemaNameInFolders.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseSchemaNameInFolders.Location = new System.Drawing.Point(356, 183);
+            this.checkBoxUseSchemaNameInFolders.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseSchemaNameInFolders.Name = "checkBoxDizinlerseSemaIsmi";
+            this.checkBoxUseSchemaNameInFolders.Size = new System.Drawing.Size(105, 30);
+            this.checkBoxUseSchemaNameInFolders.TabIndex = 20;
+            this.checkBoxUseSchemaNameInFolders.Text = "Dizinlerde Şema \r\nİsmini Kullan";
+            this.checkBoxUseSchemaNameInFolders.UseVisualStyleBackColor = true;
             // 
             // textBoxDatabaseNameLogical
             // 
@@ -428,18 +431,59 @@
             this.checkBoxStoredProcedureCodeGenerate.Text = "Stored Procedure Code Generate";
             this.checkBoxStoredProcedureCodeGenerate.UseVisualStyleBackColor = true;
             // 
+            // textBoxIgnoredSchemaList
+            // 
+            this.textBoxIgnoredSchemaList.Location = new System.Drawing.Point(149, 255);
+            this.textBoxIgnoredSchemaList.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxIgnoredSchemaList.Name = "textBoxIgnoredSchemaList";
+            this.textBoxIgnoredSchemaList.Size = new System.Drawing.Size(469, 20);
+            this.textBoxIgnoredSchemaList.TabIndex = 28;
+            // 
+            // labelIgnoredSchemaList
+            // 
+            this.labelIgnoredSchemaList.AutoSize = true;
+            this.labelIgnoredSchemaList.Location = new System.Drawing.Point(11, 255);
+            this.labelIgnoredSchemaList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelIgnoredSchemaList.Name = "labelIgnoredSchemaList";
+            this.labelIgnoredSchemaList.Size = new System.Drawing.Size(104, 13);
+            this.labelIgnoredSchemaList.TabIndex = 27;
+            this.labelIgnoredSchemaList.Text = "Ignored Schema List";
+            // 
+            // textBoxAbbrevationsAsString
+            // 
+            this.textBoxAbbrevationsAsString.Location = new System.Drawing.Point(148, 291);
+            this.textBoxAbbrevationsAsString.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxAbbrevationsAsString.Name = "textBoxAbbrevationsAsString";
+            this.textBoxAbbrevationsAsString.Size = new System.Drawing.Size(469, 20);
+            this.textBoxAbbrevationsAsString.TabIndex = 30;
+            // 
+            // labelAbbrevationsAsString
+            // 
+            this.labelAbbrevationsAsString.AutoSize = true;
+            this.labelAbbrevationsAsString.Location = new System.Drawing.Point(10, 291);
+            this.labelAbbrevationsAsString.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAbbrevationsAsString.Name = "labelAbbrevationsAsString";
+            this.labelAbbrevationsAsString.Size = new System.Drawing.Size(57, 13);
+            this.labelAbbrevationsAsString.TabIndex = 29;
+            this.labelAbbrevationsAsString.Text = "Kısaltmalar";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 679);
+            this.ClientSize = new System.Drawing.Size(1180, 739);
+            this.Controls.Add(this.textBoxAbbrevationsAsString);
+            this.Controls.Add(this.labelAbbrevationsAsString);
+            this.Controls.Add(this.textBoxIgnoredSchemaList);
+            this.Controls.Add(this.labelIgnoredSchemaList);
+            this.Controls.Add(this.checkBoxIgnoreSystemTables);
             this.Controls.Add(this.checkBoxStoredProcedureCodeGenerate);
             this.Controls.Add(this.checkBoxViewCodeGenerate);
             this.Controls.Add(this.textBoxDatabaseNamePhysical);
             this.Controls.Add(this.labelDatabaseNamePhysical);
             this.Controls.Add(this.textBoxDatabaseNameLogical);
             this.Controls.Add(this.labelDatabaseNameLogical);
-            this.Controls.Add(this.checkBoxDizinlerseSemaIsmi);
+            this.Controls.Add(this.checkBoxUseSchemaNameInFolders);
             this.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
@@ -491,7 +535,7 @@
         private System.Windows.Forms.Label labelConnectionName;
         private System.Windows.Forms.Label labelDatabaseNameSonuc;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
-        private System.Windows.Forms.CheckBox checkBoxSysTablolariniAtla;
+        private System.Windows.Forms.CheckBox checkBoxIgnoreSystemTables;
         private System.Windows.Forms.CheckBox checkBoxDboSemasiniAtla;
         private System.Windows.Forms.TextBox textBoxConnectionName;
         private System.Windows.Forms.Button buttonOtherConnections;
@@ -499,7 +543,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
-        private System.Windows.Forms.CheckBox checkBoxDizinlerseSemaIsmi;
+        private System.Windows.Forms.CheckBox checkBoxUseSchemaNameInFolders;
         private System.Windows.Forms.TextBox textBoxDatabaseNameLogical;
         private System.Windows.Forms.Label labelDatabaseNameLogical;
         private System.Windows.Forms.TextBox textBoxDatabaseNamePhysical;
@@ -507,6 +551,10 @@
         private System.Windows.Forms.CheckBox checkBoxUseSchemaNameInSql;
         private System.Windows.Forms.CheckBox checkBoxViewCodeGenerate;
         private System.Windows.Forms.CheckBox checkBoxStoredProcedureCodeGenerate;
+        private System.Windows.Forms.TextBox textBoxIgnoredSchemaList;
+        private System.Windows.Forms.Label labelIgnoredSchemaList;
+        private System.Windows.Forms.TextBox textBoxAbbrevationsAsString;
+        private System.Windows.Forms.Label labelAbbrevationsAsString;
     }
 }
 

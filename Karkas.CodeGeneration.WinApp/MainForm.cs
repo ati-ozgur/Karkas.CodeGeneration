@@ -70,21 +70,51 @@ namespace Karkas.CodeGeneration.WinApp
         private void databaseEntryToForm(DatabaseEntry entry)
         {
             currentDatabaseEntry = entry;
+            textBoxConnectionName.Text = entry.ConnectionName;
+            comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
 
             if (!string.IsNullOrWhiteSpace(entry.ConnectionString))
             {
                 textBoxConnectionString.Text = entry.ConnectionString;
             }
-            if (!string.IsNullOrWhiteSpace(entry.CodeGenerationDirectory))
-            {
-                textBoxCodeGenerationDizini.Text = entry.CodeGenerationDirectory;
-            }
+
+            textBoxDatabaseNameLogical.Text = entry.DatabaseNameLogical;
+            textBoxDatabaseNamePhysical.Text = entry.DatabaseNamePhysical;
             if (!string.IsNullOrWhiteSpace(entry.ProjectNameSpace))
             {
                 textBoxProjectNamespace.Text = entry.ProjectNameSpace;
             }
-            textBoxConnectionName.Text = entry.ConnectionName;
-            comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
+
+            if (!string.IsNullOrWhiteSpace(entry.CodeGenerationDirectory))
+            {
+                textBoxCodeGenerationDizini.Text = entry.CodeGenerationDirectory;
+            }
+
+            bool parsedValue;
+            if (bool.TryParse(entry.ViewCodeGenerateEtsinMi, out parsedValue))
+            {
+                checkBoxViewCodeGenerate.Checked = parsedValue;
+            }
+            if (bool.TryParse(entry.StoredProcedureCodeGenerateEtsinMi, out parsedValue))
+            {
+                checkBoxStoredProcedureCodeGenerate.Checked = parsedValue;
+            }
+            if (bool.TryParse(entry.UseSchemaNameInSqlQueries, out parsedValue))
+            {
+                checkBoxUseSchemaNameInSql.Checked = parsedValue;
+            }
+            if (bool.TryParse(entry.UseSchemaNameInFolders, out parsedValue))
+            {
+                checkBoxUseSchemaNameInFolders.Checked = parsedValue;
+            }
+            if (bool.TryParse(entry.IgnoreSystemTables, out parsedValue))
+            {
+                checkBoxIgnoreSystemTables.Checked = parsedValue;
+            }
+            textBoxIgnoredSchemaList.Text = entry.IgnoredSchemaList;
+            textBoxAbbrevationsAsString.Text = entry.AbbrevationsAsString;
+
+
         }
 
 
@@ -158,8 +188,8 @@ namespace Karkas.CodeGeneration.WinApp
                     ,textBoxProjectNamespace.Text
                     ,textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxSysTablolariniAtla.Checked
+                    , checkBoxUseSchemaNameInFolders.Checked
+                    , checkBoxIgnoreSystemTables.Checked
                     , null
                     );
                     
@@ -191,8 +221,8 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxProjectNamespace.Text
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
-                    ,checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxSysTablolariniAtla.Checked
+                    ,checkBoxUseSchemaNameInFolders.Checked
+                    , checkBoxIgnoreSystemTables.Checked
                     , null
                     );
                     
@@ -217,8 +247,8 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxProjectNamespace.Text
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
-                    , checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxSysTablolariniAtla.Checked
+                    , checkBoxUseSchemaNameInFolders.Checked
+                    , checkBoxIgnoreSystemTables.Checked
                     , null
                     );
             
