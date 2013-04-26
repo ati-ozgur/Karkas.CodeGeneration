@@ -120,7 +120,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="connectionsDb.db" />
+    <None Include="connectionsDb.sqlite" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
