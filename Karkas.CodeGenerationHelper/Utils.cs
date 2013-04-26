@@ -13,7 +13,7 @@ using Karkas.CodeGenerationHelper.SmoHelpers;
 
 namespace Karkas.CodeGenerationHelper
 {
-    public class Utils
+    public partial class Utils
     {
 
         public Utils(IDatabaseHelper pHelper)
@@ -573,10 +573,7 @@ namespace Karkas.CodeGenerationHelper
         }
 
 
-        public string ProjeDizininiAl(IDatabase database)
-        {
-            return database.projectFolder;
-        }
+
 
 
 

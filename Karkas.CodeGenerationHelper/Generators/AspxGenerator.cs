@@ -36,7 +36,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.writeLine(RenderAsString(pTable, classNameSpace, className, formName));
             writeTableRows(utils,output, pTable);
             output.writeLine("</asp:Content>");
-            string savePath = Path.Combine(utils.ProjeDizininiAl(database), "WebApp\\" + utils.GetPascalCase(pTable.Schema) + "\\" + formName + ".aspx");
+            string savePath = Path.Combine(utils.FileUtilsHelper.ProjeDizininiAl(database), "WebApp\\" + utils.GetPascalCase(pTable.Schema) + "\\" + formName + ".aspx");
             output.save(savePath, true);
             output.clear();
 
