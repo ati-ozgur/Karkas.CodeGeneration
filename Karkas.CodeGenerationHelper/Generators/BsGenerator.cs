@@ -83,8 +83,8 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
-            string outputFullFileNameGenerated = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\Bs\\" + baseNameSpace + ".Bs\\" + schemaName, classNameTypeLibrary + "Bs.generated.cs");
-            string outputFullFileName = Path.Combine(utils.FileUtilsHelper.ProjeAnaDizininiAl(database) + "\\Bs\\" + baseNameSpace + ".Bs\\" + schemaName, classNameTypeLibrary + "Bs.cs");
+            string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForBsGenerated(database, schemaName, semaIsminiDizinlerdeKullan);
+            string outputFullFileName = utils.FileUtilsHelper.getBaseNameForBs(database, schemaName, semaIsminiDizinlerdeKullan); 
             output.saveEncoding(outputFullFileNameGenerated, "o", "utf8");
             output.clear();
 

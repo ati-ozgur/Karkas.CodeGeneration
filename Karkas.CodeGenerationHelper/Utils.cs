@@ -118,13 +118,7 @@ namespace Karkas.CodeGenerationHelper
             BsWrapperGenerator gen = new BsWrapperGenerator(helper);
             gen.Render(output, view);
         }
-        public void RenderAspxCode(IOutput output, ITable table, string pMasterName)
-        {
-            AspxGenerator genA = new AspxGenerator(helper);
-            genA.Render(output, table, pMasterName);
-            AspxCsGenerator genCs = new AspxCsGenerator(helper);
-            genCs.Render(output, table);
-        }
+
 
 
 

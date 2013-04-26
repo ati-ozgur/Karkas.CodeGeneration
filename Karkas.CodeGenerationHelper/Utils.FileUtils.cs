@@ -36,6 +36,29 @@ namespace Karkas.CodeGenerationHelper
             }
 
 
+            public string getBaseNameForBsGenerated(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, database.projectNameSpace + "Bs.generated.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", database.projectNameSpace + "Bs.generated.cs");
+                }
+            }
+            public string getBaseNameForBs(IDatabase database, string schemaName, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\" + schemaName, database.projectNameSpace + "Bs.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Bs\\" + database.projectNameSpace + ".Bs\\", database.projectNameSpace + "Bs.cs");
+                }
+            }
+
 
             public string getBaseNameForDalGenerated(IDatabase database,string schemaName,bool semaIsminiDizinlerdeKullan)
             {
