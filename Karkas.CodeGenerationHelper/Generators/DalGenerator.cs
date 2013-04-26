@@ -68,8 +68,8 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             listeType = "List<" + classNameTypeLibrary + ">";
 
-            string outputFullFileNameGenerated = Path.Combine(utils.DizininiAlDatabaseVeSchemaIle(database, container.Schema) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.generated.cs");
-            string outputFullFileName = Path.Combine(utils.DizininiAlDatabaseVeSchemaIle(database, container.Schema) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.cs");
+            string outputFullFileNameGenerated = Path.Combine(utils.ProjeDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.generated.cs");
+            string outputFullFileName = Path.Combine(utils.ProjeDizininiAl(database) + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName, classNameTypeLibrary + "Dal.cs");
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 

@@ -106,14 +106,6 @@ namespace Karkas.CodeGenerationHelper
         {
             return database.projectNameSpace;
         }
-        public string ProjeDizininiAl(IDatabase database)
-        {
-            return database.projectFolder;
-        }
-        internal string DizininiAlDatabaseVeSchemaIle(IDatabase database, string p)
-        {
-            return ProjeDizininiAl(database);
-        }
 
         internal string NamespaceIniAlSchemaIle(IDatabase database, string p)
         {
@@ -579,6 +571,14 @@ namespace Karkas.CodeGenerationHelper
             }
             return sonuc;
         }
+
+
+        public string ProjeDizininiAl(IDatabase database)
+        {
+            return database.projectFolder;
+        }
+
+
 
 
     }
