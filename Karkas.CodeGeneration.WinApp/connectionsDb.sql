@@ -1,5 +1,4 @@
-﻿PRAGMA foreign_keys=OFF;
-BEGIN TRANSACTION;
+﻿BEGIN TRANSACTION;
 CREATE TABLE DatabaseEntry(
 ConnectionName TEXT primary key
 ,ConnectionDatabaseType TEXT NOT NULL
