@@ -145,7 +145,6 @@ namespace Karkas.CodeGeneration.WinApp
                     ,textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxDboSemasiniAtla.Checked
                     , checkBoxSysTablolariniAtla.Checked
                     , null
                     );
@@ -179,7 +178,6 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     ,checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxDboSemasiniAtla.Checked
                     , checkBoxSysTablolariniAtla.Checked
                     , null
                     );
@@ -206,7 +204,6 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxDizinlerseSemaIsmi.Checked
-                    , checkBoxDboSemasiniAtla.Checked
                     , checkBoxSysTablolariniAtla.Checked
                     , null
                     );

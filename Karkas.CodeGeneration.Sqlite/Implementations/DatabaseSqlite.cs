@@ -23,7 +23,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
-            , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
@@ -41,21 +40,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
 
-            this.dboSemaTablolariniAtla = dboSemaTablolariniAtla;
             this.sysTablolariniAtla = sysTablolariniAtla;
 
         }
 
-        bool dboSemaTablolariniAtla;
 
-        public bool DboSemaTablolariniAtla
-        {
-            get { return dboSemaTablolariniAtla; }
-            set { dboSemaTablolariniAtla = value; }
-        }
         bool sysTablolariniAtla;
 
-        public bool SysTablolariniAtla
+        public bool IgnoreSystemTables
         {
             get { return sysTablolariniAtla; }
             set { sysTablolariniAtla = value; }
@@ -78,14 +70,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         bool semaIsminiSorgulardaKullan;
 
-        public bool SemaIsminiSorgulardaKullan
+        public bool UseSchemaNameInSqlQueries
         {
             get { return semaIsminiSorgulardaKullan; }
             set { semaIsminiSorgulardaKullan = value; }
         }
         bool semaIsminiDizinlerdeKullan;
 
-        public bool SemaIsminiDizinlerdeKullan
+        public bool UseSchemaNameInFolders
         {
             get { return semaIsminiDizinlerdeKullan; }
             set { semaIsminiDizinlerdeKullan = value; }
@@ -141,19 +133,33 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         bool viewCodeGenerateEtsinMi;
 
-        public bool ViewCodeGenerateEtsinMi
+        public bool ViewCodeGenerate
         {
             get { return viewCodeGenerateEtsinMi; }
             set { viewCodeGenerateEtsinMi = value; }
         }
         bool storedProcedureCodeGenerateEtsinMi;
 
-        public bool StoredProcedureCodeGenerateEtsinMi
+        public bool StoredProcedureCodeGenerate
         {
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
         }
 
+        string ignoredSchemaList;
+
+        public string IgnoredSchemaList
+        {
+            get { return ignoredSchemaList; }
+            set { ignoredSchemaList = value; }
+        }
+        string databaseAbbreviations;
+
+        public string DatabaseAbbreviations
+        {
+            get { return databaseAbbreviations; }
+            set { databaseAbbreviations = value; }
+        }
 
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
                                                 name AS TABLE_NAME,

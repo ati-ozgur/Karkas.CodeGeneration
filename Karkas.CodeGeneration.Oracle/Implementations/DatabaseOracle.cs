@@ -22,7 +22,6 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
-            , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
@@ -36,44 +35,56 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             codeGenerationDirectory = pProjectFolder;
             logicalDatabaseName = pDatabaseName;
 
-            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
-            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
+            this.useSchemaNameInSqlQueries = semaIsminiSorgulardaKullan;
+            this.useSchemaNameInFolders = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
-            this.dboSemaTablolariniAtla = dboSemaTablolariniAtla;
-            this.sysTablolariniAtla = sysTablolariniAtla;
+            this.ignoreSystemTables = sysTablolariniAtla;
 
         }
 
-        bool dboSemaTablolariniAtla;
 
-        public bool DboSemaTablolariniAtla
+        bool ignoreSystemTables;
+
+        public bool IgnoreSystemTables
         {
-            get { return dboSemaTablolariniAtla; }
-            set { dboSemaTablolariniAtla = value; }
+            get { return ignoreSystemTables; }
+            set { ignoreSystemTables = value; }
         }
-        bool sysTablolariniAtla;
 
-        public bool SysTablolariniAtla
+
+        bool useSchemaNameInSqlQueries;
+
+        public bool UseSchemaNameInSqlQueries
         {
-            get { return sysTablolariniAtla; }
-            set { sysTablolariniAtla = value; }
+            get { return useSchemaNameInSqlQueries; }
+            set { useSchemaNameInSqlQueries = value; }
         }
+        bool useSchemaNameInFolders;
 
-
-        bool semaIsminiSorgulardaKullan;
-
-        public bool SemaIsminiSorgulardaKullan
+        public bool UseSchemaNameInFolders
         {
-            get { return semaIsminiSorgulardaKullan; }
-            set { semaIsminiSorgulardaKullan = value; }
+            get { return useSchemaNameInFolders; }
+            set { useSchemaNameInFolders = value; }
         }
-        bool semaIsminiDizinlerdeKullan;
 
-        public bool SemaIsminiDizinlerdeKullan
+
+        string ignoredSchemaList;
+
+        public string IgnoredSchemaList
         {
-            get { return semaIsminiDizinlerdeKullan; }
-            set { semaIsminiDizinlerdeKullan = value; }
+            get { return ignoredSchemaList; }
+            set { ignoredSchemaList = value; }
         }
+        string databaseAbbreviations;
+
+        public string DatabaseAbbreviations
+        {
+            get { return databaseAbbreviations; }
+            set { databaseAbbreviations = value; }
+        }
+
+
+
         List<DatabaseAbbreviations> listDatabaseAbbreviations;
 
         public List<DatabaseAbbreviations> ListDatabaseAbbreviations
@@ -169,14 +180,14 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         bool viewCodeGenerateEtsinMi;
 
-        public bool ViewCodeGenerateEtsinMi
+        public bool ViewCodeGenerate
         {
             get { return viewCodeGenerateEtsinMi; }
             set { viewCodeGenerateEtsinMi = value; }
         }
         bool storedProcedureCodeGenerateEtsinMi;
 
-        public bool StoredProcedureCodeGenerateEtsinMi
+        public bool StoredProcedureCodeGenerate
         {
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
@@ -288,9 +299,9 @@ ORDER BY FULL_TABLE_NAME
             ITable table = this.getTable(pTableName, pSchemaName);
 
 
-            typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-            dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
-            bsGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
+            typeGen.Render(output, table,useSchemaNameInSqlQueries,useSchemaNameInFolders, listDatabaseAbbreviations);
+            dalGen.Render(output, table, useSchemaNameInSqlQueries, useSchemaNameInFolders,listDatabaseAbbreviations);
+            bsGen.Render(output, table, useSchemaNameInSqlQueries,useSchemaNameInFolders, listDatabaseAbbreviations);
         }
 
 

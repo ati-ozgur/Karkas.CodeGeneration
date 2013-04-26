@@ -30,7 +30,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             ,string codeGenerationDirectory
             ,bool semaIsminiSorgulardaKullan
             ,bool semaIsminiDizinlerdeKullan
-            , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
             
@@ -45,7 +44,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
-            this.dboSemaTablolariniAtla = dboSemaTablolariniAtla;
             this.sysTablolariniAtla = sysTablolariniAtla;
 
         }
@@ -59,16 +57,10 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
 
 
-        bool dboSemaTablolariniAtla;
 
-        public bool DboSemaTablolariniAtla
-        {
-            get { return dboSemaTablolariniAtla; }
-            set { dboSemaTablolariniAtla = value; }
-        }
         bool sysTablolariniAtla;
 
-        public bool SysTablolariniAtla
+        public bool IgnoreSystemTables
         {
             get { return sysTablolariniAtla; }
             set { sysTablolariniAtla = value; }
@@ -77,14 +69,14 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         bool semaIsminiSorgulardaKullan;
 
-        public bool SemaIsminiSorgulardaKullan
+        public bool UseSchemaNameInSqlQueries
         {
             get { return semaIsminiSorgulardaKullan; }
             set { semaIsminiSorgulardaKullan = value; }
         }
         bool semaIsminiDizinlerdeKullan;
 
-        public bool SemaIsminiDizinlerdeKullan
+        public bool UseSchemaNameInFolders
         {
             get { return semaIsminiDizinlerdeKullan; }
             set { semaIsminiDizinlerdeKullan = value; }
@@ -140,21 +132,37 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         }
 
-        bool viewCodeGenerateEtsinMi;
+        bool viewCodeGenerate;
 
-        public bool ViewCodeGenerateEtsinMi
+        public bool ViewCodeGenerate
         {
-            get { return viewCodeGenerateEtsinMi; }
-            set { viewCodeGenerateEtsinMi = value; }
+            get { return viewCodeGenerate; }
+            set { viewCodeGenerate = value; }
         }
-        bool storedProcedureCodeGenerateEtsinMi;
+        bool toredProcedureCodeGenerate;
 
-        public bool StoredProcedureCodeGenerateEtsinMi
+        public bool StoredProcedureCodeGenerate
         {
-            get { return storedProcedureCodeGenerateEtsinMi; }
-            set { storedProcedureCodeGenerateEtsinMi = value; }
+            get { return toredProcedureCodeGenerate; }
+            set { toredProcedureCodeGenerate = value; }
         }
 
+
+
+        string ignoredSchemaList;
+
+        public string IgnoredSchemaList
+        {
+            get { return ignoredSchemaList; }
+            set { ignoredSchemaList = value; }
+        }
+        string databaseAbbreviations;
+
+        public string DatabaseAbbreviations
+        {
+            get { return databaseAbbreviations; }
+            set { databaseAbbreviations = value; }
+        }
 
 
         AdoTemplate template;
@@ -290,10 +298,6 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             foreach (ITable table in tableListesi)
             {
-                if (dboSemaTablolariniAtla && table.Schema == "dbo")
-                {
-                    continue;
-                }
                 if (sysTablolariniAtla && (table.Name.StartsWith("sys") || table.Name == "dtproperties"))
                 {
                     continue;

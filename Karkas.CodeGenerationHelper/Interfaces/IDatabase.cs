@@ -10,6 +10,10 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 {
     public interface IDatabase : ICodeGenerationPersistanceValues
     {
+
+        List<DatabaseAbbreviations> ListDatabaseAbbreviations { get; set; }
+
+
         DataTable getSchemaList();
 
         string getDefaultSchema();
