@@ -81,15 +81,15 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             identityKolonDegeriniSetleYaz(output, container);
 
-            SelectCountYaz(output, container);
+            SelectCountYaz(output, container, semaIsminiSorgulardaKullan);
 
-            SelectStringYaz(output, container);
+            SelectStringYaz(output, container, semaIsminiSorgulardaKullan);
 
-            DeleteStringYaz(output, container);
+            DeleteStringYaz(output, container, semaIsminiSorgulardaKullan);
 
-            UpdateStringYaz(output, container, ref pkcumlesi);
+            UpdateStringYaz(output, container, semaIsminiSorgulardaKullan, ref pkcumlesi);
 
-            InsertStringYaz(output, container, ref identityVarmi);
+            InsertStringYaz(output, container, semaIsminiSorgulardaKullan, ref identityVarmi);
 
 
             SorgulaPkIleGetirYaz(output, classNameTypeLibrary, pkAdi, pkType);
@@ -234,7 +234,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        private void SelectCountYaz(IOutput output, IContainer container)
+        private void SelectCountYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan)
         {
             output.autoTabLn("protected override string SelectCountString");
             BaslangicSusluParentezVeTabArtir(output);
@@ -247,7 +247,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
 
 
-        private void SelectStringYaz(IOutput output, IContainer container)
+        private void SelectStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan)
         {
             output.autoTabLn("protected override string SelectString");
             BaslangicSusluParentezVeTabArtir(output);
@@ -266,7 +266,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             BitisSusluParentezVeTabAzalt(output);
         }
 
-        private void DeleteStringYaz(IOutput output, IContainer container)
+        private void DeleteStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan)
         {
             string cumle = "";
             output.autoTabLn("protected override string DeleteString");
@@ -312,7 +312,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
 
 
-        private void UpdateStringYaz(IOutput output, IContainer container, ref string pkcumlesi)
+        private void UpdateStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, ref string pkcumlesi)
         {
             string cumle = "";
             output.autoTabLn("protected override string UpdateString");
@@ -363,7 +363,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        protected void InsertStringYaz(IOutput output, IContainer container, ref bool identityVarmi)
+        protected void InsertStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, ref bool identityVarmi)
         {
             string cumle = "";
 
