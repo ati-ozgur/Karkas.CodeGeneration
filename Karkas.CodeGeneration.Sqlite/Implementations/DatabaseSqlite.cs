@@ -34,7 +34,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             connectionString = pConnectionString;
 
             projectNameSpace = pProjectNameSpace;
-            projectFolder = pProjectFolder;
+            codeGenerationDirectory = pProjectFolder;
             _DatabaseName = pDatabaseName;
 
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
@@ -90,11 +90,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         AdoTemplate template;
         string projectNameSpace;
         string connectionString;
-        string projectFolder;
+        string codeGenerationDirectory;
         string _DatabaseName;
 
 
-        public string Name
+        public string ConnectionName
         {
             get
             {
@@ -113,10 +113,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         }
 
-        public string ProjectFolder
+        public string CodeGenerationDirectory
         {
-            get { return projectFolder; }
-            set { projectFolder = value; }
+            get { return codeGenerationDirectory; }
+            set { codeGenerationDirectory = value; }
         }
 
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
@@ -140,7 +140,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                     foreach (DataRow rowTable in dtTables.Rows)
                     {
                         String tableName = rowTable["TABLE_NAME"].ToString();
-                        TableSqlite table = new TableSqlite(this, template, tableName, this.Name);
+                        TableSqlite table = new TableSqlite(this, template, tableName, this.ConnectionName);
                         _tableList.Add(table);
                     }
                 }
@@ -163,7 +163,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public override string ToString()
         {
-            return string.Format("SqliteDatabase : {0}, ConnectionString: {1}", Name, connectionString);
+            return string.Format("SqliteDatabase : {0}, ConnectionString: {1}", ConnectionName, connectionString);
         }
 
 

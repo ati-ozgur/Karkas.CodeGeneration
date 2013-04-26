@@ -21,7 +21,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         public void Render(IOutput output, ITable table, string connectionString)
         {
-            output.writeLine(insertHelper.GetRowsToBeInserted(table.Database.Name, table.Schema, table.Name, connectionString));
+            output.writeLine(insertHelper.GetRowsToBeInserted(table.Database.ConnectionName, table.Schema, table.Name, connectionString));
             output.save(utils.FileUtilsHelper.getInsertScriptsFullFileName(table), false);
             output.clear();
 

@@ -21,7 +21,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Database smoDatabase;
         internal string connectionString;
 
-        string projectFolder;
+        string codeGenerationDirectory;
 
         public DatabaseSqlServer(
             AdoTemplate template
@@ -42,7 +42,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
             smoDatabase = smoServer.Databases[pDatabaseName];
             this.projectNameSpace = pProjectNameSpace;
-            projectFolder = pProjectFolder;
+            codeGenerationDirectory = pProjectFolder;
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
@@ -104,15 +104,15 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         }
 
-        public string ProjectFolder
+        public string CodeGenerationDirectory
         {
             get
             {
-                return projectFolder;
+                return codeGenerationDirectory;
             }
             set
             {
-                projectFolder = value;
+                codeGenerationDirectory = value;
             }
 
         }
@@ -133,7 +133,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             set { databaseName = value; }
         }
 
-        public string Name
+        public string ConnectionName
         {
             get
             {
@@ -168,7 +168,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         public override string ToString()
         {
-            return Name;
+            return ConnectionName;
         }
 
 

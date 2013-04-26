@@ -33,7 +33,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             connectionString = pConnectionString;
 
             projectNameSpace = pProjectNameSpace;
-            projectFolder = pProjectFolder;
+            codeGenerationDirectory = pProjectFolder;
             logicalDatabaseName = pDatabaseName;
 
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
@@ -92,11 +92,11 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         }
         string projectNameSpace;
         string connectionString;
-        string projectFolder;
+        string codeGenerationDirectory;
         string logicalDatabaseName;
 
 
-        public string Name
+        public string ConnectionName
         {
             get
             {
@@ -114,15 +114,15 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             set {  projectNameSpace = value; }
         }
 
-        public string ProjectFolder
+        public string CodeGenerationDirectory
         {
             get 
             { 
-                return projectFolder; 
+                return codeGenerationDirectory; 
             }
             set 
             { 
-                 projectFolder = value; 
+                 codeGenerationDirectory = value; 
             }
         }
 

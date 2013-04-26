@@ -97,7 +97,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             string baseNameSpace = database.ProjectNameSpace;
             string baseNameSpaceDal = baseNameSpace + ".Dal";
             string classNameSpace = baseNameSpaceDal + "." + schemaName;
-            string outputFullFileName = Path.Combine(database.ProjectFolder + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName + "\\StoredProcedures", "usp_" + methodName + ".generated.cs");
+            string outputFullFileName = Path.Combine(database.CodeGenerationDirectory + "\\Dal\\" + baseNameSpace + ".Dal\\" + schemaName + "\\StoredProcedures", "usp_" + methodName + ".generated.cs");
 
             UsingleriYaz(output);
 
@@ -132,7 +132,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
                 output.autoTabLn("AdoTemplate template = new AdoTemplate();");
-                output.autoTabLn(string.Format("template.Connection = new SqlConnection(ConnectionSingleton.Instance.getConnectionString(\"{0}\"));", database.Name));
+                output.autoTabLn(string.Format("template.Connection = new SqlConnection(ConnectionSingleton.Instance.getConnectionString(\"{0}\"));", database.ConnectionName));
 
                 generateParametersOverloadCagir(output, proc);
                 BitisSusluParentezVeTabAzalt(output);
@@ -398,7 +398,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
             output.autoTabLn("AdoTemplate template = new AdoTemplate();");
-            output.autoTabLn(string.Format("template.Connection = new SqlConnection(ConnectionSingleton.Instance.getConnectionString(\"{0}\"));", database.Name));
+            output.autoTabLn(string.Format("template.Connection = new SqlConnection(ConnectionSingleton.Instance.getConnectionString(\"{0}\"));", database.ConnectionName));
 
             generateParametersOverloadCagir(output, proc);
             BitisSusluParentezVeTabAzalt(output);

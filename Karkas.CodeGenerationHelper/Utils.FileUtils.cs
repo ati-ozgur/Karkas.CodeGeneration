@@ -22,7 +22,7 @@ namespace Karkas.CodeGenerationHelper
         {
             public string ProjeAnaDizininiAl(IDatabase database)
             {
-                return database.ProjectFolder;
+                return database.CodeGenerationDirectory;
             }
 
             public string getBaseNameForBsWrapperGenerated(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)

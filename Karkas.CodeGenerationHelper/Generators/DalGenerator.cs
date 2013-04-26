@@ -194,7 +194,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("get");
             BaslangicSusluParentezVeTabArtir(output);
-            output.autoTabLn(string.Format("return \"{0}\";", container.Database.Name));
+            output.autoTabLn(string.Format("return \"{0}\";", container.Database.ConnectionName));
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
         }
