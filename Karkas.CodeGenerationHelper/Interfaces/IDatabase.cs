@@ -11,54 +11,17 @@ namespace Karkas.CodeGenerationHelper.Interfaces
     public interface IDatabase
     {
         string Name { get; set; }
-        string DatabaseName
-        {
-            get;
-            set;
-        }
-
         string ProjectNameSpace { get; }
         string ProjectFolder { get; }
 
-
-        List<ITable> Tables { get; }
-
-        ITable getTable(string pTableName, string pSchemaName);
-
-        AdoTemplate Template
-        {
-            get;
-            set;
-        }
-
-
-
-
         string getDatabaseName();
+
+        string getDefaultSchema();
 
         //string DatabaseNameLogical
         //{
         //    get;
         //}
-
-        string getDefaultSchema();
-
-        DataTable getTableListFromSchema(string schemaName);
-        DataTable getSchemaList();
-
-        void CodeGenerateAllTables();
-
-        void CodeGenerateOneTable(
-             string pTableName
-            , string pSchemaName
-            );
-
-
-        DalGenerator DalGenerator
-        {
-            get;
-        }
-
 
         bool SemaIsminiSorgulardaKullan
         {
@@ -88,6 +51,49 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             get;
             set;
         }
+
+
+
+        string DatabaseName
+        {
+            get;
+            set;
+        }
+        
+        DataTable getSchemaList();
+
+
+
+        AdoTemplate Template
+        {
+            get;
+            set;
+        }
+
+        List<ITable> Tables { get; }
+
+        ITable getTable(string pTableName, string pSchemaName);
+
+
+
+
+
+
+        DataTable getTableListFromSchema(string schemaName);
+
+        void CodeGenerateAllTables();
+
+        void CodeGenerateOneTable(
+             string pTableName
+            , string pSchemaName
+            );
+
+
+        DalGenerator DalGenerator
+        {
+            get;
+        }
+
 
 
 
