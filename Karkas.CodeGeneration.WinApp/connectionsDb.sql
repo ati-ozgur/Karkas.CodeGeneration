@@ -2,13 +2,14 @@ BEGIN TRANSACTION;
 CREATE TABLE DatabaseEntry(
 ConnectionName TEXT primary key
 ,ConnectionDatabaseType TEXT NOT NULL
+,ConnectionDbProviderName TEXT NOT NULL
 ,ConnectionString TEXT NOT NULL
 ,DatabaseNamePhysical TEXT
 ,DatabaseNameLogical TEXT
 ,ProjectNameSpace TEXT NOT NULL
 ,CodeGenerationDirectory TEXT NOT NULL
-,ViewCodeGenerateEtsinMi TEXT NOT NULL
-,StoredProcedureCodeGenerateEtsinMi TEXT NOT NULL
+,ViewCodeGenerate TEXT NOT NULL
+,StoredProcedureCodeGenerate TEXT NOT NULL
 ,UseSchemaNameInSqlQueries TEXT NOT NULL
 ,UseSchemaNameInFolders TEXT NOT NULL
 ,IgnoreSystemTables TEXT NOT NULL
@@ -21,6 +22,7 @@ ConnectionName TEXT primary key
 
 INSERT INTO DatabaseEntry VALUES('Karkas.Ornek'
 	,'SqlServer'
+	, 'System.Data.SqlClient'
 	,'Integrated Security = SSPI; Persist Security Info=False;Initial Catalog=KARKAS_ORNEK;Data Source=localhost\SQLSERVER2012'
 	,'KARKAS_ORNEK'
 	,'KARKAS_ORNEK'
@@ -39,6 +41,7 @@ INSERT INTO DatabaseEntry VALUES('Karkas.Ornek'
 
 INSERT INTO DatabaseEntry VALUES('karkas.sqlite.persistence'
 	,'Sqlite'
+	,'System.Data.SQLite'
 	,'Data Source=connectionsDb.db'
 	,'main'
 	,'karkas.sqlite.persistence'

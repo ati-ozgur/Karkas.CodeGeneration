@@ -18,13 +18,14 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	{
 		private string connectionName;
 		private string connectionDatabaseType;
+		private string connectionDbProviderName;
 		private string connectionString;
 		private string databaseNamePhysical;
 		private string databaseNameLogical;
 		private string projectNameSpace;
 		private string codeGenerationDirectory;
-		private string viewCodeGenerateEtsinMi;
-		private string storedProcedureCodeGenerateEtsinMi;
+		private string viewCodeGenerate;
+		private string storedProcedureCodeGenerate;
 		private string useSchemaNameInSqlQueries;
 		private string useSchemaNameInFolders;
 		private string ignoreSystemTables;
@@ -69,6 +70,25 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 					this.RowState = DataRowState.Modified;
 				}
 				connectionDatabaseType = value;
+			}
+		}
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string ConnectionDbProviderName
+		{
+			[DebuggerStepThrough]
+			get
+			{
+				return connectionDbProviderName;
+			}
+			[DebuggerStepThrough]
+			set
+			{
+				if ((this.RowState == DataRowState.Unchanged) && (connectionDbProviderName!= value))
+				{
+					this.RowState = DataRowState.Modified;
+				}
+				connectionDbProviderName = value;
 			}
 		}
 
@@ -168,40 +188,40 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string ViewCodeGenerateEtsinMi
+		public string ViewCodeGenerate
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return viewCodeGenerateEtsinMi;
+				return viewCodeGenerate;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (viewCodeGenerateEtsinMi!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (viewCodeGenerate!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				viewCodeGenerateEtsinMi = value;
+				viewCodeGenerate = value;
 			}
 		}
 
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		public string StoredProcedureCodeGenerateEtsinMi
+		public string StoredProcedureCodeGenerate
 		{
 			[DebuggerStepThrough]
 			get
 			{
-				return storedProcedureCodeGenerateEtsinMi;
+				return storedProcedureCodeGenerate;
 			}
 			[DebuggerStepThrough]
 			set
 			{
-				if ((this.RowState == DataRowState.Unchanged) && (storedProcedureCodeGenerateEtsinMi!= value))
+				if ((this.RowState == DataRowState.Unchanged) && (storedProcedureCodeGenerate!= value))
 				{
 					this.RowState = DataRowState.Modified;
 				}
-				storedProcedureCodeGenerateEtsinMi = value;
+				storedProcedureCodeGenerate = value;
 			}
 		}
 
@@ -361,13 +381,14 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	{
 		public const string ConnectionName = "ConnectionName";
 		public const string ConnectionDatabaseType = "ConnectionDatabaseType";
+		public const string ConnectionDbProviderName = "ConnectionDbProviderName";
 		public const string ConnectionString = "ConnectionString";
 		public const string DatabaseNamePhysical = "DatabaseNamePhysical";
 		public const string DatabaseNameLogical = "DatabaseNameLogical";
 		public const string ProjectNameSpace = "ProjectNameSpace";
 		public const string CodeGenerationDirectory = "CodeGenerationDirectory";
-		public const string ViewCodeGenerateEtsinMi = "ViewCodeGenerateEtsinMi";
-		public const string StoredProcedureCodeGenerateEtsinMi = "StoredProcedureCodeGenerateEtsinMi";
+		public const string ViewCodeGenerate = "ViewCodeGenerate";
+		public const string StoredProcedureCodeGenerate = "StoredProcedureCodeGenerate";
 		public const string UseSchemaNameInSqlQueries = "UseSchemaNameInSqlQueries";
 		public const string UseSchemaNameInFolders = "UseSchemaNameInFolders";
 		public const string IgnoreSystemTables = "IgnoreSystemTables";
@@ -382,13 +403,14 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 			DatabaseEntry obj = new DatabaseEntry();
 			obj.connectionName = connectionName;
 			obj.connectionDatabaseType = connectionDatabaseType;
+			obj.connectionDbProviderName = connectionDbProviderName;
 			obj.connectionString = connectionString;
 			obj.databaseNamePhysical = databaseNamePhysical;
 			obj.databaseNameLogical = databaseNameLogical;
 			obj.projectNameSpace = projectNameSpace;
 			obj.codeGenerationDirectory = codeGenerationDirectory;
-			obj.viewCodeGenerateEtsinMi = viewCodeGenerateEtsinMi;
-			obj.storedProcedureCodeGenerateEtsinMi = storedProcedureCodeGenerateEtsinMi;
+			obj.viewCodeGenerate = viewCodeGenerate;
+			obj.storedProcedureCodeGenerate = storedProcedureCodeGenerate;
 			obj.useSchemaNameInSqlQueries = useSchemaNameInSqlQueries;
 			obj.useSchemaNameInFolders = useSchemaNameInFolders;
 			obj.ignoreSystemTables = ignoreSystemTables;
@@ -405,11 +427,12 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 	{
 		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionDatabaseType"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionDbProviderName"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ConnectionString"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ProjectNameSpace"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "CodeGenerationDirectory"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ViewCodeGenerateEtsinMi"));		
-		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "StoredProcedureCodeGenerateEtsinMi"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "ViewCodeGenerate"));		
+		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "StoredProcedureCodeGenerate"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "UseSchemaNameInSqlQueries"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "UseSchemaNameInFolders"));		
 		this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, "IgnoreSystemTables"));		
@@ -444,6 +467,21 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				else
 				{
 					return "ConnectionDatabaseType";
+				}
+			}
+		}
+		public static string ConnectionDbProviderName
+		{
+			get
+			{
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".ConnectionDbProviderName"];
+				if (s != null)
+				{
+					return s;
+				}
+				else
+				{
+					return "ConnectionDbProviderName";
 				}
 			}
 		}
@@ -522,33 +560,33 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 				}
 			}
 		}
-		public static string ViewCodeGenerateEtsinMi
+		public static string ViewCodeGenerate
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".ViewCodeGenerateEtsinMi"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".ViewCodeGenerate"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "ViewCodeGenerateEtsinMi";
+					return "ViewCodeGenerate";
 				}
 			}
 		}
-		public static string StoredProcedureCodeGenerateEtsinMi
+		public static string StoredProcedureCodeGenerate
 		{
 			get
 			{
-				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".StoredProcedureCodeGenerateEtsinMi"];
+				string s = ConfigurationManager.AppSettings[namespaceVeClass + ".StoredProcedureCodeGenerate"];
 				if (s != null)
 				{
 					return s;
 				}
 				else
 				{
-					return "StoredProcedureCodeGenerateEtsinMi";
+					return "StoredProcedureCodeGenerate";
 				}
 			}
 		}

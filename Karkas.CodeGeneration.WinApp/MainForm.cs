@@ -58,12 +58,40 @@ namespace Karkas.CodeGeneration.WinApp
             DatabaseEntry entry = new DatabaseEntry();
 
             entry.ConnectionName = textBoxConnectionName.Text;
-            entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedItem.ToString();
+            entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
 
             entry.ConnectionString = textBoxConnectionString.Text;
-            entry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
+
+            entry.DatabaseNamePhysical = textBoxDatabaseNamePhysical.Text;
+            entry.DatabaseNameLogical = textBoxDatabaseNameLogical.Text;
+
             entry.ProjectNameSpace = textBoxProjectNamespace.Text;
+            entry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
+
+            entry.ViewCodeGenerate = checkBoxViewCodeGenerate.Checked.ToString();
+
+		    entry.StoredProcedureCodeGenerate = checkBoxStoredProcedureCodeGenerate.Checked.ToString();
+		    entry.UseSchemaNameInSqlQueries = checkBoxUseSchemaNameInSql.Checked.ToString();
+		    entry.UseSchemaNameInFolders = checkBoxUseSchemaNameInFolders.Checked.ToString();
+		    entry.IgnoreSystemTables = checkBoxIgnoreSystemTables.Checked.ToString();
+		    entry.IgnoredSchemaList =textBoxIgnoredSchemaList.Text;
+            if (string.IsNullOrEmpty(textBoxAbbrevationsAsString.Text))
+            {
+                entry.AbbrevationsAsString = null;
+            }
+            else
+            {
+                entry.AbbrevationsAsString = textBoxAbbrevationsAsString.Text;
+            }
+
+
+
+            entry.setTimeValues();
             return entry;
+
+
+
+
         }
 
 
@@ -91,11 +119,11 @@ namespace Karkas.CodeGeneration.WinApp
             }
 
             bool parsedValue;
-            if (bool.TryParse(entry.ViewCodeGenerateEtsinMi, out parsedValue))
+            if (bool.TryParse(entry.ViewCodeGenerate, out parsedValue))
             {
                 checkBoxViewCodeGenerate.Checked = parsedValue;
             }
-            if (bool.TryParse(entry.StoredProcedureCodeGenerateEtsinMi, out parsedValue))
+            if (bool.TryParse(entry.StoredProcedureCodeGenerate, out parsedValue))
             {
                 checkBoxStoredProcedureCodeGenerate.Checked = parsedValue;
             }
@@ -331,14 +359,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
-            currentDatabaseEntry = new DatabaseEntry();
-
-            currentDatabaseEntry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
-            currentDatabaseEntry.ConnectionName = textBoxConnectionName.Text;
-            currentDatabaseEntry.ProjectNameSpace = textBoxProjectNamespace.Text;
-            currentDatabaseEntry.ConnectionString  = textBoxConnectionString.Text;
-            currentDatabaseEntry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
-            currentDatabaseEntry.setTimeValues();
+            currentDatabaseEntry = FormToDatabaseEntry();
 
 
 

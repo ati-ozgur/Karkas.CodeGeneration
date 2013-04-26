@@ -16,7 +16,8 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 
         public DatabaseEntry()
         {
-            this.CreationTime = DateTime.UtcNow.ToString("yyyy-MM-DD HH:mm:ss");
+            this.CreationTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+            setTimeValues();
         }
 
         public override string ToString()

@@ -36,7 +36,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		get 
 		{
-			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
+			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
 		}
 	}
 	protected override string DeleteString
@@ -52,9 +52,27 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		{
 			return @"UPDATE DatabaseEntry
 			 SET 
-			ConnectionDatabaseType = @ConnectionDatabaseType,ConnectionString = @ConnectionString,DatabaseNamePhysical = @DatabaseNamePhysical,DatabaseNameLogical = @DatabaseNameLogical,ProjectNameSpace = @ProjectNameSpace,CodeGenerationDirectory = @CodeGenerationDirectory,ViewCodeGenerateEtsinMi = @ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi = @StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries = @UseSchemaNameInSqlQueries,UseSchemaNameInFolders = @UseSchemaNameInFolders,IgnoreSystemTables = @IgnoreSystemTables,IgnoredSchemaList = @IgnoredSchemaList,AbbrevationsAsString = @AbbrevationsAsString,CreationTime = @CreationTime,LastAccessTime = @LastAccessTime,LastWriteTime = @LastWriteTime			
+			ConnectionDatabaseType = @ConnectionDatabaseType
+,ConnectionDbProviderName = @ConnectionDbProviderName
+,ConnectionString = @ConnectionString
+,DatabaseNamePhysical = @DatabaseNamePhysical
+,DatabaseNameLogical = @DatabaseNameLogical
+,ProjectNameSpace = @ProjectNameSpace
+,CodeGenerationDirectory = @CodeGenerationDirectory
+,ViewCodeGenerate = @ViewCodeGenerate
+,StoredProcedureCodeGenerate = @StoredProcedureCodeGenerate
+,UseSchemaNameInSqlQueries = @UseSchemaNameInSqlQueries
+,UseSchemaNameInFolders = @UseSchemaNameInFolders
+,IgnoreSystemTables = @IgnoreSystemTables
+,IgnoredSchemaList = @IgnoredSchemaList
+,AbbrevationsAsString = @AbbrevationsAsString
+,CreationTime = @CreationTime
+,LastAccessTime = @LastAccessTime
+,LastWriteTime = @LastWriteTime
+			
 			WHERE 
-			 ConnectionName = @ConnectionName ";
+			 ConnectionName = @ConnectionName
+ ";
 		}
 	}
 	protected override string InsertString
@@ -62,9 +80,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		get 
 		{
 			return @"INSERT INTO DatabaseEntry 
-			 (ConnectionName,ConnectionDatabaseType,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerateEtsinMi,StoredProcedureCodeGenerateEtsinMi,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
+			 (ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
 			 VALUES 
-						(@ConnectionName,@ConnectionDatabaseType,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerateEtsinMi,@StoredProcedureCodeGenerateEtsinMi,@UseSchemaNameInSqlQueries,@UseSchemaNameInFolders,@IgnoreSystemTables,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
+						(@ConnectionName,@ConnectionDatabaseType,@ConnectionDbProviderName,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerate,@StoredProcedureCodeGenerate,@UseSchemaNameInSqlQueries,@UseSchemaNameInFolders,@IgnoreSystemTables,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
 		}
 	}
 	public DatabaseEntry SorgulaConnectionNameIle(string p1)
@@ -116,52 +134,54 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		row.ConnectionName = dr.GetString(0);
 		row.ConnectionDatabaseType = dr.GetString(1);
-		row.ConnectionString = dr.GetString(2);
-		if (!dr.IsDBNull(3))
-		{
-			row.DatabaseNamePhysical = dr.GetString(3);
-		}
+		row.ConnectionDbProviderName = dr.GetString(2);
+		row.ConnectionString = dr.GetString(3);
 		if (!dr.IsDBNull(4))
 		{
-			row.DatabaseNameLogical = dr.GetString(4);
+			row.DatabaseNamePhysical = dr.GetString(4);
 		}
-		row.ProjectNameSpace = dr.GetString(5);
-		row.CodeGenerationDirectory = dr.GetString(6);
-		row.ViewCodeGenerateEtsinMi = dr.GetString(7);
-		row.StoredProcedureCodeGenerateEtsinMi = dr.GetString(8);
-		row.UseSchemaNameInSqlQueries = dr.GetString(9);
-		row.UseSchemaNameInFolders = dr.GetString(10);
-		row.IgnoreSystemTables = dr.GetString(11);
-		row.IgnoredSchemaList = dr.GetString(12);
-		if (!dr.IsDBNull(13))
+		if (!dr.IsDBNull(5))
 		{
-			row.AbbrevationsAsString = dr.GetString(13);
+			row.DatabaseNameLogical = dr.GetString(5);
 		}
+		row.ProjectNameSpace = dr.GetString(6);
+		row.CodeGenerationDirectory = dr.GetString(7);
+		row.ViewCodeGenerate = dr.GetString(8);
+		row.StoredProcedureCodeGenerate = dr.GetString(9);
+		row.UseSchemaNameInSqlQueries = dr.GetString(10);
+		row.UseSchemaNameInFolders = dr.GetString(11);
+		row.IgnoreSystemTables = dr.GetString(12);
+		row.IgnoredSchemaList = dr.GetString(13);
 		if (!dr.IsDBNull(14))
 		{
-			row.CreationTime = dr.GetString(14);
+			row.AbbrevationsAsString = dr.GetString(14);
 		}
 		if (!dr.IsDBNull(15))
 		{
-			row.LastAccessTime = dr.GetString(15);
+			row.CreationTime = dr.GetString(15);
 		}
 		if (!dr.IsDBNull(16))
 		{
-			row.LastWriteTime = dr.GetString(16);
+			row.LastAccessTime = dr.GetString(16);
+		}
+		if (!dr.IsDBNull(17))
+		{
+			row.LastWriteTime = dr.GetString(17);
 		}
 	}
 	protected override void InsertCommandParametersAdd(DbCommand cmd, DatabaseEntry row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
+		ParameterBuilder builder = Template.getParameterBuilder();
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
+		builder.parameterEkle("@ConnectionDbProviderName",DbType.String, row.ConnectionDbProviderName);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
 		builder.parameterEkle("@DatabaseNamePhysical",DbType.String, row.DatabaseNamePhysical);
 		builder.parameterEkle("@DatabaseNameLogical",DbType.String, row.DatabaseNameLogical);
 		builder.parameterEkle("@ProjectNameSpace",DbType.String, row.ProjectNameSpace);
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
-		builder.parameterEkle("@ViewCodeGenerateEtsinMi",DbType.String, row.ViewCodeGenerateEtsinMi);
-		builder.parameterEkle("@StoredProcedureCodeGenerateEtsinMi",DbType.String, row.StoredProcedureCodeGenerateEtsinMi);
+		builder.parameterEkle("@ViewCodeGenerate",DbType.String, row.ViewCodeGenerate);
+		builder.parameterEkle("@StoredProcedureCodeGenerate",DbType.String, row.StoredProcedureCodeGenerate);
 		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
 		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
 		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
@@ -173,16 +193,17 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	}
 	protected override void UpdateCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
+		ParameterBuilder builder = Template.getParameterBuilder();
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 		builder.parameterEkle("@ConnectionDatabaseType",DbType.String, row.ConnectionDatabaseType);
+		builder.parameterEkle("@ConnectionDbProviderName",DbType.String, row.ConnectionDbProviderName);
 		builder.parameterEkle("@ConnectionString",DbType.String, row.ConnectionString);
 		builder.parameterEkle("@DatabaseNamePhysical",DbType.String, row.DatabaseNamePhysical);
 		builder.parameterEkle("@DatabaseNameLogical",DbType.String, row.DatabaseNameLogical);
 		builder.parameterEkle("@ProjectNameSpace",DbType.String, row.ProjectNameSpace);
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
-		builder.parameterEkle("@ViewCodeGenerateEtsinMi",DbType.String, row.ViewCodeGenerateEtsinMi);
-		builder.parameterEkle("@StoredProcedureCodeGenerateEtsinMi",DbType.String, row.StoredProcedureCodeGenerateEtsinMi);
+		builder.parameterEkle("@ViewCodeGenerate",DbType.String, row.ViewCodeGenerate);
+		builder.parameterEkle("@StoredProcedureCodeGenerate",DbType.String, row.StoredProcedureCodeGenerate);
 		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
 		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
 		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
@@ -194,7 +215,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	}
 	protected override void DeleteCommandParametersAdd(DbCommand cmd, 	DatabaseEntry	 row)
 	{
-		ParameterBuilder builder = new ParameterBuilder(cmd);
+		ParameterBuilder builder = Template.getParameterBuilder();
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 	}
 }
