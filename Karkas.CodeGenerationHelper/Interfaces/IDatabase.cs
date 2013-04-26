@@ -17,8 +17,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
             set;
         }
 
-        string projectNameSpace { get; }
-        string projectFolder { get; }
+        string ProjectNameSpace { get; }
+        string ProjectFolder { get; }
 
 
         List<ITable> Tables { get; }
@@ -47,8 +47,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         DataTable getSchemaList();
 
         void CodeGenerateAllTables(
-             string pProjectNamespace
-            , string pProjectFolder
+             string pProjectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
@@ -59,7 +58,6 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan

@@ -28,7 +28,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             IDatabase database = container.Database;
             output.tabLevel = 0;
 
-            string baseNameSpace = database.projectNameSpace;
+            string baseNameSpace = database.ProjectNameSpace;
             string baseNameSpaceTypeLibrary = baseNameSpace + ".TypeLibrary";
 
             string className = utils.getClassNameForTypeLibrary(container.Name,listDatabaseAbbreviations);

@@ -140,7 +140,7 @@ namespace Karkas.CodeGenerationHelper
 
         public string ProjeNamespaceIsminiAl(IDatabase database)
         {
-            return database.projectNameSpace;
+            return database.ProjectNameSpace;
         }
 
         internal string NamespaceIniAlSchemaIle(IDatabase database, string p)

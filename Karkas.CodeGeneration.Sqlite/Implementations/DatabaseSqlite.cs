@@ -51,12 +51,12 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             }
         }
 
-        public string projectNameSpace
+        public string ProjectNameSpace
         {
             get { return _projectNameSpace; }
         }
 
-        public string projectFolder
+        public string ProjectFolder
         {
             get { return _projectFolder; }
         }
@@ -145,22 +145,20 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         }
 
         public void CodeGenerateAllTables(
-             string pProjectNamespace
-            , string pProjectFolder
+             string pProjectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , List<CodeGenerationHelper.DatabaseAbbreviations> listDatabaseAbbreviations)
         {
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, ProjectNameSpace, pProjectFolder);
 
             foreach (ITable table in database.Tables)
             {
                 CodeGenerateOneTable(
                      table.Name
                     , table.Schema
-                    , pProjectNamespace
                     , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerdeKullan
@@ -173,7 +171,6 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
@@ -188,7 +185,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqliteOutput();
-            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlite database = new DatabaseSqlite(template, connectionString, databaseName, ProjectNameSpace, pProjectFolder);
 
             ITable table = database.getTable(pTableName, pSchemaName);
 

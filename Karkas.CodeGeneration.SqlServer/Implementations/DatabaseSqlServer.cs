@@ -21,30 +21,32 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Database smoDatabase;
         internal string connectionString;
 
+        string _projectFolder;
+
         public DatabaseSqlServer(AdoTemplate template, String pConnectionString,string pDatabaseName,string pProjectNameSpace,string pProjectFolder)
         {
             this.template = template;
             connectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
             smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
             smoDatabase = smoServer.Databases[pDatabaseName];
-            _projectNameSpace = pProjectNameSpace;
+            this.projectNameSpace = pProjectNameSpace;
             _projectFolder = pProjectFolder;
 
         }
 
 
 
+        private string projectNameSpace;
 
-        string _projectNameSpace;
-        string _projectFolder;
-        public string projectNameSpace
+        public string ProjectNameSpace
         {
             get
             {
-                return _projectNameSpace;
+                return projectNameSpace;
             }
         }
-        public string projectFolder
+
+        public string ProjectFolder
         {
             get
             {
@@ -53,6 +55,20 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
 
 
+        AdoTemplate template;
+
+        public AdoTemplate Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
+        string databaseName;
+
+        public string DatabaseName
+        {
+            get { return databaseName; }
+            set { databaseName = value; }
+        }
 
         public string Name
         {
@@ -67,6 +83,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
 
         List<ITable> _tableList;
+
         public List<ITable> Tables
         {
            
@@ -99,20 +116,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
 
 
-                AdoTemplate template;
-
-        public AdoTemplate Template
-        {
-            get { return template; }
-            set { template = value; }
-        }
-        string databaseName;
-
-        public string DatabaseName
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
-        }
 
 
 
@@ -161,8 +164,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
 
         public void CodeGenerateAllTables(
-             string pProjectNamespace
-            , string pProjectFolder
+             string pProjectFolder
             ,bool dboSemaTablolariniAtla
             ,bool sysTablolariniAtla
             ,bool semaIsminiSorgulardaKullan
@@ -174,7 +176,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqlServerOutput();
-            DatabaseSqlServer database = new DatabaseSqlServer(template,connectionString, databaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlServer database = new DatabaseSqlServer(template, connectionString, databaseName, projectNameSpace, pProjectFolder);
 
             List<ITable> tableListesi = database.Tables;
 
@@ -197,7 +199,6 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
@@ -208,7 +209,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
             IOutput output = new SqlServerOutput();
-            DatabaseSqlServer database = new DatabaseSqlServer(template, connectionString, databaseName, pProjectNamespace, pProjectFolder);
+            DatabaseSqlServer database = new DatabaseSqlServer(template, connectionString, databaseName, projectNameSpace, pProjectFolder);
 
             ITable table = database.getTable(pTableName, pSchemaName);
 

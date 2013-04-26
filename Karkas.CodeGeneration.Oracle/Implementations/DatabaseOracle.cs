@@ -15,14 +15,18 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
     {
 
 
-        public DatabaseOracle(AdoTemplate pTemplate,String pConnectionString, string pDatabaseName, string pProjectNameSpace, string pProjectFolder)
+        public DatabaseOracle(AdoTemplate pTemplate
+            ,String pConnectionString
+            , string pDatabaseName
+            , string pProjectNameSpace
+            , string pProjectFolder)
         {
             template = pTemplate;
 
             connectionString = pConnectionString;
 
-            _projectNameSpace = pProjectNameSpace;
-            _projectFolder = pProjectFolder;
+            projectNameSpace = pProjectNameSpace;
+            projectFolder = pProjectFolder;
             _DatabaseName = pDatabaseName;
 
         }
@@ -33,9 +37,9 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             get { return template; }
             set { template = value; }
         }
-        string _projectNameSpace;
+        string projectNameSpace;
         string connectionString;
-        string _projectFolder;
+        string projectFolder;
         string _DatabaseName;
 
 
@@ -51,14 +55,14 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             }
         }
 
-        public string projectNameSpace
+        public string ProjectNameSpace
         {
-            get { return _projectNameSpace; }
+            get { return projectNameSpace; }
         }
 
-        public string projectFolder
+        public string ProjectFolder
         {
-            get { return _projectFolder; }
+            get { return projectFolder; }
         }
 
         public List<ITable> Tables
@@ -125,8 +129,7 @@ ORDER BY FULL_TABLE_NAME
 
 
         public void CodeGenerateAllTables(
-             string pProjectNamespace
-            , string pProjectFolder
+             string pProjectFolder
             , bool dboSemaTablolariniAtla
             , bool sysTablolariniAtla
             , bool semaIsminiSorgulardaKullan
@@ -148,8 +151,7 @@ ORDER BY FULL_TABLE_NAME
                 string schemaName = row["TABLE_SCHEMA"].ToString();
                 CodeGenerateOneTable(  
                     tableName, 
-                    schemaName, 
-                    pProjectNamespace
+                    schemaName
                     , pProjectFolder
                     , semaIsminiSorgulardaKullan
                     , semaIsminiDizinlerKullan
@@ -179,7 +181,6 @@ ORDER BY FULL_TABLE_NAME
         public void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
-            , string pProjectNamespace
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
