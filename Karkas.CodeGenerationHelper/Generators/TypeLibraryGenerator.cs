@@ -50,14 +50,14 @@ namespace Karkas.CodeGenerationHelper.Generators
             PropertiesYaz(output, container);
 
             PropertiesAsStringYaz(output, container);
+            ShallowCopyYaz(output, container, className);
+            OnaylamaKoduYaz(output, container);
 
             PropertyIsimleriYaz(output, container, className);
-            ShallowCopyYaz(output, container, className);
 
 
             output.writeLine("");
 
-            OnaylamaKoduYaz(output, container);
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
