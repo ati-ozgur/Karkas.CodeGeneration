@@ -29,12 +29,6 @@ namespace Karkas.CodeGeneration.ConsoleTest
         public static void Main(string[] args)
         {
 
-
-            Console.WriteLine("atilla".Replace("a", "b"));  
-
-
-
-
             OracleTest();
             //SqliteTest();
             //SqlServerTest();
