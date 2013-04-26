@@ -31,7 +31,9 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             ,string pProjectFolder
             ,bool semaIsminiSorgulardaKullan
             ,bool semaIsminiDizinlerdeKullan
-            ,List<DatabaseAbbreviations> listDatabaseAbbreviations
+            , bool dboSemaTablolariniAtla
+            , bool sysTablolariniAtla
+            , List<DatabaseAbbreviations> listDatabaseAbbreviations
             
             )
         {
@@ -44,7 +46,24 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
+            this.dboSemaTablolariniAtla = dboSemaTablolariniAtla;
+            this.sysTablolariniAtla = sysTablolariniAtla;
 
+        }
+
+        bool dboSemaTablolariniAtla;
+
+        public bool DboSemaTablolariniAtla
+        {
+            get { return dboSemaTablolariniAtla; }
+            set { dboSemaTablolariniAtla = value; }
+        }
+        bool sysTablolariniAtla;
+
+        public bool SysTablolariniAtla
+        {
+            get { return sysTablolariniAtla; }
+            set { sysTablolariniAtla = value; }
         }
 
 
@@ -197,10 +216,7 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
 
 
-        public void CodeGenerateAllTables(
-            bool dboSemaTablolariniAtla
-            ,bool sysTablolariniAtla
-            )
+        public void CodeGenerateAllTables()
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
             DalGenerator dalGen = this.DalGenerator;

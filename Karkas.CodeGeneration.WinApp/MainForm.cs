@@ -145,6 +145,8 @@ namespace Karkas.CodeGeneration.WinApp
                     ,textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxDizinlerseSemaIsmi.Checked
+                    , checkBoxDboSemasiniAtla.Checked
+                    , checkBoxSysTablolariniAtla.Checked
                     , null
                     );
                     
@@ -177,6 +179,8 @@ namespace Karkas.CodeGeneration.WinApp
                     , textBoxCodeGenerationDizini.Text
                     , checkBoxUseSchemaNameInSql.Checked
                     ,checkBoxDizinlerseSemaIsmi.Checked
+                    , checkBoxDboSemasiniAtla.Checked
+                    , checkBoxSysTablolariniAtla.Checked
                     , null
                     );
                     
@@ -196,14 +200,16 @@ namespace Karkas.CodeGeneration.WinApp
             template.DbProviderName = "System.Data.SqlClient";
 
             databaseHelper = new DatabaseSqlServer(template
-                , connectionString
-                , databaseName
-                , textBoxProjectNamespace.Text
-                , textBoxCodeGenerationDizini.Text
-                , checkBoxUseSchemaNameInSql.Checked
-                , checkBoxDizinlerseSemaIsmi.Checked
-                , null
-                );
+                    , connectionString
+                    , databaseName
+                    , textBoxProjectNamespace.Text
+                    , textBoxCodeGenerationDizini.Text
+                    , checkBoxUseSchemaNameInSql.Checked
+                    , checkBoxDizinlerseSemaIsmi.Checked
+                    , checkBoxDboSemasiniAtla.Checked
+                    , checkBoxSysTablolariniAtla.Checked
+                    , null
+                    );
             
         }
 
@@ -277,10 +283,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            databaseHelper.CodeGenerateAllTables( 
-            checkBoxDboSemasiniAtla.Checked
-            ,checkBoxSysTablolariniAtla.Checked
-            );
+            databaseHelper.CodeGenerateAllTables();
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
         }

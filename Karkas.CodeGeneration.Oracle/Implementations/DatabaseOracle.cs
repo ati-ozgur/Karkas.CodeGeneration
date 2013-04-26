@@ -22,6 +22,8 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             , string pProjectFolder
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
+            , bool dboSemaTablolariniAtla
+            , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
             )
@@ -37,7 +39,24 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
+            this.dboSemaTablolariniAtla = dboSemaTablolariniAtla;
+            this.sysTablolariniAtla = sysTablolariniAtla;
 
+        }
+
+        bool dboSemaTablolariniAtla;
+
+        public bool DboSemaTablolariniAtla
+        {
+            get { return dboSemaTablolariniAtla; }
+            set { dboSemaTablolariniAtla = value; }
+        }
+        bool sysTablolariniAtla;
+
+        public bool SysTablolariniAtla
+        {
+            get { return sysTablolariniAtla; }
+            set { sysTablolariniAtla = value; }
         }
 
 
@@ -162,10 +181,7 @@ ORDER BY FULL_TABLE_NAME
 
 
 
-        public void CodeGenerateAllTables(
-             bool dboSemaTablolariniAtla
-            , bool sysTablolariniAtla
-            )
+        public void CodeGenerateAllTables()
         {
            
             
