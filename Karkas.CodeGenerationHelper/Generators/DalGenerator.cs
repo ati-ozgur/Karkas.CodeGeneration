@@ -294,7 +294,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 {
                     if (column.IsInPrimaryKey)
                     {
-                        whereClause += column.Name + " = " + parameterSymbol + column.Name + " AND";
+                        whereClause += column.Name + " = " + parameterSymbol + column.Name + " AND ";
                     }
                 }
                 whereClause = whereClause.Remove(whereClause.Length - 4) + "\"";
