@@ -28,7 +28,8 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             ,string pDatabaseName
             ,string pProjectNameSpace
             ,string codeGenerationDirectory
-            ,bool semaIsminiSorgulardaKullan
+            , string dbProviderName
+            , bool semaIsminiSorgulardaKullan
             ,bool semaIsminiDizinlerdeKullan
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
@@ -41,6 +42,9 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             this.smoDatabase = smoServer.Databases[pDatabaseName];
             this.projectNameSpace = pProjectNameSpace;
             this.codeGenerationDirectory = codeGenerationDirectory;
+
+
+            this.dbProviderName = dbProviderName;
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
@@ -56,7 +60,13 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             set { connectionString = value; }
         }
 
+        string dbProviderName;
 
+        public string DbProviderName
+        {
+            get { return dbProviderName; }
+            set { dbProviderName = value; }
+        }
 
         bool sysTablolariniAtla;
 

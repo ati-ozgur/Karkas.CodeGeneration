@@ -112,6 +112,9 @@ namespace Karkas.CodeGenerationHelper.Generators
             UpdateCommandParametersAddYaz(output, container, classNameTypeLibrary);
             DeleteCommandParametersAddYaz(output, container, classNameTypeLibrary);
 
+            OverrideDbProviderNameYaz(output, container);
+
+
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
 
@@ -132,6 +135,19 @@ namespace Karkas.CodeGenerationHelper.Generators
             return "";
 
 
+        }
+
+
+
+        private void OverrideDbProviderNameYaz(IOutput output, IContainer container)
+        {
+            output.autoTabLn("public override string DbProviderName");
+            BaslangicSusluParentezVeTabArtir(output);
+            output.autoTabLn("get");
+            BaslangicSusluParentezVeTabArtir(output);
+            output.autoTabLn(string.Format("return \"{0}\";", container.Database.DbProviderName));
+            BitisSusluParentezVeTabAzalt(output);
+            BitisSusluParentezVeTabAzalt(output);
         }
 
 

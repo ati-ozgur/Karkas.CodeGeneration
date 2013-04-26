@@ -221,5 +221,12 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		builder.Command = cmd;
 		builder.parameterEkle("@ConnectionName",DbType.String, row.ConnectionName);
 	}
+	public override string DbProviderName
+	{
+		get
+		{
+			return "System.Data.SQLite";
+		}
+	}
 }
 }

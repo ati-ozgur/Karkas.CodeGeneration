@@ -219,6 +219,7 @@ namespace Karkas.CodeGeneration.WinApp
                     , databaseName
                     ,textBoxProjectNamespace.Text
                     ,textBoxCodeGenerationDizini.Text
+                    , "System.Data.OracleClient"
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxUseSchemaNameInFolders.Checked
                     , checkBoxIgnoreSystemTables.Checked
@@ -252,6 +253,7 @@ namespace Karkas.CodeGeneration.WinApp
                     , "main"
                     , textBoxProjectNamespace.Text
                     , textBoxCodeGenerationDizini.Text
+                    , "System.Data.SQLite"
                     , checkBoxUseSchemaNameInSql.Checked
                     ,checkBoxUseSchemaNameInFolders.Checked
                     , checkBoxIgnoreSystemTables.Checked
@@ -278,6 +280,7 @@ namespace Karkas.CodeGeneration.WinApp
                     , databaseName
                     , textBoxProjectNamespace.Text
                     , textBoxCodeGenerationDizini.Text
+                    , "System.Data.SqlClient"
                     , checkBoxUseSchemaNameInSql.Checked
                     , checkBoxUseSchemaNameInFolders.Checked
                     , checkBoxIgnoreSystemTables.Checked

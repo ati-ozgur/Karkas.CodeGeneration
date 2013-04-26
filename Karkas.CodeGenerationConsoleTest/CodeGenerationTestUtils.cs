@@ -91,13 +91,13 @@ namespace Karkas.CodeGeneration.Helper
             switch (databaseType)
             {
                 case DatabaseType.SqlServer:
-                    helper = new DatabaseSqlServer(template, connectionString, databaseName, projectNamespace, projectFolder, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,sysTablolariniAtla, null);
+                    helper = new DatabaseSqlServer(template, connectionString, databaseName, projectNamespace, projectFolder, "System.Data.SqlClient", semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,sysTablolariniAtla, null);
                     break;
                 case DatabaseType.Oracle:
-                    helper = new DatabaseOracle(template, connectionString, databaseName, projectNamespace, projectFolder, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, sysTablolariniAtla, null);
+                    helper = new DatabaseOracle(template, connectionString, databaseName, projectNamespace, projectFolder,"System.Data.OracleClient" ,semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, sysTablolariniAtla, null);
                     break;
                 case DatabaseType.Sqlite:
-                    helper = new DatabaseSqlite(template, connectionString, databaseName, projectNamespace, projectFolder, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, sysTablolariniAtla, null);
+                    helper = new DatabaseSqlite(template, connectionString, databaseName, projectNamespace, projectFolder,"System.Data.SQLite", semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, sysTablolariniAtla, null);
                     break;
             }
             return helper;

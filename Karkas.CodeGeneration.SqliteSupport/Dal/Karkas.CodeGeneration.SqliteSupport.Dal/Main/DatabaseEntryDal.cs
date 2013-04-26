@@ -15,9 +15,5 @@ namespace Karkas.CodeGeneration.SqliteSupport.Dal.Main
     public partial class DatabaseEntryDal
     {
 
-        public override string DbProviderName
-        {
-            get { return "System.Data.SQLite"; }
-        }
     }
 }

@@ -16,11 +16,12 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         
 
 
-        public DatabaseSqlite(AdoTemplate pTemplate
-            , String pConnectionString
-            , string pDatabaseName
-            , string pProjectNameSpace
-            , string pProjectFolder
+        public DatabaseSqlite(AdoTemplate template
+            , String connectionString
+            , string connectionName
+            , string projectNameSpace
+            , string codeGenerationDirectory
+            , string dbProviderName
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , bool sysTablolariniAtla
@@ -28,14 +29,15 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
             )
         {
-            template = pTemplate;
+            this.template = template;
 
-            connectionString = pConnectionString;
+            this.connectionString = connectionString;
 
-            projectNameSpace = pProjectNameSpace;
-            codeGenerationDirectory = pProjectFolder;
-            _DatabaseName = pDatabaseName;
+            this.projectNameSpace = projectNameSpace;
+            this.codeGenerationDirectory = codeGenerationDirectory;
+            this.connectionName = connectionName;
 
+            this.dbProviderName = dbProviderName;
             this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
             this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
             this.listDatabaseAbbreviations = listDatabaseAbbreviations;
@@ -67,6 +69,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             }
         }
 
+        string dbProviderName;
+
+        public string DbProviderName
+        {
+            get { return dbProviderName; }
+            set { dbProviderName = value; }
+        }
+
 
         bool semaIsminiSorgulardaKullan;
 
@@ -94,7 +104,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         AdoTemplate template;
         string projectNameSpace;
         string codeGenerationDirectory;
-        string _DatabaseName;
+        string connectionName;
 
 
         string connectionString;
@@ -110,11 +120,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             get
             {
-                return _DatabaseName;
+                return connectionName;
             }
             set
             {
-                _DatabaseName = value;
+                connectionName = value;
             }
         }
 

@@ -20,6 +20,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             , string pDatabaseName
             , string pProjectNameSpace
             , string pProjectFolder
+            , string dbProviderName
             , bool semaIsminiSorgulardaKullan
             , bool semaIsminiDizinlerdeKullan
             , bool sysTablolariniAtla
@@ -27,13 +28,14 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
             )
         {
-            template = pTemplate;
+            this.template = pTemplate;
 
-            connectionString = pConnectionString;
+            this.connectionString = pConnectionString;
 
-            projectNameSpace = pProjectNameSpace;
-            codeGenerationDirectory = pProjectFolder;
-            logicalDatabaseName = pDatabaseName;
+            this.projectNameSpace = pProjectNameSpace;
+            this.codeGenerationDirectory = pProjectFolder;
+            this.logicalDatabaseName = pDatabaseName;
+            this.dbProviderName = dbProviderName;
 
             this.useSchemaNameInSqlQueries = semaIsminiSorgulardaKullan;
             this.useSchemaNameInFolders = semaIsminiDizinlerdeKullan;
@@ -49,6 +51,14 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         {
             get { return ignoreSystemTables; }
             set { ignoreSystemTables = value; }
+        }
+
+        string dbProviderName;
+
+        public string DbProviderName
+        {
+            get { return dbProviderName; }
+            set { dbProviderName = value; }
         }
 
 
