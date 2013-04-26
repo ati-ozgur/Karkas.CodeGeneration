@@ -233,6 +233,15 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
 
 
+        private string getSqlIcinSemaBilgisi(IContainer container, bool semaIsminiSorgulardaKullan)
+        {
+            string sonuc = "";
+            if (semaIsminiSorgulardaKullan)
+            {
+                sonuc = container.Schema + ".";
+            }
+            return sonuc;
+        }
 
         private void SelectCountYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan)
         {
@@ -240,7 +249,9 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("get");
             BaslangicSusluParentezVeTabArtir(output);
-            string cumle = "return @\"SELECT COUNT(*) FROM " + container.Schema + "." + container.Name + "\";";
+            string cumle = "return @\"SELECT COUNT(*) FROM " 
+                            + getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan) 
+                            + container.Name + "\";";
             output.autoTabLn(cumle);
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
@@ -260,7 +271,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             }
             cumle = cumle.Remove(cumle.Length - 1);
             cumle += " FROM ";
-            cumle += container.Schema + "." + container.Name + "\";";
+            cumle +=  getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan)  + container.Name + "\";";
             output.autoTabLn(cumle);
             BitisSusluParentezVeTabAzalt(output);
             BitisSusluParentezVeTabAzalt(output);
@@ -287,7 +298,9 @@ namespace Karkas.CodeGenerationHelper.Generators
                     }
                 }
                 whereClause = whereClause.Remove(whereClause.Length - 4) + "\"";
-                cumle += "  FROM " + container.Schema + "." + container.Name + " WHERE ";
+                cumle += "  FROM " 
+                        + getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan) 
+                        + container.Name + " WHERE ";
             }
             else
             {
@@ -321,7 +334,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             if (container is ITable)
             {
-                output.autoTabLn("return @\"UPDATE " + container.Schema + "." + container.Name);
+                output.autoTabLn("return @\"UPDATE " + getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan) + container.Name);
                 output.autoTabLn(" SET ");
 
                 foreach (IColumn column in container.Columns)
@@ -373,7 +386,9 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             if (container is ITable)
             {
-                output.autoTabLn("return @\"INSERT INTO " + container.Schema + "." + container.Name + " ");
+                output.autoTabLn("return @\"INSERT INTO "
+                    + getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan)  
+                    + container.Name + " ");
                 cumle += " (";
                 identityVarmi = false;
                 foreach (IColumn column in container.Columns)
