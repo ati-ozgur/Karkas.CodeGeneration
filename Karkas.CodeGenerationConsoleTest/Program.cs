@@ -36,8 +36,8 @@ namespace Karkas.CodeGeneration.ConsoleTest
 
 
             OracleTest();
-            SqlServerTest();
             SqliteTest();
+            SqlServerTest();
             //simpleSqliteConnectionTest();
         }
 
