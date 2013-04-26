@@ -8,8 +8,8 @@
     <ProjectGuid>{BAB01BD3-050F-4553-A3FD-9E6231E5BD55}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Karkas.MyGenerationConsoleTest</RootNamespace>
-    <AssemblyName>Karkas.MyGenerationConsoleTest</AssemblyName>
+    <RootNamespace>Karkas.CodeGeneration.ConsoleTest</RootNamespace>
+    <AssemblyName>Karkas.CodeGeneration.ConsoleTest</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
