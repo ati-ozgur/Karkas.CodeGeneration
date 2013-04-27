@@ -98,7 +98,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             InsertStringYaz(output, container, semaIsminiSorgulardaKullan, ref identityVarmi);
 
 
-            SorgulaPkIleGetirYaz(output, classNameTypeLibrary, pkAdiPascalCase, pkType);
+            SorgulaPkIleGetirYaz(output, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
 
             IdentityVarMiYaz(output, identityVarmi);
 
@@ -471,12 +471,12 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn(listeType + " liste = new " + listeType + "();");
         }
 
-        private void SorgulaPkIleGetirYaz(IOutput output, string classNameTypeLibrary, string pkAdi, string pkType)
+        private void SorgulaPkIleGetirYaz(IOutput output, string classNameTypeLibrary,  string pkAdi, string pkAdiPascalCase, string pkType)
         {
             if (!string.IsNullOrEmpty(pkAdi))
             {
             string classSatiri = "public " + classNameTypeLibrary + " Sorgula"
-                            + pkAdi + "Ile(" + pkType
+                            + pkAdiPascalCase + "Ile(" + pkType
                             + " p1)";
             output.autoTabLn(classSatiri);
             BaslangicSusluParentezVeTabArtir(output);
