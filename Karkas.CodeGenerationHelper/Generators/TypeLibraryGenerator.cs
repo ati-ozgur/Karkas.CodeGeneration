@@ -130,31 +130,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             }
             output.autoTabLn(string.Format("[DebuggerDisplay(\"{0}\")]", yazi));
         }
-        private void ClassIsmiYaz(IOutput output, string className)
-        {
-            output.increaseTab();
-            output.autoTabLn("[Serializable]");
-            output.autoTab("public partial class ");
-            output.autoTab(className);
-            output.autoTabLn("");
 
-            try
-            {
-                output.getPreservedData("inheritance");
-                output.preserve("inheritance");
-            }
-            catch (NullReferenceException)
-            {
-                string preservedBlock = output.getPreserveBlock("inheritance");
-                string newBlock = preservedBlock.Replace("////",
-                "// " + Environment.NewLine
-                + ": BaseTypeLibrary " + Environment.NewLine + "//");
-                output.writeLine("");
-                output.autoTab(newBlock);
-            }
-
-            output.writeLine("");
-        }
 
 
 

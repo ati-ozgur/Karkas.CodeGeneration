@@ -25,15 +25,9 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         void clear();
 
-        void setPreserveSource(string outputFullFileNameGenerated, string p, string p_2);
 
         void saveEncoding(string outputFullFileNameGenerated, string p, string p_2);
 
-        void getPreservedData(string p);
-
-        void preserve(string p);
-
-        string getPreserveBlock(string p);
 
         void write(string p);
     }

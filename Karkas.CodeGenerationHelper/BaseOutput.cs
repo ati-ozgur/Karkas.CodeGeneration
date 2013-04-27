@@ -110,30 +110,6 @@ namespace Karkas.CodeGenerationHelper
             buffer = new StringBuilder(1000);
         }
 
-        public void setPreserveSource(string outputFullFileNameGenerated, string p, string p_2)
-        {
-            // TODO Simdilik bir sey yapmıcak
-            //throw new NotImplementedException();
-        }
-
-        public void getPreservedData(string p)
-        {
-            // TODO Simdilik bir sey yapmıcak
-            //throw new NotImplementedException();
-        }
-
-        public void preserve(string p)
-        {
-            // TODO Simdilik bir sey yapmıcak
-            //throw new NotImplementedException();
-        }
-
-        public string getPreserveBlock(string p)
-        {
-            // TODO Simdilik bir sey yapmıcak
-            //throw new NotImplementedException();
-            return "";
-        }
 
     }
 }
