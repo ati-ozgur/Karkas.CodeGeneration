@@ -111,5 +111,10 @@ namespace Karkas.CodeGenerationHelper
         }
 
 
+        public override string ToString()
+        {
+            return buffer.ToString();
+        }
+
     }
 }
