@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Karkas.Core.Onaylama</name>
+    </assembly>
+    <members>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.BaseOnaylayici.baslangicDurumunaGetir(System.Reflection.PropertyInfo)">
+            <summary>
+            Implementors should perform any initialization logic
+            </summary>
+            <param name="property">The target property</param>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.BaseOnaylayici.IslemYap(System.Object)">
+            <summary>
+            Bunu inherit edenlerin , propert degerine gore
+            islem yapması gerekli.
+            </summary>
+            <param name="instance"></param>
+            <returns><c>true</c> field duzgun ise true</returns>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.BaseOnaylayici.IslemYap(System.Object,System.Object)">
+            <summary>
+            
+            Implementors should perform the actual validation upon
+            the property value
+            </summary>
+            <param name="instance"></param>
+            <param name="fieldValue"></param>
+            <returns><c>true</c> if the field is OK</returns>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.BaseOnaylayici.Property">
+            <summary>
+            The target property
+            </summary>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.BaseOnaylayici.HataMesaji">
+            <summary>
+            The error message to be displayed if the validation fails
+            </summary>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.KarsilastirmaOnaylayici.#ctor(System.Object,System.String,System.IComparable,Karkas.Core.Onaylama.KarsilastirmaOperatoru)">
+            <summary>
+            Verilen Nesnenin = pUzerindeCalisilacakNesne
+            verilen propertisinin = pPropertyName
+            verilen bir deger ile = pKarsilastirilacakDeger
+            karsilastirmasini yapar.
+            <example>
+            // bu ornek uzerinde Kisinin 18 yasindan buyuk olmasi lazim.
+             // this.DogumTarihi >= DateTime.Now.AddYears(-18)
+              this.Validator.ValidatorList.Add(new CompareValidator(this, "DogumTarihi",DateTime.Now.AddYears(-19),CompareOperator.GreatThanEqual,"Kisi 18 yaşından büyük olmalıdır"));
+            </example>
+            </summary>
+            <param name="pUzerindeCalisilacakNesne"></param>
+            <param name="pPropertyName"></param>
+            <param name="pKarsilastirilacakDeger"></param>
+            <param name="pCompareOperator"></param>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.Onaylayici.Onayla">
+            <summary>
+            Onaylama testleri nesne uzerinde calistirir.
+            </summary>
+            <returns>onaylama testlerinden herhangi bir yanlis ise false, hepsi dogru ise true dondurur.</returns>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.Onaylayici.HataListesi">
+            <summary>
+            Validate İşlemi sonucunda oluşan hatalar bir liste halinde alınabilir
+            </summary>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.Onaylayici.DogruMu">
+            <summary>
+            Uzerinde calisan nesnenin onaylama testlerine gore sonucunu verir. Validate cagrilmadi ise
+            default olarak false alirsiniz.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Karkas.Core.TypeLibrary.BaseTypeLibrary.HataliOlarakIsaretle(System.String,System.String)" -->
+        <member name="M:Karkas.Core.Onaylama.ForPonos.DaimaBasarisiz.#ctor(System.Object,System.String)">
+            <summary>
+            Hata Mesajlarinda hep basarisiz.
+            </summary>
+            <param name="pUzerindeCalisilacakNesne"></param>
+            <param name="pPropertyName"></param>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.DaimaBasarisiz.IslemYap(System.Object,System.Object)">
+            <summary>
+            Daima fail edicek zaten.
+            </summary>
+            <param name="instance"></param>
+            <param name="fieldValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Karkas.Core.Onaylama.ForPonos.IValidator">
+            <summary>
+            Define the basic contract for validators
+            </summary>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.IValidator.Initialize(System.Reflection.PropertyInfo)">
+            <summary>
+            Implementors should perform any initialization logic
+            </summary>
+            <param name="property">The target property</param>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.IValidator.Perform(System.Object)">
+            <summary>
+            Implementors should perform the actual validation upon
+            the property value
+            </summary>
+            <param name="instance"></param>
+            <returns><c>true</c> if the field is OK</returns>
+        </member>
+        <member name="M:Karkas.Core.Onaylama.ForPonos.IValidator.Perform(System.Object,System.Object)">
+            <summary>
+            Implementors should perform the actual validation upon
+            the property value
+            </summary>
+            <param name="instance"></param>
+            <param name="fieldValue"></param>
+            <returns><c>true</c> if the field is OK</returns>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.IValidator.Property">
+            <summary>
+            The target property
+            </summary>
+        </member>
+        <member name="P:Karkas.Core.Onaylama.ForPonos.IValidator.ErrorMessage">
+            <summary>
+            The error message to be displayed if the validation fails
+            </summary>
+        </member>
+    </members>
+</doc>
