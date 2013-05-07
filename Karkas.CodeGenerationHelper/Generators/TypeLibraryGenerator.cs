@@ -180,6 +180,10 @@ namespace Karkas.CodeGenerationHelper.Generators
                 output.autoTabLn("{");
                 output.increaseTab();
                 output.autoTabLn("[DebuggerStepThrough]");
+                if (column.IsInPrimaryKey)
+                {
+                    output.autoTabLn("[Key]");
+                }
                 output.autoTabLn("get");
                 output.autoTabLn("{");
                 output.autoTabLn(string.Format("\treturn {0};", memberVariableName));
