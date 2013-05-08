@@ -11,7 +11,7 @@ using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
-    public class DatabaseSqlite : IDatabase
+    public class DatabaseSqlite : BaseDatabase
     {
 
         public DatabaseSqlite(AdoTemplate template)
@@ -34,147 +34,21 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             this.template = template;
 
-            this.connectionString = connectionString;
+            this.ConnectionString = connectionString;
 
-            this.projectNameSpace = projectNameSpace;
-            this.codeGenerationDirectory = codeGenerationDirectory;
-            this.connectionName = connectionName;
+            this.ProjectNameSpace = projectNameSpace;
+            this.CodeGenerationDirectory = codeGenerationDirectory;
+            this.ConnectionName = connectionName;
 
-            this.dbProviderName = dbProviderName;
-            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
-            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
-            this.listDatabaseAbbreviations = listDatabaseAbbreviations;
+            this.ConnectionDbProviderName = dbProviderName;
+            this.UseSchemaNameInSqlQueries = semaIsminiSorgulardaKullan;
+            this.UseSchemaNameInFolders = semaIsminiDizinlerdeKullan;
+            this.ListDatabaseAbbreviations = listDatabaseAbbreviations;
 
-            this.sysTablolariniAtla = sysTablolariniAtla;
-
-        }
-
-
-        bool sysTablolariniAtla;
-
-        public bool IgnoreSystemTables
-        {
-            get { return sysTablolariniAtla; }
-            set { sysTablolariniAtla = value; }
-        }
-
-        string connectionDatabaseType;
-
-        public string ConnectionDatabaseType
-        {
-            get
-            {
-                return connectionDatabaseType;
-            }
-            set
-            {
-                connectionDatabaseType = value;
-            }
-        }
-
-        string dbProviderName;
-
-        public string ConnectionDbProviderName
-        {
-            get { return dbProviderName; }
-            set { dbProviderName = value; }
-        }
-
-
-        bool semaIsminiSorgulardaKullan;
-
-        public bool UseSchemaNameInSqlQueries
-        {
-            get { return semaIsminiSorgulardaKullan; }
-            set { semaIsminiSorgulardaKullan = value; }
-        }
-        bool semaIsminiDizinlerdeKullan;
-
-        public bool UseSchemaNameInFolders
-        {
-            get { return semaIsminiDizinlerdeKullan; }
-            set { semaIsminiDizinlerdeKullan = value; }
-        }
-        List<DatabaseAbbreviations> listDatabaseAbbreviations;
-
-        public List<DatabaseAbbreviations> ListDatabaseAbbreviations
-        {
-            get { return listDatabaseAbbreviations; }
-            set { listDatabaseAbbreviations = value; }
-        }
-
-
-        AdoTemplate template;
-        string projectNameSpace;
-        string codeGenerationDirectory;
-        string connectionName;
-
-
-        string connectionString;
-
-        public string ConnectionString
-        {
-            get { return connectionString; }
-            set { connectionString = value; }
-        }
-
-
-        public string ConnectionName
-        {
-            get
-            {
-                return connectionName;
-            }
-            set
-            {
-                connectionName = value;
-            }
-        }
-
-        public string ProjectNameSpace
-        {
-            get { return projectNameSpace; }
-            set { projectNameSpace = value; }
+            this.IgnoreSystemTables = sysTablolariniAtla;
 
         }
 
-        public string CodeGenerationDirectory
-        {
-            get { return codeGenerationDirectory; }
-            set { codeGenerationDirectory = value; }
-        }
-
-        bool viewCodeGenerateEtsinMi;
-
-        public bool ViewCodeGenerate
-        {
-            get { return viewCodeGenerateEtsinMi; }
-            set { viewCodeGenerateEtsinMi = value; }
-        }
-        bool storedProcedureCodeGenerateEtsinMi;
-
-        public bool StoredProcedureCodeGenerate
-        {
-            get { return storedProcedureCodeGenerateEtsinMi; }
-            set { storedProcedureCodeGenerateEtsinMi = value; }
-        }
-        public bool AnaSinifiTekrarUret { get; set; }
-
-
-        string ignoredSchemaList;
-
-        public string IgnoredSchemaList
-        {
-            get { return ignoredSchemaList; }
-            set { ignoredSchemaList = value; }
-        }
-        string databaseAbbreviations;
-
-        public string DatabaseAbbreviations
-        {
-            get { return databaseAbbreviations; }
-            set { databaseAbbreviations = value; }
-        }
 
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
                                                 name AS TABLE_NAME,
@@ -186,7 +60,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         List<ITable> _tableList = null;
 
-        public List<ITable> Tables
+        public override List<ITable> Tables
         {
             get 
             {
@@ -213,68 +87,34 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         }
 
 
-        public ITable getTable(string pTableName, string pSchemaName)
+        public override ITable getTable(string pTableName, string pSchemaName)
         {
             return new TableSqlite(this, template, pTableName, pSchemaName);
         }
 
         public override string ToString()
         {
-            return string.Format("SqliteDatabase : {0}, ConnectionString: {1}", ConnectionName, connectionString);
-        }
-
-
-        public AdoTemplate Template
-        {
-            get { return template; }
-            set { template = value; }
-        }
-        string databaseName;
-
-        public string DatabaseNameLogical
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
+            return string.Format("SqliteDatabase : {0}, ConnectionString: {1}", ConnectionName, ConnectionString);
         }
 
 
 
-        private string databaseNamePhysical;
-
-        public string DatabaseNamePhysical
-        {
-            get
-            {
-                if (String.IsNullOrEmpty(databaseNamePhysical))
-                {
-                    databaseNamePhysical = template.Connection.Database; ;
-                }
-                return databaseNamePhysical;
-            }
-            set
-            {
-                databaseNamePhysical = value;
-            }
-
-        }
-
-
-        public string getDefaultSchema()
+        public override string getDefaultSchema()
         {
             return "";
         }
 
-        public DataTable getTableListFromSchema( string schemaName)
+        public override DataTable getTableListFromSchema(string schemaName)
         {
             return getTableList();
         }
 
-        public DataTable getSchemaList()
+        public override DataTable getSchemaList()
         {
             return new DataTable();
         }
 
-        public void CodeGenerateAllTables()
+        public override void CodeGenerateAllTables()
         {
 
             foreach (ITable table in this.Tables)
@@ -288,7 +128,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         }
 
-        public void CodeGenerateOneTable(
+        public override void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
             )
@@ -306,12 +146,12 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             ITable table = getTable(pTableName, pSchemaName);
 
 
-            typeGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-            dalGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-            bsGen.Render(output, table,semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
+            typeGen.Render(output, table,UseSchemaNameInSqlQueries,UseSchemaNameInFolders , ListDatabaseAbbreviations);
+            dalGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
         }
 
-        public DalGenerator DalGenerator
+        public override DalGenerator DalGenerator
         {
             get { return new SqliteDalGenerator(this); }
         }
