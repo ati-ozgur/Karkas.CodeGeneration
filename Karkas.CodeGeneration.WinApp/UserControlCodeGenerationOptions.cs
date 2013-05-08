@@ -36,8 +36,8 @@ namespace Karkas.CodeGeneration.WinApp
 
         public DatabaseEntry getDatabaseEntry()
         {
-            DatabaseEntry entry = new DatabaseEntry();
 
+            DatabaseEntry entry = new DatabaseEntry();
             entry.ConnectionName = textBoxConnectionName.Text;
             entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
             entry.ConnectionDbProviderName = textBoxDbProviderName.Text;
@@ -148,6 +148,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         public void ClearInputControlValues()
         {
+            
             textBoxCodeGenerationDizini.Text = "";
             textBoxConnectionName.Text = "";
             textBoxProjectNamespace.Text = "";

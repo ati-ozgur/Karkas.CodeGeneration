@@ -29,26 +29,28 @@ namespace Karkas.CodeGeneration.WinApp
         public MainForm()
         {
             InitializeComponent();
-
             userControlCodeGenerationOptions1.getLastAccessedConnectionToTextbox();
-
             panelListeDisable();
-
-            
-
-
         }
-
-
-
 
 
         DbConnection connection;
         AdoTemplate template;
+        private IDatabase databaseHelper;
+        private DatabaseEntry CurrentDatabaseEntry
+        {
+            get
+            {
+                return userControlCodeGenerationOptions1.getDatabaseEntry();
+            }
+        }
+        
+        
         private void buttonTestConnectionString_Click(object sender, EventArgs e)
         {
             string connectionString = userControlCodeGenerationOptions1.ConnectionString;
-            string connectionName =userControlCodeGenerationOptions1.ConnectionName;  
+            string connectionName =userControlCodeGenerationOptions1.ConnectionName;
+            string type = userControlCodeGenerationOptions1.SelectedDatabaseType;
 
             comboBoxSchemaList.Text = "";
 
@@ -58,7 +60,6 @@ namespace Karkas.CodeGeneration.WinApp
                 {
                     connection.Close();
                 }
-                String type = "";
                 if (type == null || type == DatabaseType.SqlServer)
                 {
                     testSqlServer(connectionString, connectionName);
@@ -76,8 +77,6 @@ namespace Karkas.CodeGeneration.WinApp
 
                 labelConnectionStatus.Text = "Bağlantı Başarılı";
                 BilgileriDoldur();
-
-
                 panelListe.Enabled = true;
 
 
@@ -109,7 +108,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
                 databaseHelper = new DatabaseOracle( template);
-                currentDatabaseEntry.setIDatabaseValues(databaseHelper);
+                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
                     
 
             }
@@ -133,11 +132,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
                 databaseHelper = new DatabaseSqlite( template);
-                currentDatabaseEntry.setIDatabaseValues(databaseHelper);
-
-                    
-
-
+                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
             }
         }
 
@@ -152,7 +147,7 @@ namespace Karkas.CodeGeneration.WinApp
             template.DbProviderName = "System.Data.SqlClient";
 
             databaseHelper = new DatabaseSqlServer( template);
-            currentDatabaseEntry.setIDatabaseValues(databaseHelper);
+            CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
 
         }
 
@@ -170,7 +165,6 @@ namespace Karkas.CodeGeneration.WinApp
 
 
 
-        private IDatabase databaseHelper;
 
 
         private void BilgileriDoldur( )
@@ -214,15 +208,11 @@ namespace Karkas.CodeGeneration.WinApp
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
         }
-        private DatabaseEntry currentDatabaseEntry = null;
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
-            //currentDatabaseEntry =  FormToDatabaseEntry();
 
-
-
-            DatabaseService.EkleVeyaGuncelle(currentDatabaseEntry);
+            DatabaseService.EkleVeyaGuncelle(CurrentDatabaseEntry);
 
             MessageBox.Show("Değerler Kaydedildi;");
 
@@ -272,13 +262,12 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonKisaltmalar_Click(object sender, EventArgs e)
         {
-            Form frm = new FormAbbreviations(currentDatabaseEntry);
+            Form frm = new FormAbbreviations(CurrentDatabaseEntry);
             frm.ShowDialog();
         }
 
         private void buttonNewConnection_Click(object sender, EventArgs e)
         {
-            currentDatabaseEntry = new DatabaseEntry();
             userControlCodeGenerationOptions1.ClearInputControlValues();
 
         }

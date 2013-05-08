@@ -48,7 +48,7 @@
             // 
             // buttonTestConnectionString
             // 
-            this.buttonTestConnectionString.Location = new System.Drawing.Point(778, 241);
+            this.buttonTestConnectionString.Location = new System.Drawing.Point(775, 251);
             this.buttonTestConnectionString.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTestConnectionString.Name = "buttonTestConnectionString";
             this.buttonTestConnectionString.Size = new System.Drawing.Size(149, 58);
