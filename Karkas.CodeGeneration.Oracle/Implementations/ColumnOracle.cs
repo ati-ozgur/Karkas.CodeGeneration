@@ -24,6 +24,36 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
         private TableOracle table;
         private string name;
 
+        private const string SQL_SEQUENCE_EXISTS = @" SELECT COUNT(*) FROM user_sequences
+                                                WHERE
+                                                SEQUENCE_NAME LIKE '%' || :tableName || '%'";
+
+
+        private bool? relatedSequenceExists;
+
+        public bool RelatedSequenceExists
+        {
+            get
+                {
+                    if (!relatedSequenceExists.HasValue)
+                    {
+                        ParameterBuilder builder = template.getParameterBuilder();
+                        builder.parameterEkle("tableName", DbType.String, Table.Name);
+                        Object objSonuc = template.TekDegerGetir(SQL_SEQUENCE_EXISTS, builder.GetParameterArray());
+                        Decimal sonuc = (Decimal)objSonuc;
+                        if (sonuc > 0)
+                        {
+                            relatedSequenceExists = true;
+                        }
+                        else
+                        {
+                            relatedSequenceExists = false;
+                        }
+
+                    }
+                    return relatedSequenceExists.Value;
+                }
+        }
 
         public bool IsAutoKey
         {
