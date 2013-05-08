@@ -168,6 +168,19 @@ namespace Karkas.CodeGenerationHelper.Generators
         }
 
 
+        protected IColumn getAutoNumberColumn(IContainer container)
+        {
+            IColumn result = null;
+            foreach (IColumn column in container.Columns)
+            {
+                if (column.IsAutoKey)
+                {
+                    result = column;
+                    break;
+                }
+            }
+            return result;
+        }
 
         private void SilKomutuYazPkIle(IOutput output, string classNameTypeLibrary, IContainer container)
         {
