@@ -328,7 +328,17 @@ AND
 
         public bool isNumericType
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                if (dataTypeInDatabase == "NUMBER")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         // Helper functions
