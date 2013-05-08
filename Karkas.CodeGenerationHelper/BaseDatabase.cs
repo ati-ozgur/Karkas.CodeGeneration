@@ -144,7 +144,7 @@ namespace Karkas.CodeGenerationHelper
         }
         string databaseName;
 
-        public string DatabaseNameLogical
+        public virtual string DatabaseNameLogical
         {
             get { return databaseName; }
             set { databaseName = value; }
@@ -154,7 +154,7 @@ namespace Karkas.CodeGenerationHelper
 
         private string databaseNamePhysical;
 
-        public string DatabaseNamePhysical
+        public virtual string DatabaseNamePhysical
         {
             get
             {

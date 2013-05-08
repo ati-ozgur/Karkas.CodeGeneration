@@ -15,7 +15,7 @@ using Karkas.CodeGeneration.SqlServer.Generators;
 
 namespace Karkas.CodeGeneration.SqlServer.Implementations
 {
-    public class DatabaseSqlServer : IDatabase
+    public class DatabaseSqlServer : BaseDatabase
     {
         internal Server smoServer;
         internal Database smoDatabase;
@@ -23,7 +23,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         string codeGenerationDirectory;
         public DatabaseSqlServer(AdoTemplate template)
         {
-            this.template = template;
+            this.Template = template;
         }
 
         public DatabaseSqlServer(
@@ -40,153 +40,24 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             
             )
         {
-            this.template = template;
-            this.connectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
-            this.smoServer = new Server(new ServerConnection(new SqlConnection(connectionString)));
+            this.Template = template;
+            this.ConnectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
+            this.smoServer = new Server(new ServerConnection(new SqlConnection(ConnectionString)));
             this.smoDatabase = smoServer.Databases[pDatabaseName];
-            this.projectNameSpace = pProjectNameSpace;
-            this.codeGenerationDirectory = codeGenerationDirectory;
+            this.ProjectNameSpace = pProjectNameSpace;
+            this.CodeGenerationDirectory = codeGenerationDirectory;
 
 
-            this.dbProviderName = dbProviderName;
-            this.semaIsminiSorgulardaKullan = semaIsminiSorgulardaKullan;
-            this.semaIsminiDizinlerdeKullan = semaIsminiDizinlerdeKullan;
-            this.listDatabaseAbbreviations = listDatabaseAbbreviations;
-            this.sysTablolariniAtla = sysTablolariniAtla;
-
-        }
-
-        string connectionString;
-
-        public string ConnectionString
-        {
-            get { return connectionString; }
-            set { connectionString = value; }
-        }
-
-        string dbProviderName;
-
-        public string ConnectionDbProviderName
-        {
-            get { return dbProviderName; }
-            set { dbProviderName = value; }
-        }
-
-        bool sysTablolariniAtla;
-
-        public bool IgnoreSystemTables
-        {
-            get { return sysTablolariniAtla; }
-            set { sysTablolariniAtla = value; }
-        }
-
-
-        bool semaIsminiSorgulardaKullan;
-
-        public bool UseSchemaNameInSqlQueries
-        {
-            get { return semaIsminiSorgulardaKullan; }
-            set { semaIsminiSorgulardaKullan = value; }
-        }
-        bool semaIsminiDizinlerdeKullan;
-
-        public bool UseSchemaNameInFolders
-        {
-            get { return semaIsminiDizinlerdeKullan; }
-            set { semaIsminiDizinlerdeKullan = value; }
-        }
-        List<DatabaseAbbreviations> listDatabaseAbbreviations;
-
-        public List<DatabaseAbbreviations> ListDatabaseAbbreviations
-        {
-            get { return listDatabaseAbbreviations; }
-            set { listDatabaseAbbreviations = value; }
-        }
-
-        private string projectNameSpace;
-
-        public string ProjectNameSpace
-        {
-            get
-            {
-                return projectNameSpace;
-            }
-            set 
-            { 
-                projectNameSpace = value; 
-            }
+            this.ConnectionDbProviderName = dbProviderName;
+            this.UseSchemaNameInSqlQueries = semaIsminiSorgulardaKullan;
+            this.UseSchemaNameInFolders = semaIsminiDizinlerdeKullan;
+            this.ListDatabaseAbbreviations = listDatabaseAbbreviations;
+            this.IgnoreSystemTables = sysTablolariniAtla;
 
         }
 
-        string connectionDatabaseType;
-
-        public string ConnectionDatabaseType
-        {
-            get
-            {
-                return connectionDatabaseType;
-            }
-            set
-            {
-                connectionDatabaseType = value;
-            }
-        }
 
 
-        public string CodeGenerationDirectory
-        {
-            get
-            {
-                return codeGenerationDirectory;
-            }
-            set
-            {
-                codeGenerationDirectory = value;
-            }
-
-        }
-
-        bool viewCodeGenerate;
-
-        public bool ViewCodeGenerate
-        {
-            get { return viewCodeGenerate; }
-            set { viewCodeGenerate = value; }
-        }
-        bool storedProcedureCodeGenerate;
-
-        public bool StoredProcedureCodeGenerate
-        {
-            get { return storedProcedureCodeGenerate; }
-            set { storedProcedureCodeGenerate = value; }
-        }
-
-
-        public bool AnaSinifiTekrarUret { get; set; }
-
-        string ignoredSchemaList;
-
-        public string IgnoredSchemaList
-        {
-            get { return ignoredSchemaList; }
-            set { ignoredSchemaList = value; }
-        }
-        string databaseAbbreviations;
-
-        public string DatabaseAbbreviations
-        {
-            get { return databaseAbbreviations; }
-            set { databaseAbbreviations = value; }
-        }
-
-
-        AdoTemplate template;
-
-        public AdoTemplate Template
-        {
-            get { return template; }
-            set { template = value; }
-        }
         string databaseName;
 
         public string DatabaseNameLogical
@@ -209,7 +80,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         List<ITable> _tableList;
 
-        public List<ITable> Tables
+        public override List<ITable> Tables
         {
            
             get 
@@ -234,7 +105,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         }
 
 
-        public ITable getTable(string pTableName, string pSchemaName)
+        public override ITable getTable(string pTableName, string pSchemaName)
         {
              ITable t = new TableSqlServer(this, pTableName, pSchemaName);
              return t;
@@ -269,13 +140,13 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
         private string databaseNamePhysical;
 
-        public string DatabaseNamePhysical
+        public override string DatabaseNamePhysical
         {
             get
             {
                 if (String.IsNullOrEmpty(databaseNamePhysical))
                 {
-                    databaseNamePhysical = (string)template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
+                    databaseNamePhysical = (string)Template.TekDegerGetir(SQL_FOR_DATABASE_NAME);
                 }
                 return databaseNamePhysical;
             }
@@ -286,23 +157,23 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
         }
 
-        public DataTable getTableListFromSchema(string schemaName)
+        public override DataTable getTableListFromSchema(string schemaName)
         {
             ParameterBuilder builder = new ParameterBuilder();
             builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
-            DataTable dtTableList = template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
+            DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
             return dtTableList;
         }
 
-        public DataTable getSchemaList()
+        public override DataTable getSchemaList()
         {
-            return template.DataTableOlustur(SQL__FOR_SCHEMA_LIST);
+            return Template.DataTableOlustur(SQL__FOR_SCHEMA_LIST);
         }
 
 
 
 
-        public void CodeGenerateAllTables()
+        public override void CodeGenerateAllTables()
         {
             TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
             DalGenerator dalGen = this.DalGenerator;
@@ -313,17 +184,17 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             foreach (ITable table in tableListesi)
             {
-                if (sysTablolariniAtla && (table.Name.StartsWith("sys") || table.Name == "dtproperties"))
+                if (IgnoreSystemTables && (table.Name.StartsWith("sys") || table.Name == "dtproperties"))
                 {
                     continue;
                 }
-                typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
-                dalGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-                bsGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
+                typeGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders,ListDatabaseAbbreviations);
+                dalGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+                bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
             }
         }
 
-        public void CodeGenerateOneTable(
+        public override void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
             )
@@ -335,9 +206,9 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
             ITable table = this.getTable(pTableName, pSchemaName);
 
-            typeGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
-            dalGen.Render(output, table, semaIsminiSorgulardaKullan,semaIsminiDizinlerdeKullan, listDatabaseAbbreviations);
-            bsGen.Render(output, table, semaIsminiSorgulardaKullan, semaIsminiDizinlerdeKullan,listDatabaseAbbreviations);
+            typeGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            dalGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
         }
 
 
@@ -345,13 +216,13 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
 
 
-        public DalGenerator DalGenerator
+        public override DalGenerator DalGenerator
         {
             get { return new SqlServerDalGenerator(this); }
         }
 
 
-        public string getDefaultSchema()
+        public override string getDefaultSchema()
         {
             return "dbo";
         }
