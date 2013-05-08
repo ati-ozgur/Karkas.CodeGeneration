@@ -95,7 +95,9 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             UpdateStringYaz(output, container, semaIsminiSorgulardaKullan, ref pkcumlesi);
 
-            InsertStringYaz(output, container, semaIsminiSorgulardaKullan, ref identityVarmi);
+            string sorgulardaKullanilanSema = getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan);
+
+            InsertStringYaz(output, container, sorgulardaKullanilanSema, ref identityVarmi);
 
 
             SorgulaPkIleGetirYaz(output, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
@@ -412,7 +414,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        protected void InsertStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, ref bool identityVarmi)
+        protected void InsertStringYaz(IOutput output, IContainer container, string sorgulardaKullanilanSema, ref bool identityVarmi)
         {
             string cumle = "";
 
@@ -423,7 +425,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             if (container is ITable)
             {
                 output.autoTabLn("return @\"INSERT INTO "
-                    + getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan)  
+                    + sorgulardaKullanilanSema
                     + container.Name + " ");
                 cumle += " (";
                 identityVarmi = false;
