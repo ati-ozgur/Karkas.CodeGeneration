@@ -188,5 +188,32 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
                 }
             }
         }
+
+
+        bool? identityVarmi;
+
+        public bool IdentityVarmi
+        {
+            get 
+            {
+                if (!identityVarmi.HasValue)
+                {
+                    identityVarmi = false;
+                    foreach (IColumn column in this.Columns)
+                    {
+                        if (column.IsComputed)
+                        {
+                            continue;
+                        }
+                        if (column.IsAutoKey)
+                        {
+                            identityVarmi = true;
+                        }
+                    }
+                }
+                return identityVarmi.Value; 
+            }
+        }
+
     }
 }

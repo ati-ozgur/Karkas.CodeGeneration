@@ -15,5 +15,8 @@ namespace Karkas.CodeGenerationHelper
         string Description { get; }
         string Name { get; }
         string Schema { get; }
+
+        bool IdentityVarmi { get; }
+
     }
 }

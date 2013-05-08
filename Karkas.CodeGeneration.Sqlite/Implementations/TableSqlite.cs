@@ -146,5 +146,29 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             return "SqliteTable: " + Name;
         }
 
+        bool? identityVarmi;
+
+        public bool IdentityVarmi
+        {
+            get
+            {
+                if (!identityVarmi.HasValue)
+                {
+                    identityVarmi = false;
+                    foreach (IColumn column in this.Columns)
+                    {
+                        if (column.IsComputed)
+                        {
+                            continue;
+                        }
+                        if (column.IsAutoKey)
+                        {
+                            identityVarmi = true;
+                        }
+                    }
+                }
+                return identityVarmi.Value;
+            }
+        }
     }
 }

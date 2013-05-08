@@ -137,5 +137,15 @@ OWNER = :schemaName
         {
             get { return schemaName; }
         }
+
+        public bool IdentityVarmi
+        {
+            get
+            {
+                // There is no identity in Oracle
+                return false;
+            }
+        }
+
     }
 }

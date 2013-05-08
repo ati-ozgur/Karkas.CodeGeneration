@@ -97,7 +97,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             string sorgulardaKullanilanSema = getSqlIcinSemaBilgisi(container, semaIsminiSorgulardaKullan);
 
-            InsertStringYaz(output, container, sorgulardaKullanilanSema, ref identityVarmi);
+            InsertStringYaz(output, container, sorgulardaKullanilanSema);
 
 
             SorgulaPkIleGetirYaz(output, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
@@ -414,7 +414,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        protected void InsertStringYaz(IOutput output, IContainer container, string sorgulardaKullanilanSema, ref bool identityVarmi)
+        protected void InsertStringYaz(IOutput output, IContainer container, string sorgulardaKullanilanSema)
         {
             string cumle = "";
 
@@ -428,7 +428,6 @@ namespace Karkas.CodeGenerationHelper.Generators
                     + sorgulardaKullanilanSema
                     + container.Name + " ");
                 cumle += " (";
-                identityVarmi = false;
                 foreach (IColumn column in container.Columns)
                 {
                     if (column.IsComputed)
@@ -439,11 +438,6 @@ namespace Karkas.CodeGenerationHelper.Generators
                     {
                         cumle += column.Name + ",";
                     }
-                    else
-                    {
-                        identityVarmi = true;
-                    }
-
                 }
                 cumle = cumle.Remove(cumle.Length - 1);
                 cumle += ") ";
