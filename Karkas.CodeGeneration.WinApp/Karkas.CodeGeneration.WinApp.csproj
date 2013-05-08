@@ -126,6 +126,7 @@
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="bin\Debug\connectionsDb.sqlite" />
     <None Include="connectionsDb.sqlite" />
     <None Include="packages.config" />
   </ItemGroup>

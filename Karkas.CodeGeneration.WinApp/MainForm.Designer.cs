@@ -42,6 +42,8 @@
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
             this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControlCodeGenerationOptions();
+            this.textBoxDatabaseProviders = new System.Windows.Forms.TextBox();
+            this.labelDatabaseProviders = new System.Windows.Forms.Label();
             this.panelListe.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,11 +194,31 @@
             this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 493);
             this.userControlCodeGenerationOptions1.TabIndex = 20;
             // 
+            // textBoxDatabaseProviders
+            // 
+            this.textBoxDatabaseProviders.Location = new System.Drawing.Point(611, 522);
+            this.textBoxDatabaseProviders.Multiline = true;
+            this.textBoxDatabaseProviders.Name = "textBoxDatabaseProviders";
+            this.textBoxDatabaseProviders.Size = new System.Drawing.Size(176, 184);
+            this.textBoxDatabaseProviders.TabIndex = 21;
+            this.textBoxDatabaseProviders.Text = "System.Data.SqlClient\r\nSystem.Data.OracleClient\r\nOracle.DataAccess.Client\r\nSystem.Data.SQLite\r\n";
+            // 
+            // labelDatabaseProviders
+            // 
+            this.labelDatabaseProviders.AutoSize = true;
+            this.labelDatabaseProviders.Location = new System.Drawing.Point(611, 498);
+            this.labelDatabaseProviders.Name = "labelDatabaseProviders";
+            this.labelDatabaseProviders.Size = new System.Drawing.Size(100, 13);
+            this.labelDatabaseProviders.TabIndex = 22;
+            this.labelDatabaseProviders.Text = "Database Providers";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 868);
+            this.Controls.Add(this.labelDatabaseProviders);
+            this.Controls.Add(this.textBoxDatabaseProviders);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
@@ -231,6 +253,8 @@
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
         private UserControlCodeGenerationOptions userControlCodeGenerationOptions1;
+        private System.Windows.Forms.TextBox textBoxDatabaseProviders;
+        private System.Windows.Forms.Label labelDatabaseProviders;
     }
 }
 
