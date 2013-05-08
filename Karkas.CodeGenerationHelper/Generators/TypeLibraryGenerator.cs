@@ -78,14 +78,30 @@ namespace Karkas.CodeGenerationHelper.Generators
         private void generateMainClassFile(IOutput output, IDatabase database,string className, string classNameSpace, string outputFullFileName)
         {
             usingNamespaceleriYaz(output, classNameSpace);
-            output.increaseTab();
+            //output.increaseTab();
+            string classNameValidation = className + "Validation";
+            writeMainClass(output, className, classNameValidation);
+            writeValidationClass(output, className, classNameValidation);
+            BitisSusluParentezVeTabAzalt(output);
+            output.save(outputFullFileName, database.AnaSinifiTekrarUret);
+            output.clear();
+        }
+
+        private void writeMainClass(IOutput output, string className, string classNameValidation)
+        {
+            string metadataAttribute = string.Format("[MetadataType(typeof({0}))]",classNameValidation);
+            output.autoTabLn(metadataAttribute);
             output.autoTab("public partial class ");
             output.autoTabLn(className);
             BaslangicSusluParentezVeTabArtir(output);
             BitisSusluParentezVeTabAzalt(output);
+        }
+        private void writeValidationClass(IOutput output, string className, string classNameValidation)
+        {
+            output.autoTab("public class ");
+            output.autoTabLn(classNameValidation);
+            BaslangicSusluParentezVeTabArtir(output);
             BitisSusluParentezVeTabAzalt(output);
-            output.save(outputFullFileName, database.AnaSinifiTekrarUret);
-            output.clear();
         }
 
 
