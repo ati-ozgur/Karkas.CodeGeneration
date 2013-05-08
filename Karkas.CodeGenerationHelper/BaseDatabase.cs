@@ -119,7 +119,6 @@ namespace Karkas.CodeGenerationHelper
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
         }
-        public bool AnaSinifiTekrarUret { get; set; }
 
 
         string ignoredSchemaList;
@@ -191,5 +190,10 @@ namespace Karkas.CodeGenerationHelper
         public abstract string getDefaultSchema();
 
 
+        #region "Not Persisted Values"
+        public bool AnaSinifiTekrarUret { get; set; }
+        public bool AnaSinifOnaylamaOrnekleriUret { get; set; }
+
+        #endregion
     }
 }

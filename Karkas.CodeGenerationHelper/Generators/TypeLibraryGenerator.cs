@@ -81,7 +81,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             //output.increaseTab();
             string classNameValidation = className + "Validation";
             writeMainClass(output, className, classNameValidation);
-            writeValidationClass(output, className, classNameValidation);
+            writeValidationClass(output, database, className, classNameValidation);
             BitisSusluParentezVeTabAzalt(output);
             output.save(outputFullFileName, database.AnaSinifiTekrarUret);
             output.clear();
@@ -96,11 +96,32 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             BitisSusluParentezVeTabAzalt(output);
         }
-        private void writeValidationClass(IOutput output, string className, string classNameValidation)
+        private void writeValidationClass(IOutput output, IDatabase database, string className, string classNameValidation)
         {
             output.autoTab("public class ");
             output.autoTabLn(classNameValidation);
             BaslangicSusluParentezVeTabArtir(output);
+            string mainArticleHelpImage = "http://weblogs.asp.net/blogs/scottgu/image_5F336E46.png";
+            string mainArticleUrl  = "http://weblogs.asp.net/scottgu/archive/2010/01/15/asp-net-mvc-2-model-validation.aspx";
+            string msDataAnnotationsHelpUrl = "http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx";
+
+            if (database.AnaSinifOnaylamaOrnekleriUret)
+            {
+                output.autoTabLn("// Onaylama kodlarının kullanımı için aşağıdaki makaleye bakabilirsiniz");
+                output.autoTabLn("// " + mainArticleUrl);
+                output.autoTabLn("// " + mainArticleHelpImage);
+                output.autoTabLn("// " + msDataAnnotationsHelpUrl);
+                output.autoTabLn("// Örnekler)");
+                output.autoTabLn("// [DataType(DataType.EmailAddress)]");
+                output.autoTabLn("// public string eposta  { get; set; }");
+                output.autoTabLn("");
+                output.autoTabLn("// [DataType(DataType.Url)]");
+                output.autoTabLn("// public string homePageUrl  { get; set; }");
+                output.autoTabLn("");
+                output.autoTabLn("// [Range(18,65,ErrorMessage=\"18 ve 65 yas aralığındakiler başvurabilir\")");
+                output.autoTabLn("// public int Yasi { get; set; }");
+                output.autoTabLn("");
+            }
             BitisSusluParentezVeTabAzalt(output);
         }
 

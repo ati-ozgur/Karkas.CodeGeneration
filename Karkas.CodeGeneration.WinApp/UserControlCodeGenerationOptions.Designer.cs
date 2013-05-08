@@ -56,6 +56,7 @@
             this.textBoxIgnoredSchemaList = new System.Windows.Forms.TextBox();
             this.labelIgnoredSchemaList = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxAnaSinifOnaylamaOrnekleri = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +128,7 @@
             // checkBoxAnaSinifiTekrarUret
             // 
             this.checkBoxAnaSinifiTekrarUret.AutoSize = true;
-            this.checkBoxAnaSinifiTekrarUret.Location = new System.Drawing.Point(25, 18);
+            this.checkBoxAnaSinifiTekrarUret.Location = new System.Drawing.Point(24, 18);
             this.checkBoxAnaSinifiTekrarUret.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxAnaSinifiTekrarUret.Name = "checkBoxAnaSinifiTekrarUret";
             this.checkBoxAnaSinifiTekrarUret.Size = new System.Drawing.Size(119, 17);
@@ -322,6 +323,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxAnaSinifOnaylamaOrnekleri);
             this.groupBox1.Controls.Add(this.checkBoxAnaSinifiTekrarUret);
             this.groupBox1.Location = new System.Drawing.Point(519, 339);
             this.groupBox1.Name = "groupBox1";
@@ -329,6 +331,17 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SAKLANMAYAN ÖZELLİKLER";
+            // 
+            // checkBoxAnaSinifOnaylamaOrnekleri
+            // 
+            this.checkBoxAnaSinifOnaylamaOrnekleri.AutoSize = true;
+            this.checkBoxAnaSinifOnaylamaOrnekleri.Location = new System.Drawing.Point(24, 43);
+            this.checkBoxAnaSinifOnaylamaOrnekleri.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAnaSinifOnaylamaOrnekleri.Name = "checkBoxAnaSinifOnaylamaOrnekleri";
+            this.checkBoxAnaSinifOnaylamaOrnekleri.Size = new System.Drawing.Size(182, 17);
+            this.checkBoxAnaSinifOnaylamaOrnekleri.TabIndex = 33;
+            this.checkBoxAnaSinifOnaylamaOrnekleri.Text = "Ana sınıf Onaylama Örnekleri üret";
+            this.checkBoxAnaSinifOnaylamaOrnekleri.UseVisualStyleBackColor = true;
             // 
             // UserControlCodeGenerationOptions
             // 
@@ -400,5 +413,6 @@
         private System.Windows.Forms.TextBox textBoxIgnoredSchemaList;
         private System.Windows.Forms.Label labelIgnoredSchemaList;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBoxAnaSinifOnaylamaOrnekleri;
     }
 }

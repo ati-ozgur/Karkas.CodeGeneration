@@ -68,6 +68,7 @@ namespace Karkas.CodeGeneration.WinApp
 
 
             entry.AnaSinifiTekrarUret = checkBoxAnaSinifiTekrarUret.Checked;
+            entry.AnaSinifOnaylamaOrnekleriUret = checkBoxAnaSinifOnaylamaOrnekleri.Checked;
             entry.setTimeValues();
             return entry;
 

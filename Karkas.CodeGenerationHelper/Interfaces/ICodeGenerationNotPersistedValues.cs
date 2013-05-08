@@ -9,6 +9,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
     {
 
         bool AnaSinifiTekrarUret { get; set; }
+        bool AnaSinifOnaylamaOrnekleriUret { get; set; }
 
     }
 }
