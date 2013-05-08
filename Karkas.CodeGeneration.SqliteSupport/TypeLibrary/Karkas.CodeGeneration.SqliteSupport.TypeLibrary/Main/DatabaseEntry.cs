@@ -51,6 +51,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
             database.UseSchemaNameInFolders = Convert.ToBoolean(this.UseSchemaNameInFolders);
             database.UseSchemaNameInSqlQueries = Convert.ToBoolean(this.useSchemaNameInSqlQueries);
             database.ViewCodeGenerate = Convert.ToBoolean(this.ViewCodeGenerate);
+            database.AnaSinifiTekrarUret = this.AnaSinifiTekrarUret;
 
         }
 

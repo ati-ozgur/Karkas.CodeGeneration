@@ -37,11 +37,28 @@ namespace Karkas.CodeGeneration.WinApp
         DbConnection connection;
         AdoTemplate template;
         private IDatabase databaseHelper;
+
+        private IDatabase DatabaseHelper
+        {
+            get
+            {
+                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
+                return databaseHelper;
+            }
+            set
+            {
+                databaseHelper = value;
+                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
+            }
+        }
+        DatabaseEntry entry;
         private DatabaseEntry CurrentDatabaseEntry
         {
             get
             {
-                return userControlCodeGenerationOptions1.getDatabaseEntry();
+                entry = userControlCodeGenerationOptions1.getDatabaseEntry();
+                return entry;
+
             }
         }
         
@@ -107,8 +124,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
-                databaseHelper = new DatabaseOracle( template);
-                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
+                DatabaseHelper = new DatabaseOracle( template);
                     
 
             }
@@ -131,8 +147,7 @@ namespace Karkas.CodeGeneration.WinApp
                 template = new AdoTemplate();
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.SQLite";
-                databaseHelper = new DatabaseSqlite( template);
-                CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
+                DatabaseHelper = new DatabaseSqlite(template);
             }
         }
 
@@ -146,8 +161,7 @@ namespace Karkas.CodeGeneration.WinApp
             template.Connection = connection;
             template.DbProviderName = "System.Data.SqlClient";
 
-            databaseHelper = new DatabaseSqlServer( template);
-            CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
+            DatabaseHelper = new DatabaseSqlServer(template);
 
         }
 
@@ -169,7 +183,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void BilgileriDoldur( )
         {
-            userControlCodeGenerationOptions1.databaseNameLabelDoldur(databaseHelper);
+            userControlCodeGenerationOptions1.databaseNameLabelDoldur(DatabaseHelper);
             comboBoxSchemaListDoldur();
             listBoxTableListDoldur();
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
@@ -179,7 +193,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void listBoxTableListDoldur()
         {
-            DataTable dtTableList = databaseHelper.getTableListFromSchema( comboBoxSchemaList.Text);
+            DataTable dtTableList = DatabaseHelper.getTableListFromSchema(comboBoxSchemaList.Text);
             listBoxTableListesi.DataSource = dtTableList;
         }
 
@@ -187,11 +201,11 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void comboBoxSchemaListDoldur( )
         {
-            DataTable dtSchemaList = databaseHelper.getSchemaList();
+            DataTable dtSchemaList = DatabaseHelper.getSchemaList();
             if (dtSchemaList.Rows.Count > 0)
             {
                 comboBoxSchemaList.DataSource = dtSchemaList;
-                comboBoxSchemaList.Text = databaseHelper.getDefaultSchema();
+                comboBoxSchemaList.Text = DatabaseHelper.getDefaultSchema();
             }
         }
 
@@ -204,7 +218,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            databaseHelper.CodeGenerateAllTables();
+            DatabaseHelper.CodeGenerateAllTables();
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
         }
@@ -238,7 +252,7 @@ namespace Karkas.CodeGeneration.WinApp
                 DataRowView view = (DataRowView)item;
                 string tableSchema = view["TABLE_SCHEMA"].ToString();
                 string tableName = view["TABLE_NAME"].ToString();
-                databaseHelper.CodeGenerateOneTable(
+                DatabaseHelper.CodeGenerateOneTable(
                      tableName
                     , tableSchema
                     );

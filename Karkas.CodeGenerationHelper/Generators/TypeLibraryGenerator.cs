@@ -67,7 +67,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-            if (!File.Exists(outputFullFileName)  )
+            if (!File.Exists(outputFullFileName) || database.AnaSinifiTekrarUret  )
             {
                 usingNamespaceleriYaz(output, classNameSpace);
                 output.autoTab("public partial class ");
