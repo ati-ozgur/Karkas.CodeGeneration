@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
 using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
+using Karkas.CodeGenerationHelper.Interfaces;
 
 namespace Karkas.CodeGeneration.WinApp
 {
@@ -140,9 +141,9 @@ namespace Karkas.CodeGeneration.WinApp
 
         }
 
-        private void databaseNameLabelDoldur()
+        public void databaseNameLabelDoldur(IDatabase databaseHelper)
         {
-           // textBoxDatabaseNamePhysical.Text = databaseHelper.DatabaseNamePhysical;
+           textBoxDatabaseNamePhysical.Text = databaseHelper.DatabaseNamePhysical;
         }
 
         public void ClearInputControlValues()

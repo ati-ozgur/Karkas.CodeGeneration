@@ -47,9 +47,8 @@ namespace Karkas.CodeGeneration.WinApp
         AdoTemplate template;
         private void buttonTestConnectionString_Click(object sender, EventArgs e)
         {
-            // TODO
-            string connectionString = ""; //
-            string connectionName = ""; // 
+            string connectionString = userControlCodeGenerationOptions1.ConnectionString;
+            string connectionName =userControlCodeGenerationOptions1.ConnectionName;  
 
             comboBoxSchemaList.Text = "";
 
@@ -176,8 +175,7 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void BilgileriDoldur( )
         {
-            // TODO
-            //databaseNameLabelDoldur();
+            userControlCodeGenerationOptions1.databaseNameLabelDoldur(databaseHelper);
             comboBoxSchemaListDoldur();
             listBoxTableListDoldur();
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
@@ -268,9 +266,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             if (frm.SelectedDatabaseEntry != null)
             {
-
-                // TODO
-                //databaseEntryToForm(frm.SelectedDatabaseEntry);
+                userControlCodeGenerationOptions1.databaseEntryToForm(frm.SelectedDatabaseEntry);
             }
         }
 
@@ -283,7 +279,7 @@ namespace Karkas.CodeGeneration.WinApp
         private void buttonNewConnection_Click(object sender, EventArgs e)
         {
             currentDatabaseEntry = new DatabaseEntry();
-            // TODO clear in user Control
+            userControlCodeGenerationOptions1.ClearInputControlValues();
 
         }
     }
