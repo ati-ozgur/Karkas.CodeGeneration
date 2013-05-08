@@ -175,10 +175,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 string memberVariableName = utils.GetCamelCase(column.Name);
                 string propertyVariableName = utils.getPropertyVariableName(column);
 
-                if (column.IsInPrimaryKey)
-                {
-                    output.autoTabLn("[Key]");
-                }
+                DataAnnotationEkle(output, column);
                 output.autoTabLn("[DebuggerBrowsable(DebuggerBrowsableState.Never)]");
                 output.autoTabLn(string.Format("public {0} {1}", utils.GetLanguageType(column), propertyVariableName));
                 output.autoTabLn("{");
@@ -204,6 +201,22 @@ namespace Karkas.CodeGenerationHelper.Generators
                 output.writeLine("");
             }
             output.decreaseTab();
+        }
+
+        private const int CHARACTER_MAX_LENGTH_IN_DATABASE = 8000;
+        private static void DataAnnotationEkle(IOutput output, IColumn column)
+        {
+            if (column.IsInPrimaryKey)
+            {
+                output.autoTabLn("[Key]");
+            }
+            if (column.isStringType && column.CharacterMaxLength < CHARACTER_MAX_LENGTH_IN_DATABASE)
+            {
+                string annotationString = string.Format("[StringLength({0})]", column.CharacterMaxLength);
+                output.autoTabLn(annotationString);
+                
+            }
+
         }
 
         private void PropertiesAsStringYaz(IOutput output, IContainer container)
