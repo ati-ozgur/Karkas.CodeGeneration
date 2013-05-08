@@ -6,7 +6,7 @@ using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.Sqlite
 {
-    class SqliteOutput : BaseOutput
+    public class SqliteOutput : BaseOutput
     {
     }
 }
