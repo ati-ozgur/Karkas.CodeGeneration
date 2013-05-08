@@ -30,130 +30,26 @@ namespace Karkas.CodeGeneration.WinApp
         {
             InitializeComponent();
 
-            comboBoxDatabaseType.DataSource = DatabaseType.DatabaseTypeList;
+            userControlCodeGenerationOptions1.getLastAccessedConnectionToTextbox();
 
             panelListeDisable();
 
-            getLastAccessedConnectionToTextbox();
             
 
 
         }
 
-        private DatabaseEntry currentDatabaseEntry = null;
-
-        private void getLastAccessedConnectionToTextbox()
-        {
-            DatabaseEntry entry = DatabaseService.getLastAccessedDatabaseEntry();
-
-            if (entry != null)
-            {
-                databaseEntryToForm(entry);
-            }
-        }
-
-        private DatabaseEntry FormToDatabaseEntry( )
-        {
-            DatabaseEntry entry = new DatabaseEntry();
-
-            entry.ConnectionName = textBoxConnectionName.Text;
-            entry.ConnectionDatabaseType = comboBoxDatabaseType.SelectedValue.ToString();
-            entry.ConnectionDbProviderName = textBoxDbProviderName.Text;
-
-            entry.ConnectionString = textBoxConnectionString.Text;
-
-            entry.DatabaseNamePhysical = textBoxDatabaseNamePhysical.Text;
-            entry.DatabaseNameLogical = textBoxDatabaseNameLogical.Text;
-
-            entry.ProjectNameSpace = textBoxProjectNamespace.Text;
-            entry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
-
-            entry.ViewCodeGenerate = checkBoxViewCodeGenerate.Checked.ToString();
-
-		    entry.StoredProcedureCodeGenerate = checkBoxStoredProcedureCodeGenerate.Checked.ToString();
-		    entry.UseSchemaNameInSqlQueries = checkBoxUseSchemaNameInSql.Checked.ToString();
-		    entry.UseSchemaNameInFolders = checkBoxUseSchemaNameInFolders.Checked.ToString();
-		    entry.IgnoreSystemTables = checkBoxIgnoreSystemTables.Checked.ToString();
-		    entry.IgnoredSchemaList =textBoxIgnoredSchemaList.Text;
-            if (string.IsNullOrEmpty(textBoxAbbrevationsAsString.Text))
-            {
-                entry.AbbrevationsAsString = null;
-            }
-            else
-            {
-                entry.AbbrevationsAsString = textBoxAbbrevationsAsString.Text;
-            }
 
 
-
-            entry.setTimeValues();
-            return entry;
-
-
-
-
-        }
-
-
-        private void databaseEntryToForm(DatabaseEntry entry)
-        {
-            currentDatabaseEntry = entry;
-            textBoxConnectionName.Text = entry.ConnectionName;
-            comboBoxDatabaseType.SelectedItem = entry.ConnectionDatabaseType;
-
-            textBoxDbProviderName.Text = entry.ConnectionDbProviderName;
-
-
-            if (!string.IsNullOrWhiteSpace(entry.ConnectionString))
-            {
-                textBoxConnectionString.Text = entry.ConnectionString;
-            }
-
-            textBoxDatabaseNameLogical.Text = entry.DatabaseNameLogical;
-            textBoxDatabaseNamePhysical.Text = entry.DatabaseNamePhysical;
-            if (!string.IsNullOrWhiteSpace(entry.ProjectNameSpace))
-            {
-                textBoxProjectNamespace.Text = entry.ProjectNameSpace;
-            }
-
-            if (!string.IsNullOrWhiteSpace(entry.CodeGenerationDirectory))
-            {
-                textBoxCodeGenerationDizini.Text = entry.CodeGenerationDirectory;
-            }
-
-            bool parsedValue;
-            if (bool.TryParse(entry.ViewCodeGenerate, out parsedValue))
-            {
-                checkBoxViewCodeGenerate.Checked = parsedValue;
-            }
-            if (bool.TryParse(entry.StoredProcedureCodeGenerate, out parsedValue))
-            {
-                checkBoxStoredProcedureCodeGenerate.Checked = parsedValue;
-            }
-            if (bool.TryParse(entry.UseSchemaNameInSqlQueries, out parsedValue))
-            {
-                checkBoxUseSchemaNameInSql.Checked = parsedValue;
-            }
-            if (bool.TryParse(entry.UseSchemaNameInFolders, out parsedValue))
-            {
-                checkBoxUseSchemaNameInFolders.Checked = parsedValue;
-            }
-            if (bool.TryParse(entry.IgnoreSystemTables, out parsedValue))
-            {
-                checkBoxIgnoreSystemTables.Checked = parsedValue;
-            }
-            textBoxIgnoredSchemaList.Text = entry.IgnoredSchemaList;
-            textBoxAbbrevationsAsString.Text = entry.AbbrevationsAsString;
-
-
-        }
 
 
         DbConnection connection;
         AdoTemplate template;
         private void buttonTestConnectionString_Click(object sender, EventArgs e)
         {
-            string connectionString = textBoxConnectionString.Text;
+            // TODO
+            string connectionString = ""; //
+            string connectionName = ""; // 
 
             comboBoxSchemaList.Text = "";
 
@@ -163,14 +59,14 @@ namespace Karkas.CodeGeneration.WinApp
                 {
                     connection.Close();
                 }
-                String type = comboBoxDatabaseType.SelectedItem.ToString();
+                String type = "";
                 if (type == null || type == DatabaseType.SqlServer)
                 {
-                    testSqlServer(connectionString,textBoxConnectionName.Text);
+                    testSqlServer(connectionString, connectionName);
                 }
                 else if (type == DatabaseType.Oracle)
                 {
-                    testOracle(connectionString,textBoxConnectionName.Text);
+                    testOracle(connectionString, connectionName);
 
                 }
                 else if (type == DatabaseType.Sqlite)
@@ -280,16 +176,13 @@ namespace Karkas.CodeGeneration.WinApp
 
         private void BilgileriDoldur( )
         {
-            databaseNameLabelDoldur();
+            // TODO
+            //databaseNameLabelDoldur();
             comboBoxSchemaListDoldur();
             listBoxTableListDoldur();
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
         }
 
-        private void databaseNameLabelDoldur()
-        {
-            textBoxDatabaseNamePhysical.Text = databaseHelper.DatabaseNamePhysical;
-        }
 
 
         private void listBoxTableListDoldur()
@@ -315,19 +208,7 @@ namespace Karkas.CodeGeneration.WinApp
             listBoxTableListDoldur();
         }
 
-        private void buttonFolderDialog_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.ShowNewFolderButton = false;
-            folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
 
-            DialogResult dialogResult = folderBrowserDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                textBoxCodeGenerationDizini.Text = folderBrowserDialog.SelectedPath;
-            }
-
-        }
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
@@ -335,10 +216,11 @@ namespace Karkas.CodeGeneration.WinApp
             MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
 
         }
+        private DatabaseEntry currentDatabaseEntry = null;
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
-            currentDatabaseEntry = FormToDatabaseEntry();
+            //currentDatabaseEntry =  FormToDatabaseEntry();
 
 
 
@@ -387,7 +269,8 @@ namespace Karkas.CodeGeneration.WinApp
             if (frm.SelectedDatabaseEntry != null)
             {
 
-                databaseEntryToForm(frm.SelectedDatabaseEntry);
+                // TODO
+                //databaseEntryToForm(frm.SelectedDatabaseEntry);
             }
         }
 
@@ -400,10 +283,7 @@ namespace Karkas.CodeGeneration.WinApp
         private void buttonNewConnection_Click(object sender, EventArgs e)
         {
             currentDatabaseEntry = new DatabaseEntry();
-            textBoxCodeGenerationDizini.Text = "";
-            textBoxConnectionName.Text = "";
-            textBoxProjectNamespace.Text = "";
-            textBoxConnectionString.Text = "";
+            // TODO clear in user Control
 
         }
     }

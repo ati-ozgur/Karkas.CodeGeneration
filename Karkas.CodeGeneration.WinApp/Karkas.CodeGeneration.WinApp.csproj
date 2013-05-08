@@ -105,6 +105,12 @@
     <Compile Include="PersistenceService\DatabaseService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlCodeGenerationOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlCodeGenerationOptions.Designer.cs">
+      <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormAbbreviations.resx">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlCodeGenerationOptions.resx">
+      <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="connectionsDb.sqlite" />
