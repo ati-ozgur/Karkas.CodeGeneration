@@ -175,15 +175,15 @@ namespace Karkas.CodeGenerationHelper.Generators
                 string memberVariableName = utils.GetCamelCase(column.Name);
                 string propertyVariableName = utils.getPropertyVariableName(column);
 
+                if (column.IsInPrimaryKey)
+                {
+                    output.autoTabLn("[Key]");
+                }
                 output.autoTabLn("[DebuggerBrowsable(DebuggerBrowsableState.Never)]");
                 output.autoTabLn(string.Format("public {0} {1}", utils.GetLanguageType(column), propertyVariableName));
                 output.autoTabLn("{");
                 output.increaseTab();
                 output.autoTabLn("[DebuggerStepThrough]");
-                if (column.IsInPrimaryKey)
-                {
-                    output.autoTabLn("[Key]");
-                }
                 output.autoTabLn("get");
                 output.autoTabLn("{");
                 output.autoTabLn(string.Format("\treturn {0};", memberVariableName));
