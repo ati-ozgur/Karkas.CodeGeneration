@@ -69,17 +69,23 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             if (!File.Exists(outputFullFileName) || database.AnaSinifiTekrarUret  )
             {
-                usingNamespaceleriYaz(output, classNameSpace);
-                output.autoTab("public partial class ");
-                output.autoTabLn(className);
-                BaslangicSusluParentezVeTabArtir(output);
-                BitisSusluParentezVeTabAzalt(output);
-                BitisSusluParentezVeTabAzalt(output);
-                output.save(outputFullFileName, false);
-                output.clear();
+                generateMainClassFile(output,  database, className, classNameSpace, outputFullFileName);
             }
 
 
+        }
+
+        private void generateMainClassFile(IOutput output, IDatabase database,string className, string classNameSpace, string outputFullFileName)
+        {
+            usingNamespaceleriYaz(output, classNameSpace);
+            output.increaseTab();
+            output.autoTab("public partial class ");
+            output.autoTabLn(className);
+            BaslangicSusluParentezVeTabArtir(output);
+            BitisSusluParentezVeTabAzalt(output);
+            BitisSusluParentezVeTabAzalt(output);
+            output.save(outputFullFileName, database.AnaSinifiTekrarUret);
+            output.clear();
         }
 
 
@@ -101,7 +107,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("");
             output.autoTab("namespace ");
             output.autoTabLn(classNameSpace);
-            output.writeLine("");
+            output.write("");
             BaslangicSusluParentezVeTabArtir(output);
         }
 
