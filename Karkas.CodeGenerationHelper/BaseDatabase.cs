@@ -65,7 +65,7 @@ namespace Karkas.CodeGenerationHelper
         }
 
 
-        protected AdoTemplate template;
+        private AdoTemplate template;
         string projectNameSpace;
         string codeGenerationDirectory;
         string connectionName;

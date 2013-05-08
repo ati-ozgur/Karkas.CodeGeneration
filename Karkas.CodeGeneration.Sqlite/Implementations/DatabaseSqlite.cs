@@ -16,7 +16,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public DatabaseSqlite(AdoTemplate template)
         {
-            this.template = template;
+            this.Template = template;
         }
 
         public DatabaseSqlite(AdoTemplate template
@@ -32,7 +32,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
             )
         {
-            this.template = template;
+            this.Template = template;
 
             this.ConnectionString = connectionString;
 
@@ -71,7 +71,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                     foreach (DataRow rowTable in dtTables.Rows)
                     {
                         String tableName = rowTable["TABLE_NAME"].ToString();
-                        TableSqlite table = new TableSqlite(this, template, tableName, this.ConnectionName);
+                        TableSqlite table = new TableSqlite(this, Template, tableName, this.ConnectionName);
                         _tableList.Add(table);
                     }
                 }
@@ -82,14 +82,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public DataTable getTableList()
         {
-            DataTable dtTables = template.DataTableOlustur(TABLE_LIST_SQL);
+            DataTable dtTables = Template.DataTableOlustur(TABLE_LIST_SQL);
             return dtTables;
         }
 
 
         public override ITable getTable(string pTableName, string pSchemaName)
         {
-            return new TableSqlite(this, template, pTableName, pSchemaName);
+            return new TableSqlite(this, Template, pTableName, pSchemaName);
         }
 
         public override string ToString()
