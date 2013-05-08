@@ -207,6 +207,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
         }
+        public bool AnaSinifiTekrarUret { get; set; }
 
 
 

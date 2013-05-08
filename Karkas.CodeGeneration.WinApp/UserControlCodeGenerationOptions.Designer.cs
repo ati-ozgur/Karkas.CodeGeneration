@@ -55,6 +55,8 @@
             this.labelAbbrevationsAsString = new System.Windows.Forms.Label();
             this.textBoxIgnoredSchemaList = new System.Windows.Forms.TextBox();
             this.labelIgnoredSchemaList = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBoxIgnoreSystemTables
@@ -125,7 +127,7 @@
             // checkBoxAnaSinifiTekrarUret
             // 
             this.checkBoxAnaSinifiTekrarUret.AutoSize = true;
-            this.checkBoxAnaSinifiTekrarUret.Location = new System.Drawing.Point(368, 422);
+            this.checkBoxAnaSinifiTekrarUret.Location = new System.Drawing.Point(25, 18);
             this.checkBoxAnaSinifiTekrarUret.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxAnaSinifiTekrarUret.Name = "checkBoxAnaSinifiTekrarUret";
             this.checkBoxAnaSinifiTekrarUret.Size = new System.Drawing.Size(119, 17);
@@ -318,10 +320,21 @@
             this.labelIgnoredSchemaList.TabIndex = 51;
             this.labelIgnoredSchemaList.Text = "Ignored Schema List";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBoxAnaSinifiTekrarUret);
+            this.groupBox1.Location = new System.Drawing.Point(519, 339);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 151);
+            this.groupBox1.TabIndex = 55;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "SAKLANMAYAN ÖZELLİKLER";
+            // 
             // UserControlCodeGenerationOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxAbbrevationsAsString);
             this.Controls.Add(this.labelAbbrevationsAsString);
             this.Controls.Add(this.textBoxIgnoredSchemaList);
@@ -343,7 +356,6 @@
             this.Controls.Add(this.labelCodeGenerationFolder);
             this.Controls.Add(this.textBoxConnectionString);
             this.Controls.Add(this.labelConnectionString);
-            this.Controls.Add(this.checkBoxAnaSinifiTekrarUret);
             this.Controls.Add(this.checkBoxIgnoreSystemTables);
             this.Controls.Add(this.checkBoxStoredProcedureCodeGenerate);
             this.Controls.Add(this.checkBoxViewCodeGenerate);
@@ -351,6 +363,8 @@
             this.Controls.Add(this.checkBoxUseSchemaNameInSql);
             this.Name = "UserControlCodeGenerationOptions";
             this.Size = new System.Drawing.Size(719, 493);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +399,6 @@
         private System.Windows.Forms.Label labelAbbrevationsAsString;
         private System.Windows.Forms.TextBox textBoxIgnoredSchemaList;
         private System.Windows.Forms.Label labelIgnoredSchemaList;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

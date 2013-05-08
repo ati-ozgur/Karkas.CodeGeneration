@@ -67,7 +67,7 @@ namespace Karkas.CodeGeneration.WinApp
             }
 
 
-
+            entry.AnaSinifiTekrarUret = checkBoxAnaSinifiTekrarUret.Checked;
             entry.setTimeValues();
             return entry;
 

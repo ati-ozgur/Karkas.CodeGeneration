@@ -153,15 +153,16 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             get { return viewCodeGenerate; }
             set { viewCodeGenerate = value; }
         }
-        bool toredProcedureCodeGenerate;
+        bool storedProcedureCodeGenerate;
 
         public bool StoredProcedureCodeGenerate
         {
-            get { return toredProcedureCodeGenerate; }
-            set { toredProcedureCodeGenerate = value; }
+            get { return storedProcedureCodeGenerate; }
+            set { storedProcedureCodeGenerate = value; }
         }
 
 
+        public bool AnaSinifiTekrarUret { get; set; }
 
         string ignoredSchemaList;
 

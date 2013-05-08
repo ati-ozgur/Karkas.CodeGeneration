@@ -31,7 +31,6 @@
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
-            this.checkBoxDboSemasiniAtla = new System.Windows.Forms.CheckBox();
             this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
             this.buttonTumTablolariUret = new System.Windows.Forms.Button();
             this.listBoxTableListesi = new System.Windows.Forms.ListBox();
@@ -70,7 +69,6 @@
             // 
             // panelListe
             // 
-            this.panelListe.Controls.Add(this.checkBoxDboSemasiniAtla);
             this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
             this.panelListe.Controls.Add(this.buttonTumTablolariUret);
             this.panelListe.Controls.Add(this.listBoxTableListesi);
@@ -80,25 +78,12 @@
             this.panelListe.Location = new System.Drawing.Point(2, 498);
             this.panelListe.Margin = new System.Windows.Forms.Padding(2);
             this.panelListe.Name = "panelListe";
-            this.panelListe.Size = new System.Drawing.Size(693, 320);
+            this.panelListe.Size = new System.Drawing.Size(591, 320);
             this.panelListe.TabIndex = 5;
-            // 
-            // checkBoxDboSemasiniAtla
-            // 
-            this.checkBoxDboSemasiniAtla.AutoSize = true;
-            this.checkBoxDboSemasiniAtla.Checked = true;
-            this.checkBoxDboSemasiniAtla.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDboSemasiniAtla.Location = new System.Drawing.Point(560, 116);
-            this.checkBoxDboSemasiniAtla.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxDboSemasiniAtla.Name = "checkBoxDboSemasiniAtla";
-            this.checkBoxDboSemasiniAtla.Size = new System.Drawing.Size(108, 17);
-            this.checkBoxDboSemasiniAtla.TabIndex = 6;
-            this.checkBoxDboSemasiniAtla.Text = "dbo şemasını Atla";
-            this.checkBoxDboSemasiniAtla.UseVisualStyleBackColor = true;
             // 
             // buttonSeciliTablolariUret
             // 
-            this.buttonSeciliTablolariUret.Location = new System.Drawing.Point(227, 313);
+            this.buttonSeciliTablolariUret.Location = new System.Drawing.Point(377, 99);
             this.buttonSeciliTablolariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSeciliTablolariUret.Name = "buttonSeciliTablolariUret";
             this.buttonSeciliTablolariUret.Size = new System.Drawing.Size(121, 31);
@@ -109,7 +94,7 @@
             // 
             // buttonTumTablolariUret
             // 
-            this.buttonTumTablolariUret.Location = new System.Drawing.Point(560, 186);
+            this.buttonTumTablolariUret.Location = new System.Drawing.Point(377, 55);
             this.buttonTumTablolariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTumTablolariUret.Name = "buttonTumTablolariUret";
             this.buttonTumTablolariUret.Size = new System.Drawing.Size(121, 23);
@@ -202,7 +187,7 @@
             // 
             // userControlCodeGenerationOptions1
             // 
-            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(0, 0);
+            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 0);
             this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
             this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 493);
             this.userControlCodeGenerationOptions1.TabIndex = 20;
@@ -211,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 815);
+            this.ClientSize = new System.Drawing.Size(963, 868);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
@@ -242,7 +227,6 @@
         private System.Windows.Forms.Button buttonSeciliTablolariUret;
         private System.Windows.Forms.Button buttonTumTablolariUret;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
-        private System.Windows.Forms.CheckBox checkBoxDboSemasiniAtla;
         private System.Windows.Forms.Button buttonOtherConnections;
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;

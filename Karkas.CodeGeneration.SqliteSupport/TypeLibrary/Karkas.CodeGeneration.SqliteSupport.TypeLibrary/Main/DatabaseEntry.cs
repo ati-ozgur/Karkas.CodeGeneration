@@ -54,5 +54,19 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 
         }
 
+        private bool anaSinifiTekrarUret = false;
+        public bool AnaSinifiTekrarUret
+        {
+            get
+            {
+                return anaSinifiTekrarUret;
+            }
+            set
+            {
+                anaSinifiTekrarUret = value;
+            }
+
+        }
+
     }
 }

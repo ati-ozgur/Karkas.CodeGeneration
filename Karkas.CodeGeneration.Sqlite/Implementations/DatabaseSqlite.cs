@@ -158,6 +158,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
         }
+        public bool AnaSinifiTekrarUret { get; set; }
+
 
         string ignoredSchemaList;
 

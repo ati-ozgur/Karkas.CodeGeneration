@@ -27,5 +27,6 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         string IgnoredSchemaList { get; set; }
         string DatabaseAbbreviations { get; set; }
 
+
     }
 }

@@ -8,7 +8,7 @@ using Karkas.CodeGenerationHelper.Generators;
 
 namespace Karkas.CodeGenerationHelper.Interfaces
 {
-    public interface IDatabase : ICodeGenerationPersistanceValues
+    public interface IDatabase : ICodeGenerationPersistanceValues, ICodeGenerationNotPersistedValues
     {
 
         List<DatabaseAbbreviations> ListDatabaseAbbreviations { get; set; }
