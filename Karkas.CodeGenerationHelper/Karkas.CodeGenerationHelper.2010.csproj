@@ -59,8 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDatabase.cs" />
-    <Compile Include="BaseOutput.cs" />
+    <Compile Include="BaseClasses\BaseDatabase.cs" />
+    <Compile Include="BaseClasses\BaseOutput.cs" />
     <Compile Include="DatabaseAbbreviations.cs" />
     <Compile Include="DatabaseType.cs" />
     <Compile Include="Interfaces\ICodeGenerationNotPersistedValues.cs" />
@@ -74,7 +74,7 @@
     <Compile Include="Interfaces\ITable.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="ConnectionHelper.cs" />
-    <Compile Include="Generators\BaseGenerator.cs" />
+    <Compile Include="BaseClasses\BaseGenerator.cs" />
     <Compile Include="Generators\BsGenerator.cs" />
     <Compile Include="Generators\DalGenerator.cs" />
     <Compile Include="Generators\TypeLibraryGenerator.cs" />
