@@ -51,6 +51,7 @@ namespace Karkas.CodeGeneration.WinApp
             entry.CodeGenerationDirectory = textBoxCodeGenerationDizini.Text;
 
             entry.ViewCodeGenerate = checkBoxViewCodeGenerate.Checked.ToString();
+            entry.SequenceCodeGenerate = checkBoxSequenceCodeGenerate.Checked.ToString();
 
             entry.StoredProcedureCodeGenerate = checkBoxStoredProcedureCodeGenerate.Checked.ToString();
             entry.UseSchemaNameInSqlQueries = checkBoxUseSchemaNameInSql.Checked.ToString();
@@ -136,6 +137,11 @@ namespace Karkas.CodeGeneration.WinApp
             {
                 checkBoxIgnoreSystemTables.Checked = parsedValue;
             }
+            if (bool.TryParse(entry.SequenceCodeGenerate, out parsedValue))
+            {
+                checkBoxSequenceCodeGenerate.Checked = parsedValue;
+            }
+
             textBoxIgnoredSchemaList.Text = entry.IgnoredSchemaList;
             textBoxAbbrevationsAsString.Text = entry.AbbrevationsAsString;
 
