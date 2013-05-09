@@ -32,20 +32,22 @@ namespace Karkas.CodeGeneration.WinApp
             this.buttonTestConnectionString = new System.Windows.Forms.Button();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.panelListe = new System.Windows.Forms.Panel();
-            this.buttonSeciliTablolariUret = new System.Windows.Forms.Button();
-            this.buttonTumTablolariUret = new System.Windows.Forms.Button();
-            this.listBoxTableListesi = new System.Windows.Forms.ListBox();
-            this.labelTabloListesi = new System.Windows.Forms.Label();
-            this.labelSchemaList = new System.Windows.Forms.Label();
-            this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
             this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
-            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
             this.textBoxDatabaseProviders = new System.Windows.Forms.TextBox();
             this.labelDatabaseProviders = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageTableRelated = new System.Windows.Forms.TabPage();
+            this.tabPageViewRelated = new System.Windows.Forms.TabPage();
+            this.tabPageStoredProcedures = new System.Windows.Forms.TabPage();
+            this.tabPageSequences = new System.Windows.Forms.TabPage();
+            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
+            this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
             this.panelListe.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPageTableRelated.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTestConnectionString
@@ -72,80 +74,12 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // panelListe
             // 
-            this.panelListe.Controls.Add(this.buttonSeciliTablolariUret);
-            this.panelListe.Controls.Add(this.buttonTumTablolariUret);
-            this.panelListe.Controls.Add(this.listBoxTableListesi);
-            this.panelListe.Controls.Add(this.labelTabloListesi);
-            this.panelListe.Controls.Add(this.labelSchemaList);
-            this.panelListe.Controls.Add(this.comboBoxSchemaList);
+            this.panelListe.Controls.Add(this.tabControl1);
             this.panelListe.Location = new System.Drawing.Point(2, 498);
             this.panelListe.Margin = new System.Windows.Forms.Padding(2);
             this.panelListe.Name = "panelListe";
             this.panelListe.Size = new System.Drawing.Size(591, 320);
             this.panelListe.TabIndex = 5;
-            // 
-            // buttonSeciliTablolariUret
-            // 
-            this.buttonSeciliTablolariUret.Location = new System.Drawing.Point(377, 99);
-            this.buttonSeciliTablolariUret.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSeciliTablolariUret.Name = "buttonSeciliTablolariUret";
-            this.buttonSeciliTablolariUret.Size = new System.Drawing.Size(121, 31);
-            this.buttonSeciliTablolariUret.TabIndex = 5;
-            this.buttonSeciliTablolariUret.Text = "Seçili Tablolari Üret";
-            this.buttonSeciliTablolariUret.UseVisualStyleBackColor = true;
-            this.buttonSeciliTablolariUret.Click += new System.EventHandler(this.buttonSeciliTablolariUret_Click);
-            // 
-            // buttonTumTablolariUret
-            // 
-            this.buttonTumTablolariUret.Location = new System.Drawing.Point(377, 55);
-            this.buttonTumTablolariUret.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTumTablolariUret.Name = "buttonTumTablolariUret";
-            this.buttonTumTablolariUret.Size = new System.Drawing.Size(121, 23);
-            this.buttonTumTablolariUret.TabIndex = 4;
-            this.buttonTumTablolariUret.Text = "Tüm Tabloları Üret";
-            this.buttonTumTablolariUret.UseVisualStyleBackColor = true;
-            this.buttonTumTablolariUret.Click += new System.EventHandler(this.buttonTumTablolariUret_Click);
-            // 
-            // listBoxTableListesi
-            // 
-            this.listBoxTableListesi.DisplayMember = "FULL_TABLE_NAME";
-            this.listBoxTableListesi.FormattingEnabled = true;
-            this.listBoxTableListesi.Location = new System.Drawing.Point(145, 55);
-            this.listBoxTableListesi.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxTableListesi.Name = "listBoxTableListesi";
-            this.listBoxTableListesi.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxTableListesi.Size = new System.Drawing.Size(204, 251);
-            this.listBoxTableListesi.TabIndex = 3;
-            // 
-            // labelTabloListesi
-            // 
-            this.labelTabloListesi.AutoSize = true;
-            this.labelTabloListesi.Location = new System.Drawing.Point(15, 53);
-            this.labelTabloListesi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelTabloListesi.Name = "labelTabloListesi";
-            this.labelTabloListesi.Size = new System.Drawing.Size(66, 13);
-            this.labelTabloListesi.TabIndex = 2;
-            this.labelTabloListesi.Text = "Tablo Listesi";
-            // 
-            // labelSchemaList
-            // 
-            this.labelSchemaList.AutoSize = true;
-            this.labelSchemaList.Location = new System.Drawing.Point(15, 13);
-            this.labelSchemaList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSchemaList.Name = "labelSchemaList";
-            this.labelSchemaList.Size = new System.Drawing.Size(78, 13);
-            this.labelSchemaList.TabIndex = 1;
-            this.labelSchemaList.Text = "Schema Listesi";
-            // 
-            // comboBoxSchemaList
-            // 
-            this.comboBoxSchemaList.DisplayMember = "TABLE_SCHEMA";
-            this.comboBoxSchemaList.FormattingEnabled = true;
-            this.comboBoxSchemaList.Location = new System.Drawing.Point(148, 15);
-            this.comboBoxSchemaList.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSchemaList.Name = "comboBoxSchemaList";
-            this.comboBoxSchemaList.Size = new System.Drawing.Size(182, 21);
-            this.comboBoxSchemaList.TabIndex = 0;
             // 
             // buttonGecerliDegerleriKaydet
             // 
@@ -188,13 +122,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.buttonNewConnection.UseVisualStyleBackColor = true;
             this.buttonNewConnection.Click += new System.EventHandler(this.buttonNewConnection_Click);
             // 
-            // userControlCodeGenerationOptions1
-            // 
-            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 0);
-            this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
-            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 493);
-            this.userControlCodeGenerationOptions1.TabIndex = 20;
-            // 
             // textBoxDatabaseProviders
             // 
             this.textBoxDatabaseProviders.Location = new System.Drawing.Point(611, 522);
@@ -213,6 +140,71 @@ namespace Karkas.CodeGeneration.WinApp
             this.labelDatabaseProviders.Size = new System.Drawing.Size(100, 13);
             this.labelDatabaseProviders.TabIndex = 22;
             this.labelDatabaseProviders.Text = "Database Providers";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageTableRelated);
+            this.tabControl1.Controls.Add(this.tabPageViewRelated);
+            this.tabControl1.Controls.Add(this.tabPageStoredProcedures);
+            this.tabControl1.Controls.Add(this.tabPageSequences);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(588, 317);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageTableRelated
+            // 
+            this.tabPageTableRelated.Controls.Add(this.userControlTableRelated1);
+            this.tabPageTableRelated.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTableRelated.Name = "tabPageTableRelated";
+            this.tabPageTableRelated.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTableRelated.Size = new System.Drawing.Size(580, 291);
+            this.tabPageTableRelated.TabIndex = 0;
+            this.tabPageTableRelated.Text = "Table";
+            this.tabPageTableRelated.UseVisualStyleBackColor = true;
+            // 
+            // tabPageViewRelated
+            // 
+            this.tabPageViewRelated.Location = new System.Drawing.Point(4, 22);
+            this.tabPageViewRelated.Name = "tabPageViewRelated";
+            this.tabPageViewRelated.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageViewRelated.Size = new System.Drawing.Size(580, 291);
+            this.tabPageViewRelated.TabIndex = 1;
+            this.tabPageViewRelated.Text = "View";
+            this.tabPageViewRelated.UseVisualStyleBackColor = true;
+            // 
+            // tabPageStoredProcedures
+            // 
+            this.tabPageStoredProcedures.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStoredProcedures.Name = "tabPageStoredProcedures";
+            this.tabPageStoredProcedures.Size = new System.Drawing.Size(580, 291);
+            this.tabPageStoredProcedures.TabIndex = 2;
+            this.tabPageStoredProcedures.Text = "Stored Procedures";
+            this.tabPageStoredProcedures.UseVisualStyleBackColor = true;
+            // 
+            // tabPageSequences
+            // 
+            this.tabPageSequences.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSequences.Name = "tabPageSequences";
+            this.tabPageSequences.Size = new System.Drawing.Size(580, 291);
+            this.tabPageSequences.TabIndex = 3;
+            this.tabPageSequences.Text = "Sequences";
+            this.tabPageSequences.UseVisualStyleBackColor = true;
+            // 
+            // userControlCodeGenerationOptions1
+            // 
+            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 0);
+            this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
+            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 493);
+            this.userControlCodeGenerationOptions1.TabIndex = 20;
+            // 
+            // userControlTableRelated1
+            // 
+            this.userControlTableRelated1.Location = new System.Drawing.Point(7, 7);
+            this.userControlTableRelated1.Name = "userControlTableRelated1";
+            this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
+            this.userControlTableRelated1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -233,7 +225,8 @@ namespace Karkas.CodeGeneration.WinApp
             this.Name = "MainForm";
             this.Text = "Form1";
             this.panelListe.ResumeLayout(false);
-            this.panelListe.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageTableRelated.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,12 +237,6 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.Button buttonTestConnectionString;
         private System.Windows.Forms.Label labelConnectionStatus;
         private System.Windows.Forms.Panel panelListe;
-        private System.Windows.Forms.Label labelSchemaList;
-        private System.Windows.Forms.ComboBox comboBoxSchemaList;
-        private System.Windows.Forms.Label labelTabloListesi;
-        private System.Windows.Forms.ListBox listBoxTableListesi;
-        private System.Windows.Forms.Button buttonSeciliTablolariUret;
-        private System.Windows.Forms.Button buttonTumTablolariUret;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
         private System.Windows.Forms.Button buttonOtherConnections;
         private System.Windows.Forms.Button buttonKisaltmalar;
@@ -257,6 +244,12 @@ namespace Karkas.CodeGeneration.WinApp
         private UserControlCodeGenerationOptions userControlCodeGenerationOptions1;
         private System.Windows.Forms.TextBox textBoxDatabaseProviders;
         private System.Windows.Forms.Label labelDatabaseProviders;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageTableRelated;
+        private System.Windows.Forms.TabPage tabPageViewRelated;
+        private System.Windows.Forms.TabPage tabPageStoredProcedures;
+        private System.Windows.Forms.TabPage tabPageSequences;
+        private UserControlTableRelated userControlTableRelated1;
     }
 }
 

@@ -38,7 +38,7 @@ namespace Karkas.CodeGeneration.WinApp
         AdoTemplate template;
         private IDatabase databaseHelper;
 
-        private IDatabase DatabaseHelper
+        public IDatabase DatabaseHelper
         {
             get
             {
@@ -51,6 +51,9 @@ namespace Karkas.CodeGeneration.WinApp
                 CurrentDatabaseEntry.setIDatabaseValues(databaseHelper);
             }
         }
+
+
+
         DatabaseEntry entry;
         private DatabaseEntry CurrentDatabaseEntry
         {
@@ -69,8 +72,8 @@ namespace Karkas.CodeGeneration.WinApp
             string connectionName =userControlCodeGenerationOptions1.ConnectionName;
             string type = userControlCodeGenerationOptions1.SelectedDatabaseType;
 
-            comboBoxSchemaList.Text = "";
-
+            userControlTableRelated1.setComboBoxSchemaListText("");
+            
             try
             {
                 if (connection != null && connection.State == ConnectionState.Open)
@@ -184,44 +187,15 @@ namespace Karkas.CodeGeneration.WinApp
         private void BilgileriDoldur( )
         {
             userControlCodeGenerationOptions1.databaseNameLabelDoldur(DatabaseHelper);
-            comboBoxSchemaListDoldur();
-            listBoxTableListDoldur();
-            this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
+            userControlTableRelated1.comboBoxSchemaListDoldur();
+            userControlTableRelated1.listBoxTableListDoldur();
         }
 
 
 
-        private void listBoxTableListDoldur()
-        {
-            DataTable dtTableList = DatabaseHelper.getTableListFromSchema(comboBoxSchemaList.Text);
-            listBoxTableListesi.DataSource = dtTableList;
-        }
 
 
 
-        private void comboBoxSchemaListDoldur( )
-        {
-            DataTable dtSchemaList = DatabaseHelper.getSchemaList();
-            if (dtSchemaList.Rows.Count > 0)
-            {
-                comboBoxSchemaList.DataSource = dtSchemaList;
-                comboBoxSchemaList.Text = DatabaseHelper.getDefaultSchema();
-            }
-        }
-
-        private void comboBoxSchemaList_SelectedValueChanged(object sender, EventArgs e)
-        {
-            listBoxTableListDoldur();
-        }
-
-
-
-        private void buttonTumTablolariUret_Click(object sender, EventArgs e)
-        {
-            DatabaseHelper.CodeGenerateAllTables();
-            MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
-
-        }
 
         private void buttonGecerliDegerleriKaydet_Click(object sender, EventArgs e)
         {
@@ -236,23 +210,6 @@ namespace Karkas.CodeGeneration.WinApp
 
 
 
-        private void buttonSeciliTablolariUret_Click(object sender, EventArgs e)
-        {
-            foreach (var item in listBoxTableListesi.SelectedItems)
-            {
-                DataRowView view = (DataRowView)item;
-                string tableSchema = view["TABLE_SCHEMA"].ToString();
-                string tableName = view["TABLE_NAME"].ToString();
-                DatabaseHelper.CodeGenerateOneTable(
-                     tableName
-                    , tableSchema
-                    );
-
-            }
-
-            MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
-
-        }
 
         private void buttonOtherConnections_Click(object sender, EventArgs e)
         {
