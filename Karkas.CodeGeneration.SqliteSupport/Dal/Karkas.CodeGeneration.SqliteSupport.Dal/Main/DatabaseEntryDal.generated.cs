@@ -19,7 +19,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		get
 		{
-			return "main";
+            return "Main";
 		}
 	}
 	protected override void identityKolonDegeriniSetle(DatabaseEntry pTypeLibrary,long pIdentityKolonValue)
@@ -36,7 +36,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 	{
 		get 
 		{
-			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
+			return @"SELECT ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,SequenceCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime FROM DatabaseEntry";
 		}
 	}
 	protected override string DeleteString
@@ -61,6 +61,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 ,CodeGenerationDirectory = @CodeGenerationDirectory
 ,ViewCodeGenerate = @ViewCodeGenerate
 ,StoredProcedureCodeGenerate = @StoredProcedureCodeGenerate
+,SequenceCodeGenerate = @SequenceCodeGenerate
 ,UseSchemaNameInSqlQueries = @UseSchemaNameInSqlQueries
 ,UseSchemaNameInFolders = @UseSchemaNameInFolders
 ,IgnoreSystemTables = @IgnoreSystemTables
@@ -80,9 +81,9 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		get 
 		{
 			return @"INSERT INTO DatabaseEntry 
-			 (ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
+			 (ConnectionName,ConnectionDatabaseType,ConnectionDbProviderName,ConnectionString,DatabaseNamePhysical,DatabaseNameLogical,ProjectNameSpace,CodeGenerationDirectory,ViewCodeGenerate,StoredProcedureCodeGenerate,SequenceCodeGenerate,UseSchemaNameInSqlQueries,UseSchemaNameInFolders,IgnoreSystemTables,IgnoredSchemaList,AbbrevationsAsString,CreationTime,LastAccessTime,LastWriteTime) 
 			 VALUES 
-						(@ConnectionName,@ConnectionDatabaseType,@ConnectionDbProviderName,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerate,@StoredProcedureCodeGenerate,@UseSchemaNameInSqlQueries,@UseSchemaNameInFolders,@IgnoreSystemTables,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
+						(@ConnectionName,@ConnectionDatabaseType,@ConnectionDbProviderName,@ConnectionString,@DatabaseNamePhysical,@DatabaseNameLogical,@ProjectNameSpace,@CodeGenerationDirectory,@ViewCodeGenerate,@StoredProcedureCodeGenerate,@SequenceCodeGenerate,@UseSchemaNameInSqlQueries,@UseSchemaNameInFolders,@IgnoreSystemTables,@IgnoredSchemaList,@AbbrevationsAsString,@CreationTime,@LastAccessTime,@LastWriteTime)";
 		}
 	}
 	public DatabaseEntry SorgulaConnectionNameIle(string p1)
@@ -148,25 +149,26 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		row.CodeGenerationDirectory = dr.GetString(7);
 		row.ViewCodeGenerate = dr.GetString(8);
 		row.StoredProcedureCodeGenerate = dr.GetString(9);
-		row.UseSchemaNameInSqlQueries = dr.GetString(10);
-		row.UseSchemaNameInFolders = dr.GetString(11);
-		row.IgnoreSystemTables = dr.GetString(12);
-		row.IgnoredSchemaList = dr.GetString(13);
-		if (!dr.IsDBNull(14))
-		{
-			row.AbbrevationsAsString = dr.GetString(14);
-		}
+		row.SequenceCodeGenerate = dr.GetString(10);
+		row.UseSchemaNameInSqlQueries = dr.GetString(11);
+		row.UseSchemaNameInFolders = dr.GetString(12);
+		row.IgnoreSystemTables = dr.GetString(13);
+		row.IgnoredSchemaList = dr.GetString(14);
 		if (!dr.IsDBNull(15))
 		{
-			row.CreationTime = dr.GetString(15);
+			row.AbbrevationsAsString = dr.GetString(15);
 		}
 		if (!dr.IsDBNull(16))
 		{
-			row.LastAccessTime = dr.GetString(16);
+			row.CreationTime = dr.GetString(16);
 		}
 		if (!dr.IsDBNull(17))
 		{
-			row.LastWriteTime = dr.GetString(17);
+			row.LastAccessTime = dr.GetString(17);
+		}
+		if (!dr.IsDBNull(18))
+		{
+			row.LastWriteTime = dr.GetString(18);
 		}
 	}
 	protected override void InsertCommandParametersAdd(DbCommand cmd, DatabaseEntry row)
@@ -183,6 +185,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
 		builder.parameterEkle("@ViewCodeGenerate",DbType.String, row.ViewCodeGenerate);
 		builder.parameterEkle("@StoredProcedureCodeGenerate",DbType.String, row.StoredProcedureCodeGenerate);
+		builder.parameterEkle("@SequenceCodeGenerate",DbType.String, row.SequenceCodeGenerate);
 		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
 		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
 		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
@@ -206,6 +209,7 @@ public partial class DatabaseEntryDal : BaseDal<DatabaseEntry>
 		builder.parameterEkle("@CodeGenerationDirectory",DbType.String, row.CodeGenerationDirectory);
 		builder.parameterEkle("@ViewCodeGenerate",DbType.String, row.ViewCodeGenerate);
 		builder.parameterEkle("@StoredProcedureCodeGenerate",DbType.String, row.StoredProcedureCodeGenerate);
+		builder.parameterEkle("@SequenceCodeGenerate",DbType.String, row.SequenceCodeGenerate);
 		builder.parameterEkle("@UseSchemaNameInSqlQueries",DbType.String, row.UseSchemaNameInSqlQueries);
 		builder.parameterEkle("@UseSchemaNameInFolders",DbType.String, row.UseSchemaNameInFolders);
 		builder.parameterEkle("@IgnoreSystemTables",DbType.String, row.IgnoreSystemTables);
