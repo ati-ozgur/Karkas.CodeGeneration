@@ -137,6 +137,13 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             return dt;
         }
 
+        public override DataTable getSequenceListFromSchema(string schemaName)
+        {
+            // sqlite does not support sequences
+            DataTable dt = new DataTable();
+            return dt;
+        }
+
 
         public override DataTable getSchemaList()
         {

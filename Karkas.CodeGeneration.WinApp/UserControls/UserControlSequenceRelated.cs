@@ -37,5 +37,17 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         }
 
 
+
+        internal void listBoxSequenceListDoldur()
+        {
+            DataTable dtSequenceList = ParentMainForm.DatabaseHelper.getSequenceListFromSchema(comboBoxSchemaList.Text);
+            listBoxSequenceListesi.DataSource = dtSequenceList;
+
+        }
+
+        private void comboBoxSchemaList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            listBoxSequenceListDoldur();
+        }
     }
 }

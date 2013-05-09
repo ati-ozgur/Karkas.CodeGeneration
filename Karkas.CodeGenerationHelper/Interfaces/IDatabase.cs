@@ -28,6 +28,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         DataTable getTableListFromSchema(string schemaName);
         DataTable getViewListFromSchema(string schemaName);
         DataTable getStoredProcedureListFromSchema(string schemaName);
+        DataTable getSequenceListFromSchema(string schemaName);
 
         ITable getTable(string pTableName, string pSchemaName);
 
@@ -41,6 +42,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         {
             get;
         }
+
 
 
     }

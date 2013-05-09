@@ -204,6 +204,38 @@ ORDER BY STORED_PROCEDURE_NAME
             return dtTableList;
         }
 
+        private const string SQL_FOR_SEQUENCES_LIST = @"
+SELECT
+SCHEMA_NAME(seq.schema_id) AS SEQ_SCHEMA_NAME
+,seq.name AS SEQUENCE_NAME
+FROM
+sys.sequences AS seq
+WHERE
+1 = 1
+AND
+( (@SEQ_SCHEMA_NAME IS NULL) OR (@SEQ_SCHEMA_NAME = '__TUM_SCHEMALAR__') OR ( SEQ_SCHEMA_NAME = @SEQ_SCHEMA_NAME))
+ORDER BY SEQUENCE_NAME
+";
+        // TODO Test 2012
+        public override DataTable getSequenceListFromSchema(string schemaName)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ParameterBuilder builder = Template.getParameterBuilder();
+                builder.parameterEkle("@SEQ_SCHEMA_NAME", DbType.String, schemaName);
+                dt = Template.DataTableOlustur(SQL_FOR_SEQUENCES_LIST, builder.GetParameterArray());
+            }
+            catch
+            {
+                // sql server 2000-2008 does not support sequences but 2012 do.
+                // sql server 2000-2008 arasında sequences yok ama 2012'de var.
+                // exception yut.
+            }
+            return dt;
+        }
+
+
         public override DataTable getSchemaList()
         {
             return Template.DataTableOlustur(SQL__FOR_SCHEMA_LIST);

@@ -192,6 +192,7 @@ namespace Karkas.CodeGeneration.WinApp
             userControlTableRelated1.listBoxTableListDoldur();
             userControlViewRelated1.listBoxViewListDoldur();
             userControlStoredProcedureRelated1.listBoxStoredProcedureListDoldur();
+            userControlSequenceRelated1.listBoxSequenceListDoldur();
         }
 
         private void schemaDoldur()

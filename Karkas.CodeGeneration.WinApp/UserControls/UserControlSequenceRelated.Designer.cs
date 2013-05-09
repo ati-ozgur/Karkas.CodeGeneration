@@ -58,7 +58,7 @@
             // 
             // listBoxSequenceListesi
             // 
-            this.listBoxSequenceListesi.DisplayMember = "FULL_TABLE_NAME";
+            this.listBoxSequenceListesi.DisplayMember = "SEQUENCE_NAME";
             this.listBoxSequenceListesi.FormattingEnabled = true;
             this.listBoxSequenceListesi.Location = new System.Drawing.Point(151, 65);
             this.listBoxSequenceListesi.Margin = new System.Windows.Forms.Padding(2);
@@ -96,6 +96,7 @@
             this.comboBoxSchemaList.Name = "comboBoxSchemaList";
             this.comboBoxSchemaList.Size = new System.Drawing.Size(182, 21);
             this.comboBoxSchemaList.TabIndex = 18;
+            this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
             // 
             // UserControlSequenceRelated
             // 
