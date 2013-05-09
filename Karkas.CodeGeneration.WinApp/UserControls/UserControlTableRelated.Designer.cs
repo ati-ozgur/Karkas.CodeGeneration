@@ -111,7 +111,7 @@
             this.Controls.Add(this.labelSchemaList);
             this.Controls.Add(this.comboBoxSchemaList);
             this.Name = "UserControlTableRelated";
-            this.Size = new System.Drawing.Size(569, 384);
+            this.Size = new System.Drawing.Size(524, 338);
             this.ResumeLayout(false);
             this.PerformLayout();
 

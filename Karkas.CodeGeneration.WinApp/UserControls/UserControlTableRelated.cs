@@ -61,9 +61,8 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
 
 
-        public void comboBoxSchemaListDoldur()
+        public void comboBoxSchemaListDoldur(DataTable dtSchemaList)
         {
-            DataTable dtSchemaList = ParentMainForm.DatabaseHelper.getSchemaList();
             if (dtSchemaList.Rows.Count > 0)
             {
                 comboBoxSchemaList.DataSource = dtSchemaList;

@@ -187,7 +187,7 @@ namespace Karkas.CodeGeneration.WinApp
         private void BilgileriDoldur( )
         {
             userControlCodeGenerationOptions1.databaseNameLabelDoldur(DatabaseHelper);
-            userControlTableRelated1.comboBoxSchemaListDoldur();
+            userControlTableRelated1.comboBoxSchemaListDoldur(DatabaseHelper.getSchemaList());
             userControlTableRelated1.listBoxTableListDoldur();
         }
 
