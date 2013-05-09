@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 
-namespace Karkas.CodeGenerationHelper.Generators
+namespace Karkas.CodeGenerationHelper.BaseClasses
 {
     public abstract class BaseGenerator
     {

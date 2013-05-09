@@ -6,6 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using Karkas.CodeGenerationHelper.Interfaces;
+using Karkas.CodeGenerationHelper.BaseClasses;
 
 namespace Karkas.CodeGenerationHelper.Generators
 {

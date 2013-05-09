@@ -5,7 +5,7 @@ using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using System.IO;
 
-namespace Karkas.CodeGenerationHelper
+namespace Karkas.CodeGenerationHelper.BaseClasses
 {
     public class BaseOutput : IOutput
     {

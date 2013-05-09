@@ -7,7 +7,7 @@ using Karkas.Core.DataUtil;
 using System.Data;
 using Karkas.CodeGenerationHelper.Generators;
 
-namespace Karkas.CodeGenerationHelper
+namespace Karkas.CodeGenerationHelper.BaseClasses
 {
     public abstract class BaseDatabase : IDatabase
     {

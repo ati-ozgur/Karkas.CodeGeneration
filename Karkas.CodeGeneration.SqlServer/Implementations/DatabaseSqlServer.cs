@@ -11,6 +11,7 @@ using Karkas.CodeGenerationHelper.Generators;
 using Karkas.Core.DataUtil;
 using System.Data;
 using Karkas.CodeGeneration.SqlServer.Generators;
+using Karkas.CodeGenerationHelper.BaseClasses;
 
 
 namespace Karkas.CodeGeneration.SqlServer.Implementations

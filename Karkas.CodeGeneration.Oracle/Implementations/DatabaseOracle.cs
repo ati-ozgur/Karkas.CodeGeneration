@@ -8,6 +8,7 @@ using System.Data;
 using Karkas.CodeGenerationHelper.Generators;
 using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.Oracle.Generators;
+using Karkas.CodeGenerationHelper.BaseClasses;
 
 namespace Karkas.CodeGeneration.Oracle.Implementations
 {
