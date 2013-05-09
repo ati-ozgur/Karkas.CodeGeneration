@@ -12,7 +12,7 @@ using Karkas.CodeGenerationHelper.Interfaces;
 
 namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
 {
-    public partial class DatabaseEntry :  ICodeGenerationNotPersistedValues
+    public partial class DatabaseEntry :   ICodeGenerationNotPersistedValues
     {
 
         public DatabaseEntry()
@@ -51,6 +51,7 @@ namespace Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main
             database.UseSchemaNameInFolders = Convert.ToBoolean(this.UseSchemaNameInFolders);
             database.UseSchemaNameInSqlQueries = Convert.ToBoolean(this.useSchemaNameInSqlQueries);
             database.ViewCodeGenerate = Convert.ToBoolean(this.ViewCodeGenerate);
+            database.SequenceCodeGenerate = Convert.ToBoolean(this.SequenceCodeGenerate);
             database.AnaSinifiTekrarUret = this.AnaSinifiTekrarUret;
             database.AnaSinifOnaylamaOrnekleriUret = this.anaSinifOnaylamaOrnekleriUret;
 
