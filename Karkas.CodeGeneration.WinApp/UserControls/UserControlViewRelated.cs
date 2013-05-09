@@ -42,5 +42,11 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             listBoxViewListesi.DataSource = dtViewList;
         }
 
+        private void comboBoxSchemaList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            listBoxViewListDoldur();
+        }
+
+
     }
 }

@@ -43,5 +43,11 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             listBoxStoredProcedureListesi.DataSource = dtStoredProcedureList;
 
         }
+
+        private void comboBoxSchemaList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            listBoxStoredProcedureListDoldur();
+        }
+
     }
 }

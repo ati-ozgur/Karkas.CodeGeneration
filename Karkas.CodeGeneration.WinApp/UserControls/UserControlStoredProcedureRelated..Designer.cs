@@ -58,7 +58,7 @@
             // 
             // listBoxStoredProcedureListesi
             // 
-            this.listBoxStoredProcedureListesi.DisplayMember = "FULL_TABLE_NAME";
+            this.listBoxStoredProcedureListesi.DisplayMember = "STORED_PROCEDURE_NAME";
             this.listBoxStoredProcedureListesi.FormattingEnabled = true;
             this.listBoxStoredProcedureListesi.Location = new System.Drawing.Point(151, 65);
             this.listBoxStoredProcedureListesi.Margin = new System.Windows.Forms.Padding(2);
@@ -96,6 +96,7 @@
             this.comboBoxSchemaList.Name = "comboBoxSchemaList";
             this.comboBoxSchemaList.Size = new System.Drawing.Size(182, 21);
             this.comboBoxSchemaList.TabIndex = 18;
+            this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
             // 
             // UserControlStoredProcedureRelated
             // 
