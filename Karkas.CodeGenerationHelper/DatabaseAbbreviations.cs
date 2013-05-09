@@ -23,6 +23,14 @@ namespace Karkas.CodeGenerationHelper
 
 
         }
+
+        public static List<DatabaseAbbreviations> getListDatabaseAbbreviations(string abbrevationsAsString)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
+
         public override string ToString()
         {
             return string.Format("{0}{1}{2}\n", 
