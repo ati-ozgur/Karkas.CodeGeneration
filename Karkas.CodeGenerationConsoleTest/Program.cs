@@ -31,7 +31,8 @@ namespace Karkas.CodeGeneration.ConsoleTest
         {
 
            // OracleTestHr();
-            OracleTestHr2();
+           // OracleTestHrGenerateAllTables();
+            OracleTestHrGenerateOneSequence();
             //SqliteTest();
             //SqlServerTest();
         }
@@ -61,7 +62,7 @@ namespace Karkas.CodeGeneration.ConsoleTest
                     );
         }
 
-        private static void OracleTestHr2()
+        private static void OracleTestHrGenerateAllTables()
         {
 
             AdoTemplate template = CodeGenerationTestUtils.getTemplate("System.Data.OracleClient", "System.Data.OracleClient.OracleConnection", _OracleExampleConnectionString);
@@ -84,6 +85,33 @@ namespace Karkas.CodeGeneration.ConsoleTest
             database.ViewCodeGenerate = false;
 
             database.CodeGenerateAllTables();
+
+        }
+
+
+        private static void OracleTestHrGenerateOneSequence()
+        {
+
+            AdoTemplate template = CodeGenerationTestUtils.getTemplate("System.Data.OracleClient", "System.Data.OracleClient.OracleConnection", _OracleExampleConnectionString);
+
+            IDatabase database = new DatabaseOracle(template);
+
+            database.CodeGenerationDirectory = @"P:\github\Karkas.Ornek.OracleOrnek.Hr";
+            database.ConnectionDatabaseType = "Oracle";
+            database.ConnectionName = "Karkas.Ornek.OracleOrnek.Hr";
+            database.ConnectionString = _OracleExampleConnectionString;
+            database.DatabaseNameLogical = "OracleDevelopmentHr";
+            database.DatabaseNamePhysical = "orcl";
+            database.ConnectionDbProviderName = "System.Data.OracleClient";
+            database.IgnoredSchemaList = "";
+            database.IgnoreSystemTables = true;
+            database.ProjectNameSpace = "Karkas.Ornek.OracleOrnek.Hr";
+            database.StoredProcedureCodeGenerate = false;
+            database.UseSchemaNameInFolders = false;
+            database.UseSchemaNameInSqlQueries = false;
+            database.ViewCodeGenerate = false;
+
+            database.CodeGenerateOneSequence("DEPARTMENTS_SEQ", "HR");
 
         }
 

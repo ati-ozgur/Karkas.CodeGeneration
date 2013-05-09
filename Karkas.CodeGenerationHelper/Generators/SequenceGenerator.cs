@@ -47,7 +47,13 @@ namespace Karkas.CodeGenerationHelper.Generators
             UsingleriYaz(output,baseNameSpaceSequencesDal);
             ClassYaz(output, sequenceDalName);
 
+            OverrideDbProviderNameYaz(output);
+
+
+
             SelectSequenceStringYaz(output, database, schemaName, sequenceName);
+            BitisSusluParentezVeTabAzalt(output);
+            BitisSusluParentezVeTabAzalt(output);
 
             output.saveEncoding(outputFullFileNameGenerated, "o", "utf8");
             output.clear();
@@ -71,8 +77,6 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("using System.Data.SqlClient;");
             output.autoTabLn("using System.Text;");
             output.autoTabLn("using Karkas.Core.DataUtil;");
-            output.autoTab("using ");
-            output.autoTabLn("");
             output.autoTabLn("");
             output.autoTab("namespace ");
             output.autoTab(baseNameSpaceSequencesDal);
@@ -83,11 +87,23 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         private void ClassYaz(IOutput output, string className)
         {
+            output.increaseTab();
             output.autoTab("public partial class ");
             output.write(className);
+            output.writeLine("");
             BaslangicSusluParentezVeTabArtir(output);
         }
 
+        private void OverrideDbProviderNameYaz(IOutput output)
+        {
+            output.autoTabLn("public override string DbProviderName");
+            BaslangicSusluParentezVeTabArtir(output);
+            output.autoTabLn("get");
+            BaslangicSusluParentezVeTabArtir(output);
+            output.autoTabLn(string.Format("return \"{0}\";", database.ConnectionDbProviderName));
+            BitisSusluParentezVeTabAzalt(output);
+            BitisSusluParentezVeTabAzalt(output);
+        }
 
     }
 }
