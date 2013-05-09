@@ -7,7 +7,7 @@ namespace Karkas.CodeGenerationHelper
 {
     public class DatabaseAbbreviations
     {
-        public string Abbravetion;
+        public string Abbreviation;
         public string FullNameReplacement;
         public string useAsModuleName = "N";
 
@@ -16,9 +16,9 @@ namespace Karkas.CodeGenerationHelper
 
         }
 
-        public DatabaseAbbreviations(string pAbbravetion, string pFullNameReplacement)
+        public DatabaseAbbreviations(string pAbbreviation, string pFullNameReplacement)
         {
-            Abbravetion = pAbbravetion;
+            Abbreviation = pAbbreviation;
             FullNameReplacement = pFullNameReplacement;
 
 
@@ -34,7 +34,7 @@ namespace Karkas.CodeGenerationHelper
         public override string ToString()
         {
             return string.Format("{0}{1}{2}\n", 
-                Abbravetion, "-",
+                Abbreviation, "-",
                 FullNameReplacement);
         }
     }

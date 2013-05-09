@@ -33,7 +33,7 @@ namespace Karkas.CodeGeneration.WinApp
         {
             DatabaseAbbreviations abbr = new DatabaseAbbreviations();
             abbr.FullNameReplacement = textBoxYerineGecenYazi.Text;
-            abbr.Abbravetion = textBoxKisaltma.Text;
+            abbr.Abbreviation = textBoxKisaltma.Text;
 
 
 

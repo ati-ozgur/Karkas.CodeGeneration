@@ -395,11 +395,11 @@ namespace Karkas.CodeGenerationHelper
             {
                 foreach (DatabaseAbbreviations abbr in listDatabaseAbbreviations)
                 {
-                    if (tableName.Contains(abbr.Abbravetion)
+                    if (tableName.Contains(abbr.Abbreviation)
                         && abbr.useAsModuleName == "N"
                         )
                     {
-                        tableName = tableName.Replace(abbr.Abbravetion, abbr.FullNameReplacement);
+                        tableName = tableName.Replace(abbr.Abbreviation, abbr.FullNameReplacement);
                     }
                 }
             }

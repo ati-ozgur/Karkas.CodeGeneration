@@ -238,7 +238,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             List<DatabaseAbbreviations> list = new List<DatabaseAbbreviations>();
             DatabaseAbbreviations abbr = new DatabaseAbbreviations();
-            abbr.Abbravetion = "BO_";
+            abbr.Abbreviation = "BO_";
             abbr.FullNameReplacement = "";
             list.Add(abbr);
             return list;
