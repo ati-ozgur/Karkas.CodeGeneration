@@ -15,5 +15,27 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         {
             InitializeComponent();
         }
+
+
+        public MainForm ParentMainForm
+        {
+            get
+            {
+                return (MainForm)this.ParentForm;
+            }
+        }
+
+
+
+        public void comboBoxSchemaListDoldur(DataTable dtSchemaList)
+        {
+            if (dtSchemaList.Rows.Count > 0)
+            {
+                comboBoxSchemaList.DataSource = dtSchemaList;
+                comboBoxSchemaList.Text = ParentMainForm.DatabaseHelper.getDefaultSchema();
+            }
+        }
+
+
     }
 }

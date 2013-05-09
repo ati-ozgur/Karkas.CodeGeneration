@@ -46,10 +46,14 @@ namespace Karkas.CodeGeneration.WinApp
             this.textBoxDatabaseProviders = new System.Windows.Forms.TextBox();
             this.labelDatabaseProviders = new System.Windows.Forms.Label();
             this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
+            this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
+            this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
             this.panelListe.SuspendLayout();
             this.tabControlDatabase.SuspendLayout();
             this.tabPageTableRelated.SuspendLayout();
             this.tabPageViewRelated.SuspendLayout();
+            this.tabPageStoredProcedures.SuspendLayout();
+            this.tabPageSequences.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTestConnectionString
@@ -134,6 +138,7 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // tabPageStoredProcedures
             // 
+            this.tabPageStoredProcedures.Controls.Add(this.userControlStoredProcedureRelated1);
             this.tabPageStoredProcedures.Location = new System.Drawing.Point(4, 22);
             this.tabPageStoredProcedures.Name = "tabPageStoredProcedures";
             this.tabPageStoredProcedures.Size = new System.Drawing.Size(596, 349);
@@ -143,6 +148,7 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // tabPageSequences
             // 
+            this.tabPageSequences.Controls.Add(this.userControlSequenceRelated1);
             this.tabPageSequences.Location = new System.Drawing.Point(4, 22);
             this.tabPageSequences.Name = "tabPageSequences";
             this.tabPageSequences.Size = new System.Drawing.Size(596, 349);
@@ -217,6 +223,20 @@ namespace Karkas.CodeGeneration.WinApp
             this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 493);
             this.userControlCodeGenerationOptions1.TabIndex = 20;
             // 
+            // userControlStoredProcedureRelated1
+            // 
+            this.userControlStoredProcedureRelated1.Location = new System.Drawing.Point(3, 0);
+            this.userControlStoredProcedureRelated1.Name = "userControlStoredProcedureRelated1";
+            this.userControlStoredProcedureRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlStoredProcedureRelated1.TabIndex = 0;
+            // 
+            // userControlSequenceRelated1
+            // 
+            this.userControlSequenceRelated1.Location = new System.Drawing.Point(6, 3);
+            this.userControlSequenceRelated1.Name = "userControlSequenceRelated1";
+            this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlSequenceRelated1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +259,8 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabControlDatabase.ResumeLayout(false);
             this.tabPageTableRelated.ResumeLayout(false);
             this.tabPageViewRelated.ResumeLayout(false);
+            this.tabPageStoredProcedures.ResumeLayout(false);
+            this.tabPageSequences.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,6 +285,8 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.TabPage tabPageSequences;
         private UserControlTableRelated userControlTableRelated1;
         private UserControlViewRelated userControlViewRelated1;
+        private UserControlStoredProcedureRelated userControlStoredProcedureRelated1;
+        private UserControlSequenceRelated userControlSequenceRelated1;
     }
 }
 
