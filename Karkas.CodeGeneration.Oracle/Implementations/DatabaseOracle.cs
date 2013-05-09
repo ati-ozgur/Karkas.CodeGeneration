@@ -110,6 +110,20 @@ ORDER BY FULL_TABLE_NAME
             return dtTableList;
         }
 
+        private const string SQL_FOR_VIEW_LIST = @"
+SELECT OWNER AS VIEW_SCHEMA, VIEW_NAME,OWNER || '.' || VIEW_NAME  AS FULL_VIEW_NAME
+FROM  ALL_VIEWS V
+WHERE  
+(:TABLE_SCHEMA IS NULL) OR ( lower(OWNER) = lower(:TABLE_SCHEMA))
+ORDER BY FULL_VIEW_NAME
+";
+        public override DataTable getViewListFromSchema(string schemaName)
+        {
+            ParameterBuilder builder = Template.getParameterBuilder();
+            builder.parameterEkle(":TABLE_SCHEMA", DbType.String, schemaName);
+            DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_VIEW_LIST, builder.GetParameterArray());
+            return dtTableList;
+        }
 
         public override DataTable getSchemaList()
         {

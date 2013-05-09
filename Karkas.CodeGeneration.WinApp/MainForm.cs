@@ -190,6 +190,7 @@ namespace Karkas.CodeGeneration.WinApp
             schemaDoldur();
 
             userControlTableRelated1.listBoxTableListDoldur();
+            userControlViewRelated1.listBoxViewListDoldur();
         }
 
         private void schemaDoldur()

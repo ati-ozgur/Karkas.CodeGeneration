@@ -54,8 +54,16 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         private const string TABLE_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
                                                 name AS TABLE_NAME,
                                                 name AS FULL_TABLE_NAME 
-                                                FROM sqlite_master
+                                                 FROM sqlite_master
                                                 WHERE type='table'
+                                                 ORDER BY name;";
+
+
+        private const string VIEW_LIST_SQL = @"SELECT '' AS TABLE_SCHEMA, 
+                                                name AS VIEW_NAME,
+                                                name AS FULL_VIEW_NAME 
+                                                FROM sqlite_master
+                                                WHERE type='view'
                                                 ORDER BY name;";
 
 
@@ -86,6 +94,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             DataTable dtTables = Template.DataTableOlustur(TABLE_LIST_SQL);
             return dtTables;
         }
+        public DataTable getViewList()
+        {
+            DataTable dtTables = Template.DataTableOlustur(TABLE_LIST_SQL);
+            return dtTables;
+        }
 
 
         public override ITable getTable(string pTableName, string pSchemaName)
@@ -109,6 +122,16 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             return getTableList();
         }
+
+        public override DataTable getViewListFromSchema(string schemaName)
+        {
+            DataTable dtTables = Template.DataTableOlustur(TABLE_LIST_SQL);
+            return dtTables;
+
+        }
+        
+
+
 
         public override DataTable getSchemaList()
         {

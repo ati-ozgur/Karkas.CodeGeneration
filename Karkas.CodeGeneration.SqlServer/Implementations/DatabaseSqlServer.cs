@@ -21,7 +21,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Server smoServer;
         internal Database smoDatabase;
 
-        string codeGenerationDirectory;
         public DatabaseSqlServer(AdoTemplate template)
         {
             this.Template = template;
@@ -163,6 +162,23 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
             ParameterBuilder builder = new ParameterBuilder();
             builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
             DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
+            return dtTableList;
+        }
+
+        private const string SQL_FOR_VIEW_LIST = @"
+SELECT TABLE_SCHEMA,TABLE_NAME, TABLE_SCHEMA + '.' + TABLE_NAME AS FULL_TABLE_NAME
+ FROM INFORMATION_SCHEMA.VIEWS
+WHERE
+( (@TABLE_SCHEMA IS NULL) OR (@TABLE_SCHEMA = '__TUM_SCHEMALAR__') OR ( TABLE_SCHEMA = @TABLE_SCHEMA))
+ORDER BY FULL_TABLE_NAME
+";
+
+
+        public override DataTable getViewListFromSchema(string schemaName)
+        {
+            ParameterBuilder builder = new ParameterBuilder();
+            builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
+            DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_VIEW_LIST, builder.GetParameterArray());
             return dtTableList;
         }
 

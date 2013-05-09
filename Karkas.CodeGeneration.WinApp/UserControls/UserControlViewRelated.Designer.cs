@@ -58,7 +58,7 @@
             // 
             // listBoxViewListesi
             // 
-            this.listBoxViewListesi.DisplayMember = "FULL_TABLE_NAME";
+            this.listBoxViewListesi.DisplayMember = "FULL_VIEW_NAME";
             this.listBoxViewListesi.FormattingEnabled = true;
             this.listBoxViewListesi.Location = new System.Drawing.Point(151, 65);
             this.listBoxViewListesi.Margin = new System.Windows.Forms.Padding(2);

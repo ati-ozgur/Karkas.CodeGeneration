@@ -36,6 +36,11 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             }
         }
 
+        public void listBoxViewListDoldur()
+        {
+            DataTable dtViewList = ParentMainForm.DatabaseHelper.getViewListFromSchema(comboBoxSchemaList.Text);
+            listBoxViewListesi.DataSource = dtViewList;
+        }
 
     }
 }

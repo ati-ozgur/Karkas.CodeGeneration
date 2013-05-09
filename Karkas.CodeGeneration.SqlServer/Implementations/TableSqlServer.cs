@@ -11,7 +11,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
     {
         private IDatabase database;
         private ColumnCollection smoColumnCollection;
-        private string name;
         Table smoTable;
 
         public TableSqlServer(DatabaseSqlServer pDatabase,string pFullName)
