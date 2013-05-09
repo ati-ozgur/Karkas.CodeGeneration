@@ -57,6 +57,7 @@
             this.labelIgnoredSchemaList = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxAnaSinifOnaylamaOrnekleri = new System.Windows.Forms.CheckBox();
+            this.checkBoxSequenceCodeGenerate = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             this.checkBoxIgnoreSystemTables.AutoSize = true;
             this.checkBoxIgnoreSystemTables.Checked = true;
             this.checkBoxIgnoreSystemTables.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIgnoreSystemTables.Location = new System.Drawing.Point(368, 382);
+            this.checkBoxIgnoreSystemTables.Location = new System.Drawing.Point(382, 339);
             this.checkBoxIgnoreSystemTables.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxIgnoreSystemTables.Name = "checkBoxIgnoreSystemTables";
             this.checkBoxIgnoreSystemTables.Size = new System.Drawing.Size(113, 17);
@@ -76,9 +77,7 @@
             // checkBoxStoredProcedureCodeGenerate
             // 
             this.checkBoxStoredProcedureCodeGenerate.AutoSize = true;
-            this.checkBoxStoredProcedureCodeGenerate.Checked = true;
-            this.checkBoxStoredProcedureCodeGenerate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStoredProcedureCodeGenerate.Location = new System.Drawing.Point(11, 422);
+            this.checkBoxStoredProcedureCodeGenerate.Location = new System.Drawing.Point(10, 375);
             this.checkBoxStoredProcedureCodeGenerate.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxStoredProcedureCodeGenerate.Name = "checkBoxStoredProcedureCodeGenerate";
             this.checkBoxStoredProcedureCodeGenerate.Size = new System.Drawing.Size(184, 17);
@@ -89,9 +88,7 @@
             // checkBoxViewCodeGenerate
             // 
             this.checkBoxViewCodeGenerate.AutoSize = true;
-            this.checkBoxViewCodeGenerate.Checked = true;
-            this.checkBoxViewCodeGenerate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxViewCodeGenerate.Location = new System.Drawing.Point(11, 375);
+            this.checkBoxViewCodeGenerate.Location = new System.Drawing.Point(9, 339);
             this.checkBoxViewCodeGenerate.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxViewCodeGenerate.Name = "checkBoxViewCodeGenerate";
             this.checkBoxViewCodeGenerate.Size = new System.Drawing.Size(124, 17);
@@ -343,10 +340,22 @@
             this.checkBoxAnaSinifOnaylamaOrnekleri.Text = "Ana sınıf Onaylama Örnekleri üret";
             this.checkBoxAnaSinifOnaylamaOrnekleri.UseVisualStyleBackColor = true;
             // 
+            // checkBoxSequenceCodeGenerate
+            // 
+            this.checkBoxSequenceCodeGenerate.AutoSize = true;
+            this.checkBoxSequenceCodeGenerate.Location = new System.Drawing.Point(9, 415);
+            this.checkBoxSequenceCodeGenerate.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSequenceCodeGenerate.Name = "checkBoxSequenceCodeGenerate";
+            this.checkBoxSequenceCodeGenerate.Size = new System.Drawing.Size(150, 17);
+            this.checkBoxSequenceCodeGenerate.TabIndex = 56;
+            this.checkBoxSequenceCodeGenerate.Text = "Sequence Code Generate";
+            this.checkBoxSequenceCodeGenerate.UseVisualStyleBackColor = true;
+            // 
             // UserControlCodeGenerationOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxSequenceCodeGenerate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxAbbrevationsAsString);
             this.Controls.Add(this.labelAbbrevationsAsString);
@@ -414,5 +423,6 @@
         private System.Windows.Forms.Label labelIgnoredSchemaList;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBoxAnaSinifOnaylamaOrnekleri;
+        private System.Windows.Forms.CheckBox checkBoxSequenceCodeGenerate;
     }
 }

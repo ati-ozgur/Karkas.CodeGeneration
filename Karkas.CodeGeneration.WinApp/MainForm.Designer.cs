@@ -201,7 +201,8 @@
             this.textBoxDatabaseProviders.Name = "textBoxDatabaseProviders";
             this.textBoxDatabaseProviders.Size = new System.Drawing.Size(176, 184);
             this.textBoxDatabaseProviders.TabIndex = 21;
-            this.textBoxDatabaseProviders.Text = "System.Data.SqlClient\r\nSystem.Data.OracleClient\r\nOracle.DataAccess.Client\r\nSystem.Data.SQLite\r\n";
+            this.textBoxDatabaseProviders.Text = "System.Data.SqlClient\r\nSystem.Data.OracleClient\r\nOracle.DataAccess.Client\r\nSystem" +
+    ".Data.SQLite\r\n";
             // 
             // labelDatabaseProviders
             // 

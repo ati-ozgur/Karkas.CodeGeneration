@@ -119,6 +119,12 @@ namespace Karkas.CodeGenerationHelper
             get { return storedProcedureCodeGenerateEtsinMi; }
             set { storedProcedureCodeGenerateEtsinMi = value; }
         }
+        bool sequenceCodeGenerate;
+        public bool SequenceCodeGenerate
+        {
+            get { return sequenceCodeGenerate; }
+            set { sequenceCodeGenerate = value; }
+        }
 
 
         string ignoredSchemaList;

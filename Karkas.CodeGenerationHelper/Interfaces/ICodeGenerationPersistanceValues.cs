@@ -19,6 +19,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         bool ViewCodeGenerate { get; set; }
         bool StoredProcedureCodeGenerate { get; set; }
+        bool SequenceCodeGenerate { get; set; }
+
         bool UseSchemaNameInSqlQueries { get; set; }
         bool UseSchemaNameInFolders { get; set; }
         bool IgnoreSystemTables { get; set; }
