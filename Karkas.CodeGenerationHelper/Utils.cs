@@ -415,7 +415,14 @@ namespace Karkas.CodeGenerationHelper
 
         public string GetPascalCase(string name)
         {
-            return new NameChecker().SetPascalCase(name);
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return "";
+            }
+            else
+            {
+                return new NameChecker().SetPascalCase(name);
+            }
         }
 
         public string getPropertyVariableName(IColumn pColumn)
