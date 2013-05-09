@@ -76,9 +76,7 @@
     <Compile Include="ConnectionHelper.cs" />
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\BsGenerator.cs" />
-    <Compile Include="Generators\BsWrapperGenerator.cs" />
     <Compile Include="Generators\DalGenerator.cs" />
-    <Compile Include="Generators\NamespaceHelper.cs" />
     <Compile Include="Generators\TypeLibraryGenerator.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\INameChecker.cs" />
