@@ -125,12 +125,17 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         public override DataTable getViewListFromSchema(string schemaName)
         {
-            DataTable dtTables = Template.DataTableOlustur(TABLE_LIST_SQL);
-            return dtTables;
+            DataTable dtView = Template.DataTableOlustur(TABLE_LIST_SQL);
+            return dtView;
 
         }
-        
 
+        public override DataTable getStoredProcedureListFromSchema(string schemaName)
+        {
+            // sqlite does not support stored procedures
+            DataTable dt = new DataTable();
+            return dt;
+        }
 
 
         public override DataTable getSchemaList()

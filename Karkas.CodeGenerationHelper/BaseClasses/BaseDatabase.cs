@@ -179,6 +179,7 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         public abstract List<ITable> Tables { get; }
         public abstract DataTable getTableListFromSchema(string schemaName);
         public abstract DataTable getViewListFromSchema(string schemaName);
+        public abstract DataTable getStoredProcedureListFromSchema(string schemaName);
 
         public abstract ITable getTable(string pTableName, string pSchemaName);
 

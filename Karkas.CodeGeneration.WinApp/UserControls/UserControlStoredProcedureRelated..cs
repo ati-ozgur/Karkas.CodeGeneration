@@ -36,5 +36,12 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             }
         }
 
+
+        internal void listBoxStoredProcedureListDoldur()
+        {
+            DataTable dtStoredProcedureList = ParentMainForm.DatabaseHelper.getStoredProcedureListFromSchema(comboBoxSchemaList.Text);
+            listBoxStoredProcedureListesi.DataSource = dtStoredProcedureList;
+
+        }
     }
 }

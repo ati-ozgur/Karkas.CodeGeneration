@@ -125,6 +125,22 @@ ORDER BY FULL_VIEW_NAME
             return dtTableList;
         }
 
+        private const string SQL_FOR_STORED_PROCEDURE_LIST = @"
+SELECT owner AS SP_SCHEMA_NAME, object_name AS STORED_PROCEDURE_NAME
+FROM all_objects 
+WHERE object_type = 'PROCEDURE'
+WHERE  
+(:SP_SCHEMA_NAME IS NULL) OR ( lower(OWNER) = lower(:SP_SCHEMA_NAME))
+ORDER BY STORED_PROCEDURE_NAME
+";
+        public override DataTable getStoredProcedureListFromSchema(string schemaName)
+        {
+            ParameterBuilder builder = Template.getParameterBuilder();
+            builder.parameterEkle(":SP_SCHEMA_NAME", DbType.String, schemaName);
+            DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_STORED_PROCEDURE_LIST, builder.GetParameterArray());
+            return dtTableList;
+        }
+
         public override DataTable getSchemaList()
         {
             return Template.DataTableOlustur(SQL_FOR_SCHEMA_LIST);
