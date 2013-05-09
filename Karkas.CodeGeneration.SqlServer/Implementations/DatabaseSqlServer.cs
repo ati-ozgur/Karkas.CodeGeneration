@@ -159,24 +159,24 @@ SELECT DISTINCT TABLE_CATALOG FROM INFORMATION_SCHEMA.TABLES
 
         public override DataTable getTableListFromSchema(string schemaName)
         {
-            ParameterBuilder builder = new ParameterBuilder();
+            ParameterBuilder builder = Template.getParameterBuilder();
             builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
             DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
             return dtTableList;
         }
 
         private const string SQL_FOR_VIEW_LIST = @"
-SELECT TABLE_SCHEMA,TABLE_NAME, TABLE_SCHEMA + '.' + TABLE_NAME AS FULL_TABLE_NAME
+SELECT TABLE_SCHEMA AS VIEW_SCHEMA,TABLE_NAME AS VIEW_NAME, TABLE_SCHEMA + '.' + TABLE_NAME AS FULL_VIEW_NAME
  FROM INFORMATION_SCHEMA.VIEWS
 WHERE
 ( (@TABLE_SCHEMA IS NULL) OR (@TABLE_SCHEMA = '__TUM_SCHEMALAR__') OR ( TABLE_SCHEMA = @TABLE_SCHEMA))
-ORDER BY FULL_TABLE_NAME
+ORDER BY FULL_VIEW_NAME
 ";
 
 
         public override DataTable getViewListFromSchema(string schemaName)
         {
-            ParameterBuilder builder = new ParameterBuilder();
+            ParameterBuilder builder = Template.getParameterBuilder();
             builder.parameterEkle("@TABLE_SCHEMA", DbType.String, schemaName);
             DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_VIEW_LIST, builder.GetParameterArray());
             return dtTableList;
