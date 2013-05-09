@@ -119,11 +119,11 @@
     <Compile Include="UserControls\UserControlTableRelated.Designer.cs">
       <DependentUpon>UserControlTableRelated.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlViewRelated.cs.cs">
+    <Compile Include="UserControls\UserControlViewRelated.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControlViewRelated.cs.Designer.cs">
-      <DependentUpon>UserControlViewRelated.cs.cs</DependentUpon>
+    <Compile Include="UserControls\UserControlViewRelated.Designer.cs">
+      <DependentUpon>UserControlViewRelated.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormAbbreviations.resx">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="UserControls\UserControlTableRelated.resx">
       <DependentUpon>UserControlTableRelated.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControlViewRelated.cs.resx">
-      <DependentUpon>UserControlViewRelated.cs.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UserControlViewRelated.resx">
+      <DependentUpon>UserControlViewRelated.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="bin\Debug\connectionsDb.sqlite" />
