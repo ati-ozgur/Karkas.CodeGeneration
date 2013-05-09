@@ -64,7 +64,7 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
             }
 
-            MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
+            MessageBox.Show("SEÇİLEN SEQUENCES İÇİN KOD ÜRETİLDİ");
         }
     }
 }

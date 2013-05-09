@@ -63,6 +63,7 @@
     <Compile Include="BaseClasses\BaseOutput.cs" />
     <Compile Include="DatabaseAbbreviations.cs" />
     <Compile Include="DatabaseType.cs" />
+    <Compile Include="Generators\SequenceGenerator.cs" />
     <Compile Include="Interfaces\ICodeGenerationNotPersistedValues.cs" />
     <Compile Include="Interfaces\ICodeGenerationPersistanceValues.cs" />
     <Compile Include="Interfaces\IColumn.cs" />

@@ -228,8 +228,9 @@ ORDER BY SEQUENCE_NAME
 
         public override void CodeGenerateOneSequence(string sequenceName, string schemaName)
         {
-            // TODO
-            throw new NotImplementedException();
+            SequenceGenerator seqGen = new SequenceGenerator(this);
+            IOutput output = new OracleOutput();
+            seqGen.Render(output, schemaName, sequenceName);
         }
 
 

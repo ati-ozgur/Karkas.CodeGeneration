@@ -86,6 +86,20 @@ namespace Karkas.CodeGenerationHelper
                     return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.ProjectNameSpace + ".Dal\\", className + "Dal.generated.cs");
                 }
             }
+
+            public string getBaseNameForSequenceDalGenerated(IDatabase database, string schemaName, string sequenceName, bool semaIsminiDizinlerdeKullan)
+            {
+                if (semaIsminiDizinlerdeKullan)
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.ProjectNameSpace + ".Dal\\" + schemaName + "\\Sequences", sequenceName + "Dal.generated.cs");
+                }
+                else
+                {
+                    return Path.Combine(ProjeAnaDizininiAl(database) + "\\Dal\\" + database.ProjectNameSpace + ".Dal\\Sequences\\", sequenceName + "Dal.generated.cs");
+                }
+            }
+
+
             public string getBaseNameForDal(IDatabase database, string schemaName, string className, bool semaIsminiDizinlerdeKullan)
             {
                 if (semaIsminiDizinlerdeKullan)
