@@ -37,5 +37,17 @@ namespace Karkas.CodeGenerationHelper
                 Abbreviation, "-",
                 FullNameReplacement);
         }
+
+        public List<DatabaseAbbreviations> getSampleAbbreviations()
+        {
+
+            List<DatabaseAbbreviations> list = new List<DatabaseAbbreviations>();
+            DatabaseAbbreviations abbr = new DatabaseAbbreviations();
+            abbr.Abbreviation = "BO_";
+            abbr.FullNameReplacement = "";
+            list.Add(abbr);
+            return list;
+        }
+
     }
 }

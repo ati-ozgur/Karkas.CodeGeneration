@@ -233,16 +233,7 @@ namespace Karkas.CodeGeneration.WinApp
         }
 
 
-        public List<DatabaseAbbreviations> getSampleAbbreviations()
-        {
 
-            List<DatabaseAbbreviations> list = new List<DatabaseAbbreviations>();
-            DatabaseAbbreviations abbr = new DatabaseAbbreviations();
-            abbr.Abbreviation = "BO_";
-            abbr.FullNameReplacement = "";
-            list.Add(abbr);
-            return list;
-        }
 
 
         private void buttonSeciliTablolariUret_Click(object sender, EventArgs e)
