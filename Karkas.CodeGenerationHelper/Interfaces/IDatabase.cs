@@ -45,5 +45,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
 
 
+
+        void CodeGenerateOneSequence(string sequenceName, string schemaName);
     }
 }

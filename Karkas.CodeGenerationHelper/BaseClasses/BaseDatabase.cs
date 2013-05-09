@@ -190,6 +190,8 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
              string pTableName
             , string pSchemaName
             );
+        public abstract void CodeGenerateOneSequence(string sequenceName, string schemaName);
+
 
         public  abstract DalGenerator DalGenerator
         {

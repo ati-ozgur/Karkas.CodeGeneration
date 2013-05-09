@@ -49,5 +49,22 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         {
             listBoxSequenceListDoldur();
         }
+
+        private void buttonSeciliSequenceUret_Click(object sender, EventArgs e)
+        {
+            foreach (var item in listBoxSequenceListesi.SelectedItems)
+            {
+                DataRowView view = (DataRowView)item;
+                string schemaName = view["SEQ_SCHEMA_NAME"].ToString();
+                string sequenceName = view["SEQUENCE_NAME"].ToString();
+                ParentMainForm.DatabaseHelper.CodeGenerateOneSequence(
+                     sequenceName
+                    , schemaName
+                    );
+
+            }
+
+            MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
+        }
     }
 }

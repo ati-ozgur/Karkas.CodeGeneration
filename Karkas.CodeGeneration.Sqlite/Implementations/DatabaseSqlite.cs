@@ -187,6 +187,14 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
         }
 
+        public override void CodeGenerateOneSequence(string sequenceName, string schemaName)
+        {
+            // sqlite does not support sequences
+            throw new NotSupportedException();
+        }
+
+
+
         public override DalGenerator DalGenerator
         {
             get { return new SqliteDalGenerator(this); }

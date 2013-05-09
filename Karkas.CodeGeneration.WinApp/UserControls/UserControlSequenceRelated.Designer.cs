@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSeciliViewlariUret = new System.Windows.Forms.Button();
+            this.buttonSeciliSequenceUret = new System.Windows.Forms.Button();
             this.buttonTumSequencesUret = new System.Windows.Forms.Button();
             this.listBoxSequenceListesi = new System.Windows.Forms.ListBox();
             this.labelSequenceListesi = new System.Windows.Forms.Label();
@@ -36,15 +36,16 @@
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // buttonSeciliViewlariUret
+            // buttonSeciliSequenceUret
             // 
-            this.buttonSeciliViewlariUret.Location = new System.Drawing.Point(383, 128);
-            this.buttonSeciliViewlariUret.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSeciliViewlariUret.Name = "buttonSeciliViewlariUret";
-            this.buttonSeciliViewlariUret.Size = new System.Drawing.Size(121, 31);
-            this.buttonSeciliViewlariUret.TabIndex = 23;
-            this.buttonSeciliViewlariUret.Text = "Seçili Sequence Üret";
-            this.buttonSeciliViewlariUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliSequenceUret.Location = new System.Drawing.Point(383, 128);
+            this.buttonSeciliSequenceUret.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSeciliSequenceUret.Name = "buttonSeciliSequenceUret";
+            this.buttonSeciliSequenceUret.Size = new System.Drawing.Size(121, 31);
+            this.buttonSeciliSequenceUret.TabIndex = 23;
+            this.buttonSeciliSequenceUret.Text = "Seçili Sequence Üret";
+            this.buttonSeciliSequenceUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliSequenceUret.Click += new System.EventHandler(this.buttonSeciliSequenceUret_Click);
             // 
             // buttonTumSequencesUret
             // 
@@ -102,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonSeciliViewlariUret);
+            this.Controls.Add(this.buttonSeciliSequenceUret);
             this.Controls.Add(this.buttonTumSequencesUret);
             this.Controls.Add(this.listBoxSequenceListesi);
             this.Controls.Add(this.labelSequenceListesi);
@@ -117,7 +118,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSeciliViewlariUret;
+        private System.Windows.Forms.Button buttonSeciliSequenceUret;
         private System.Windows.Forms.Button buttonTumSequencesUret;
         private System.Windows.Forms.ListBox listBoxSequenceListesi;
         private System.Windows.Forms.Label labelSequenceListesi;

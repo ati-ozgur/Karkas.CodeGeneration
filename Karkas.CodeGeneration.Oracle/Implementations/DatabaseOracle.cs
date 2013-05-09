@@ -226,6 +226,12 @@ ORDER BY SEQUENCE_NAME
             bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
         }
 
+        public override void CodeGenerateOneSequence(string sequenceName, string schemaName)
+        {
+            // TODO
+            throw new NotImplementedException();
+        }
+
 
         public override DalGenerator DalGenerator
         {
