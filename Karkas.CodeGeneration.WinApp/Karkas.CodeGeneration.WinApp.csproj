@@ -113,6 +113,12 @@
     <Compile Include="UserControls\UserControlCodeGenerationOptions.Designer.cs">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlTableRelated.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlTableRelated.Designer.cs">
+      <DependentUpon>UserControlTableRelated.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormAbbreviations.resx">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlCodeGenerationOptions.resx">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlTableRelated.resx">
+      <DependentUpon>UserControlTableRelated.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="bin\Debug\connectionsDb.sqlite" />
