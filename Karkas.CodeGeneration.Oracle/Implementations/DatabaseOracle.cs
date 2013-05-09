@@ -126,11 +126,11 @@ ORDER BY FULL_VIEW_NAME
         }
 
         private const string SQL_FOR_STORED_PROCEDURE_LIST = @"
-SELECT owner AS SP_SCHEMA_NAME, object_name AS STORED_PROCEDURE_NAME
-FROM all_objects 
+SELECT AO.owner AS SP_SCHEMA_NAME, AO.object_name AS STORED_PROCEDURE_NAME
+FROM all_objects AO
 WHERE object_type = 'PROCEDURE'
-WHERE  
-(:SP_SCHEMA_NAME IS NULL) OR ( lower(OWNER) = lower(:SP_SCHEMA_NAME))
+AND  
+( (:SP_SCHEMA_NAME IS NULL) OR ( lower(OWNER) = lower(:SP_SCHEMA_NAME)))
 ORDER BY STORED_PROCEDURE_NAME
 ";
         public override DataTable getStoredProcedureListFromSchema(string schemaName)
