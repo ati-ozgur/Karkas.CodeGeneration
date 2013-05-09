@@ -11,7 +11,7 @@ using Karkas.CodeGenerationHelper;
 using Karkas.CodeGeneration.WinApp.PersistenceService;
 using Karkas.CodeGenerationHelper.Interfaces;
 
-namespace Karkas.CodeGeneration.WinApp
+namespace Karkas.CodeGeneration.WinApp.UserControls
 {
     public partial class UserControlCodeGenerationOptions : UserControl
     {

@@ -1,4 +1,5 @@
-﻿namespace Karkas.CodeGeneration.WinApp
+﻿using Karkas.CodeGeneration.WinApp.UserControls;
+namespace Karkas.CodeGeneration.WinApp
 {
     partial class MainForm
     {
@@ -41,7 +42,7 @@
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
-            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControlCodeGenerationOptions();
+            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
             this.textBoxDatabaseProviders = new System.Windows.Forms.TextBox();
             this.labelDatabaseProviders = new System.Windows.Forms.Label();
             this.panelListe.SuspendLayout();

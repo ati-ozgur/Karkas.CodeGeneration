@@ -1,4 +1,4 @@
-﻿namespace Karkas.CodeGeneration.WinApp
+﻿namespace Karkas.CodeGeneration.WinApp.UserControls
 {
     partial class UserControlCodeGenerationOptions
     {
