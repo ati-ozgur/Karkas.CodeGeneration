@@ -113,6 +113,18 @@
     <Compile Include="UserControls\UserControlCodeGenerationOptions.Designer.cs">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlSequenceRelated.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlSequenceRelated.Designer.cs">
+      <DependentUpon>UserControlSequenceRelated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlStoredProcedureRelated..cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlStoredProcedureRelated..Designer.cs">
+      <DependentUpon>UserControlStoredProcedureRelated..cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlTableRelated.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlCodeGenerationOptions.resx">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlSequenceRelated.resx">
+      <DependentUpon>UserControlSequenceRelated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlStoredProcedureRelated..resx">
+      <DependentUpon>UserControlStoredProcedureRelated..cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlTableRelated.resx">
       <DependentUpon>UserControlTableRelated.cs</DependentUpon>
