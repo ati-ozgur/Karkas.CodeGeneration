@@ -9,7 +9,6 @@ using Karkas.CodeGenerationHelper.Generators;
 using System.IO;
 using System.Globalization;
 using Karkas.CodeGenerationHelper.Interfaces;
-using Karkas.CodeGenerationHelper.SmoHelpers;
 
 namespace Karkas.CodeGenerationHelper
 {
@@ -26,18 +25,6 @@ namespace Karkas.CodeGenerationHelper
 
         #region Generator Helper Fonksiyonlari
 
-        public void RenderDatabaseTablesCode(IOutput output, ITable table, string connectionString)
-        {
-            DatabaseTablesGenerator gen = new DatabaseTablesGenerator();
-            gen.Render(output, table, connectionString);
-
-        }
-
-        public void RenderInsertScriptsCode(IOutput output, ITable table, string connectionString)
-        {
-            InsertScriptsGenerator gen = new InsertScriptsGenerator(helper);
-            gen.Render(output, table, connectionString);
-        }
 
         public void RenderTypeLibraryCode(IOutput output
             , ITable table

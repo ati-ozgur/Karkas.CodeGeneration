@@ -64,6 +64,11 @@
     <Compile Include="Implementations\DatabaseSqlServer.cs" />
     <Compile Include="Implementations\EnumHelper.cs" />
     <Compile Include="Implementations\TableSqlServer.cs" />
+    <Compile Include="SmoHelpers\DatabaseTablesGenerator.cs" />
+    <Compile Include="SmoHelpers\InsertScriptHelper.cs" />
+    <Compile Include="SmoHelpers\SmoHelper.cs" />
+    <Compile Include="SmoHelpers\StoredProcedureHelper.cs" />
+    <Compile Include="SmoHelpers\UserDefinedFunctionHelper.cs" />
     <Compile Include="SqlServerOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
