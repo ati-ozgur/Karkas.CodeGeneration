@@ -7,18 +7,19 @@ using Microsoft.SqlServer.Management.Smo;
 using System.Collections;
 using Karkas.Core.DataUtil;
 using System.Data;
+using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.SqlServer.Implementations
 {
     public class ColumnSqlServer : IColumn
     {
         Column smoColumn;
-        TableSqlServer table;
+        IContainer tableOrView;
 
-        public ColumnSqlServer(Column pSmoColumn, TableSqlServer pTable)
+        public ColumnSqlServer(Column pSmoColumn, IContainer pTableOrView)
         {
             smoColumn = pSmoColumn;
-            table = pTable;
+            tableOrView = pTableOrView;
         }
 
         public bool IsAutoKey
@@ -113,13 +114,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             }
         }
 
-        public ITable Table
-        {
-            get
-            {
-                return table;
-            }
-        }
+
 
         public bool IsComputed
         {
@@ -351,5 +346,42 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get { throw new NotImplementedException(); }
         }
+
+        public ITable Table
+        {
+            get
+            {
+                if (tableOrView is ITable)
+                {
+                    return (ITable)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir view'a ait.");
+            }
+        }
+
+        public IView View
+        {
+            get
+            {
+                if (tableOrView is IView)
+                {
+                    return (IView)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir tabloya ait.");
+            }
+        }
+
+        public string ContainerName
+        {
+            get { return tableOrView.Name; }
+        }
+
+        public string ContainerSchemaName
+        {
+            get { return tableOrView.Schema; }
+        }
+
+
+
     }
 }

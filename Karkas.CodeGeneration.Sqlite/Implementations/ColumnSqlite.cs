@@ -5,6 +5,7 @@ using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.Core.DataUtil;
 using System.Data;
+using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.Sqlite.Implementations
 {
@@ -12,11 +13,11 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
     {
 
 
-        public ColumnSqlite(AdoTemplate template, TableSqlite tableSqlite, string columnName, string columnType, bool columnNotNull, string columnDefaultValue, bool columnPK,bool isColumnAutoIncrement)
+        public ColumnSqlite(AdoTemplate template, IContainer pTableOrView, string columnName, string columnType, bool columnNotNull, string columnDefaultValue, bool columnPK,bool isColumnAutoIncrement)
         {
             // TODO: Complete member initialization
             this.template = template;
-            this.table = tableSqlite;
+            this.tableOrView = pTableOrView;
             this.name = columnName;
             this.dataTypeInDatabase = columnType;
             this.isNullable = !columnNotNull;
@@ -27,7 +28,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         private AdoTemplate template;
 
-        private TableSqlite table;
+        private IContainer tableOrView;
+
+        
+
         private string name;
 
         private bool isAutoKey;
@@ -106,10 +110,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             }
         }
 
-        public ITable Table
-        {
-            get { return table; }
-        }
+
 
         private bool? isComputed = false;
         public bool IsComputed
@@ -259,6 +260,38 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             return "Unknown";
         }
 
+        public ITable Table
+        {
+            get
+            {
+                if (tableOrView is ITable)
+                {
+                    return (ITable)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir view'a ait.");
+            }
+        }
 
+        public IView View
+        {
+            get
+            {
+                if (tableOrView is IView)
+                {
+                    return (IView)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir tabloya ait.");
+            }
+        }
+
+        public string ContainerName
+        {
+            get { return tableOrView.Name; }
+        }
+
+        public string ContainerSchemaName
+        {
+            get { return tableOrView.Schema; }
+        }
     }
 }

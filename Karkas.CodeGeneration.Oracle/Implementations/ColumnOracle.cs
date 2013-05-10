@@ -5,24 +5,24 @@ using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.Core.DataUtil;
 using System.Data;
+using Karkas.CodeGenerationHelper;
 
 namespace Karkas.CodeGeneration.Oracle.Implementations
 {
     class ColumnOracle : IColumn
     {
-        public ColumnOracle(AdoTemplate pTemplate, TableOracle pTable, string pName)
+        public ColumnOracle(AdoTemplate pTemplate, IContainer pTableOrView,string pColumnName)
         {
 
             template = pTemplate;
-            table = pTable;
-            name = pName;
-
+            tableOrView = pTableOrView;
+            this.columnName = pColumnName;
         }
 
+        private string columnName;
         private AdoTemplate template;
 
-        private TableOracle table;
-        private string name;
+        private IContainer tableOrView;
 
         private const string SQL_SEQUENCE_EXISTS = @" SELECT COUNT(*) FROM user_sequences
                                                 WHERE
@@ -66,7 +66,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         public string Name
         {
-            get { return name; }
+            get { return columnName; }
         }
 
         private bool? isInPrimaryKey;
@@ -93,8 +93,8 @@ AND cons.owner = cols.owner
                 if (!isInPrimaryKey.HasValue)
                 {
                     ParameterBuilder builder = template.getParameterBuilder();
-                    builder.parameterEkle("tableName", DbType.String, Table.Name);
-                    builder.parameterEkle("schemaName", DbType.String, Table.Schema);
+                    builder.parameterEkle("tableName", DbType.String, tableOrView.Name);
+                    builder.parameterEkle("schemaName", DbType.String, tableOrView.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);
                     Object objSonuc = template.TekDegerGetir(SQL_PRIMARY_KEY, builder.GetParameterArray());
                     Decimal sonuc = (Decimal)objSonuc;
@@ -134,8 +134,8 @@ ON
                 if (!isInForeignKey.HasValue)
                 {
                     ParameterBuilder builder = template.getParameterBuilder();
-                    builder.parameterEkle("tableName", DbType.String, Table.Name);
-                    builder.parameterEkle("schemaName", DbType.String, Table.Schema);
+                    builder.parameterEkle("tableName", DbType.String, tableOrView.Name);
+                    builder.parameterEkle("schemaName", DbType.String, tableOrView.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);
                     Object objSonuc = template.TekDegerGetir(SQL_FOREIGN_KEY, builder.GetParameterArray());
                     Decimal sonuc = (Decimal)objSonuc;
@@ -204,8 +204,8 @@ AND
                 if (columnValuesInDatabase == null)
                 {
                     ParameterBuilder builder = template.getParameterBuilder();
-                    builder.parameterEkle("tableName", DbType.String, Table.Name);
-                    builder.parameterEkle("schemaName", DbType.String, Table.Schema);
+                    builder.parameterEkle("tableName", DbType.String, tableOrView.Name);
+                    builder.parameterEkle("schemaName", DbType.String, tableOrView.Schema);
                     builder.parameterEkle("columnName", DbType.String, Name);
                     DataTable dtColumnValues = template.DataTableOlustur(SQL_COLUMN_VALUES, builder.GetParameterArray());
                     if (dtColumnValues.Rows.Count > 0)
@@ -234,8 +234,29 @@ AND
 
         public ITable Table
         {
-            get { return table; }
+            get 
+            {
+                if (tableOrView is ITable)
+                {
+                    return (ITable)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir view'a ait.");
+            }
         }
+
+        public IView View
+        {
+            get 
+            {
+                if (tableOrView is IView)
+                {
+                    return (IView)tableOrView;
+                }
+                throw new NotSupportedException("Bu column bir tabloya ait.");
+            }
+        }
+
+
 
         private bool? isComputed = null;
         public bool IsComputed
@@ -560,5 +581,16 @@ AND
         }
 
 
+
+
+        public string ContainerName
+        {
+            get { return tableOrView.Name; }
+        }
+
+        public string ContainerSchemaName
+        {
+            get { return tableOrView.Schema; }
+        }
     }
 }

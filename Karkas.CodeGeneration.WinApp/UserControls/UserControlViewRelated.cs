@@ -49,12 +49,31 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
         private void buttonSeciliViewlariUret_Click(object sender, EventArgs e)
         {
-    //        ParentMainForm.DatabaseHelper.CodeGe(
-    // sequenceName
-    //, schemaName
-    //);
+            {
+                foreach (var item in listBoxViewListesi.SelectedItems)
+                {
+                    DataRowView view = (DataRowView)item;
+                    string viewSchema = view["VIEW_SCHEMA"].ToString();
+                    string viewName = view["VIEW_NAME"].ToString();
+
+
+                    try
+                    {
+                        ParentMainForm.DatabaseHelper.CodeGenerateOneView(viewName, viewSchema);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+                MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
+
+            }
+
+
         }
-
-
     }
 }
+

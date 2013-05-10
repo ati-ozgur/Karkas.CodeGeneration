@@ -163,16 +163,20 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         private void DebuggerDisplayYaz(IOutput output, IContainer container)
         {
-            string yazi = "";
-            foreach (IColumn column in container.Columns)
+            if (container is ITable)
             {
-                if (column.IsInPrimaryKey || column.IsAutoKey || column.IsInForeignKey)
+                string yazi = "";
+                foreach (IColumn column in container.Columns)
                 {
-                    yazi += utils.getPropertyVariableName(column) + " = {" + utils.getPropertyVariableName(column) + "}";
-                }
+                    if (column.IsInPrimaryKey || column.IsAutoKey || column.IsInForeignKey)
+                    {
+                        yazi += utils.getPropertyVariableName(column) + " = {" + utils.getPropertyVariableName(column) + "}";
+                    }
 
+                }
+                output.autoTabLn(string.Format("[DebuggerDisplay(\"{0}\")]", yazi));
             }
-            output.autoTabLn(string.Format("[DebuggerDisplay(\"{0}\")]", yazi));
+
         }
 
 

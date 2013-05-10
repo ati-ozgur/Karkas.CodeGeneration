@@ -19,7 +19,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         string LanguageType { get;  }
 
-        ITable Table { get;  }
+        ITable Table { get; }
+        IView View { get; }
 
         bool IsComputed { get;  }
 
@@ -32,6 +33,11 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         bool isStringType { get; }
         bool isStringTypeWithoutLength { get; }
         bool isNumericType { get; }
+
+        string ContainerName { get; }
+        string ContainerSchemaName { get; }
+
+
 
     }
 }
