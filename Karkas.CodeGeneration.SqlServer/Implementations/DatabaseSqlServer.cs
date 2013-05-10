@@ -22,8 +22,8 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         internal Database smoDatabase;
 
         public DatabaseSqlServer(AdoTemplate template)
+            : base(template)
         {
-            this.Template = template;
         }
 
         public DatabaseSqlServer(
@@ -37,10 +37,10 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             ,bool semaIsminiDizinlerdeKullan
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
-            
+
             )
+            : base(template)
         {
-            this.Template = template;
             this.ConnectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
             this.smoServer = new Server(new ServerConnection(new SqlConnection(ConnectionString)));
             this.smoDatabase = smoServer.Databases[pDatabaseName];
@@ -268,7 +268,19 @@ ORDER BY SEQUENCE_NAME
         }
 
 
+        IOutput output = new SqlServerOutput();
+        public override IOutput Output
+        {
+            get
+            {
+                return output;
+            }
+        }
 
+        public override IView GetView(string pViewName, string pSchemaName)
+        {
+            return new ViewSqlServer(this, Template, pViewName, pSchemaName);
+        }
 
 
         public override DalGenerator DalGenerator

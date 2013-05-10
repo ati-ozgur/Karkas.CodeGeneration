@@ -50,6 +50,7 @@
     <Compile Include="Implementations\ColumnSqlite.cs" />
     <Compile Include="Implementations\DatabaseSqlite.cs" />
     <Compile Include="Implementations\TableSqlite.cs" />
+    <Compile Include="Implementations\ViewSqlite.cs" />
     <Compile Include="SqliteOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

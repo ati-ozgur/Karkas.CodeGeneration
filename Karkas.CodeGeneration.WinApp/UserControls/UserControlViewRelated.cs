@@ -47,6 +47,14 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             listBoxViewListDoldur();
         }
 
+        private void buttonSeciliViewlariUret_Click(object sender, EventArgs e)
+        {
+    //        ParentMainForm.DatabaseHelper.CodeGe(
+    // sequenceName
+    //, schemaName
+    //);
+        }
+
 
     }
 }

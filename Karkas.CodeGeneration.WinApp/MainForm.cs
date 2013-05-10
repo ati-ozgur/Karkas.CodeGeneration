@@ -124,7 +124,7 @@ namespace Karkas.CodeGeneration.WinApp
                 connection.ConnectionString = connectionString;
                 connection.Open();
                 connection.Close();
-                template = new AdoTemplate();
+                template = new AdoTemplate("System.Data.OracleClient");
                 template.Connection = connection;
                 template.DbProviderName = "System.Data.OracleClient";
                 DatabaseHelper = new DatabaseOracle( template);

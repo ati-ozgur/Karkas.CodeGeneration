@@ -10,5 +10,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         int findIndexFromName(string name);
         int PrimaryKeyColumnCount { get; }
         bool HasPrimaryKey { get; }
+        bool IdentityVarmi { get; }
+
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Implementations\ColumnOracle.cs" />
     <Compile Include="Implementations\DatabaseOracle.cs" />
     <Compile Include="Implementations\TableOracle.cs" />
+    <Compile Include="Implementations\ViewOracle.cs" />
     <Compile Include="OracleOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

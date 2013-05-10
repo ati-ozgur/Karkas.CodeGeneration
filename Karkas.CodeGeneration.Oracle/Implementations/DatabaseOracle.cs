@@ -15,9 +15,8 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
     public class DatabaseOracle : BaseDatabase
     {
 
-        public DatabaseOracle(AdoTemplate template)
+        public DatabaseOracle(AdoTemplate template) : base(template)
         {
-            this.Template = template;
         }
 
 
@@ -33,6 +32,7 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
             )
+            : base(template)
         {
             this.Template = template;
 
@@ -226,11 +226,20 @@ ORDER BY SEQUENCE_NAME
             bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
         }
 
-        public override void CodeGenerateOneSequence(string sequenceName, string schemaName)
+
+        IOutput output = new OracleOutput();
+
+        public override IOutput Output
         {
-            SequenceGenerator seqGen = new SequenceGenerator(this);
-            IOutput output = new OracleOutput();
-            seqGen.Render(output, schemaName, sequenceName);
+            get 
+            {
+                return output;
+            }
+        }
+
+        public override IView GetView(string pViewName, string pSchemaName)
+        {
+            return new ViewOracle(this, Template, pViewName, pSchemaName);
         }
 
 

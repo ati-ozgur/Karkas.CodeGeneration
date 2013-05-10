@@ -16,8 +16,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
     {
 
         public DatabaseSqlite(AdoTemplate template)
+            : base(template)
         {
-            this.Template = template;
         }
 
         public DatabaseSqlite(AdoTemplate template
@@ -32,8 +32,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
             )
+            : base(template)
         {
-            this.Template = template;
 
             this.ConnectionString = connectionString;
 
@@ -179,6 +179,21 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             // sqlite does not support sequences
             throw new NotSupportedException();
+        }
+
+
+        IOutput output = new SqliteOutput();
+        public override IOutput Output
+        {
+            get
+            {
+                return output;
+            }
+        }
+
+        public override IView GetView(string pViewName, string pSchemaName)
+        {
+            return new ViewSqlite(this, Template, pViewName, pSchemaName);
         }
 
 

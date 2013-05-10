@@ -64,6 +64,7 @@
     <Compile Include="Implementations\DatabaseSqlServer.cs" />
     <Compile Include="Implementations\EnumHelper.cs" />
     <Compile Include="Implementations\TableSqlServer.cs" />
+    <Compile Include="Implementations\ViewSqlServer.cs" />
     <Compile Include="SmoHelpers\DatabaseTablesGenerator.cs" />
     <Compile Include="SmoHelpers\InsertScriptHelper.cs" />
     <Compile Include="SmoHelpers\InsertScriptsGenerator.cs" />

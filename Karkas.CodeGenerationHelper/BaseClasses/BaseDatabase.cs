@@ -11,6 +11,12 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
 {
     public abstract class BaseDatabase : IDatabase
     {
+        public BaseDatabase(AdoTemplate template)
+	    {
+            Template = template;
+	    }
+
+
         bool sysTablolariniAtla;
 
         public bool IgnoreSystemTables
@@ -203,13 +209,33 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             return exceptionMessages.ToString();
         }
 
+        public abstract IOutput Output { get; }
+        public abstract IView GetView(string pViewName, string pSchemaName);
+
+        public abstract void CodeGenerateOneTable(string pTableName, string pSchemaName);
 
 
-        public abstract void CodeGenerateOneTable(
-             string pTableName
-            , string pSchemaName
-            );
-        public abstract void CodeGenerateOneSequence(string sequenceName, string schemaName);
+        public void CodeGenerateOneView(string pViewName, string pSchemaName)
+        {
+            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
+            DalGenerator dalGen = this.DalGenerator;
+            BsGenerator bsGen = new BsGenerator(this);
+
+            IView view = GetView( pViewName, pSchemaName);
+
+
+            typeGen.Render(Output, view, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            dalGen.Render(Output, view, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            bsGen.Render(Output, view, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+        }
+
+
+        public virtual void CodeGenerateOneSequence(string sequenceName, string schemaName)
+        {
+            SequenceGenerator seqGen = new SequenceGenerator(this);
+            seqGen.Render(Output, schemaName, sequenceName);
+        }
+
 
         public string CodeGenerateAllSequences()
         {

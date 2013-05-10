@@ -45,6 +45,7 @@
             this.buttonSeciliViewlariUret.TabIndex = 17;
             this.buttonSeciliViewlariUret.Text = "Seçili View Üret";
             this.buttonSeciliViewlariUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliViewlariUret.Click += new System.EventHandler(this.buttonSeciliViewlariUret_Click);
             // 
             // buttonTumViewlariUret
             // 

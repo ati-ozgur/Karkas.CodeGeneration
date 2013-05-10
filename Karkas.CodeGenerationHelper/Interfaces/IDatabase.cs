@@ -33,10 +33,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         ITable getTable(string pTableName, string pSchemaName);
 
         string CodeGenerateAllTables();
-        void CodeGenerateOneTable(
-             string pTableName
-            , string pSchemaName
-            );
+        void CodeGenerateOneTable(string pTableName , string pSchemaName);
 
         DalGenerator DalGenerator
         {
@@ -45,6 +42,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
 
 
+        void CodeGenerateOneView(string pViewName, string pSchemaName);
 
         void CodeGenerateOneSequence(string sequenceName, string schemaName);
         string CodeGenerateAllSequences();
