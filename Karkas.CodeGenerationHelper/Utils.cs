@@ -428,20 +428,17 @@ namespace Karkas.CodeGenerationHelper
         public string getPropertyVariableName(IColumn pColumn)
         {
 
-            if (pColumn.Table != null)
-            {
                 if (
 
-                    (pColumn.Name.Equals(pColumn.Table.Name, StringComparison.CurrentCultureIgnoreCase))
+                    (pColumn.Name.Equals(pColumn.ContainerName, StringComparison.CurrentCultureIgnoreCase))
                 ||
-                    (pColumn.Name.Equals(pColumn.Table.Name, StringComparison.InvariantCultureIgnoreCase))
+                    (pColumn.Name.Equals(pColumn.ContainerName, StringComparison.InvariantCultureIgnoreCase))
                 ||
-                    (pColumn.Name.Equals(pColumn.Table.Name, StringComparison.OrdinalIgnoreCase))
+                    (pColumn.Name.Equals(pColumn.ContainerName, StringComparison.OrdinalIgnoreCase))
                     )
                 {
                     return GetPascalCase(pColumn.Name) + "Property";
                 }
-            }
             return GetPascalCase(pColumn.Name);
         }
 

@@ -101,7 +101,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             InsertStringYaz(output, container, sorgulardaKullanilanSema);
 
 
-            SorgulaPkIleGetirYaz(output, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
+            SorgulaPkIleGetirYaz(output, container, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
 
             IdentityVarMiYaz(output, identityVarmi);
 
@@ -318,6 +318,18 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         private void DeleteStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan)
         {
+            if (container is IView)
+            {
+                output.autoTabLn("protected override string DeleteString");
+                BaslangicSusluParentezVeTabArtir(output);
+                output.autoTabLn("get ");
+                BaslangicSusluParentezVeTabArtir(output);
+                output.autoTabLn("return null;");
+                BitisSusluParentezVeTabAzalt(output);
+                BitisSusluParentezVeTabAzalt(output);
+                
+                return;
+            }
             string cumle = "";
             output.autoTabLn("protected override string DeleteString");
             BaslangicSusluParentezVeTabArtir(output);
@@ -366,6 +378,19 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         private void UpdateStringYaz(IOutput output, IContainer container, bool semaIsminiSorgulardaKullan, ref string pkcumlesi)
         {
+            if (container is IView)
+            {
+                output.autoTabLn("protected override string UpdateString");
+                BaslangicSusluParentezVeTabArtir(output);
+                output.autoTabLn("get ");
+                BaslangicSusluParentezVeTabArtir(output);
+                output.autoTabLn("return null;");
+                BitisSusluParentezVeTabAzalt(output);
+                BitisSusluParentezVeTabAzalt(output);
+
+                return;
+            }
+
             string cumle = "";
             output.autoTabLn("protected override string UpdateString");
             BaslangicSusluParentezVeTabArtir(output);
@@ -481,8 +506,12 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn(listeType + " liste = new " + listeType + "();");
         }
 
-        private void SorgulaPkIleGetirYaz(IOutput output, string classNameTypeLibrary,  string pkAdi, string pkAdiPascalCase, string pkType)
+        private void SorgulaPkIleGetirYaz(IOutput output, IContainer container, string classNameTypeLibrary,  string pkAdi, string pkAdiPascalCase, string pkType)
         {
+            if (container is IView)
+            {
+                return;
+            }
             if (!string.IsNullOrEmpty(pkAdi))
             {
             string classSatiri = "public " + classNameTypeLibrary + " Sorgula"
