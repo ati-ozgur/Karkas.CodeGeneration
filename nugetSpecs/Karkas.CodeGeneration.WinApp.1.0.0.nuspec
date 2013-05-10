@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Karkas.CodeGeneration.WinApp</id>
+    <version>1.0.0</version>
+    <title>Karkas.CodeGeneration.WinApp</title>
+    <authors>ati_ozgur</authors>
+    <owners>ati_ozgur</owners>
+    <projectUrl>https://github.com/ati-ozgur/karkas/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Code Generation Win Application for Karkas Project - Karkas Projesi için Windows Uygulaması</description>
+    <summary>Code Generation Win Application for Karkas Project - Karkas Projesi için Windows Uygulaması</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <references />
+  </metadata>
+</package>
