@@ -28,8 +28,16 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
-            MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
+            try
+            {
+
+                ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
+                MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -41,11 +49,19 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
                 DataRowView view = (DataRowView)item;
                 string tableSchema = view["TABLE_SCHEMA"].ToString();
                 string tableName = view["TABLE_NAME"].ToString();
-                ParentMainForm.DatabaseHelper.CodeGenerateOneTable(
-                     tableName
-                    , tableSchema
-                    );
 
+                try
+                {
+                    ParentMainForm.DatabaseHelper.CodeGenerateOneTable(
+                 tableName
+                , tableSchema
+                );
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
@@ -82,7 +98,7 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
         internal void setComboBoxSchemaListText(string pText)
         {
-           comboBoxSchemaList.Text = pText;
+            comboBoxSchemaList.Text = pText;
         }
     }
 }
