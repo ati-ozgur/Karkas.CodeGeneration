@@ -209,6 +209,46 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             return exceptionMessages.ToString();
         }
 
+        public string CodeGenerateAllTables(string pSchemaName)
+        {
+            DataTable dtTables = getTableListFromSchema(pSchemaName);
+
+            StringBuilder exceptionMessages = new StringBuilder();
+            foreach (DataRow item in dtTables.Rows)
+            {
+                try
+                {
+
+                    CodeGenerateOneTable(item["TABLE_NAME"].ToString(), pSchemaName);
+                }
+                catch (Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
+
+        public string CodeGenerateAllViews(string pSchemaName)
+        {
+            StringBuilder exceptionMessages = new StringBuilder();
+            DataTable dtViews = getViewListFromSchema(pSchemaName);
+            foreach (DataRow item in dtViews.Rows )
+            {
+                try
+                {
+
+                    CodeGenerateOneView(item["VIEW_NAME"].ToString(), pSchemaName);
+                }
+                catch (Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
+
+
         public abstract IOutput Output { get; }
         public abstract IView GetView(string pViewName, string pSchemaName);
 
@@ -256,7 +296,25 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             SequenceGenerator seqGen = new SequenceGenerator(this);
             seqGen.Render(Output, schemaName, sequenceName);
         }
-
+        public string CodeGenerateAllSequences(string schemaName)
+        {
+            StringBuilder exceptionMessages = new StringBuilder();
+            DataTable dtSequenceList = getSequenceListFromSchema(schemaName);
+            foreach (DataRow row in dtSequenceList.Rows)
+            {
+                try
+                {
+                    string sequenceName = row["SEQUENCE_NAME"].ToString();
+                    string seqSchemaName = row["SEQ_SCHEMA_NAME"].ToString();
+                    CodeGenerateOneSequence(seqSchemaName, seqSchemaName);
+                }
+                catch (Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
 
         public string CodeGenerateAllSequences()
         {

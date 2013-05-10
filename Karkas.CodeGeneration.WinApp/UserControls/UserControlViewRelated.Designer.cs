@@ -56,6 +56,7 @@
             this.buttonTumViewlariUret.TabIndex = 16;
             this.buttonTumViewlariUret.Text = "Tüm Viewları Üret";
             this.buttonTumViewlariUret.UseVisualStyleBackColor = true;
+            this.buttonTumViewlariUret.Click += new System.EventHandler(this.buttonTumViewlariUret_Click);
             // 
             // listBoxViewListesi
             // 
