@@ -66,5 +66,26 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
             MessageBox.Show("SEÇİLEN SEQUENCES İÇİN KOD ÜRETİLDİ");
         }
+
+        private void buttonTumSequencesUret_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllSequences();
+                string message = "TÜM SEQUENCES İÇİN KOD ÜRETİLDİ";
+                if (!string.IsNullOrEmpty(hatalar))
+                {
+                    message = message + ", HATALAR " + hatalar;
+                }
+                MessageBox.Show(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
+        }
     }
 }

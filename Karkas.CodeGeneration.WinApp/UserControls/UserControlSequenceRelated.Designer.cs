@@ -56,6 +56,7 @@
             this.buttonTumSequencesUret.TabIndex = 22;
             this.buttonTumSequencesUret.Text = "Tüm Sequenceları Üret";
             this.buttonTumSequencesUret.UseVisualStyleBackColor = true;
+            this.buttonTumSequencesUret.Click += new System.EventHandler(this.buttonTumSequencesUret_Click);
             // 
             // listBoxSequenceListesi
             // 
