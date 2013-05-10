@@ -32,7 +32,7 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         ITable getTable(string pTableName, string pSchemaName);
 
-        void CodeGenerateAllTables();
+        string CodeGenerateAllTables();
         void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
@@ -47,5 +47,6 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
 
         void CodeGenerateOneSequence(string sequenceName, string schemaName);
+        string CodeGenerateAllSequences();
     }
 }

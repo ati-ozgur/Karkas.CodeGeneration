@@ -244,27 +244,6 @@ ORDER BY SEQUENCE_NAME
 
 
 
-        public override void CodeGenerateAllTables()
-        {
-            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
-            DalGenerator dalGen = this.DalGenerator;
-            BsGenerator bsGen = new BsGenerator(this);
-            IOutput output = new SqlServerOutput();
-
-            List<ITable> tableListesi = this.Tables;
-
-            foreach (ITable table in tableListesi)
-            {
-                if (IgnoreSystemTables && (table.Name.StartsWith("sys") || table.Name == "dtproperties"))
-                {
-                    continue;
-                }
-                typeGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders,ListDatabaseAbbreviations);
-                dalGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
-                bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
-            }
-        }
-
         public override void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName

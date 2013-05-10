@@ -150,19 +150,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             return new DataTable();
         }
 
-        public override void CodeGenerateAllTables()
-        {
 
-            foreach (ITable table in this.Tables)
-            {
-                CodeGenerateOneTable(
-                     table.Name
-                    , table.Schema
-                    );
-            }
-
-
-        }
 
         public override void CodeGenerateOneTable(
              string pTableName

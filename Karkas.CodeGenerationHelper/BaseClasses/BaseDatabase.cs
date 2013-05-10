@@ -185,13 +185,51 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
 
         public abstract ITable getTable(string pTableName, string pSchemaName);
 
-        public abstract void CodeGenerateAllTables();
+        public string CodeGenerateAllTables()
+        {
+            StringBuilder exceptionMessages = new StringBuilder();
+            foreach (var item in Tables)
+            {
+                try
+                {
+
+                    CodeGenerateOneTable(item.Name, item.Schema);
+                }
+                catch(Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
+
+
+
         public abstract void CodeGenerateOneTable(
              string pTableName
             , string pSchemaName
             );
         public abstract void CodeGenerateOneSequence(string sequenceName, string schemaName);
 
+        public string CodeGenerateAllSequences()
+        {
+            StringBuilder exceptionMessages = new StringBuilder();
+            DataTable dtSequenceList = getSequenceListFromSchema(getDefaultSchema());
+            foreach (DataRow row in dtSequenceList.Rows)
+            {
+                try
+                {
+                    string sequenceName =row["SEQUENCE_NAME"].ToString();
+                    string seqSchemaName = row["SEQ_SCHEMA_NAME"].ToString();
+                    CodeGenerateOneSequence(seqSchemaName, seqSchemaName);
+                }
+                catch (Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
 
         public  abstract DalGenerator DalGenerator
         {

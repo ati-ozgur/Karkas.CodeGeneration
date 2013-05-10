@@ -53,10 +53,32 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         public string LogicalDatabaseName { get; set; }
 
-
+        List<ITable> _tables;
         public override List<ITable> Tables
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                if (_tables == null)
+                {
+                    _tables = new List<ITable>();
+                    string userName = getUserNameFromConnection(ConnectionString);
+
+                    ParameterBuilder builder = Template.getParameterBuilder();
+                    builder.parameterEkle("TABLE_SCHEMA", DbType.String, userName);
+
+                    DataTable dtTables = Template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
+                    foreach (DataRow row in dtTables.Rows)
+                    {
+                        string tableName = row["TABLE_NAME"].ToString();
+                        string tableSchema = row["TABLE_SCHEMA"].ToString();
+
+                        ITable table = new TableOracle(this, Template, tableName, tableSchema);
+                    }
+
+
+                }
+                return _tables;
+            }
         }
 
 
@@ -167,28 +189,6 @@ ORDER BY SEQUENCE_NAME
 
 
 
-
-        public override void CodeGenerateAllTables()
-        {
-           
-            
-            string userName = getUserNameFromConnection(ConnectionString);
-
-            ParameterBuilder builder = Template.getParameterBuilder();
-            builder.parameterEkle("TABLE_SCHEMA", DbType.String, userName);
-
-            DataTable dtTables = Template.DataTableOlustur(SQL_FOR_TABLE_LIST, builder.GetParameterArray());
-            foreach (DataRow row in dtTables.Rows)
-            {
-                string tableName = row["TABLE_NAME"].ToString();
-                string schemaName = row["TABLE_SCHEMA"].ToString();
-                CodeGenerateOneTable(  
-                    tableName, 
-                    schemaName
-                    );
-            }
-
-        }
 
         private  string getUserNameFromConnection(string pConnectionString)
         {

@@ -31,8 +31,13 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             try
             {
 
-                ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
-                MessageBox.Show("TÜM TABLOLAR İÇİN KOD ÜRETİLDİ");
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
+                string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
+                if (!string.IsNullOrEmpty(hatalar))
+                {
+                    message = message + ", HATALAR " + hatalar;
+                }
+                MessageBox.Show(message);
             }
             catch (Exception ex)
             {
