@@ -212,7 +212,28 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         public abstract IOutput Output { get; }
         public abstract IView GetView(string pViewName, string pSchemaName);
 
-        public abstract void CodeGenerateOneTable(string pTableName, string pSchemaName);
+
+
+        public void CodeGenerateOneTable(string pTableName, string pSchemaName)
+        {
+            // TODO ignore table name suffix . Make this generic
+            if (pTableName.StartsWith("sqlite_"))
+            {
+                return;
+            }
+
+            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
+            DalGenerator dalGen = this.DalGenerator;
+            BsGenerator bsGen = new BsGenerator(this);
+
+            ITable table = this.getTable(pTableName, pSchemaName);
+
+
+            typeGen.Render(Output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            dalGen.Render(Output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+            bsGen.Render(Output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
+        }
+
 
 
         public void CodeGenerateOneView(string pViewName, string pSchemaName)

@@ -242,25 +242,6 @@ ORDER BY SEQUENCE_NAME
         }
 
 
-
-
-        public override void CodeGenerateOneTable(
-             string pTableName
-            , string pSchemaName
-            )
-        {
-            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
-            DalGenerator dalGen = this.DalGenerator;
-            BsGenerator bsGen = new BsGenerator(this);
-            IOutput output = new SqlServerOutput();
-
-            ITable table = this.getTable(pTableName, pSchemaName);
-
-            typeGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
-            dalGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
-            bsGen.Render(output, table, UseSchemaNameInSqlQueries, UseSchemaNameInFolders, ListDatabaseAbbreviations);
-        }
-
         public override void CodeGenerateOneSequence(string sequenceName, string schemaName)
         {
             // TODO
