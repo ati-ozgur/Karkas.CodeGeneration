@@ -99,6 +99,29 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             }
         }
 
+        List<IView> _viewList;
+        public override List<IView> Views
+        {
+
+            get
+            {
+                if (_viewList == null)
+                {
+                    _viewList = new List<IView>();
+
+                    DataTable dtViews = getViewListFromSchema(null);
+                    foreach (DataRow row in dtViews.Rows)
+                    {
+                        IView t = new ViewSqlServer(this, Template, row["TABLE_NAME"].ToString(), row["TABLE_SCHEMA"].ToString());
+                        _viewList.Add(t);
+                    }
+                }
+                return _viewList;
+
+            }
+        }
+
+
         public override string ToString()
         {
             return ConnectionName;

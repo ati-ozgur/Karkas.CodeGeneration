@@ -25,16 +25,19 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         }
 
         List<ITable> Tables { get; }
+        List<IView> Views { get; }
+
+
         DataTable getTableListFromSchema(string schemaName);
         DataTable getViewListFromSchema(string schemaName);
+
+
+
         DataTable getStoredProcedureListFromSchema(string schemaName);
         DataTable getSequenceListFromSchema(string schemaName);
 
         ITable getTable(string pTableName, string pSchemaName);
 
-        string CodeGenerateAllTables(string pSchemaName);
-        string CodeGenerateAllTables();
-        void CodeGenerateOneTable(string pTableName, string pSchemaName);
 
         DalGenerator DalGenerator
         {
@@ -42,11 +45,15 @@ namespace Karkas.CodeGenerationHelper.Interfaces
         }
 
 
+        string CodeGenerateAllTablesInSchema(string pSchemaName);
+        string CodeGenerateAllTables();
+        void CodeGenerateOneTable(string pTableName, string pSchemaName);
 
         void CodeGenerateOneView(string pViewName, string pSchemaName);
-        string CodeGenerateAllViews(string pSchemaName);
+        string CodeGenerateAllViewsInSchema(string pSchemaName);
+        string CodeGenerateAllViews();
 
         void CodeGenerateOneSequence(string sequenceName, string schemaName);
-        string CodeGenerateAllSequences(string pSchemaName);
+        string CodeGenerateAllSequencesInSchema(string pSchemaName);
     }
 }

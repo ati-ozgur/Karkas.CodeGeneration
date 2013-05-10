@@ -105,5 +105,24 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         {
             comboBoxSchemaList.Text = pText;
         }
+
+        private void buttonSeciliSemaTablolariUret_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllTablesInSchema(comboBoxSchemaList.SelectedText);
+                string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
+                if (!string.IsNullOrEmpty(hatalar))
+                {
+                    message = message + ", HATALAR " + hatalar;
+                }
+                MessageBox.Show(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             try
             {
 
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllSequences(comboBoxSchemaList.SelectedText);
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllSequencesInSchema(comboBoxSchemaList.SelectedText);
                 string message = "TÜM SEQUENCES İÇİN KOD ÜRETİLDİ";
                 if (!string.IsNullOrEmpty(hatalar))
                 {

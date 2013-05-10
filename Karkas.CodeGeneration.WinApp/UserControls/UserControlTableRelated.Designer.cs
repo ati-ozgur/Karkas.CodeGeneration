@@ -34,14 +34,15 @@
             this.labelTabloListesi = new System.Windows.Forms.Label();
             this.labelSchemaList = new System.Windows.Forms.Label();
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
+            this.buttonSeciliSemaTablolariUret = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSeciliTablolariUret
             // 
-            this.buttonSeciliTablolariUret.Location = new System.Drawing.Point(385, 115);
+            this.buttonSeciliTablolariUret.Location = new System.Drawing.Point(385, 174);
             this.buttonSeciliTablolariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSeciliTablolariUret.Name = "buttonSeciliTablolariUret";
-            this.buttonSeciliTablolariUret.Size = new System.Drawing.Size(121, 31);
+            this.buttonSeciliTablolariUret.Size = new System.Drawing.Size(121, 39);
             this.buttonSeciliTablolariUret.TabIndex = 11;
             this.buttonSeciliTablolariUret.Text = "Seçili Tablolari Üret";
             this.buttonSeciliTablolariUret.UseVisualStyleBackColor = true;
@@ -49,10 +50,10 @@
             // 
             // buttonTumTablolariUret
             // 
-            this.buttonTumTablolariUret.Location = new System.Drawing.Point(385, 71);
+            this.buttonTumTablolariUret.Location = new System.Drawing.Point(385, 55);
             this.buttonTumTablolariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTumTablolariUret.Name = "buttonTumTablolariUret";
-            this.buttonTumTablolariUret.Size = new System.Drawing.Size(121, 23);
+            this.buttonTumTablolariUret.Size = new System.Drawing.Size(121, 39);
             this.buttonTumTablolariUret.TabIndex = 10;
             this.buttonTumTablolariUret.Text = "Tüm Tabloları Üret";
             this.buttonTumTablolariUret.UseVisualStyleBackColor = true;
@@ -100,10 +101,22 @@
             this.comboBoxSchemaList.TabIndex = 6;
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
             // 
+            // buttonSeciliSemaTablolariUret
+            // 
+            this.buttonSeciliSemaTablolariUret.Location = new System.Drawing.Point(385, 116);
+            this.buttonSeciliSemaTablolariUret.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSeciliSemaTablolariUret.Name = "buttonSeciliSemaTablolariUret";
+            this.buttonSeciliSemaTablolariUret.Size = new System.Drawing.Size(121, 39);
+            this.buttonSeciliSemaTablolariUret.TabIndex = 12;
+            this.buttonSeciliSemaTablolariUret.Text = "Semadaki Tablolari Üret";
+            this.buttonSeciliSemaTablolariUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliSemaTablolariUret.Click += new System.EventHandler(this.buttonSeciliSemaTablolariUret_Click);
+            // 
             // UserControlTableRelated
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSeciliSemaTablolariUret);
             this.Controls.Add(this.buttonSeciliTablolariUret);
             this.Controls.Add(this.buttonTumTablolariUret);
             this.Controls.Add(this.listBoxTableListesi);
@@ -125,6 +138,7 @@
         private System.Windows.Forms.Label labelTabloListesi;
         private System.Windows.Forms.Label labelSchemaList;
         private System.Windows.Forms.ComboBox comboBoxSchemaList;
+        private System.Windows.Forms.Button buttonSeciliSemaTablolariUret;
 
     }
 }

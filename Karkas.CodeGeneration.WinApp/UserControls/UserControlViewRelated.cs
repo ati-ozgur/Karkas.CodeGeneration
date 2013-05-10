@@ -81,7 +81,7 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             {
 
 
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViews(comboBoxSchemaList.SelectedText);
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViewsInSchema(comboBoxSchemaList.SelectedText);
                 string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
                 if (!string.IsNullOrEmpty(hatalar))
                 {

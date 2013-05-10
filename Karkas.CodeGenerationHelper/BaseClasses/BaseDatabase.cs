@@ -183,6 +183,8 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         }
 
         public abstract List<ITable> Tables { get; }
+        public abstract List<IView> Views { get; }
+
         public abstract DataTable getTableListFromSchema(string schemaName);
         public abstract DataTable getViewListFromSchema(string schemaName);
         public abstract DataTable getStoredProcedureListFromSchema(string schemaName);
@@ -209,7 +211,7 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             return exceptionMessages.ToString();
         }
 
-        public string CodeGenerateAllTables(string pSchemaName)
+        public string CodeGenerateAllTablesInSchema(string pSchemaName)
         {
             DataTable dtTables = getTableListFromSchema(pSchemaName);
 
@@ -229,7 +231,7 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             return exceptionMessages.ToString();
         }
 
-        public string CodeGenerateAllViews(string pSchemaName)
+        public string CodeGenerateAllViewsInSchema(string pSchemaName)
         {
             StringBuilder exceptionMessages = new StringBuilder();
             DataTable dtViews = getViewListFromSchema(pSchemaName);
@@ -239,6 +241,25 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
                 {
 
                     CodeGenerateOneView(item["VIEW_NAME"].ToString(), pSchemaName);
+                }
+                catch (Exception ex)
+                {
+                    exceptionMessages.Append(ex.Message);
+                }
+            }
+            return exceptionMessages.ToString();
+        }
+
+
+        public string CodeGenerateAllViews()
+        {
+            StringBuilder exceptionMessages = new StringBuilder();
+            foreach (var item in Views)
+            {
+                try
+                {
+
+                    CodeGenerateOneView(item.Name, item.Schema );
                 }
                 catch (Exception ex)
                 {
@@ -296,7 +317,7 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             SequenceGenerator seqGen = new SequenceGenerator(this);
             seqGen.Render(Output, schemaName, sequenceName);
         }
-        public string CodeGenerateAllSequences(string schemaName)
+        public string CodeGenerateAllSequencesInSchema(string schemaName)
         {
             StringBuilder exceptionMessages = new StringBuilder();
             DataTable dtSequenceList = getSequenceListFromSchema(schemaName);
