@@ -26,22 +26,28 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         }
 
 
+
+
         private void buttonTumTablolariUret_Click(object sender, EventArgs e)
         {
-            try
+            if (this.ParentMainForm.TumVeritabaniKodUretmeEminMisiniz())
             {
 
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
-                string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
-                if (!string.IsNullOrEmpty(hatalar))
+                try
                 {
-                    message = message + ", HATALAR " + hatalar;
+
+                    String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllTables();
+                    string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
+                    if (!string.IsNullOrEmpty(hatalar))
+                    {
+                        message = message + ", HATALAR " + hatalar;
+                    }
+                    MessageBox.Show(message);
                 }
-                MessageBox.Show(message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
         }

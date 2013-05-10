@@ -246,5 +246,37 @@ namespace Karkas.CodeGeneration.WinApp
             userControlCodeGenerationOptions1.ClearInputControlValues();
 
         }
+
+
+        public bool TumVeritabaniKodUretmeEminMisiniz()
+        {
+            string databaseType = entry.ConnectionDatabaseType;
+            if (databaseType == DatabaseType.Oracle)
+            {
+                string message = "Oracle veritabanında genellikle sadece bir şema için Kod üretilir , emin Misiniz";
+                string caption = "TUM VERİTABANI İÇİN KOD ÜRETME";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                // Displays the MessageBox.
+
+                result = MessageBox.Show(this, message, caption, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
     }
 }
