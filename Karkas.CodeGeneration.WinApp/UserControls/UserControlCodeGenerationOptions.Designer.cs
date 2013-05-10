@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkBoxIgnoreSystemTables = new System.Windows.Forms.CheckBox();
             this.checkBoxStoredProcedureCodeGenerate = new System.Windows.Forms.CheckBox();
             this.checkBoxViewCodeGenerate = new System.Windows.Forms.CheckBox();
@@ -58,6 +59,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxAnaSinifOnaylamaOrnekleri = new System.Windows.Forms.CheckBox();
             this.checkBoxSequenceCodeGenerate = new System.Windows.Forms.CheckBox();
+            this.toolTipCodeGenerationOptions = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,6 +175,9 @@
             this.textBoxDatabaseNameLogical.Name = "textBoxDatabaseNameLogical";
             this.textBoxDatabaseNameLogical.Size = new System.Drawing.Size(127, 20);
             this.textBoxDatabaseNameLogical.TabIndex = 46;
+            this.toolTipCodeGenerationOptions.SetToolTip(this.textBoxDatabaseNameLogical, "Veritabanı ismi olarak fiziksel isim yerine\r\nmantıksal bir isim vermek için kulla" +
+        "nılır.\r\nBu mantıksal isim app.config/web.config\r\niçinde bağlantı çekmek için kul" +
+        "lanılır.\r\n");
             // 
             // labelDatabaseNameLogical
             // 
@@ -424,5 +429,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBoxAnaSinifOnaylamaOrnekleri;
         private System.Windows.Forms.CheckBox checkBoxSequenceCodeGenerate;
+        private System.Windows.Forms.ToolTip toolTipCodeGenerationOptions;
     }
 }
