@@ -34,14 +34,15 @@
             this.labelViewListesi = new System.Windows.Forms.Label();
             this.labelSchemaList = new System.Windows.Forms.Label();
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
+            this.buttonSeciliSemaViewUret = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSeciliViewlariUret
             // 
-            this.buttonSeciliViewlariUret.Location = new System.Drawing.Point(383, 109);
+            this.buttonSeciliViewlariUret.Location = new System.Drawing.Point(383, 183);
             this.buttonSeciliViewlariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSeciliViewlariUret.Name = "buttonSeciliViewlariUret";
-            this.buttonSeciliViewlariUret.Size = new System.Drawing.Size(121, 31);
+            this.buttonSeciliViewlariUret.Size = new System.Drawing.Size(119, 46);
             this.buttonSeciliViewlariUret.TabIndex = 17;
             this.buttonSeciliViewlariUret.Text = "Seçili View Üret";
             this.buttonSeciliViewlariUret.UseVisualStyleBackColor = true;
@@ -52,7 +53,7 @@
             this.buttonTumViewlariUret.Location = new System.Drawing.Point(383, 65);
             this.buttonTumViewlariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTumViewlariUret.Name = "buttonTumViewlariUret";
-            this.buttonTumViewlariUret.Size = new System.Drawing.Size(121, 23);
+            this.buttonTumViewlariUret.Size = new System.Drawing.Size(119, 46);
             this.buttonTumViewlariUret.TabIndex = 16;
             this.buttonTumViewlariUret.Text = "Tüm Viewları Üret";
             this.buttonTumViewlariUret.UseVisualStyleBackColor = true;
@@ -100,10 +101,22 @@
             this.comboBoxSchemaList.TabIndex = 12;
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
             // 
+            // buttonSeciliSemaViewUret
+            // 
+            this.buttonSeciliSemaViewUret.Location = new System.Drawing.Point(383, 124);
+            this.buttonSeciliSemaViewUret.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSeciliSemaViewUret.Name = "buttonSeciliSemaViewUret";
+            this.buttonSeciliSemaViewUret.Size = new System.Drawing.Size(119, 46);
+            this.buttonSeciliSemaViewUret.TabIndex = 18;
+            this.buttonSeciliSemaViewUret.Text = "Seçili View Üret";
+            this.buttonSeciliSemaViewUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliSemaViewUret.Click += new System.EventHandler(this.buttonSeciliSemaViewUret_Click);
+            // 
             // UserControlViewRelated
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSeciliSemaViewUret);
             this.Controls.Add(this.buttonSeciliViewlariUret);
             this.Controls.Add(this.buttonTumViewlariUret);
             this.Controls.Add(this.listBoxViewListesi);
@@ -125,5 +138,6 @@
         private System.Windows.Forms.Label labelViewListesi;
         private System.Windows.Forms.Label labelSchemaList;
         private System.Windows.Forms.ComboBox comboBoxSchemaList;
+        private System.Windows.Forms.Button buttonSeciliSemaViewUret;
     }
 }

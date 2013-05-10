@@ -81,8 +81,29 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             {
 
 
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViewsInSchema(comboBoxSchemaList.SelectedText);
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViews();
                 string message = "TÜM TABLOLAR İÇİN KOD ÜRETİLDİ";
+                if (!string.IsNullOrEmpty(hatalar))
+                {
+                    message = message + ", HATALAR " + hatalar;
+                }
+                MessageBox.Show(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void buttonSeciliSemaViewUret_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string schemaName = comboBoxSchemaList.SelectedText;
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViewsInSchema(schemaName);
+                string message = string.Format("Secilen ŞEMA {0} için , TÜM TABLOLAR İÇİN KOD ÜRETİLDİ",schemaName);
                 if (!string.IsNullOrEmpty(hatalar))
                 {
                     message = message + ", HATALAR " + hatalar;
