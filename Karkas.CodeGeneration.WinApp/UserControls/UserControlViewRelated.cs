@@ -104,10 +104,10 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         {
             try
             {
+                string selectedSchemaName = getSelectedSchemaName();
 
-                string schemaName = comboBoxSchemaList.SelectedText;
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViewsInSchema(schemaName);
-                string message = string.Format("Secilen ŞEMA {0} için , TÜM TABLOLAR İÇİN KOD ÜRETİLDİ",schemaName);
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllViewsInSchema(selectedSchemaName);
+                string message = string.Format("Secilen ŞEMA {0} için , TÜM TABLOLAR İÇİN KOD ÜRETİLDİ", selectedSchemaName);
                 if (!string.IsNullOrEmpty(hatalar))
                 {
                     message = message + ", HATALAR " + hatalar;
@@ -118,6 +118,13 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private string getSelectedSchemaName()
+        {
+            DataRowView drv = (DataRowView)comboBoxSchemaList.SelectedValue;
+            string schema = drv["SCHEMA_NAME"].ToString();
+            return schema;
         }
     }
 }
