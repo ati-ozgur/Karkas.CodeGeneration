@@ -78,11 +78,11 @@ namespace Karkas.CodeGenerationHelper.Generators
             string selectSequenceString = "";
             if (database.UseSchemaNameInSqlQueries)
             {
-                selectSequenceString = string.Format("private const string selectSequenceString = \"SELECT {0}.{1}.NEXTVAL FROM DUAL;\";", schemaName, sequenceName);
+                selectSequenceString = string.Format("private const string selectSequenceString = \"SELECT {0}.{1}.NEXTVAL FROM DUAL\";", schemaName, sequenceName);
             }
             else
             {
-                selectSequenceString = string.Format("private const string selectSequenceString = \"SELECT {0}.NEXTVAL FROM DUAL;\";",  sequenceName);
+                selectSequenceString = string.Format("private const string selectSequenceString = \"SELECT {0}.NEXTVAL FROM DUAL\";",  sequenceName);
             }
             output.autoTabLn(selectSequenceString);
 

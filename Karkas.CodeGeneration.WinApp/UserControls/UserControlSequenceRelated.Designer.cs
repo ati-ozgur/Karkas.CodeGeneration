@@ -91,7 +91,7 @@
             // 
             // comboBoxSchemaList
             // 
-            this.comboBoxSchemaList.DisplayMember = "TABLE_SCHEMA";
+            this.comboBoxSchemaList.DisplayMember = "SCHEMA_NAME";
             this.comboBoxSchemaList.FormattingEnabled = true;
             this.comboBoxSchemaList.Location = new System.Drawing.Point(154, 25);
             this.comboBoxSchemaList.Margin = new System.Windows.Forms.Padding(2);

@@ -116,10 +116,10 @@ namespace Karkas.CodeGeneration.Oracle.Implementations
 
         private const string SQL_FOR_DATABASE_NAME = "select sys_context('userenv','db_name') from dual";
         private const string SQL_FOR_SCHEMA_LIST = @"
-SELECT '__TUM_SCHEMALAR__' AS TABLE_SCHEMA FROM DUAL
+SELECT '__TUM_SCHEMALAR__' AS SCHEMA_NAME FROM DUAL
 UNION
 select username from ALL_users
-ORDER BY TABLE_SCHEMA";
+ORDER BY SCHEMA_NAME";
         private const string SQL_FOR_TABLE_LIST = @"
 SELECT OWNER AS TABLE_SCHEMA, TABLE_NAME,OWNER || '.' || TABLE_NAME  AS FULL_TABLE_NAME  FROM  ALL_TABLES T
 WHERE  

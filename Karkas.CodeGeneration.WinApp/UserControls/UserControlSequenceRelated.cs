@@ -71,8 +71,10 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         {
             try
             {
+                string selectedSchemaName = getSelectedSchemaName();
 
-                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllSequencesInSchema(comboBoxSchemaList.SelectedText);
+
+                String hatalar = ParentMainForm.DatabaseHelper.CodeGenerateAllSequencesInSchema(selectedSchemaName);
                 string message = "TÜM SEQUENCES İÇİN KOD ÜRETİLDİ";
                 if (!string.IsNullOrEmpty(hatalar))
                 {
@@ -86,6 +88,13 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             }
 
             
+        }
+
+        private string getSelectedSchemaName()
+        {
+            DataRowView drv = (DataRowView) comboBoxSchemaList.SelectedValue;
+            string schema = drv["SCHEMA_NAME"].ToString();
+            return schema;
         }
     }
 }
