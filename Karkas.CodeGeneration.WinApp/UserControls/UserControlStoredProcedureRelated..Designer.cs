@@ -34,17 +34,19 @@
             this.labelStoredProcedureListesi = new System.Windows.Forms.Label();
             this.labelSchemaList = new System.Windows.Forms.Label();
             this.comboBoxSchemaList = new System.Windows.Forms.ComboBox();
+            this.buttonSemaIcinTumStoredProcedureUret = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSeciliViewlariUret
             // 
-            this.buttonSeciliViewlariUret.Location = new System.Drawing.Point(373, 155);
+            this.buttonSeciliViewlariUret.Location = new System.Drawing.Point(373, 225);
             this.buttonSeciliViewlariUret.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSeciliViewlariUret.Name = "buttonSeciliViewlariUret";
-            this.buttonSeciliViewlariUret.Size = new System.Drawing.Size(131, 49);
+            this.buttonSeciliViewlariUret.Size = new System.Drawing.Size(119, 56);
             this.buttonSeciliViewlariUret.TabIndex = 23;
             this.buttonSeciliViewlariUret.Text = "Seçili Stored Procedure Üret";
             this.buttonSeciliViewlariUret.UseVisualStyleBackColor = true;
+            this.buttonSeciliViewlariUret.Click += new System.EventHandler(this.buttonSeciliViewlariUret_Click);
             // 
             // buttonTumStoredProcedureUret
             // 
@@ -55,6 +57,7 @@
             this.buttonTumStoredProcedureUret.TabIndex = 22;
             this.buttonTumStoredProcedureUret.Text = "Tüm Stored Procedure Üret";
             this.buttonTumStoredProcedureUret.UseVisualStyleBackColor = true;
+            this.buttonTumStoredProcedureUret.Click += new System.EventHandler(this.buttonTumStoredProcedureUret_Click);
             // 
             // listBoxStoredProcedureListesi
             // 
@@ -98,10 +101,22 @@
             this.comboBoxSchemaList.TabIndex = 18;
             this.comboBoxSchemaList.SelectedValueChanged += new System.EventHandler(this.comboBoxSchemaList_SelectedValueChanged);
             // 
+            // buttonSemaIcinTumStoredProcedureUret
+            // 
+            this.buttonSemaIcinTumStoredProcedureUret.Location = new System.Drawing.Point(373, 137);
+            this.buttonSemaIcinTumStoredProcedureUret.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSemaIcinTumStoredProcedureUret.Name = "buttonSemaIcinTumStoredProcedureUret";
+            this.buttonSemaIcinTumStoredProcedureUret.Size = new System.Drawing.Size(119, 56);
+            this.buttonSemaIcinTumStoredProcedureUret.TabIndex = 24;
+            this.buttonSemaIcinTumStoredProcedureUret.Text = "Şema için TÜM Stored Procedure Üret";
+            this.buttonSemaIcinTumStoredProcedureUret.UseVisualStyleBackColor = true;
+            this.buttonSemaIcinTumStoredProcedureUret.Click += new System.EventHandler(this.buttonSemaIcinTumStoredProcedureUret_Click);
+            // 
             // UserControlStoredProcedureRelated
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSemaIcinTumStoredProcedureUret);
             this.Controls.Add(this.buttonSeciliViewlariUret);
             this.Controls.Add(this.buttonTumStoredProcedureUret);
             this.Controls.Add(this.listBoxStoredProcedureListesi);
@@ -123,5 +138,6 @@
         private System.Windows.Forms.Label labelStoredProcedureListesi;
         private System.Windows.Forms.Label labelSchemaList;
         private System.Windows.Forms.ComboBox comboBoxSchemaList;
+        private System.Windows.Forms.Button buttonSemaIcinTumStoredProcedureUret;
     }
 }

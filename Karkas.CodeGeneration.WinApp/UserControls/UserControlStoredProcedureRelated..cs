@@ -49,5 +49,20 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             listBoxStoredProcedureListDoldur();
         }
 
+        private void buttonSemaIcinTumStoredProcedureUret_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSeciliViewlariUret_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTumStoredProcedureUret_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
