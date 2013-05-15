@@ -366,6 +366,11 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         public abstract string getDefaultSchema();
 
 
+        public const string SCHEMA_NAME_IN_TABLE_SQL_QUERIES = "TABLE_SCHEMA";
+        public const string TABLE_NAME_IN_TABLE_SQL_QUERIES = "TABLE_NAME";
+
+
+
         #region "Not Persisted Values"
         public bool AnaSinifiTekrarUret { get; set; }
         public bool AnaSinifOnaylamaOrnekleriUret { get; set; }

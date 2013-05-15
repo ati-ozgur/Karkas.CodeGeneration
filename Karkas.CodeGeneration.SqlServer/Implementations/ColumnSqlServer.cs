@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
-using Microsoft.SqlServer.Management.Smo;
 using System.Collections;
 using Karkas.Core.DataUtil;
 using System.Data;
@@ -13,24 +12,86 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 {
     public class ColumnSqlServer : IColumn
     {
-        Column smoColumn;
         IContainer tableOrView;
+        string columnName;
+        DataRow columnValuesFromInformationSchema;
+        DataRow columnValuesFromSysViews;
+        AdoTemplate template;
 
-        public ColumnSqlServer(Column pSmoColumn, IContainer pTableOrView)
+        public ColumnSqlServer(IContainer pTableOrView, AdoTemplate template, string columnName,DataRow columnValues)
         {
-            smoColumn = pSmoColumn;
             tableOrView = pTableOrView;
+            this.template = template;
+            this.columnName = columnName;
+            this.columnValuesFromInformationSchema = columnValues;
+
+            ParameterBuilder defaultParameterBuilder = getBuilderWithDefaultValues();
+
+            DataTable dt = template.DataTableOlustur(SQL_COLUMN_VALUES_FROM_SYS, defaultParameterBuilder.GetParameterArray());
+            columnValuesFromSysViews = dt.Rows[0];
+
+
+            
         }
+
+        private ParameterBuilder getBuilderWithDefaultValues()
+        {
+            ParameterBuilder builder = template.getParameterBuilder();
+            builder.parameterEkle("@TABLE_NAME", DbType.AnsiString, tableOrView.Name);
+            builder.parameterEkle("@TABLE_SCHEMA", DbType.AnsiString, tableOrView.Schema);
+            builder.parameterEkle("@COLUMN_NAME", DbType.AnsiString, columnName);
+            return builder;
+        }
+
+        private const string SQL_COLUMN_VALUES_FROM_SYS = @"SELECT object_id
+      ,name
+      ,column_id
+      ,system_type_id
+      ,user_type_id
+      ,max_length
+      ,precision
+      ,scale
+      ,collation_name
+      ,is_nullable
+      ,is_ansi_padded
+      ,is_rowguidcol
+      ,is_identity
+      ,is_computed
+      ,is_filestream
+      ,is_replicated
+      ,is_non_sql_subscribed
+      ,is_merge_published
+      ,is_dts_replicated
+      ,is_xml_document
+      ,xml_collection_id
+      ,default_object_id
+      ,rule_object_id
+      ,is_sparse
+      ,is_column_set
+  FROM sys.columns sc
+  WHERE sc.object_id  = 
+  (
+  SELECT so.object_id FROM sys.objects so
+WHERE name = @TABLE_NAME
+AND schema_id = 
+    (SELECT schema_id 
+    FROM sys.schemas
+    WHERE name = @TABLE_SCHEMA)
+   ) 
+   and
+   name =  @COLUMN_NAME
+";
+
 
         public bool IsAutoKey
         {
             get
             {
-                if (smoColumn.Identity)
+                if (columnValuesFromSysViews["is_identity"].ToString() == "1")
                 {
                     return true;
                 }
-                if (smoColumn.RowGuidCol)
+                if (columnValuesFromSysViews["is_rowguidcol"].ToString() == "1")
                 {
                     return true;
                 }
@@ -42,23 +103,73 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                return smoColumn.Name;
+                return columnName;
             }
         }
+
+        private const string SQL_PRIMARY_KEY_INFO = @"SELECT COUNT(*)
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS C
+JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS K
+ON C.TABLE_NAME = K.TABLE_NAME
+AND C.CONSTRAINT_CATALOG = K.CONSTRAINT_CATALOG
+AND C.CONSTRAINT_SCHEMA = K.CONSTRAINT_SCHEMA
+AND C.CONSTRAINT_NAME = K.CONSTRAINT_NAME
+WHERE C.CONSTRAINT_TYPE = 'PRIMARY KEY'
+AND K.COLUMN_NAME = @COLUMN_NAME
+AND K.TABLE_NAME = @TABLE_NAME
+AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
+        private const string SQL_FOREIGN_KEY_INFO = @"SELECT COUNT(*)
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS C
+JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS K
+ON C.TABLE_NAME = K.TABLE_NAME
+AND C.CONSTRAINT_CATALOG = K.CONSTRAINT_CATALOG
+AND C.CONSTRAINT_SCHEMA = K.CONSTRAINT_SCHEMA
+AND C.CONSTRAINT_NAME = K.CONSTRAINT_NAME
+WHERE C.CONSTRAINT_TYPE = 'FOREIGN KEY'
+AND K.COLUMN_NAME = @COLUMN_NAME
+AND K.TABLE_NAME = @TABLE_NAME
+AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
+
+        bool? isInPrimaryKey;
 
         public bool IsInPrimaryKey
         {
             get
             {
-                return smoColumn.InPrimaryKey;
+                if (isInPrimaryKey.HasValue)
+                {
+                    return isInPrimaryKey.Value;
+                }
+                else
+                {
+                    int sonuc = (int)template.TekDegerGetir(SQL_PRIMARY_KEY_INFO, getBuilderWithDefaultValues().GetParameterArray());
+                    return sonuc > 0;
+                }
             }
         }
+        bool? isInForeignKey;
 
         public bool IsInForeignKey
         {
+
             get
             {
-                return smoColumn.IsForeignKey;
+                if (isInForeignKey.HasValue)
+                {
+                    return isInForeignKey.Value;
+                }
+                else
+                {
+                    int sonuc = (int)template.TekDegerGetir(SQL_FOREIGN_KEY_INFO, getBuilderWithDefaultValues().GetParameterArray());
+                    if (sonuc > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
         }
 
@@ -66,22 +177,26 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                return smoColumn.Nullable;
+                int isNullableValue = Convert.ToInt32( columnValuesFromInformationSchema["IS_NULLABLE"]);
+                return isNullableValue > 0;
             }
         }
 
 
         string _LanguageType;
+        string _SqlDataType;
         public string LanguageType
         {
             get
             {
                 if (String.IsNullOrEmpty(_LanguageType))
                 {
+
                     string sonuc;
-                    if (smoColumn.DataType.SqlDataType.ToString() == "UserDefinedDataType")
+                    if (SqlDataTypeName == "UserDefinedDataType")
                     {
-                        string sqlTypeName = getUnderlyingTypeOfUserDefinedType(smoColumn.DataType.Name);
+                        throw new NotImplementedException("UserDefinedDataType cevrimi");
+                        string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
                         sonuc = sqlTypeToDotnetCSharpType(sqlTypeName);
                     }
                     else
@@ -120,7 +235,10 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                return smoColumn.Computed || smoColumn.RowGuidCol || ( smoColumn.DataType.Name == "timestamp");
+                bool isComputed = Convert.ToInt32(columnValuesFromSysViews["is_computed"]) > 0 ;
+                bool is_rowguidcol = Convert.ToInt32(columnValuesFromSysViews["is_rowguidcol"]) > 0;
+
+                return isComputed || is_rowguidcol || (SqlDataTypeName == "timestamp");
                 
             }
         }
@@ -247,44 +365,48 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                if (smoColumn.DataType.SqlDataType.ToString() == "UserDefinedDataType")
+                if (SqlDataTypeName == "UserDefinedDataType")
                 {
-                    string sqlTypeName = getUnderlyingTypeOfUserDefinedType(smoColumn.DataType.Name);
+                    string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
                     return sqlTypeToDotnetSqlDbType(sqlTypeName);
                 }
-                if (smoColumn.DataType.SqlDataType.ToString() == "Numeric")
+                if (SqlDataTypeName == "Numeric")
                 {
                     return "SqlDbType.Decimal";
                 }
-                if (smoColumn.DataType.SqlDataType.ToString() == "VarCharMax")
+                if (SqlDataTypeName == "VarCharMax")
                 {
                     return "SqlDbType.VarChar";
                 }
-                if (smoColumn.DataType.SqlDataType.ToString() == "NVarCharMax")
+                if (SqlDataTypeName == "NVarCharMax")
                 {
                     return "SqlDbType.NVarChar";
                 }
-                if (smoColumn.DataType.SqlDataType.ToString() == "VarBinaryMax")
+                if (SqlDataTypeName == "VarBinaryMax")
                 {
                     return "SqlDbType.VarBinary";
                 }
                 
-                return "SqlDbType." + smoColumn.DataType.SqlDataType.ToString();
+                return "SqlDbType." + SqlDataTypeName;
             }
         }
 
+        private string sqlDataTypeName;
+
+        public string SqlDataTypeName
+        {
+            get { return DataTypeName; }
+        }
         public string DataTypeName
         {
             get
             {
-                string val = smoColumn.DataType.ToString();
-                if (val == "")
+                if (sqlDataTypeName == null)
                 {
-                    val = smoColumn.DataType.SqlDataType.ToString();
-
+                    sqlDataTypeName = columnValuesFromInformationSchema["DATA_TYPE"].ToString();
                 }
-                return val;
-            }
+                return sqlDataTypeName;
+        }
         }
 
         public int CharacterMaxLength
@@ -295,7 +417,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
                 int charMaxLength = 0;
                 if (isStringType)
                 {
-                    charMaxLength = smoColumn.DataType.MaximumLength;
+                    charMaxLength = Convert.ToInt32(columnValuesFromInformationSchema["CHARACTER_MAXIMUM_LENGTH"]);
                 }
                 return charMaxLength;
             }
@@ -307,7 +429,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             {
                 if (isStringType)
                 {
-                    string lowerDataType = this.smoColumn.DataType.SqlDataType.ToString().ToLowerInvariant();
+                    string lowerDataType = this.SqlDataTypeName.ToLowerInvariant();
                     if (
                         lowerDataType.Contains("text")
                         || lowerDataType.Contains("max")
@@ -324,7 +446,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                string lowerDataType = smoColumn.DataType.ToString().ToLowerInvariant();
+                string lowerDataType = SqlDataTypeName.ToLowerInvariant();
                 if (
                     lowerDataType.Contains("char")
                     ||

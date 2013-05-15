@@ -63,10 +63,8 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
                 try
                 {
-                    ParentMainForm.DatabaseHelper.CodeGenerateOneTable(
-                 tableName
-                , tableSchema
-                );
+                    ParentMainForm.DatabaseHelper.CodeGenerateOneTable(tableName, tableSchema);
+                    MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
 
                 }
                 catch (Exception ex)
@@ -75,7 +73,6 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
                 }
             }
 
-            MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
 
         }
 

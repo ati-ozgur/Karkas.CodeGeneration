@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGenerationHelper;
-using Microsoft.SqlServer.Management.Smo;
-using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
 using Karkas.CodeGenerationHelper.Generators;
 using Karkas.Core.DataUtil;
@@ -18,8 +16,6 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 {
     public class DatabaseSqlServer : BaseDatabase
     {
-        internal Server smoServer;
-        internal Database smoDatabase;
 
         public DatabaseSqlServer(AdoTemplate template)
             : base(template)
@@ -41,9 +37,8 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             )
             : base(template)
         {
+            this.Template = template;
             this.ConnectionString = ConnectionHelper.RemoveProviderFromConnectionString(pConnectionString);
-            this.smoServer = new Server(new ServerConnection(new SqlConnection(ConnectionString)));
-            this.smoDatabase = smoServer.Databases[pDatabaseName];
             this.ProjectNameSpace = pProjectNameSpace;
             this.CodeGenerationDirectory = codeGenerationDirectory;
 
@@ -56,27 +51,12 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         }
 
-
+        private AdoTemplate template;
 
         string databaseName;
 
-        public string DatabaseNameLogical
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
-        }
 
-        public string ConnectionName
-        {
-            get
-            {
-                return smoDatabase.Name;
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+
 
         List<ITable> _tableList;
 
@@ -88,11 +68,16 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
                 if (_tableList == null)
                 {
                     _tableList = new List<ITable>();
-                    foreach (Table smoTable in smoDatabase.Tables)
+                    DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST);
+
+                    foreach (DataRow row in dtTableList.Rows)
                     {
-                        ITable t = new TableSqlServer(this, smoTable.Name, smoTable.Schema);
+                        string schemaName = row[SCHEMA_NAME_IN_TABLE_SQL_QUERIES].ToString();
+                        string tableName = row[SQL_FOR_DATABASE_NAME].ToString();
+                        ITable t = new TableSqlServer(this, Template, tableName, schemaName);
                         _tableList.Add(t);
                     }
+
                 }
                 return _tableList;
             
@@ -130,7 +115,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         public override ITable getTable(string pTableName, string pSchemaName)
         {
-             ITable t = new TableSqlServer(this, pTableName, pSchemaName);
+             ITable t = new TableSqlServer(this, Template, pTableName, pSchemaName);
              return t;
         }
 

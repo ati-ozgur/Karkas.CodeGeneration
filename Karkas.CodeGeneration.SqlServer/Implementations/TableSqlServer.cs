@@ -4,35 +4,35 @@ using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Microsoft.SqlServer.Management.Smo;
+using System.Data;
+using Karkas.Core.DataUtil;
 
 namespace Karkas.CodeGeneration.SqlServer.Implementations
 {
     public class TableSqlServer : ITable
     {
         private IDatabase database;
-        private ColumnCollection smoColumnCollection;
-        Table smoTable;
 
-        public TableSqlServer(DatabaseSqlServer pDatabase,string pFullName)
+        private string tableName;
+        private string schemaName;
+
+
+
+        public TableSqlServer(DatabaseSqlServer pDatabase,AdoTemplate template,  string pTableName,string pSchemaName)
         {
-            database = pDatabase;
-            smoTable = pDatabase.smoDatabase.Tables[pFullName];
-            if (smoTable == null)
-            {
-                throw new ArgumentException("Table can not be found, Tablo bulunamadı");
-            }
-        }
-        public TableSqlServer(DatabaseSqlServer pDatabase, string pTableName,string pSchemaName)
-        {
-            database = pDatabase;
-            smoTable = pDatabase.smoDatabase.Tables[pTableName,pSchemaName];
-            if (smoTable == null)
-            {
-                throw new ArgumentException("Table can not be found, Tablo bulunamadı");
-            }
+            this.database = pDatabase;
+            this.template = template;
+            this.tableName = pTableName;
+            this.schemaName = pSchemaName;
         }
 
+        private AdoTemplate template;
 
+        public AdoTemplate Template
+        {
+            get { return template; }
+            set { template = value; }
+        }
 
         public int findIndexFromName(string name)
         {
@@ -45,22 +45,13 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             {
                 return database;
             }
-            set
-            {
-                if (value is TableSqlServer)
-                {
-                    database = value;
-                }
-                throw new ArgumentException("Beklenmedik Tip, TableSqlServer bekleniyordu");
-
-            }
         }
 
         public string Schema
         {
             get
             {
-                return smoTable.Schema;
+                return schemaName;
             }
         }
 
@@ -68,9 +59,19 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         {
             get
             {
-                return smoTable.Name;
+                return tableName;
             }
         }
+
+        private const string SQL_COLUMN_LIST = @"SELECT * FROM 
+INFORMATION_SCHEMA.COLUMNS
+WHERE
+TABLE_SCHEMA = @TABLE_SCHEMA
+AND
+TABLE_NAME = @TABLE_NAME
+";
+
+
 
         private List<IColumn> _Columns = null;
         public List<IColumn> Columns
@@ -83,21 +84,27 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
                 }
                 _Columns = new List<IColumn>();
 
-                if (smoColumnCollection == null)
+                ParameterBuilder builder = Template.getParameterBuilder();
+                builder.parameterEkle("@TABLE_NAME",DbType.AnsiString,tableName );
+                builder.parameterEkle("@TABLE_SCHEMA", DbType.AnsiString, schemaName);
+
+
+
+                DataTable dtColumns = Template.DataTableOlustur(SQL_COLUMN_LIST, builder.GetParameterArray());
+
+
+                foreach (DataRow row in dtColumns.Rows)
                 {
-                    smoColumnCollection = smoTable.Columns;
-                }
-                foreach (Column smoColumn in smoColumnCollection)
-                {
-                    IColumn column = new ColumnSqlServer(smoColumn,this);
+                    string columnName = row["COLUMN_NAME"].ToString();
+                    IColumn column = new ColumnSqlServer(this,template, columnName, row);
+
+
+
                     _Columns.Add(column);
                 }
                 return _Columns;
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
+
         }
 
         public DateTime DateCreated
