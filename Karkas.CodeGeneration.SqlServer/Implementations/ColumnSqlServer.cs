@@ -177,8 +177,17 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
         {
             get
             {
-                int isNullableValue = Convert.ToInt32( columnValuesFromInformationSchema["IS_NULLABLE"]);
-                return isNullableValue > 0;
+                string isNullableValue = columnValuesFromInformationSchema["IS_NULLABLE"].ToString();
+                if (isNullableValue == "NO")
+                {
+                    return false;
+                }
+                if (isNullableValue == "YES")
+                {
+                    return true;
+                }
+
+                throw new NotSupportedException("Nullable value YES veya NO olmalı. Buraya Gelmemesi gerekir.");
             }
         }
 
@@ -464,9 +473,30 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             }
         }
 
+
         public bool isNumericType
         {
-            get { throw new NotImplementedException(); }
+            get { 
+                if (
+                    SqlDataTypeName == "tinyint" || 
+                    SqlDataTypeName == "short" || 
+                    SqlDataTypeName == "byte" || 
+                    SqlDataTypeName == "int" || 
+                    SqlDataTypeName == "numeric" || 
+                    SqlDataTypeName == "decimal" || 
+                    SqlDataTypeName == "float" || 
+                    SqlDataTypeName == "real" || 
+                    SqlDataTypeName == "money" 
+                    )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
+            }
         }
 
         public ITable Table
