@@ -225,21 +225,40 @@ AND
 ORDER BY SEQUENCE_NAME
 ";
         // TODO Test 2012
+
+        private bool? isSequenceSupported;
+
         public override DataTable getSequenceListFromSchema(string schemaName)
         {
             DataTable dt = new DataTable();
-            try
+            if (!isSequenceSupported.HasValue)
             {
-                ParameterBuilder builder = Template.getParameterBuilder();
-                builder.parameterEkle("@SEQ_SCHEMA_NAME", DbType.String, schemaName);
-                dt = Template.DataTableOlustur(SQL_FOR_SEQUENCES_LIST, builder.GetParameterArray());
+                try
+                {
+                    dt = findSequenceDataTable(schemaName, dt);
+                    isSequenceSupported = true;
+                }
+                catch
+                {
+                    isSequenceSupported = false;
+                    // sql server 2000-2008 does not support sequences but 2012 do.
+                    // sql server 2000-2008 arasında sequences yok ama 2012'de var.
+                    // exception yut.
+                }
+
             }
-            catch
+            else if (isSequenceSupported.Value)
             {
-                // sql server 2000-2008 does not support sequences but 2012 do.
-                // sql server 2000-2008 arasında sequences yok ama 2012'de var.
-                // exception yut.
+                dt = findSequenceDataTable(schemaName, dt);
             }
+            return dt;
+        }
+
+        private DataTable findSequenceDataTable(string schemaName, DataTable dt)
+        {
+            ParameterBuilder builder = Template.getParameterBuilder();
+            builder.parameterEkle("@SEQ_SCHEMA_NAME", DbType.String, schemaName);
+            dt = Template.DataTableOlustur(SQL_FOR_SEQUENCES_LIST, builder.GetParameterArray());
             return dt;
         }
 
