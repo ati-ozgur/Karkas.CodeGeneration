@@ -18,7 +18,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         DataRow columnValuesFromSysViews;
         AdoTemplate template;
 
-        public ColumnSqlServer(IContainer pTableOrView, AdoTemplate template, string columnName,DataRow columnValues)
+        public ColumnSqlServer(IContainer pTableOrView, AdoTemplate template, string columnName, DataRow columnValues)
         {
             tableOrView = pTableOrView;
             this.template = template;
@@ -31,7 +31,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
             columnValuesFromSysViews = dt.Rows[0];
 
 
-            
+
         }
 
         private ParameterBuilder getBuilderWithDefaultValues()
@@ -244,11 +244,11 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
         {
             get
             {
-                bool isComputed = Convert.ToInt32(columnValuesFromSysViews["is_computed"]) > 0 ;
+                bool isComputed = Convert.ToInt32(columnValuesFromSysViews["is_computed"]) > 0;
                 bool is_rowguidcol = Convert.ToInt32(columnValuesFromSysViews["is_rowguidcol"]) > 0;
 
                 return isComputed || is_rowguidcol || (SqlDataTypeName == "timestamp");
-                
+
             }
         }
 
@@ -291,7 +291,7 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                     pSqlTypeName.Equals("char") ||
                     pSqlTypeName.Equals("nchar") ||
                     pSqlTypeName.Equals("ntext") ||
-                    pSqlTypeName.Equals("Xml") ||
+                    pSqlTypeName.Equals("xml") ||
                     pSqlTypeName.Equals("text")
 
                 )
@@ -370,33 +370,58 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             return "Unknown";
         }
 
+        string _DbTargetType = null;
         public string DbTargetType
         {
             get
             {
-                if (SqlDataTypeName == "UserDefinedDataType")
+                if (_DbTargetType == null)
                 {
-                    string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
-                    return sqlTypeToDotnetSqlDbType(sqlTypeName);
+                    string lowerCaseSqlDataTypeName = SqlDataTypeName.ToLowerInvariant();
+                    switch (lowerCaseSqlDataTypeName)
+                    {
+                        case "int":
+                            _DbTargetType = "SqlDbType.Int";
+                            break;
+                        case "varcharmax":
+                        case "varchar":
+
+                            _DbTargetType = "SqlDbType.VarChar";
+                            break;
+                        case "uniqueidentifier":
+                            _DbTargetType = "SqlDbType.UniqueIdentifier";
+                            break;
+                        case "UserDefinedDataType":
+                        string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
+                        _DbTargetType = sqlTypeToDotnetSqlDbType(sqlTypeName);
+                            break;
+                        case "numeric":
+                        case "decimal":
+                            _DbTargetType = "SqlDbType.Decimal";
+                            break;
+
+                        case "nvarcharbax":
+                        case "nvrchar":
+                            _DbTargetType = "SqlDbType.NVarChar";
+                            break;
+                        case "varbinarymax":
+                        case "varbinary":
+                            _DbTargetType = "SqlDbType.VarBinary";
+                            break;
+
+                        case "smalldatetime":
+                            _DbTargetType = "SqlDbType.SmallDateTime";
+                            break;
+                        case "datetime":
+                            _DbTargetType = "SqlDbType.DateTime";
+                            break;
+                        
+                        default:
+                        _DbTargetType = "SqlDbType." + SqlDataTypeName;
+                            break;
+                    }
                 }
-                if (SqlDataTypeName == "Numeric")
-                {
-                    return "SqlDbType.Decimal";
-                }
-                if (SqlDataTypeName == "VarCharMax")
-                {
-                    return "SqlDbType.VarChar";
-                }
-                if (SqlDataTypeName == "NVarCharMax")
-                {
-                    return "SqlDbType.NVarChar";
-                }
-                if (SqlDataTypeName == "VarBinaryMax")
-                {
-                    return "SqlDbType.VarBinary";
-                }
-                
-                return "SqlDbType." + SqlDataTypeName;
+                return _DbTargetType;
             }
         }
 
@@ -415,7 +440,7 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                     sqlDataTypeName = columnValuesFromInformationSchema["DATA_TYPE"].ToString();
                 }
                 return sqlDataTypeName;
-        }
+            }
         }
 
         public int CharacterMaxLength
@@ -476,17 +501,18 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
 
         public bool isNumericType
         {
-            get { 
+            get
+            {
                 if (
-                    SqlDataTypeName == "tinyint" || 
-                    SqlDataTypeName == "short" || 
-                    SqlDataTypeName == "byte" || 
-                    SqlDataTypeName == "int" || 
-                    SqlDataTypeName == "numeric" || 
-                    SqlDataTypeName == "decimal" || 
-                    SqlDataTypeName == "float" || 
-                    SqlDataTypeName == "real" || 
-                    SqlDataTypeName == "money" 
+                    SqlDataTypeName == "tinyint" ||
+                    SqlDataTypeName == "short" ||
+                    SqlDataTypeName == "byte" ||
+                    SqlDataTypeName == "int" ||
+                    SqlDataTypeName == "numeric" ||
+                    SqlDataTypeName == "decimal" ||
+                    SqlDataTypeName == "float" ||
+                    SqlDataTypeName == "real" ||
+                    SqlDataTypeName == "money"
                     )
                 {
                     return true;
@@ -495,7 +521,7 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                 {
                     return false;
                 }
-            
+
             }
         }
 
