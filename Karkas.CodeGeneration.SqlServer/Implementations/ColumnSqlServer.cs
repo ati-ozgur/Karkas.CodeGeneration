@@ -383,6 +383,29 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                         case "int":
                             _DbTargetType = "SqlDbType.Int";
                             break;
+                        case "bigint":
+                            _DbTargetType = "SqlDbType.BigInt";
+                            break;
+
+                        case "bit":
+                            _DbTargetType = "SqlDbType.Bit";
+                            break;
+                        case "binary":
+                            _DbTargetType = "SqlDbType.Binary";
+                            break;
+                        case "char":
+                            _DbTargetType = "SqlDbType.Char";
+                            break;
+                        case "nchar":
+                            _DbTargetType = "SqlDbType.NChar";
+                            break;
+                        case "float":
+                            _DbTargetType = "SqlDbType.Float";
+                            break;
+                        case "real":
+                            _DbTargetType = "SqlDbType.Real";
+                            break;
+
                         case "varcharmax":
                         case "varchar":
 
@@ -391,17 +414,28 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                         case "uniqueidentifier":
                             _DbTargetType = "SqlDbType.UniqueIdentifier";
                             break;
-                        case "UserDefinedDataType":
-                        string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
-                        _DbTargetType = sqlTypeToDotnetSqlDbType(sqlTypeName);
+                        case "smalldatetime":
+                            _DbTargetType = "SqlDbType.SmallDateTime";
                             break;
+                        case "datetime":
+                            _DbTargetType = "SqlDbType.DateTime";
+                            break;
+
+                        case "tinyint":
+                            _DbTargetType = "SqlDbType.TinyInt";
+                            break;
+                        case "smallint":
+                            _DbTargetType = "SqlDbType.SmallInt";
+                            break;
+
+
                         case "numeric":
                         case "decimal":
                             _DbTargetType = "SqlDbType.Decimal";
                             break;
 
-                        case "nvarcharbax":
-                        case "nvrchar":
+                        case "nvarcharmax":
+                        case "nvarchar":
                             _DbTargetType = "SqlDbType.NVarChar";
                             break;
                         case "varbinarymax":
@@ -409,13 +443,36 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                             _DbTargetType = "SqlDbType.VarBinary";
                             break;
 
-                        case "smalldatetime":
-                            _DbTargetType = "SqlDbType.SmallDateTime";
+                        case "xml":
+                            _DbTargetType = "SqlDbType.Xml";
                             break;
-                        case "datetime":
-                            _DbTargetType = "SqlDbType.DateTime";
+                        case "image":
+                            _DbTargetType = "SqlDbType.Image";
                             break;
-                        
+                        case "money":
+                            _DbTargetType = "SqlDbType.Money";
+                            break;
+                        case "smallmoney":
+                            _DbTargetType = "SqlDbType.SmallMoney";
+                            break;
+                        case "sql_variant":
+                            _DbTargetType = "SqlDbType.Variant";
+                            break;
+                            
+                        case "text":
+                            _DbTargetType = "SqlDbType.Text";
+                            break;
+                        case "ntext":
+                            _DbTargetType = "SqlDbType.NText";
+                            break;
+                        case "timestamp":
+                            _DbTargetType = "SqlDbType.Timestamp";
+                            break;
+                            
+                        case "UserDefinedDataType":
+                            string sqlTypeName = getUnderlyingTypeOfUserDefinedType(SqlDataTypeName);
+                            _DbTargetType = sqlTypeToDotnetSqlDbType(sqlTypeName);
+                            break;
                         default:
                         _DbTargetType = "SqlDbType." + SqlDataTypeName;
                             break;
