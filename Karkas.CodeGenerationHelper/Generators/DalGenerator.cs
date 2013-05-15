@@ -196,9 +196,9 @@ namespace Karkas.CodeGenerationHelper.Generators
                     string pkPropertyName = utils.getPropertyVariableName(pkColumn);
                     output.autoTabLn(string.Format("public virtual void Sil({0} {1})", pkType, pkPropertyName));
                     BaslangicSusluParentezVeTabArtir(output);
-                    output.autoTabLn(string.Format("{0} row = new {0}();", classNameTypeLibrary));
-                    output.autoTabLn(string.Format("row.{0} = {0};", pkPropertyName));
-                    output.autoTabLn("base.Sil(row);");
+                    output.autoTabLn(string.Format("{0} satir = new {0}();", classNameTypeLibrary));
+                    output.autoTabLn(string.Format("satir.{0} = {0};", pkPropertyName));
+                    output.autoTabLn("base.Sil(satir);");
                     BitisSusluParentezVeTabAzalt(output);
                 }
             }
@@ -584,13 +584,13 @@ namespace Karkas.CodeGenerationHelper.Generators
             string propertyVariableName = "";
             output.autoTab("protected override void ProcessRow(IDataReader dr, ");
             output.write(classNameTypeLibrary);
-            output.writeLine(" row)");
+            output.writeLine(" satir)");
             BaslangicSusluParentezVeTabArtir(output);
             for (int i = 0; i < container.Columns.Count; i++)
             {
                 IColumn column = container.Columns[i];
                 propertyVariableName = utils.getPropertyVariableName(column);
-                string yazi = "row." + propertyVariableName + " = " +
+                string yazi = "satir." + propertyVariableName + " = " +
                                 utils.GetDataReaderSyntax(column)
                                 + "(" + i + ");";
                 if (column.IsNullable)
@@ -613,7 +613,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         {
             output.autoTab("protected override void InsertCommandParametersAdd(DbCommand cmd, ");
             output.write(classNameTypeLibrary);
-            output.writeLine(" row)");
+            output.writeLine(" satir)");
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
             output.autoTabLn("builder.Command = cmd;");
@@ -659,7 +659,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                         + column.Name
                         + "\","
                         + getDbTargetType(column)
-                        + ", row."
+                        + ", satir."
                         + utils.getPropertyVariableName(column)
                         + ","
                         + Convert.ToString(column.CharacterMaxLength)
@@ -676,7 +676,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                         + column.Name
                         + "\","
                         + getDbTargetType(column)
-                        + ", row."
+                        + ", satir."
                         + utils.getPropertyVariableName(column)
                         + ");";
             output.autoTabLn(s);
@@ -686,7 +686,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         {
             output.autoTab("protected override void DeleteCommandParametersAdd(DbCommand cmd, ");
             output.autoTab(classNameTypeLibrary);
-            output.autoTabLn(" row)");
+            output.autoTabLn(" satir)");
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
             output.autoTabLn("builder.Command = cmd;");
@@ -706,7 +706,7 @@ namespace Karkas.CodeGenerationHelper.Generators
         {
             output.autoTab("protected override void UpdateCommandParametersAdd(DbCommand cmd, ");
             output.autoTab(classNameTypeLibrary);
-            output.autoTabLn(" row)");
+            output.autoTabLn(" satir)");
             BaslangicSusluParentezVeTabArtir(output);
             output.autoTabLn("ParameterBuilder builder = Template.getParameterBuilder();");
             output.autoTabLn("builder.Command = cmd;");
