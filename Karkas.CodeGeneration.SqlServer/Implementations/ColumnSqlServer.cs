@@ -238,16 +238,33 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             }
         }
 
+        public bool IsIdentity
+        {
+            get { return Convert.ToInt32(columnValuesFromSysViews["is_identity"]) > 0; }
+        }
 
+        public bool IsComputedNormal
+        {
+            get { return Convert.ToInt32(columnValuesFromSysViews["is_computed"]) > 0;  }
+        }
+
+
+        public bool IsRowGuidCol
+        {
+            get { return Convert.ToInt32(columnValuesFromSysViews["is_rowguidcol"]) > 0; }
+        }
+
+        public bool IsTimestamp
+        {
+            get { return (SqlDataTypeName == "timestamp"); }
+        }
 
         public bool IsComputed
         {
             get
             {
-                bool isComputed = Convert.ToInt32(columnValuesFromSysViews["is_computed"]) > 0;
-                bool is_rowguidcol = Convert.ToInt32(columnValuesFromSysViews["is_rowguidcol"]) > 0;
 
-                return isComputed || is_rowguidcol || (SqlDataTypeName == "timestamp");
+                return IsIdentity || IsComputedNormal || IsRowGuidCol || IsTimestamp;
 
             }
         }

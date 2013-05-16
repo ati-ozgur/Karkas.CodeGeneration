@@ -25,7 +25,12 @@ namespace Karkas.CodeGenerationHelper.Generators
         string pkAdiPascalCase = "";
         string pkType = "";
         string identityColumnAdi = "";
-        bool identityVarmi = false;
+        bool _identityVarmi = false;
+
+        public bool getIdentityVarmi(Utils utils,IContainer container)
+        {
+             return utils.IdentityVarMi(container);
+        }
         string listeType = "";
         string identityType = "";
 
@@ -64,7 +69,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             classNameTypeLibrary = utils.getClassNameForTypeLibrary(container.Name, listDatabaseAbbreviations);
             schemaName = utils.GetPascalCase(container.Schema);
             classNameSpace = baseNameSpace + "." + schemaName;
-            identityVarmi = utils.IdentityVarMi(container);
+      
             bool pkGuidMi = utils.PkGuidMi(container);
             string pkcumlesi = "";
 
@@ -80,7 +85,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 
-            ClassYaz(output, classNameTypeLibrary, identityVarmi, identityType);
+            ClassYaz(output, classNameTypeLibrary, getIdentityVarmi(utils,container) , identityType);
 
             output.autoTabLn("");
 
@@ -103,7 +108,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             SorgulaPkIleGetirYaz(output, container, classNameTypeLibrary,pkAdi, pkAdiPascalCase, pkType);
 
-            IdentityVarMiYaz(output, identityVarmi);
+            IdentityVarMiYaz(output, getIdentityVarmi(utils, container));
 
             PkGuidMiYaz(output, container);
 
@@ -212,7 +217,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             string methodYazisi = string.Format("protected override void identityKolonDegeriniSetle({0} pTypeLibrary,long pIdentityKolonValue)", classNameTypeLibrary);
             output.autoTabLn(methodYazisi);
             BaslangicSusluParentezVeTabArtir(output);
-            if (identityVarmi)
+            if (getIdentityVarmi(utils, container))
             {
                 string propertySetleYazisi = string.Format("pTypeLibrary.{0} = ({1} )pIdentityKolonValue;", utils.GetPascalCase(identityColumnAdi), identityType);
                 output.autoTabLn(propertySetleYazisi);
@@ -484,7 +489,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 }
                 cumle = cumle.Remove(cumle.Length - 1);
                 cumle += ")";
-                if (identityVarmi)
+                if (getIdentityVarmi(utils, container))
                 {
                     cumle = cumle +  getAutoIncrementKeySql();
                 }
