@@ -24,15 +24,27 @@ namespace Karkas.CodeGenerationHelper.Generators
         string pkAdi = "";
         string pkAdiPascalCase = "";
         string pkType = "";
-        string identityColumnAdi = "";
+        string _identityColumnAdi = "";
         bool _identityVarmi = false;
+        string _identityType = "";
+
+        public string getIdentityType(Utils utils, IContainer container)
+        {
+            return utils.getIdentityType(container);
+        }
+
+
+        public string getIdentityColumnName(Utils utils, IContainer container)
+        {
+            return utils.getIdentityColumnName(container);
+        }
+
 
         public bool getIdentityVarmi(Utils utils,IContainer container)
         {
              return utils.IdentityVarMi(container);
         }
         string listeType = "";
-        string identityType = "";
 
         public DalGenerator(IDatabase databaseHelper)
         {
@@ -56,7 +68,6 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             pkAdi = utils.PrimaryKeyAdiniBul(container);
             pkAdiPascalCase = utils.GetPascalCase(pkAdi);
-            identityColumnAdi = utils.IdentityColumnAdiniBul(container);
             
             if (container is ITable && (!((ITable) container).HasPrimaryKey ))
             {
@@ -76,7 +87,6 @@ namespace Karkas.CodeGenerationHelper.Generators
             string baseNameSpaceDal = baseNameSpace + ".Dal." + schemaName;
 
             pkType = utils.PrimaryKeyTipiniBul(container);
-            identityType = utils.IdentityTipiniBul(container);
 
             listeType = "List<" + classNameTypeLibrary + ">";
 
@@ -85,8 +95,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             UsingleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceDal);
 
-            ClassYaz(output, classNameTypeLibrary, getIdentityVarmi(utils,container) , identityType);
-
+            ClassYaz(output, classNameTypeLibrary, getIdentityVarmi(utils, container), getIdentityType(utils, container));
             output.autoTabLn("");
 
             OverrideDatabaseNameYaz(output, container);
@@ -219,7 +228,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             BaslangicSusluParentezVeTabArtir(output);
             if (getIdentityVarmi(utils, container))
             {
-                string propertySetleYazisi = string.Format("pTypeLibrary.{0} = ({1} )pIdentityKolonValue;", utils.GetPascalCase(identityColumnAdi), identityType);
+                string propertySetleYazisi = string.Format("pTypeLibrary.{0} = ({1} )pIdentityKolonValue;", utils.getIdentityColumnNameAsPascalCase(container), getIdentityType(utils,container));
                 output.autoTabLn(propertySetleYazisi);
             }
             BitisSusluParentezVeTabAzalt(output);

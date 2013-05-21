@@ -32,6 +32,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
 
         
 
+
         private string name;
 
         private bool isAutoKey;
@@ -44,6 +45,12 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                 return isAutoKey;
             }
         }
+
+        public bool IsIdentity
+        {
+            get { return isAutoKey; }
+        }
+
 
         public string Name
         {
@@ -293,5 +300,8 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
         {
             get { return tableOrView.Schema; }
         }
+
+
+
     }
 }

@@ -592,5 +592,11 @@ AND
         {
             get { return tableOrView.Schema; }
         }
+
+
+        public bool IsIdentity
+        {
+            get { return false; }
+        }
     }
 }

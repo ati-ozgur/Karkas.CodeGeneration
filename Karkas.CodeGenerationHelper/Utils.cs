@@ -45,18 +45,6 @@ namespace Karkas.CodeGenerationHelper
         #endregion
 
 
-        public string IdentityColumnAdiniBul(IContainer container)
-        {
-            string adi = "";
-            foreach (IColumn column in container.Columns)
-            {
-                if (column.IsAutoKey)
-                {
-                    adi = column.Name;
-                }
-            }
-            return adi;
-        }
 
         public string PrimaryKeyAdiniBul(IContainer container)
         {
@@ -108,26 +96,16 @@ namespace Karkas.CodeGenerationHelper
             }
             return tip;
         }
-        public string IdentityTipiniBul(IContainer container)
-        {
-            string tip = "";
-            foreach (IColumn column in container.Columns)
-            {
-                if (column.IsAutoKey)
-                {
-                    tip = column.LanguageType;
-                }
-            }
-            return tip;
-        }
+
         public bool IdentityVarMi(IContainer container)
         {
             bool sonuc = false;
             foreach (IColumn column in container.Columns)
             {
-                if (column.IsAutoKey)
+                if (column.IsIdentity)
                 {
                     sonuc = true;
+                    break;
                 }
             }
             return sonuc;
@@ -138,9 +116,10 @@ namespace Karkas.CodeGenerationHelper
             string sonuc = "false";
             foreach (IColumn column in container.Columns)
             {
-                if (column.IsAutoKey)
+                if (column.IsIdentity)
                 {
                     sonuc = "true";
+                    break;
                 }
             }
             return sonuc;
@@ -506,8 +485,39 @@ namespace Karkas.CodeGenerationHelper
 
 
 
+        public string getIdentityColumnName(IContainer container)
+        {
+            string adi = "";
+            foreach (IColumn column in container.Columns)
+            {
+                if (column.IsIdentity)
+                {
+                    adi = column.Name;
+                }
+            }
+            return adi;
+        }
+
+        public string getIdentityColumnNameAsPascalCase(IContainer container)
+        {
+            string adi = GetPascalCase(getIdentityColumnName(container));
+           return adi;
+        }
 
 
+
+        public string getIdentityType(IContainer container)
+        {
+            string typeToReturn = "";
+            foreach (IColumn column in container.Columns)
+            {
+                if (column.IsIdentity)
+                {
+                    typeToReturn = column.LanguageType;
+                }
+            }
+            return typeToReturn;
+        }
 
     }
 }

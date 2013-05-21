@@ -7,7 +7,9 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 {
     public interface IColumn
     {
-        bool IsAutoKey { get;  }
+        bool IsAutoKey { get; }
+
+        bool IsIdentity { get; }
 
         string Name { get;  }
 
