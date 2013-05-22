@@ -18,6 +18,11 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         DataRow columnValuesFromSysViews;
         AdoTemplate template;
 
+        public AdoTemplate Template
+        {
+            get { return template; }
+        }
+
         public ColumnSqlServer(IContainer pTableOrView, AdoTemplate template, string columnName, DataRow columnValues)
         {
             tableOrView = pTableOrView;
@@ -282,9 +287,8 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
  and is_user_defined = 0
 ";
 
-            ParameterBuilder builder = new ParameterBuilder();
+            ParameterBuilder builder = Template.getParameterBuilder();
             builder.parameterEkle("@UserDefinedTypeName", DbType.String, pUserDefinedTypeName);
-            AdoTemplate template = new AdoTemplate();
             underlyingType = (string)template.TekDegerGetir(sql, builder.GetParameterArray());
 
             return underlyingType;

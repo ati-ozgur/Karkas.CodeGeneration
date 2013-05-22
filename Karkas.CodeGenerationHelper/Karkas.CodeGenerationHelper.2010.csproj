@@ -36,19 +36,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Karkas.Core.DataUtil">
-      <HintPath>..\..\ThirdParty\Karkas.Core.DataUtil.dll</HintPath>
+      <HintPath>..\packages\Karkas.Core.DataUtil.1.0.0\lib\Karkas.Core.DataUtil.dll</HintPath>
     </Reference>
-    <Reference Include="Karkas.Core.Onaylama, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ThirdParty\Karkas.Core.Onaylama.dll</HintPath>
+    <Reference Include="Karkas.Core.ExtensionsMethods">
+      <HintPath>..\packages\Karkas.Core.ExtensionsMethods.1.0.0\lib\Karkas.Core.ExtensionsMethods.dll</HintPath>
     </Reference>
-    <Reference Include="Karkas.Core.Utility">
-      <HintPath>..\..\ThirdParty\Karkas.Core.Utility.dll</HintPath>
+    <Reference Include="Karkas.Core.Onaylama">
+      <HintPath>..\packages\Karkas.Core.Onaylama.1.0.0\lib\Karkas.Core.Onaylama.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -88,6 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utils.FileUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

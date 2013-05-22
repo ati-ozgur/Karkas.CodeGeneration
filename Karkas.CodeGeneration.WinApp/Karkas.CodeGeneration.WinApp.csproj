@@ -163,7 +163,9 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="bin\Debug\connectionsDb.sqlite" />
-    <None Include="connectionsDb.sqlite" />
+    <None Include="connectionsDb.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +214,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="x64\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="x86\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

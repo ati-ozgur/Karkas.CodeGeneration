@@ -8,7 +8,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Karkas.Core.DataUtil;
-using Karkas.Core.Utility;
 
 namespace Karkas.CodeGenerationHelper.SmoHelpers
 {
