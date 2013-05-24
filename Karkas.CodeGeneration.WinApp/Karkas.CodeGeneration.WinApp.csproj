@@ -28,7 +28,7 @@
     <InstallUrl>http://karkas.codeplex.com/releases/clickonce/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -57,10 +57,11 @@
     <StartupObject>Karkas.CodeGeneration.WinApp.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7D663A9C92D4E69715E4E1F53A3166202A78E400</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B96178DC6BBD8F65269F745899CD95F40845DD49</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Karkas.CodeGeneration.WinApp_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -182,7 +183,6 @@
     <None Include="connectionsDb.sqlite">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Karkas.CodeGeneration.WinApp_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
