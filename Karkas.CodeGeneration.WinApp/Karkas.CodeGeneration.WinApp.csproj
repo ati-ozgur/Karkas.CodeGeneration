@@ -28,11 +28,15 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://karkas.codeplex.com/releases/clickonce/</InstallUrl>
+    <SupportUrl>https://github.com/ati-ozgur/karkas</SupportUrl>
+    <ProductName>Karkas.CodeGeneration.WinApp</ProductName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -70,6 +74,27 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Karkas.Core.DataUtil, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -180,7 +205,9 @@
     <EmbeddedResource Include="UserControls\UserControlViewRelated.resx">
       <DependentUpon>UserControlViewRelated.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bin\Debug\connectionsDb.sqlite" />
     <None Include="connectionsDb.sqlite">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -188,6 +215,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Karkas.CodeGeneration.Oracle\Karkas.CodeGeneration.Oracle.csproj">
