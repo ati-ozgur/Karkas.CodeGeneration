@@ -304,6 +304,12 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             }
             return "Unknown";
         }
+        /// <summary>
+        /// Maps Sql Server types to C# types according to table provided by microsoft
+        /// see http://msdn.microsoft.com/en-us/library/cc716729.aspx
+        /// </summary>
+        /// <param name="pSqlTypeName"></param>
+        /// <returns></returns>
         public string sqlTypeToDotnetCSharpType(string pSqlTypeName)
         {
             if (
@@ -341,11 +347,17 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
                 return "long";
             }
             if (
+                pSqlTypeName.Equals("date") ||
                 pSqlTypeName.Equals("datetime") ||
+                pSqlTypeName.Equals("datetime2") ||
                 pSqlTypeName.Equals("smalldatetime")
                 )
             {
                 return "DateTime";
+            }
+            if (pSqlTypeName.Equals("datetimeoffset"))
+            {
+                return "DateTimeOffset";
             }
             if (pSqlTypeName.Equals("bit"))
             {
@@ -375,6 +387,11 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             {
                 return "float";
             }
+            if (pSqlTypeName.Equals("time"))
+            {
+                return "TimeSpan";
+            }
+
             if (
                 pSqlTypeName.Equals("image") ||
                 pSqlTypeName.Equals("binary") ||
