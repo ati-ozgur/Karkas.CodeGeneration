@@ -55,22 +55,22 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
 
         private void buttonSeciliTablolariUret_Click(object sender, EventArgs e)
         {
-            foreach (var item in listBoxTableListesi.SelectedItems)
+            try
             {
-                DataRowView view = (DataRowView)item;
-                string tableSchema = view["TABLE_SCHEMA"].ToString();
-                string tableName = view["TABLE_NAME"].ToString();
-
-                try
+                foreach (var item in listBoxTableListesi.SelectedItems)
                 {
+                    DataRowView view = (DataRowView)item;
+                    string tableSchema = view["TABLE_SCHEMA"].ToString();
+                    string tableName = view["TABLE_NAME"].ToString();
+
                     ParentMainForm.DatabaseHelper.CodeGenerateOneTable(tableName, tableSchema);
-                    MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
 
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show("SEÇİLEN TABLOLAR İÇİN KOD ÜRETİLDİ");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
 
