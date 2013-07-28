@@ -65,15 +65,17 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
             get
             {
-                if (_tableList == null)
+                if (_tableList == null || _tableList.Count == 0)
                 {
                     _tableList = new List<ITable>();
-                    DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST);
+                    ParameterBuilder builder = Template.getParameterBuilder();
+                    builder.parameterEkle("@TABLE_SCHEMA", DbType.AnsiString, "__TUM_SCHEMALAR__");
+                    DataTable dtTableList = Template.DataTableOlustur(SQL_FOR_TABLE_LIST,builder.GetParameterArray());
 
                     foreach (DataRow row in dtTableList.Rows)
                     {
                         string schemaName = row[SCHEMA_NAME_IN_TABLE_SQL_QUERIES].ToString();
-                        string tableName = row[SQL_FOR_DATABASE_NAME].ToString();
+                        string tableName = row[TABLE_NAME_IN_TABLE_SQL_QUERIES].ToString();
                         ITable t = new TableSqlServer(this, Template, tableName, schemaName);
                         _tableList.Add(t);
                     }
