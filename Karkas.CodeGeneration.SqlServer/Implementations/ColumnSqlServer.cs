@@ -363,11 +363,6 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             {
                 return "bool";
             }
-            if (pSqlTypeName.Equals("bit"))
-            {
-                return "bool";
-            }
-
 
 
             if (
@@ -405,6 +400,26 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             {
                 return "object";
             }
+
+            if (pSqlTypeName.Equals("geography"))
+            {
+                return "SqlGeography";
+            }
+            if (pSqlTypeName.Equals("geometry"))
+            {
+                return "SqlGeometry";
+            }
+            if (pSqlTypeName.Equals("hierarchyid"))
+            {
+                return "SqlHierarchyId";
+            }
+
+            
+
+            
+
+
+
             return "Unknown";
         }
 
