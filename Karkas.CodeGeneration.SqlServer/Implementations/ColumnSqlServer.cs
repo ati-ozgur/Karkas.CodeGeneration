@@ -423,6 +423,27 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             return "Unknown";
         }
 
+
+        public bool isNewSqlServerCLRType
+        {
+            get
+            {
+                if (
+                    this.LanguageType == "SqlGeography" ||
+                    this.LanguageType == "SqlGeometry" ||
+                    this.LanguageType == "SqlHierarchyId"
+                    )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+
         string _DbTargetType = null;
         public string DbTargetType
         {
