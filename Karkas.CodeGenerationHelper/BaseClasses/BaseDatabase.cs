@@ -283,7 +283,7 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
                 return;
             }
 
-            TypeLibraryGenerator typeGen = new TypeLibraryGenerator(this);
+            TypeLibraryGenerator typeGen = this.TypeLibraryGenerator;
             DalGenerator dalGen = this.DalGenerator;
             BsGenerator bsGen = new BsGenerator(this);
 
@@ -361,6 +361,13 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         {
             get;
         }
+        public abstract TypeLibraryGenerator TypeLibraryGenerator 
+        { 
+            get; 
+        }
+
+
+
         public abstract DataTable getSchemaList();
 
         public abstract string getDefaultSchema();
@@ -376,5 +383,6 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
         public bool AnaSinifOnaylamaOrnekleriUret { get; set; }
 
         #endregion
+
     }
 }

@@ -203,5 +203,10 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             get { return new SqliteDalGenerator(this); }
         }
 
+        public override TypeLibraryGenerator TypeLibraryGenerator
+        {
+            get { return new TypeLibraryGenerator(this); }
+        }
+
     }
 }

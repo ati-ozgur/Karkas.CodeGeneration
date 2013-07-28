@@ -256,6 +256,12 @@ ORDER BY SEQUENCE_NAME
             get { return new OracleDalGenerator(this); }
         }
 
+        public override TypeLibraryGenerator TypeLibraryGenerator
+        {
+            get { return new TypeLibraryGenerator(this); }
+        }
+
+
         string defaultSchema;
         public override string getDefaultSchema()
         {

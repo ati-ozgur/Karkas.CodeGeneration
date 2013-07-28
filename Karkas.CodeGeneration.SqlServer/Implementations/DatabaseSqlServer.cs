@@ -327,6 +327,10 @@ ORDER BY SEQUENCE_NAME
             get { return new SqlServerDalGenerator(this); }
         }
 
+        public override TypeLibraryGenerator TypeLibraryGenerator
+        {
+            get { return new SqlServerTypeLibraryGenerator(this); }
+        }
 
         public override string getDefaultSchema()
         {

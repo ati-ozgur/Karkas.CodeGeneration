@@ -129,7 +129,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-        private void usingNamespaceleriYaz(IOutput output, string classNameSpace)
+        protected virtual void usingNamespaceleriYaz(IOutput output, string classNameSpace)
         {
             output.autoTabLn("using System;");
             output.autoTabLn("using System.Data;");
