@@ -25,12 +25,12 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
         public DatabaseSqlServer(
             AdoTemplate template
             , String pConnectionString
-            ,string pDatabaseName
-            ,string pProjectNameSpace
-            ,string codeGenerationDirectory
+            , string pDatabaseName
+            , string pProjectNameSpace
+            , string codeGenerationDirectory
             , string dbProviderName
             , bool semaIsminiSorgulardaKullan
-            ,bool semaIsminiDizinlerdeKullan
+            , bool semaIsminiDizinlerdeKullan
             , bool sysTablolariniAtla
             , List<DatabaseAbbreviations> listDatabaseAbbreviations
 
@@ -62,8 +62,8 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         public override List<ITable> Tables
         {
-           
-            get 
+
+            get
             {
                 if (_tableList == null)
                 {
@@ -80,7 +80,7 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
                 }
                 return _tableList;
-            
+
             }
         }
 
@@ -115,8 +115,8 @@ namespace Karkas.CodeGeneration.SqlServer.Implementations
 
         public override ITable getTable(string pTableName, string pSchemaName)
         {
-             ITable t = new TableSqlServer(this, Template, pTableName, pSchemaName);
-             return t;
+            ITable t = new TableSqlServer(this, Template, pTableName, pSchemaName);
+            return t;
         }
 
 
@@ -254,12 +254,41 @@ ORDER BY SEQUENCE_NAME
             return dt;
         }
 
+
+        private const string SQL_SERVER_VERSION = "Select @@version";
+        private string sqlServerVersion;
+
+        public string SqlServerVersion
+        {
+            get
+            {
+                if (sqlServerVersion == null)
+                {
+                    sqlServerVersion = (string)Template.TekDegerGetir(SQL_SERVER_VERSION);
+                }
+
+                return sqlServerVersion;
+            }
+            set { sqlServerVersion = value; }
+        }
+
+
+
         private DataTable findSequenceDataTable(string schemaName, DataTable dt)
         {
-            ParameterBuilder builder = Template.getParameterBuilder();
-            builder.parameterEkle("@SEQ_SCHEMA_NAME", DbType.String, schemaName);
-            dt = Template.DataTableOlustur(SQL_FOR_SEQUENCES_LIST, builder.GetParameterArray());
-            return dt;
+            if (SqlServerVersion.Contains("SQL Server 2012"))
+            {
+                ParameterBuilder builder = Template.getParameterBuilder();
+                builder.parameterEkle("@SEQ_SCHEMA_NAME", DbType.String, schemaName);
+                dt = Template.DataTableOlustur(SQL_FOR_SEQUENCES_LIST, builder.GetParameterArray());
+                return dt;
+            }
+            else
+            {
+                return new DataTable();
+            }
+
+
         }
 
 
