@@ -209,9 +209,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="bin\Debug\connectionsDb.sqlite" />
-    <Content Include="connectionsDb.sqlite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="connectionsDb.sqlite" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

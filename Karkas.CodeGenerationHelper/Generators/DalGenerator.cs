@@ -258,6 +258,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("using System.Data.SqlClient;");
             output.autoTabLn("using System.Text;");
             output.autoTabLn("using Karkas.Core.DataUtil;");
+            output.autoTabLn("using Karkas.Core.DataUtil.BaseClasses;");
             output.autoTab("using ");
             output.autoTab(baseNameSpaceTypeLibrary);
             output.autoTabLn(";");
@@ -275,7 +276,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
         }
 
-        private void ClassYaz(IOutput output, string classNameTypeLibrary, bool identityVarmi, string identityType)
+        protected virtual void ClassYaz(IOutput output, string classNameTypeLibrary, bool identityVarmi, string identityType)
         {
             output.autoTab("public partial class ");
             output.write(classNameTypeLibrary);

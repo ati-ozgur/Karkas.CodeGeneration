@@ -37,5 +37,16 @@ namespace Karkas.CodeGeneration.Oracle.Generators
             throw new NotImplementedException();
         }
 
+        protected override void ClassYaz(IOutput output, string classNameTypeLibrary, bool identityVarmi, string identityType)
+        {
+            output.autoTab("public partial class ");
+            output.write(classNameTypeLibrary);
+            output.write("Dal : BaseDalOracle<");
+            output.write(classNameTypeLibrary);
+            output.writeLine(">");
+            BaslangicSusluParentezVeTabArtir(output);
+        }
+
+
     }
 }

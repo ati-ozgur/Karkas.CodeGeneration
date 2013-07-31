@@ -174,6 +174,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("using System.Data.SqlClient;");
             output.autoTabLn("using System.Text;");
             output.autoTabLn("using Karkas.Core.DataUtil;");
+            output.autoTabLn("using Karkas.Core.DataUtil.BaseClasses;");
             output.autoTab("using ");
             output.autoTab(baseNameSpaceTypeLibrary);
             output.autoTabLn(";");
