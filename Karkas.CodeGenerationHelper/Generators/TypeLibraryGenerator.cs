@@ -34,7 +34,12 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             string className = utils.getClassNameForTypeLibrary(container.Name,listDatabaseAbbreviations);
             string schemaName = utils.GetPascalCase(container.Schema);
-            string classNameSpace = baseNameSpaceTypeLibrary + "." + schemaName;
+            string classNameSpace = baseNameSpaceTypeLibrary;
+            if (!string.IsNullOrWhiteSpace(schemaName))
+            {
+                classNameSpace = classNameSpace + "." + schemaName;
+            }
+            
             string outputFullFileName = utils.FileUtilsHelper.getBaseNameForTypeLibrary(database, schemaName, className,semaIsminiDizinlerdeKullan); 
             string outputFullFileNameGenerated = utils.FileUtilsHelper.getBaseNameForTypeLibraryGenerated(database, schemaName,className, semaIsminiDizinlerdeKullan);
             //output.setPreserveSource(outputFullFileNameGenerated, "//::", ":://");
