@@ -218,7 +218,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
             pSqlTypeName = pSqlTypeName.ToLowerInvariant();
             if (
                     pSqlTypeName.Equals("text")
-
+                    || pSqlTypeName.Equals("varchar")
                 )
             {
 
