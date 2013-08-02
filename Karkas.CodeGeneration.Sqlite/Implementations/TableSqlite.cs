@@ -89,7 +89,7 @@ namespace Karkas.CodeGeneration.Sqlite.Implementations
                         // cid|name|type|notnull|dflt_value|pk
                         String columnName = rowColumn["name"].ToString();
                         String columnType = rowColumn["type"].ToString();
-                        bool isColumnInteger = columnType == "integer";
+                        bool isColumnInteger = columnType.ToLowerInvariant() == "integer";
                         bool isColumnPK = Convert.ToInt32(rowColumn["pk"]) > 0;
                         bool isColumnNotNull = isColumnPK || Convert.ToInt32(rowColumn["notnull"]) != 0;
                         String columnDefaultValue = rowColumn["dflt_value"].ToString();
