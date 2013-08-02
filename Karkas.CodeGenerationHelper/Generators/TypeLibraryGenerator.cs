@@ -263,7 +263,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             {
                 output.autoTabLn("[Key]");
             }
-            if (column.isStringType && column.CharacterMaxLength < CHARACTER_MAX_LENGTH_IN_DATABASE)
+            if (column.isStringType && column.CharacterMaxLength < CHARACTER_MAX_LENGTH_IN_DATABASE && column.CharacterMaxLength > 0)
             {
                 string annotationString = string.Format("[StringLength({0})]", column.CharacterMaxLength);
                 output.autoTabLn(annotationString);
