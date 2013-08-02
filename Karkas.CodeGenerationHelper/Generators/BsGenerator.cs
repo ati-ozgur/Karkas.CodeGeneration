@@ -70,7 +70,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             pkAdiPascalCase = utils.GetPascalCase(pkAdi);
 
 
-            usingNamespaceleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceBsWithSchema, baseNameSpaceDalWithSchema);
+            usingNamespaceleriYaz(output, schemaName, baseNameSpace, baseNameSpaceTypeLibrary, baseNameSpaceBsWithSchema, baseNameSpaceDalWithSchema);
             output.increaseTab();
             BaslangicSusluParentezVeTabArtir(output);
             classYaz(output, classNameBs, classNameDal, classNameTypeLibrary);
@@ -93,7 +93,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             if (!File.Exists(outputFullFileName))
             {
-                usingNamespaceleriYaz(output, schemaName, baseNameSpaceTypeLibrary, baseNameSpaceBsWithSchema, baseNameSpaceDalWithSchema);
+                usingNamespaceleriYaz(output, schemaName,baseNameSpace, baseNameSpaceTypeLibrary, baseNameSpaceBsWithSchema, baseNameSpaceDalWithSchema);
                 BaslangicSusluParentezVeTabArtir(output);
                 classYaz(output, classNameBs, classNameDal, classNameTypeLibrary);
                 BaslangicSusluParentezVeTabArtir(output);
@@ -165,7 +165,7 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.writeLine(classNameDal + ">");
         }
 
-        public void usingNamespaceleriYaz(IOutput output, string schemaName, string baseNameSpaceTypeLibrary, string baseNameSpaceBsWithSchema, string baseNameSpaceDalWithSchema)
+        public void usingNamespaceleriYaz(IOutput output, string schemaName, string baseNameSpace, string baseNameSpaceTypeLibrary, string baseNameSpaceBsWithSchema, string baseNameSpaceDalWithSchema)
         {
             output.autoTabLn("");
             output.autoTabLn("using System;");
@@ -178,18 +178,34 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTab("using ");
             output.autoTab(baseNameSpaceTypeLibrary);
             output.autoTabLn(";");
-            output.autoTab("using ");
-            output.autoTab(baseNameSpaceTypeLibrary);
-            output.autoTab(".");
-            output.autoTab(schemaName);
-            output.autoTabLn(";");
-            output.autoTab("using ");
-            output.autoTab(baseNameSpaceDalWithSchema);
-            output.autoTabLn(";");
+            if (!string.IsNullOrWhiteSpace(schemaName))
+            {
+                output.autoTab("using ");
+                output.autoTab(baseNameSpaceTypeLibrary);
+                output.autoTab(".");
+                output.autoTab(schemaName);
+                output.autoTabLn(";");
+                output.autoTab("using ");
+                output.autoTab(baseNameSpaceDalWithSchema);
+                output.autoTabLn(";");
+            }
+            else
+            {
+                output.autoTab("using ");
+                output.autoTab(baseNameSpace + ".Dal");
+                output.autoTabLn(";");
+            }
             output.autoTabLn("");
             output.autoTabLn("");
             output.autoTab("namespace ");
-            output.autoTab(baseNameSpaceBsWithSchema);
+            if (!string.IsNullOrWhiteSpace(schemaName))
+            {
+                output.autoTab(baseNameSpaceBsWithSchema);
+            }
+            else
+            {
+                output.autoTab(baseNameSpace + ".Bs");
+            }
             output.autoTabLn("");
         }
 

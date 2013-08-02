@@ -79,12 +79,23 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             classNameTypeLibrary = utils.getClassNameForTypeLibrary(container.Name, listDatabaseAbbreviations);
             schemaName = utils.GetPascalCase(container.Schema);
-            classNameSpace = baseNameSpace + "." + schemaName;
+
+            string classNameSpace = baseNameSpaceTypeLibrary;
+            if (!string.IsNullOrWhiteSpace(schemaName))
+            {
+                classNameSpace = classNameSpace + "." + schemaName;
+            }
       
             bool pkGuidMi = utils.PkGuidMi(container);
             string pkcumlesi = "";
 
-            string baseNameSpaceDal = baseNameSpace + ".Dal." + schemaName;
+            string baseNameSpaceDal = baseNameSpace + ".Dal";
+            if (!string.IsNullOrWhiteSpace(schemaName))
+            {
+                baseNameSpaceDal = baseNameSpaceDal   + "." +schemaName;
+            }
+            
+            
 
             pkType = utils.PrimaryKeyTipiniBul(container);
 
@@ -262,11 +273,14 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTab("using ");
             output.autoTab(baseNameSpaceTypeLibrary);
             output.autoTabLn(";");
-            output.autoTab("using ");
-            output.autoTab(baseNameSpaceTypeLibrary);
-            output.autoTab(".");
-            output.autoTab(schemaName);
-            output.autoTabLn(";");
+            if ( !string.IsNullOrWhiteSpace(schemaName))
+            {
+                output.autoTab("using ");
+                output.autoTab(baseNameSpaceTypeLibrary);
+                output.autoTab(".");
+                output.autoTab(schemaName);
+                output.autoTabLn(";");
+            }
             output.autoTabLn("");
             output.autoTabLn("");
             output.autoTab("namespace ");
