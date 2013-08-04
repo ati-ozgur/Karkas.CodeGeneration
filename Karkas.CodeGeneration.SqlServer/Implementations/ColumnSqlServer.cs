@@ -178,21 +178,33 @@ AND K.TABLE_SCHEMA = @TABLE_SCHEMA";
             }
         }
 
+        private bool? isNullable;
+
         public bool IsNullable
         {
             get
             {
-                string isNullableValue = columnValuesFromInformationSchema["IS_NULLABLE"].ToString();
-                if (isNullableValue == "NO")
+                if (!isNullable.HasValue)
                 {
-                    return false;
+                    string isNullableValue = columnValuesFromInformationSchema["IS_NULLABLE"].ToString();
+                    if (isNullableValue == "NO")
+                    {
+                        isNullable = false;
+                    }
+                    if (isNullableValue == "YES")
+                    {
+                        isNullable = true;
+                    }
                 }
-                if (isNullableValue == "YES")
-                {
-                    return true;
-                }
+                return isNullable.Value;
+            }
+        }
 
-                throw new NotSupportedException("Nullable value YES veya NO olmalı. Buraya Gelmemesi gerekir.");
+        public bool IsRequired
+        {
+            get
+            {
+                return !IsNullable;
             }
         }
 

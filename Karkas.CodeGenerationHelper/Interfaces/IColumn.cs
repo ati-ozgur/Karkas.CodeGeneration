@@ -19,6 +19,8 @@ namespace Karkas.CodeGenerationHelper.Interfaces
 
         bool IsNullable { get;  }
 
+        bool IsRequired { get;  }
+
         string LanguageType { get;  }
 
         ITable Table { get; }

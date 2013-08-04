@@ -268,7 +268,7 @@ namespace Karkas.CodeGenerationHelper.Generators
                 string annotationString = string.Format("[StringLength({0})]", column.CharacterMaxLength);
                 output.autoTabLn(annotationString);
             }
-            if (!column.IsNullable)
+            if (column.IsRequired)
             {
                 output.autoTabLn("[Required]");
             }

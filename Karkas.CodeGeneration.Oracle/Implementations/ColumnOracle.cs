@@ -176,6 +176,16 @@ ON
             }
         }
 
+        public bool IsRequired
+        {
+            get
+            {
+                return !IsNullable;
+            }
+        }
+
+
+
         private string languageType = null;
         private string dataTypeInDatabase = null;
 
