@@ -5,7 +5,6 @@ using Karkas.CodeGenerationHelper;
 using Karkas.CodeGenerationHelper.Generators;
 using System.Configuration;
 using Karkas.Core.DataUtil;
-using Karkas.CodeGenerationHelper.SmoHelpers;
 using Karkas.CodeGeneration.SqlServer;
 using Karkas.CodeGenerationHelper.Interfaces;
 using Karkas.CodeGeneration.SqlServer.Implementations;
