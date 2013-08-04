@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Karkas.Core.Onaylama</id>
-    <version>1.0.2</version>
+    <version>1.0.12</version>
     <title>Karkas.Core.Onaylama</title>
     <authors>ati_ozgur</authors>
     <owners>ati_ozgur</owners>

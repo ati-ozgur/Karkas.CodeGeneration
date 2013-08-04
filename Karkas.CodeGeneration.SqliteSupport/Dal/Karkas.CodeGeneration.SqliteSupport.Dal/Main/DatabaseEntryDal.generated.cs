@@ -8,6 +8,7 @@ using System.Text;
 using Karkas.Core.DataUtil;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary;
 using Karkas.CodeGeneration.SqliteSupport.TypeLibrary.Main;
+using Karkas.Core.DataUtil.BaseClasses;
 
 
 namespace Karkas.CodeGeneration.SqliteSupport.Dal.Main

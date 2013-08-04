@@ -34,20 +34,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Karkas.Core.DataUtil, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.DataUtil.1.0.2\lib\Karkas.Core.DataUtil.dll</HintPath>
+      <HintPath>..\packages\Karkas.Core.DataUtil.1.0.12\lib\Karkas.Core.DataUtil.dll</HintPath>
     </Reference>
     <Reference Include="Karkas.Core.ExtensionsMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.ExtensionsMethods.1.0.2\lib\Karkas.Core.ExtensionsMethods.dll</HintPath>
+      <HintPath>..\packages\Karkas.Core.ExtensionsMethods.1.0.12\lib\Karkas.Core.ExtensionsMethods.dll</HintPath>
     </Reference>
     <Reference Include="Karkas.Core.Onaylama, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.Onaylama.1.0.2\lib\Karkas.Core.Onaylama.dll</HintPath>
+      <HintPath>..\packages\Karkas.Core.Onaylama.1.0.12\lib\Karkas.Core.Onaylama.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -65,13 +62,6 @@
     <Compile Include="Implementations\EnumHelper.cs" />
     <Compile Include="Implementations\TableSqlServer.cs" />
     <Compile Include="Implementations\ViewSqlServer.cs" />
-    <Compile Include="SmoHelpers\DatabaseTablesGenerator.cs" />
-    <Compile Include="SmoHelpers\InsertScriptHelper.cs" />
-    <Compile Include="SmoHelpers\InsertScriptsGenerator.cs" />
-    <Compile Include="SmoHelpers\SmoHelper.cs" />
-    <Compile Include="SmoHelpers\SpGenerator.cs" />
-    <Compile Include="SmoHelpers\StoredProcedureHelper.cs" />
-    <Compile Include="SmoHelpers\UserDefinedFunctionHelper.cs" />
     <Compile Include="SqlServerOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

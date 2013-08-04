@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Karkas.Core.DataUtil</id>
-    <version>1.0.2</version>
+    <version>1.0.12</version>
     <title>Karkas.Core.DataUtil</title>
     <authors>ati_ozgur</authors>
     <owners>ati_ozgur</owners>
@@ -10,6 +10,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Karkas Data Library</description>
     <summary>Karkas Data Library</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
     <dependencies>
       <dependency id="Karkas.Core.Onaylama" version="1.0.0" />
       <dependency id="Karkas.Core.ExtensionsMethods" version="1.0.0" />
