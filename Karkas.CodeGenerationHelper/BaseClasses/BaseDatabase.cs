@@ -140,6 +140,9 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             get { return ignoredSchemaList; }
             set { ignoredSchemaList = value; }
         }
+
+
+
         string databaseAbbreviations;
 
         public string DatabaseAbbreviations
@@ -200,7 +203,10 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
             {
                 try
                 {
-
+                    if (ignoredSchemaList.Contains(item.Schema))
+                    {
+                        continue;
+                    }
                     CodeGenerateOneTable(item.Name, item.Schema);
                 }
                 catch(Exception ex)
@@ -213,19 +219,26 @@ namespace Karkas.CodeGenerationHelper.BaseClasses
 
         public string CodeGenerateAllTablesInSchema(string pSchemaName)
         {
-            DataTable dtTables = getTableListFromSchema(pSchemaName);
-
             StringBuilder exceptionMessages = new StringBuilder();
-            foreach (DataRow item in dtTables.Rows)
+            if (ignoredSchemaList.Contains(pSchemaName))
             {
-                try
-                {
+                exceptionMessages.Append("Your choosen schema is in ignore list");
 
-                    CodeGenerateOneTable(item["TABLE_NAME"].ToString(), pSchemaName);
-                }
-                catch (Exception ex)
+            }
+            else
+            {
+                DataTable dtTables = getTableListFromSchema(pSchemaName);
+
+                foreach (DataRow item in dtTables.Rows)
                 {
-                    exceptionMessages.Append(ex.Message);
+                    try
+                    {
+                        CodeGenerateOneTable(item["TABLE_NAME"].ToString(), pSchemaName);
+                    }
+                    catch (Exception ex)
+                    {
+                        exceptionMessages.Append(ex.Message);
+                    }
                 }
             }
             return exceptionMessages.ToString();
