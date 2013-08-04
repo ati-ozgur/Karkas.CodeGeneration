@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Karkas.CodeGenerationHelper.Interfaces;
-using Microsoft.SqlServer.Management.Smo;
 using System.Data;
 using Karkas.Core.DataUtil;
 
