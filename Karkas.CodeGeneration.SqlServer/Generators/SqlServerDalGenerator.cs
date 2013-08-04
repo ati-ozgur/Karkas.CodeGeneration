@@ -25,7 +25,11 @@ namespace Karkas.CodeGeneration.SqlServer.Generators
             {
                 return "SqlDbType.VarChar";
             }
-            else
+            else if (column.DataTypeName == "date")
+            {
+                return "SqlDbType.Date";
+            }
+            else 
             {
                 return column.DbTargetType;
             }
