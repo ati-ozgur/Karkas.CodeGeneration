@@ -24,9 +24,9 @@ using Karkas.CodeGeneration.SqlServer.Implementations;
 
 namespace Karkas.CodeGeneration.WinApp
 {
-    public partial class MainForm : Form
+    public partial class FormMain : Form
     {
-        public MainForm()
+        public FormMain()
         {
             InitializeComponent();
             userControlCodeGenerationOptions1.getLastAccessedConnectionToTextbox();

@@ -29,7 +29,7 @@ namespace Karkas.CodeGeneration.WinApp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new FormMain());
         }
 
         static void currentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

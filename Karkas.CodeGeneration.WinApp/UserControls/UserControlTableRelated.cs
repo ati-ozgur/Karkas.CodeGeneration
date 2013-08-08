@@ -17,11 +17,11 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
         }
 
 
-        public MainForm ParentMainForm
+        public FormMain ParentMainForm
         {
             get
             {
-                return (MainForm)this.ParentForm;
+                return (FormMain)this.ParentForm;
             }
         }
 

@@ -141,11 +141,11 @@
     <Compile Include="FormConnectionList.Designer.cs">
       <DependentUpon>FormConnectionList.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="PersistenceService\DatabaseService.cs" />
     <Compile Include="Program.cs" />
@@ -186,8 +186,8 @@
     <EmbeddedResource Include="FormConnectionList.resx">
       <DependentUpon>FormConnectionList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlCodeGenerationOptions.resx">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
