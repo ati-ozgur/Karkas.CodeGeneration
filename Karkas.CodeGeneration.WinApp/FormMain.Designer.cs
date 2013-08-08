@@ -40,7 +40,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageSequences = new System.Windows.Forms.TabPage();
             this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
             this.buttonOtherConnections = new System.Windows.Forms.Button();
-            this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,12 +58,12 @@ namespace Karkas.CodeGeneration.WinApp
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseProvidersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
             this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
             this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
             this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
             this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
-            this.databaseProvidersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelListe.SuspendLayout();
             this.tabControlDatabase.SuspendLayout();
             this.tabPageTableRelated.SuspendLayout();
@@ -181,16 +180,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.buttonOtherConnections.UseVisualStyleBackColor = true;
             this.buttonOtherConnections.Click += new System.EventHandler(this.buttonOtherConnections_Click);
             // 
-            // buttonKisaltmalar
-            // 
-            this.buttonKisaltmalar.Location = new System.Drawing.Point(781, 135);
-            this.buttonKisaltmalar.Name = "buttonKisaltmalar";
-            this.buttonKisaltmalar.Size = new System.Drawing.Size(146, 23);
-            this.buttonKisaltmalar.TabIndex = 18;
-            this.buttonKisaltmalar.Text = "Kısaltmalar";
-            this.buttonKisaltmalar.UseVisualStyleBackColor = true;
-            this.buttonKisaltmalar.Click += new System.EventHandler(this.buttonKisaltmalar_Click);
-            // 
             // buttonNewConnection
             // 
             this.buttonNewConnection.Location = new System.Drawing.Point(781, 106);
@@ -289,21 +278,21 @@ namespace Karkas.CodeGeneration.WinApp
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -322,6 +311,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
             this.aboutToolStripMenuItem2.Text = "About";
             this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.aboutToolStripMenuItem2_Click);
+            // 
+            // databaseProvidersToolStripMenuItem
+            // 
+            this.databaseProvidersToolStripMenuItem.Name = "databaseProvidersToolStripMenuItem";
+            this.databaseProvidersToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.databaseProvidersToolStripMenuItem.Text = "Database Providers";
+            this.databaseProvidersToolStripMenuItem.Click += new System.EventHandler(this.databaseProvidersToolStripMenuItem_Click);
             // 
             // userControlCodeGenerationOptions1
             // 
@@ -358,13 +354,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
             this.userControlSequenceRelated1.TabIndex = 0;
             // 
-            // databaseProvidersToolStripMenuItem
-            // 
-            this.databaseProvidersToolStripMenuItem.Name = "databaseProvidersToolStripMenuItem";
-            this.databaseProvidersToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.databaseProvidersToolStripMenuItem.Text = "Database Providers";
-            this.databaseProvidersToolStripMenuItem.Click += new System.EventHandler(this.databaseProvidersToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +361,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.ClientSize = new System.Drawing.Size(963, 868);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
             this.Controls.Add(this.buttonNewConnection);
-            this.Controls.Add(this.buttonKisaltmalar);
             this.Controls.Add(this.buttonOtherConnections);
             this.Controls.Add(this.buttonGecerliDegerleriKaydet);
             this.Controls.Add(this.panelListe);
@@ -402,7 +390,6 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.Panel panelListe;
         private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
         private System.Windows.Forms.Button buttonOtherConnections;
-        private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
         private UserControlCodeGenerationOptions userControlCodeGenerationOptions1;
         private System.Windows.Forms.TabControl tabControlDatabase;

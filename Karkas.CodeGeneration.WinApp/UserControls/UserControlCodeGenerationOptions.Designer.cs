@@ -60,6 +60,7 @@
             this.checkBoxAnaSinifOnaylamaOrnekleri = new System.Windows.Forms.CheckBox();
             this.checkBoxSequenceCodeGenerate = new System.Windows.Forms.CheckBox();
             this.toolTipCodeGenerationOptions = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -356,10 +357,21 @@
             this.checkBoxSequenceCodeGenerate.Text = "Sequence Code Generate";
             this.checkBoxSequenceCodeGenerate.UseVisualStyleBackColor = true;
             // 
+            // buttonKisaltmalar
+            // 
+            this.buttonKisaltmalar.Location = new System.Drawing.Point(619, 295);
+            this.buttonKisaltmalar.Name = "buttonKisaltmalar";
+            this.buttonKisaltmalar.Size = new System.Drawing.Size(86, 23);
+            this.buttonKisaltmalar.TabIndex = 57;
+            this.buttonKisaltmalar.Text = "Kısaltmalar";
+            this.buttonKisaltmalar.UseVisualStyleBackColor = true;
+            this.buttonKisaltmalar.Click += new System.EventHandler(this.buttonKisaltmalar_Click);
+            // 
             // UserControlCodeGenerationOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonKisaltmalar);
             this.Controls.Add(this.checkBoxSequenceCodeGenerate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxAbbrevationsAsString);
@@ -430,5 +442,6 @@
         private System.Windows.Forms.CheckBox checkBoxAnaSinifOnaylamaOrnekleri;
         private System.Windows.Forms.CheckBox checkBoxSequenceCodeGenerate;
         private System.Windows.Forms.ToolTip toolTipCodeGenerationOptions;
+        private System.Windows.Forms.Button buttonKisaltmalar;
     }
 }

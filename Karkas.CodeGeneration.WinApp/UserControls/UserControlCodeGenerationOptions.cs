@@ -188,5 +188,19 @@ namespace Karkas.CodeGeneration.WinApp.UserControls
             }
         }
 
+        public FormMain ParentMainForm
+        {
+            get
+            {
+                return (FormMain)this.ParentForm;
+            }
+        }
+
+        private void buttonKisaltmalar_Click(object sender, EventArgs e)
+        {
+            Form frm = new FormAbbreviations(getDatabaseEntry());
+            frm.ShowDialog();
+        }
+
     }
 }
