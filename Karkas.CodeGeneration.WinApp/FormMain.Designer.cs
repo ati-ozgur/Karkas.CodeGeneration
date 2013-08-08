@@ -35,13 +35,9 @@ namespace Karkas.CodeGeneration.WinApp
             this.panelListe = new System.Windows.Forms.Panel();
             this.tabControlDatabase = new System.Windows.Forms.TabControl();
             this.tabPageTableRelated = new System.Windows.Forms.TabPage();
-            this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
             this.tabPageViewRelated = new System.Windows.Forms.TabPage();
-            this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
             this.tabPageStoredProcedures = new System.Windows.Forms.TabPage();
-            this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
             this.tabPageSequences = new System.Windows.Forms.TabPage();
-            this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
             this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
@@ -58,7 +54,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +61,11 @@ namespace Karkas.CodeGeneration.WinApp
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
+            this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
+            this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
+            this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
+            this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
             this.panelListe.SuspendLayout();
             this.tabControlDatabase.SuspendLayout();
             this.tabPageTableRelated.SuspendLayout();
@@ -130,13 +130,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageTableRelated.Text = "Table";
             this.tabPageTableRelated.UseVisualStyleBackColor = true;
             // 
-            // userControlTableRelated1
-            // 
-            this.userControlTableRelated1.Location = new System.Drawing.Point(7, 7);
-            this.userControlTableRelated1.Name = "userControlTableRelated1";
-            this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
-            this.userControlTableRelated1.TabIndex = 0;
-            // 
             // tabPageViewRelated
             // 
             this.tabPageViewRelated.Controls.Add(this.userControlViewRelated1);
@@ -148,13 +141,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageViewRelated.Text = "View";
             this.tabPageViewRelated.UseVisualStyleBackColor = true;
             // 
-            // userControlViewRelated1
-            // 
-            this.userControlViewRelated1.Location = new System.Drawing.Point(0, 6);
-            this.userControlViewRelated1.Name = "userControlViewRelated1";
-            this.userControlViewRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlViewRelated1.TabIndex = 0;
-            // 
             // tabPageStoredProcedures
             // 
             this.tabPageStoredProcedures.Controls.Add(this.userControlStoredProcedureRelated1);
@@ -165,13 +151,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageStoredProcedures.Text = "Stored Procedures";
             this.tabPageStoredProcedures.UseVisualStyleBackColor = true;
             // 
-            // userControlStoredProcedureRelated1
-            // 
-            this.userControlStoredProcedureRelated1.Location = new System.Drawing.Point(3, 0);
-            this.userControlStoredProcedureRelated1.Name = "userControlStoredProcedureRelated1";
-            this.userControlStoredProcedureRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlStoredProcedureRelated1.TabIndex = 0;
-            // 
             // tabPageSequences
             // 
             this.tabPageSequences.Controls.Add(this.userControlSequenceRelated1);
@@ -181,13 +160,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageSequences.TabIndex = 3;
             this.tabPageSequences.Text = "Sequences";
             this.tabPageSequences.UseVisualStyleBackColor = true;
-            // 
-            // userControlSequenceRelated1
-            // 
-            this.userControlSequenceRelated1.Location = new System.Drawing.Point(6, 3);
-            this.userControlSequenceRelated1.Name = "userControlSequenceRelated1";
-            this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlSequenceRelated1.TabIndex = 0;
             // 
             // buttonGecerliDegerleriKaydet
             // 
@@ -313,13 +285,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem1.Text = "E&xit";
             // 
-            // userControlCodeGenerationOptions1
-            // 
-            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 27);
-            this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
-            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 466);
-            this.userControlCodeGenerationOptions1.TabIndex = 20;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -344,20 +309,23 @@ namespace Karkas.CodeGeneration.WinApp
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -373,6 +341,41 @@ namespace Karkas.CodeGeneration.WinApp
             this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem2.Text = "About";
             this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.aboutToolStripMenuItem2_Click);
+            // 
+            // userControlCodeGenerationOptions1
+            // 
+            this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 27);
+            this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
+            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 466);
+            this.userControlCodeGenerationOptions1.TabIndex = 20;
+            // 
+            // userControlTableRelated1
+            // 
+            this.userControlTableRelated1.Location = new System.Drawing.Point(7, 7);
+            this.userControlTableRelated1.Name = "userControlTableRelated1";
+            this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
+            this.userControlTableRelated1.TabIndex = 0;
+            // 
+            // userControlViewRelated1
+            // 
+            this.userControlViewRelated1.Location = new System.Drawing.Point(0, 6);
+            this.userControlViewRelated1.Name = "userControlViewRelated1";
+            this.userControlViewRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlViewRelated1.TabIndex = 0;
+            // 
+            // userControlStoredProcedureRelated1
+            // 
+            this.userControlStoredProcedureRelated1.Location = new System.Drawing.Point(3, 0);
+            this.userControlStoredProcedureRelated1.Name = "userControlStoredProcedureRelated1";
+            this.userControlStoredProcedureRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlStoredProcedureRelated1.TabIndex = 0;
+            // 
+            // userControlSequenceRelated1
+            // 
+            this.userControlSequenceRelated1.Location = new System.Drawing.Point(6, 3);
+            this.userControlSequenceRelated1.Name = "userControlSequenceRelated1";
+            this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlSequenceRelated1.TabIndex = 0;
             // 
             // FormMain
             // 

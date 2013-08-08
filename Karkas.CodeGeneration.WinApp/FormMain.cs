@@ -284,5 +284,29 @@ namespace Karkas.CodeGeneration.WinApp
             formAbout.ShowDialog();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseService.EkleVeyaGuncelle(CurrentDatabaseEntry);
+
+            MessageBox.Show("Değerler Kaydedildi;");
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            userControlCodeGenerationOptions1.ClearInputControlValues();
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormConnectionList frm = new FormConnectionList();
+            frm.ShowDialog();
+
+            if (frm.SelectedDatabaseEntry != null)
+            {
+                userControlCodeGenerationOptions1.databaseEntryToForm(frm.SelectedDatabaseEntry);
+            }
+        }
+
     }
 }
