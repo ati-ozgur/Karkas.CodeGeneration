@@ -129,6 +129,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDatabaseProviders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDatabaseProviders.Designer.cs">
+      <DependentUpon>FormDatabaseProviders.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAbbreviations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConnectionList.resx">
       <DependentUpon>FormConnectionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDatabaseProviders.resx">
+      <DependentUpon>FormDatabaseProviders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

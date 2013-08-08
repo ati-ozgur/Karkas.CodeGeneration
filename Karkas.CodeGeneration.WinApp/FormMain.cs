@@ -308,5 +308,11 @@ namespace Karkas.CodeGeneration.WinApp
             }
         }
 
+        private void databaseProvidersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDatabaseProviders form = new FormDatabaseProviders();
+            form.ShowDialog();
+        }
+
     }
 }

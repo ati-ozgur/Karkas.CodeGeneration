@@ -42,8 +42,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.buttonOtherConnections = new System.Windows.Forms.Button();
             this.buttonKisaltmalar = new System.Windows.Forms.Button();
             this.buttonNewConnection = new System.Windows.Forms.Button();
-            this.textBoxDatabaseProviders = new System.Windows.Forms.TextBox();
-            this.labelDatabaseProviders = new System.Windows.Forms.Label();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,6 +64,7 @@ namespace Karkas.CodeGeneration.WinApp
             this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
             this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
             this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
+            this.databaseProvidersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelListe.SuspendLayout();
             this.tabControlDatabase.SuspendLayout();
             this.tabPageTableRelated.SuspendLayout();
@@ -202,25 +201,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.buttonNewConnection.UseVisualStyleBackColor = true;
             this.buttonNewConnection.Click += new System.EventHandler(this.buttonNewConnection_Click);
             // 
-            // textBoxDatabaseProviders
-            // 
-            this.textBoxDatabaseProviders.Location = new System.Drawing.Point(611, 522);
-            this.textBoxDatabaseProviders.Multiline = true;
-            this.textBoxDatabaseProviders.Name = "textBoxDatabaseProviders";
-            this.textBoxDatabaseProviders.Size = new System.Drawing.Size(176, 184);
-            this.textBoxDatabaseProviders.TabIndex = 21;
-            this.textBoxDatabaseProviders.Text = "System.Data.SqlClient\r\nSystem.Data.OracleClient\r\nOracle.DataAccess.Client\r\nSystem" +
-    ".Data.SQLite\r\n";
-            // 
-            // labelDatabaseProviders
-            // 
-            this.labelDatabaseProviders.AutoSize = true;
-            this.labelDatabaseProviders.Location = new System.Drawing.Point(611, 498);
-            this.labelDatabaseProviders.Name = "labelDatabaseProviders";
-            this.labelDatabaseProviders.Size = new System.Drawing.Size(100, 13);
-            this.labelDatabaseProviders.TabIndex = 22;
-            this.labelDatabaseProviders.Text = "Database Providers";
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -330,7 +310,8 @@ namespace Karkas.CodeGeneration.WinApp
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem2});
+            this.aboutToolStripMenuItem2,
+            this.databaseProvidersToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -338,7 +319,7 @@ namespace Karkas.CodeGeneration.WinApp
             // aboutToolStripMenuItem2
             // 
             this.aboutToolStripMenuItem2.Name = "aboutToolStripMenuItem2";
-            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
             this.aboutToolStripMenuItem2.Text = "About";
             this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.aboutToolStripMenuItem2_Click);
             // 
@@ -377,13 +358,18 @@ namespace Karkas.CodeGeneration.WinApp
             this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
             this.userControlSequenceRelated1.TabIndex = 0;
             // 
+            // databaseProvidersToolStripMenuItem
+            // 
+            this.databaseProvidersToolStripMenuItem.Name = "databaseProvidersToolStripMenuItem";
+            this.databaseProvidersToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.databaseProvidersToolStripMenuItem.Text = "Database Providers";
+            this.databaseProvidersToolStripMenuItem.Click += new System.EventHandler(this.databaseProvidersToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 868);
-            this.Controls.Add(this.labelDatabaseProviders);
-            this.Controls.Add(this.textBoxDatabaseProviders);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
             this.Controls.Add(this.buttonNewConnection);
             this.Controls.Add(this.buttonKisaltmalar);
@@ -419,8 +405,6 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.Button buttonKisaltmalar;
         private System.Windows.Forms.Button buttonNewConnection;
         private UserControlCodeGenerationOptions userControlCodeGenerationOptions1;
-        private System.Windows.Forms.TextBox textBoxDatabaseProviders;
-        private System.Windows.Forms.Label labelDatabaseProviders;
         private System.Windows.Forms.TabControl tabControlDatabase;
         private System.Windows.Forms.TabPage tabPageTableRelated;
         private System.Windows.Forms.TabPage tabPageViewRelated;
@@ -449,6 +433,7 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem databaseProvidersToolStripMenuItem;
     }
 }
 
