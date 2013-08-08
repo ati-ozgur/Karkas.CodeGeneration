@@ -67,7 +67,7 @@
             this.listBoxStoredProcedureListesi.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxStoredProcedureListesi.Name = "listBoxStoredProcedureListesi";
             this.listBoxStoredProcedureListesi.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxStoredProcedureListesi.Size = new System.Drawing.Size(204, 251);
+            this.listBoxStoredProcedureListesi.Size = new System.Drawing.Size(204, 160);
             this.listBoxStoredProcedureListesi.TabIndex = 21;
             // 
             // labelStoredProcedureListesi
@@ -124,7 +124,7 @@
             this.Controls.Add(this.labelSchemaList);
             this.Controls.Add(this.comboBoxSchemaList);
             this.Name = "UserControlStoredProcedureRelated";
-            this.Size = new System.Drawing.Size(524, 338);
+            this.Size = new System.Drawing.Size(524, 245);
             this.ResumeLayout(false);
             this.PerformLayout();
 

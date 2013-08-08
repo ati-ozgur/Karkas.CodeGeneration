@@ -66,7 +66,7 @@
             this.listBoxSequenceListesi.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxSequenceListesi.Name = "listBoxSequenceListesi";
             this.listBoxSequenceListesi.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxSequenceListesi.Size = new System.Drawing.Size(204, 251);
+            this.listBoxSequenceListesi.Size = new System.Drawing.Size(204, 160);
             this.listBoxSequenceListesi.TabIndex = 21;
             // 
             // labelSequenceListesi
@@ -111,7 +111,7 @@
             this.Controls.Add(this.labelSchemaList);
             this.Controls.Add(this.comboBoxSchemaList);
             this.Name = "UserControlSequenceRelated";
-            this.Size = new System.Drawing.Size(524, 338);
+            this.Size = new System.Drawing.Size(524, 245);
             this.ResumeLayout(false);
             this.PerformLayout();
 

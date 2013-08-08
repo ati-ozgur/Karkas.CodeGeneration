@@ -67,7 +67,7 @@
             this.listBoxViewListesi.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxViewListesi.Name = "listBoxViewListesi";
             this.listBoxViewListesi.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxViewListesi.Size = new System.Drawing.Size(204, 251);
+            this.listBoxViewListesi.Size = new System.Drawing.Size(204, 160);
             this.listBoxViewListesi.TabIndex = 15;
             // 
             // labelViewListesi
@@ -124,7 +124,7 @@
             this.Controls.Add(this.labelSchemaList);
             this.Controls.Add(this.comboBoxSchemaList);
             this.Name = "UserControlViewRelated";
-            this.Size = new System.Drawing.Size(524, 338);
+            this.Size = new System.Drawing.Size(524, 245);
             this.ResumeLayout(false);
             this.PerformLayout();
 

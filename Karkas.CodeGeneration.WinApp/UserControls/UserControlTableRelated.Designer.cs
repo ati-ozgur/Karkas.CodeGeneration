@@ -67,7 +67,7 @@
             this.listBoxTableListesi.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTableListesi.Name = "listBoxTableListesi";
             this.listBoxTableListesi.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxTableListesi.Size = new System.Drawing.Size(204, 251);
+            this.listBoxTableListesi.Size = new System.Drawing.Size(204, 160);
             this.listBoxTableListesi.TabIndex = 9;
             // 
             // labelTabloListesi
@@ -124,7 +124,7 @@
             this.Controls.Add(this.labelSchemaList);
             this.Controls.Add(this.comboBoxSchemaList);
             this.Name = "UserControlTableRelated";
-            this.Size = new System.Drawing.Size(524, 338);
+            this.Size = new System.Drawing.Size(524, 245);
             this.ResumeLayout(false);
             this.PerformLayout();
 
