@@ -278,5 +278,11 @@ namespace Karkas.CodeGeneration.WinApp
 
         }
 
+        private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
+        }
+
     }
 }

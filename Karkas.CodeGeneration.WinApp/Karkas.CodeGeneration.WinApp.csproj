@@ -135,6 +135,12 @@
     <Compile Include="FormAbbreviations.Designer.cs">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConnectionList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,12 @@
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNotImplementedYet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNotImplementedYet.Designer.cs">
+      <DependentUpon>FormNotImplementedYet.cs</DependentUpon>
     </Compile>
     <Compile Include="PersistenceService\DatabaseService.cs" />
     <Compile Include="Program.cs" />
@@ -183,11 +195,17 @@
     <EmbeddedResource Include="FormAbbreviations.resx">
       <DependentUpon>FormAbbreviations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConnectionList.resx">
       <DependentUpon>FormConnectionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNotImplementedYet.resx">
+      <DependentUpon>FormNotImplementedYet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlCodeGenerationOptions.resx">
       <DependentUpon>UserControlCodeGenerationOptions.cs</DependentUpon>
