@@ -38,9 +38,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageViewRelated = new System.Windows.Forms.TabPage();
             this.tabPageStoredProcedures = new System.Windows.Forms.TabPage();
             this.tabPageSequences = new System.Windows.Forms.TabPage();
-            this.buttonGecerliDegerleriKaydet = new System.Windows.Forms.Button();
-            this.buttonOtherConnections = new System.Windows.Forms.Button();
-            this.buttonNewConnection = new System.Windows.Forms.Button();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -75,10 +72,10 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // buttonTestConnectionString
             // 
-            this.buttonTestConnectionString.Location = new System.Drawing.Point(775, 295);
+            this.buttonTestConnectionString.Location = new System.Drawing.Point(607, 597);
             this.buttonTestConnectionString.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTestConnectionString.Name = "buttonTestConnectionString";
-            this.buttonTestConnectionString.Size = new System.Drawing.Size(149, 58);
+            this.buttonTestConnectionString.Size = new System.Drawing.Size(97, 58);
             this.buttonTestConnectionString.TabIndex = 3;
             this.buttonTestConnectionString.Text = "test";
             this.buttonTestConnectionString.UseVisualStyleBackColor = true;
@@ -86,12 +83,11 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // labelConnectionStatus
             // 
-            this.labelConnectionStatus.AutoSize = true;
             this.labelConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelConnectionStatus.Location = new System.Drawing.Point(774, 260);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(611, 520);
             this.labelConnectionStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
-            this.labelConnectionStatus.Size = new System.Drawing.Size(153, 20);
+            this.labelConnectionStatus.Size = new System.Drawing.Size(93, 57);
             this.labelConnectionStatus.TabIndex = 4;
             this.labelConnectionStatus.Text = "Bağlantı Denenmedi";
             // 
@@ -158,37 +154,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageSequences.TabIndex = 3;
             this.tabPageSequences.Text = "Sequences";
             this.tabPageSequences.UseVisualStyleBackColor = true;
-            // 
-            // buttonGecerliDegerleriKaydet
-            // 
-            this.buttonGecerliDegerleriKaydet.Location = new System.Drawing.Point(781, 176);
-            this.buttonGecerliDegerleriKaydet.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonGecerliDegerleriKaydet.Name = "buttonGecerliDegerleriKaydet";
-            this.buttonGecerliDegerleriKaydet.Size = new System.Drawing.Size(146, 55);
-            this.buttonGecerliDegerleriKaydet.TabIndex = 13;
-            this.buttonGecerliDegerleriKaydet.Text = "Geçerli Değerleri Kaydet";
-            this.buttonGecerliDegerleriKaydet.UseVisualStyleBackColor = true;
-            this.buttonGecerliDegerleriKaydet.Click += new System.EventHandler(this.buttonGecerliDegerleriKaydet_Click);
-            // 
-            // buttonOtherConnections
-            // 
-            this.buttonOtherConnections.Location = new System.Drawing.Point(781, 67);
-            this.buttonOtherConnections.Name = "buttonOtherConnections";
-            this.buttonOtherConnections.Size = new System.Drawing.Size(146, 23);
-            this.buttonOtherConnections.TabIndex = 15;
-            this.buttonOtherConnections.Text = "Diğer Bağlantılar";
-            this.buttonOtherConnections.UseVisualStyleBackColor = true;
-            this.buttonOtherConnections.Click += new System.EventHandler(this.buttonOtherConnections_Click);
-            // 
-            // buttonNewConnection
-            // 
-            this.buttonNewConnection.Location = new System.Drawing.Point(781, 106);
-            this.buttonNewConnection.Name = "buttonNewConnection";
-            this.buttonNewConnection.Size = new System.Drawing.Size(146, 23);
-            this.buttonNewConnection.TabIndex = 19;
-            this.buttonNewConnection.Text = "Yeni Bağlantı";
-            this.buttonNewConnection.UseVisualStyleBackColor = true;
-            this.buttonNewConnection.Click += new System.EventHandler(this.buttonNewConnection_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -261,7 +226,7 @@ namespace Karkas.CodeGeneration.WinApp
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(963, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
             this.menuStrip1.TabIndex = 23;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -328,7 +293,7 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             // userControlTableRelated1
             // 
-            this.userControlTableRelated1.Location = new System.Drawing.Point(7, 7);
+            this.userControlTableRelated1.Location = new System.Drawing.Point(3, 6);
             this.userControlTableRelated1.Name = "userControlTableRelated1";
             this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
             this.userControlTableRelated1.TabIndex = 0;
@@ -358,17 +323,17 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 868);
+            this.ClientSize = new System.Drawing.Size(734, 865);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
-            this.Controls.Add(this.buttonNewConnection);
-            this.Controls.Add(this.buttonOtherConnections);
-            this.Controls.Add(this.buttonGecerliDegerleriKaydet);
             this.Controls.Add(this.panelListe);
             this.Controls.Add(this.labelConnectionStatus);
             this.Controls.Add(this.buttonTestConnectionString);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karkas  CodeGeneration WinApp";
             this.panelListe.ResumeLayout(false);
             this.tabControlDatabase.ResumeLayout(false);
@@ -388,9 +353,6 @@ namespace Karkas.CodeGeneration.WinApp
         private System.Windows.Forms.Button buttonTestConnectionString;
         private System.Windows.Forms.Label labelConnectionStatus;
         private System.Windows.Forms.Panel panelListe;
-        private System.Windows.Forms.Button buttonGecerliDegerleriKaydet;
-        private System.Windows.Forms.Button buttonOtherConnections;
-        private System.Windows.Forms.Button buttonNewConnection;
         private UserControlCodeGenerationOptions userControlCodeGenerationOptions1;
         private System.Windows.Forms.TabControl tabControlDatabase;
         private System.Windows.Forms.TabPage tabPageTableRelated;
