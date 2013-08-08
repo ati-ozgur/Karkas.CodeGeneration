@@ -35,9 +35,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.panelListe = new System.Windows.Forms.Panel();
             this.tabControlDatabase = new System.Windows.Forms.TabControl();
             this.tabPageTableRelated = new System.Windows.Forms.TabPage();
+            this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
             this.tabPageViewRelated = new System.Windows.Forms.TabPage();
+            this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
             this.tabPageStoredProcedures = new System.Windows.Forms.TabPage();
+            this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
             this.tabPageSequences = new System.Windows.Forms.TabPage();
+            this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -57,10 +61,6 @@ namespace Karkas.CodeGeneration.WinApp
             this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseProvidersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControlCodeGenerationOptions1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlCodeGenerationOptions();
-            this.userControlTableRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlTableRelated();
-            this.userControlViewRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlViewRelated();
-            this.userControlStoredProcedureRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlStoredProcedureRelated();
-            this.userControlSequenceRelated1 = new Karkas.CodeGeneration.WinApp.UserControls.UserControlSequenceRelated();
             this.panelListe.SuspendLayout();
             this.tabControlDatabase.SuspendLayout();
             this.tabPageTableRelated.SuspendLayout();
@@ -94,7 +94,7 @@ namespace Karkas.CodeGeneration.WinApp
             // panelListe
             // 
             this.panelListe.Controls.Add(this.tabControlDatabase);
-            this.panelListe.Location = new System.Drawing.Point(2, 498);
+            this.panelListe.Location = new System.Drawing.Point(3, 442);
             this.panelListe.Margin = new System.Windows.Forms.Padding(2);
             this.panelListe.Name = "panelListe";
             this.panelListe.Size = new System.Drawing.Size(604, 375);
@@ -124,6 +124,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageTableRelated.Text = "Table";
             this.tabPageTableRelated.UseVisualStyleBackColor = true;
             // 
+            // userControlTableRelated1
+            // 
+            this.userControlTableRelated1.Location = new System.Drawing.Point(3, 6);
+            this.userControlTableRelated1.Name = "userControlTableRelated1";
+            this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
+            this.userControlTableRelated1.TabIndex = 0;
+            // 
             // tabPageViewRelated
             // 
             this.tabPageViewRelated.Controls.Add(this.userControlViewRelated1);
@@ -135,6 +142,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageViewRelated.Text = "View";
             this.tabPageViewRelated.UseVisualStyleBackColor = true;
             // 
+            // userControlViewRelated1
+            // 
+            this.userControlViewRelated1.Location = new System.Drawing.Point(0, 6);
+            this.userControlViewRelated1.Name = "userControlViewRelated1";
+            this.userControlViewRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlViewRelated1.TabIndex = 0;
+            // 
             // tabPageStoredProcedures
             // 
             this.tabPageStoredProcedures.Controls.Add(this.userControlStoredProcedureRelated1);
@@ -145,6 +159,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageStoredProcedures.Text = "Stored Procedures";
             this.tabPageStoredProcedures.UseVisualStyleBackColor = true;
             // 
+            // userControlStoredProcedureRelated1
+            // 
+            this.userControlStoredProcedureRelated1.Location = new System.Drawing.Point(3, 0);
+            this.userControlStoredProcedureRelated1.Name = "userControlStoredProcedureRelated1";
+            this.userControlStoredProcedureRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlStoredProcedureRelated1.TabIndex = 0;
+            // 
             // tabPageSequences
             // 
             this.tabPageSequences.Controls.Add(this.userControlSequenceRelated1);
@@ -154,6 +175,13 @@ namespace Karkas.CodeGeneration.WinApp
             this.tabPageSequences.TabIndex = 3;
             this.tabPageSequences.Text = "Sequences";
             this.tabPageSequences.UseVisualStyleBackColor = true;
+            // 
+            // userControlSequenceRelated1
+            // 
+            this.userControlSequenceRelated1.Location = new System.Drawing.Point(6, 3);
+            this.userControlSequenceRelated1.Name = "userControlSequenceRelated1";
+            this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
+            this.userControlSequenceRelated1.TabIndex = 0;
             // 
             // aboutToolStripMenuItem
             // 
@@ -288,42 +316,14 @@ namespace Karkas.CodeGeneration.WinApp
             // 
             this.userControlCodeGenerationOptions1.Location = new System.Drawing.Point(2, 27);
             this.userControlCodeGenerationOptions1.Name = "userControlCodeGenerationOptions1";
-            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 466);
+            this.userControlCodeGenerationOptions1.Size = new System.Drawing.Size(719, 410);
             this.userControlCodeGenerationOptions1.TabIndex = 20;
-            // 
-            // userControlTableRelated1
-            // 
-            this.userControlTableRelated1.Location = new System.Drawing.Point(3, 6);
-            this.userControlTableRelated1.Name = "userControlTableRelated1";
-            this.userControlTableRelated1.Size = new System.Drawing.Size(569, 384);
-            this.userControlTableRelated1.TabIndex = 0;
-            // 
-            // userControlViewRelated1
-            // 
-            this.userControlViewRelated1.Location = new System.Drawing.Point(0, 6);
-            this.userControlViewRelated1.Name = "userControlViewRelated1";
-            this.userControlViewRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlViewRelated1.TabIndex = 0;
-            // 
-            // userControlStoredProcedureRelated1
-            // 
-            this.userControlStoredProcedureRelated1.Location = new System.Drawing.Point(3, 0);
-            this.userControlStoredProcedureRelated1.Name = "userControlStoredProcedureRelated1";
-            this.userControlStoredProcedureRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlStoredProcedureRelated1.TabIndex = 0;
-            // 
-            // userControlSequenceRelated1
-            // 
-            this.userControlSequenceRelated1.Location = new System.Drawing.Point(6, 3);
-            this.userControlSequenceRelated1.Name = "userControlSequenceRelated1";
-            this.userControlSequenceRelated1.Size = new System.Drawing.Size(524, 338);
-            this.userControlSequenceRelated1.TabIndex = 0;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 865);
+            this.ClientSize = new System.Drawing.Size(734, 752);
             this.Controls.Add(this.userControlCodeGenerationOptions1);
             this.Controls.Add(this.panelListe);
             this.Controls.Add(this.labelConnectionStatus);
