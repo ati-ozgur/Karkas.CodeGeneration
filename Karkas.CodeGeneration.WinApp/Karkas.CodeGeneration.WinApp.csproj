@@ -99,6 +99,9 @@
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BaseIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Karkas.Core.DataUtil, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -235,6 +238,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="bin\Debug\connectionsDb.sqlite" />
+    <Content Include="BaseIcon.ico" />
+    <Content Include="BaseIconReadme.txt" />
     <Content Include="connectionsDb.sqlite" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
