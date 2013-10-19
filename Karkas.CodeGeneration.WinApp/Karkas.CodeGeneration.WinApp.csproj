@@ -100,20 +100,20 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Karkas.Core.DataUtil, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.DataUtil.1.0.12\lib\Karkas.Core.DataUtil.dll</HintPath>
+    <Reference Include="Karkas.Core.DataUtil, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Karkas.Core.DataUtil.1.0.15\lib\Karkas.Core.DataUtil.dll</HintPath>
     </Reference>
-    <Reference Include="Karkas.Core.ExtensionsMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.ExtensionsMethods.1.0.12\lib\Karkas.Core.ExtensionsMethods.dll</HintPath>
-    </Reference>
-    <Reference Include="Karkas.Core.Onaylama, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Karkas.Core.Onaylama.1.0.12\lib\Karkas.Core.Onaylama.dll</HintPath>
+    <Reference Include="Karkas.Core.ExtensionsMethods, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Karkas.Core.ExtensionsMethods.1.0.15\lib\Karkas.Core.ExtensionsMethods.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.86.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">

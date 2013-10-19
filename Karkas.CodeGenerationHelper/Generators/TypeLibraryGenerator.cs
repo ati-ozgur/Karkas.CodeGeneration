@@ -55,9 +55,7 @@ namespace Karkas.CodeGenerationHelper.Generators
 
             PropertiesYaz(output, container);
 
-            //PropertiesAsStringYaz(output, container);
             ShallowCopyYaz(output, container, className);
-            //OnaylamaKoduYaz(output, container);
 
             PropertyIsimleriYaz(output, container, className);
 
@@ -144,8 +142,6 @@ namespace Karkas.CodeGenerationHelper.Generators
             output.autoTabLn("using System.Xml.Serialization;");
             output.autoTabLn("using System.Collections.Generic;");
             output.autoTabLn("using Karkas.Core.TypeLibrary;");
-            output.autoTabLn("using Karkas.Core.Onaylama;");
-            output.autoTabLn("using Karkas.Core.Onaylama.ForPonos;");
             output.autoTabLn("using System.ComponentModel.DataAnnotations;");
             output.autoTabLn("");
             output.autoTab("namespace ");
@@ -186,24 +182,6 @@ namespace Karkas.CodeGenerationHelper.Generators
 
 
 
-
-        private void OnaylamaKoduYaz(IOutput output, IContainer container)
-        {
-            output.autoTabLn("protected override void OnaylamaListesiniOlusturCodeGeneration()");
-            BaslangicSusluParentezVeTabArtir(output);
-            foreach (IColumn column in container.Columns)
-            {
-                if ((!column.IsNullable) && (!column.IsInPrimaryKey))
-                {
-                    output.autoTabLn("");
-                    output.autoTab("this.Onaylayici.OnaylayiciListesi.Add(new GerekliAlanOnaylayici(this, \"");
-                    output.write(utils.getPropertyVariableName(column));
-                    output.write("\"));");
-
-                }
-            }
-            BitisSusluParentezVeTabAzalt(output);
-        }
 
         private void PropertyIsimleriYaz(IOutput output, IContainer container, string className)
         {
