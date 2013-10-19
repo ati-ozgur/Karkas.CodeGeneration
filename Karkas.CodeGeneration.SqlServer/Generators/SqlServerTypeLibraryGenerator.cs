@@ -27,8 +27,6 @@ namespace Karkas.CodeGeneration.SqlServer.Generators
             output.autoTabLn("using System.Xml.Serialization;");
             output.autoTabLn("using System.Collections.Generic;");
             output.autoTabLn("using Karkas.Core.TypeLibrary;");
-            output.autoTabLn("using Karkas.Core.Onaylama;");
-            output.autoTabLn("using Karkas.Core.Onaylama.ForPonos;");
             output.autoTabLn("using System.ComponentModel.DataAnnotations;");
 
             generateClrTypesUsings();            
