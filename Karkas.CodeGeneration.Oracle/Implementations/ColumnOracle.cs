@@ -406,7 +406,6 @@ AND
 
         public string sqlTypeToDotnetCSharpType(string pSqlTypeName)
         {
-            pSqlTypeName = pSqlTypeName.ToLowerInvariant();
 
             pSqlTypeName = pSqlTypeName.ToLowerInvariant();
             if (
@@ -471,7 +470,9 @@ AND
                 pSqlTypeName.Equals("numeric") ||
                 pSqlTypeName.Equals("decimal") ||
                 pSqlTypeName.Equals("money") ||
-                pSqlTypeName.Equals("smallmoney")
+                pSqlTypeName.Equals("smallmoney") ||
+                pSqlTypeName.Equals("binary_float") ||
+                pSqlTypeName.Equals("binary_double")
                 )
             {
                 return "decimal";
