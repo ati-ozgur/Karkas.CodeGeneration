@@ -315,6 +315,18 @@ AND
                 {
                     return "DbType.String";
                 }
+                if (lowerDataTypeInDatabase == "date")
+                {
+                    return "DbType.DateTime";
+                }
+                if (lowerDataTypeInDatabase.StartsWith("timestamp"))
+                {
+                    return "DbType.DateTime";
+                }
+                if (lowerDataTypeInDatabase == "binary_float" || lowerDataTypeInDatabase == "binary_double")
+                {
+                    return "DbType.Decimal";
+                }
                 return "Unknown";
 
             }
